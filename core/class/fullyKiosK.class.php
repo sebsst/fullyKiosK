@@ -347,7 +347,7 @@ class fullyKiosKCmd extends cmd {
 					$eqLogic = $this->getEqLogic();
 					$ip = $eqLogic->getConfiguration('addressip');
 					$password = $eqLogic->getConfiguration('password');
-					$url = "http://{$ip}:2323/?type=json&cmd={$cmdval}&password={$password}";
+					$url = "http://{$ip}:2323/?cmd={$cmdval}&password={$password}";
 
 					$ch = curl_init();
 					curl_setopt($ch, CURLOPT_URL, $url);
