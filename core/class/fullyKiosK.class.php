@@ -99,12 +99,12 @@ class fullyKiosK extends eqLogic {
 
 			),
 
-			'inScreenOn' => array(
-				'name' => "inScreenOn",
+			'isScreenOn' => array(
+				'name' => "isScreenOn",
 				'type' => 'info',
 				'subtype' => 'binary',
 				'isvisible' => true,
-				'restkey' => 'inScreenOn',
+				'restkey' => 'isScreenOn',
 
 			),
 		);
