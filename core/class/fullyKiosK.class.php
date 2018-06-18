@@ -44,10 +44,6 @@ class fullyKiosK extends eqLogic {
 				'name' => 'ScreenOn',
 				'cmd' => 'cmd=screenOn',
 			),
-			'name' => 'ScreenOff',
-			'cmd' => 'cmd=screenOff',
-			'ScreenOff' => array(
-			),
 		);
 
 		self::$_infosMap = array(
