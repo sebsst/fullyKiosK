@@ -48,6 +48,12 @@ class fullyKiosK extends eqLogic {
 				'name' => 'ScreenOff',
 				'cmd' => 'screenOff',
 			),
+			'loadUrl' => array(
+				'name' => 'loadUrl',
+				'cmd' => 'loadUrl',
+				'subtype' => 'message',
+
+			),
 
 		);
 
