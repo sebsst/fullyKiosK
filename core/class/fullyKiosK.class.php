@@ -114,7 +114,7 @@ class fullyKiosK extends eqLogic {
 				$ip = $this->getConfiguration('addressip');
 				$password = $this->getConfiguration('password');
 
-				$url = "http://{$ip}:2323/?cmd=deviceInfo";
+				$url = "http://{$ip}:2323/?type=json&cmd=deviceInfo";
 				log::add('fullyKiosK', 'debug', __METHOD__.' '.__LINE__.' requesting '.$url);
 
 				//$jsondata = file_get_contents($url);
