@@ -113,7 +113,7 @@ class fullyKiosK extends eqLogic {
 			{
 				$ip = $this->getConfiguration('addressip');
 				$user = $this->getConfiguration('user','admin');
-				$password = $this->getConfiguration('pincode');
+				$password = $this->getConfiguration('password');
 
 				$url = "http://{$user}:{$password}@{$ip}/jsondata.cgi";
 				log::add('fullyKiosK', 'debug', __METHOD__.' '.__LINE__.' requesting '.$url);
@@ -299,7 +299,7 @@ class fullyKiosKCmd extends cmd {
 
 					$eqLogic = $this->getEqLogic();
 					$ip = $eqLogic->getConfiguration('addressip');
-					$password = $eqLogic->getConfiguration('pincode');
+					$password = $eqLogic->getConfiguration('password');
 					$url = "http://{$ip}:2323/?type=json&cmd=deviceInfo&password={$password}";
 
 					$ch = curl_init();
