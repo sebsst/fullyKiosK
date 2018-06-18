@@ -26,30 +26,15 @@ if (!isConnect()) {
 <div class="panel panel-info" style="height: 100%;">
 	<div class="panel-heading" role="tab">
 		<h4 class="panel-title">
-			Plugin worxLandroid
+			Plugin fullyKiosK
 		</h4>
 	</div>
 	<div class="form-group">
 		<br>
 		<label class="col-sm-4 control-label">{{Configuration}} :</label>
 		<div class="col-lg-4">
-			<a class="btn btn-info" href=/index.php?v=d&m=worxLandroid&p=worxLandroid> {{Accès à la configuration}}</a>
-		</div>
-	</div>
-	<div class="form-group">
-		<label class="col-sm-4 control-label">{{Information sur le plugin}} :</label>
-		<div class="col-lg-8">
-			{{Ce plugin est gratuit pour que chacun puisse en profiter simplement.}}<br>
-			{{il a ete testé avec le modele WG791E.1 firmware 2.47 et 2.61}}<br>
-		</div>
-	</div>
-	<div class="form-group">
-		<label class="col-sm-4 control-label">{{Source}} :</label>
-		<div class="col-lg-8">
-			{{Ce plugin a été développé avec l'aide de l'analyse du serveur web embarqué}}<br>
-			{{ainsi que du projet worx-landroid-nodejs de mjiderhamn}}
+			<a class="btn btn-info" href=/index.php?v=d&m=fullyKiosK&p=fullyKiosK> {{Accès à la configuration}}</a>
 		</div>
 	</div>
 </div>
 </form>
-

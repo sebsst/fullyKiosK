@@ -2,7 +2,7 @@
 if (!isConnect('admin')) {
 	throw new Exception('{{401 - Accès non autorisé}}');
 }
-$plugin = plugin::byId('worxLandroid');
+$plugin = plugin::byId('fullyKiosK');
 sendVarToJS('eqType', $plugin->getId());
 $eqLogics = eqLogic::byType($plugin->getId());
 ?>
@@ -11,7 +11,7 @@ $eqLogics = eqLogic::byType($plugin->getId());
 	<div class="col-lg-2 col-sm-9 col-sm-4">
 		<div class="bs-sidebar">
 			<ul id="ul_eqLogic" class="nav nav-list bs-sidenav">
-				<a class="btn btn-default eqLogicAction" style="width : 100%;margin-top : 5px;margin-bottom: 5px;" data-action="add"><i class="fa fa-plus-circle"></i> {{Ajouter un worxLandroid}}</a>
+				<a class="btn btn-default eqLogicAction" style="width : 100%;margin-top : 5px;margin-bottom: 5px;" data-action="add"><i class="fa fa-plus-circle"></i> {{Ajouter un fullyKiosK}}</a>
 				<li class="filter" style="margin-bottom: 5px;"><input class="filter form-control input-sm" placeholder="{{Rechercher}}" style="width: 100%"/></li>
 				<?php
 				foreach ($eqLogics as $eqLogic) {
@@ -55,7 +55,7 @@ $eqLogics = eqLogic::byType($plugin->getId());
 	<a class="btn btn-success eqLogicAction pull-right" data-action="save"><i class="fa fa-check-circle"></i> {{Sauvegarder}}</a>
 	<a class="btn btn-danger eqLogicAction pull-right" data-action="remove"><i class="fa fa-minus-circle"></i> {{Supprimer}}</a>
 	<a class="btn btn-default eqLogicAction pull-right" data-action="configure"><i class="fa fa-cogs"></i> {{Configuration avancée}}</a>
-	<a class="btn btn-default pull-right" id="bt_wl_modal"><i class="fa fa-cogs"></i> {{Configuration sur la tondeuse}}</a>
+	<a class="btn btn-default pull-right" id="bt_wl_modal"><i class="fa fa-cogs"></i> {{Configuration de la tablette}}</a>
 	<ul class="nav nav-tabs" role="tablist">
 		<li role="presentation"><a href="#" class="eqLogicAction" aria-controls="home" role="tab" data-toggle="tab" data-action="returnToThumbnailDisplay"><i class="fa fa-arrow-circle-left"></i></a></li>
 		<li role="presentation" class="active"><a href="#eqlogictab" aria-controls="home" role="tab" data-toggle="tab"><i class="fa fa-tachometer"></i> {{Equipement}}</a></li>
@@ -100,21 +100,15 @@ $eqLogics = eqLogic::byType($plugin->getId());
 						</div>
 					</div>
 					<div class="form-group">
-						<label class="col-sm-3 control-label">{{Identifiant}}</label>
+						<label class="col-sm-3 control-label">{{Mot de passe}}</label>
 						<div class="col-sm-3">
-							<input class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="user" type="text" placeholder="{{saisir le login}}">
+							<input class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="password" type="password" placeholder="{{saisir le mot de passe}}">
 						</div>
-					</div>   
-					<div class="form-group">
-						<label class="col-sm-3 control-label">{{Pincode}}</label>
-						<div class="col-sm-3">
-							<input class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="pincode" type="password" placeholder="{{saisir le pincode}}">
-						</div>
-					</div> 
+					</div>
 				</fieldset>
 			</form>
 		</div>
-		<div role="tabpanel" class="tab-pane" id="commandtab">	
+		<div role="tabpanel" class="tab-pane" id="commandtab">
 			<a class="btn btn-success btn-sm cmdAction pull-right" data-action="add"> <i class="fa fa-plus-circle"></i> {{Commandes}}</a>
 			<br/><br/>
 			<table id="table_cmd" class="table table-bordered table-condensed">
@@ -134,5 +128,5 @@ $eqLogics = eqLogic::byType($plugin->getId());
 	</div>
 </div>
 
-<?php include_file('desktop', 'worxLandroid', 'js', 'worxLandroid');?>
+<?php include_file('desktop', 'fullyKiosK', 'js', 'fullyKiosK');?>
 <?php include_file('core', 'plugin.template', 'js');?>

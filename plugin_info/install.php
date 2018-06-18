@@ -18,17 +18,17 @@
 
 require_once dirname(__FILE__) . '/../../../core/php/core.inc.php';
 
-function worxLandroid_install() {
-    
+function fullyKiosK_install() {
+
 }
 
-function worxLandroid_update() {
-    
+function fullyKiosK_update() {
+
 }
 
 
-function worxLandroid_remove() {
-    
+function fullyKiosK_remove() {
+
 }
 
 ?>

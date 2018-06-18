@@ -21,11 +21,11 @@ $('#bt_wl_modal').on('click', function() {
 		width: "90%",
 		maxWidth: "400px"
 	});
-	$('#md_modal').load('index.php?v=d&plugin=worxLandroid&modal=modal.worxLandroid&id='+$('.eqLogicAttr[data-l1key=id]').value()).dialog('open');
+	$('#md_modal').load('index.php?v=d&plugin=fullyKiosK&modal=modal.fullyKiosK&id='+$('.eqLogicAttr[data-l1key=id]').value()).dialog('open');
 });
 $("#table_cmd").sortable({axis: "y", cursor: "move", items: ".cmd", placeholder: "ui-state-highlight", tolerance: "intersect", forcePlaceholderSize: true});
 /*
- * Fonction pour l'ajout de commande, appellé automatiquement par plugin.worxLandroid
+ * Fonction pour l'ajout de commande, appellé automatiquement par plugin.fullyKiosK
  */
 function addCmdToTable(_cmd) {
 	if (!isset(_cmd)) {

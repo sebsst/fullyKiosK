@@ -17,7 +17,7 @@
 
 	require_once dirname(__FILE__) . '/../../../core/php/core.inc.php';
 	include_file('core', 'authentification', 'php');
-			
+
 	if (!isConnect('admin')) {
 		throw new Exception('{{401 - Accès non autorisé}}');
 	}
@@ -25,22 +25,22 @@
 	if (init('Jeeid') == '') {
 		throw new Exception(__('L\'id ne peut etre vide', __FILE__));
 	}
-	$worxLandroid = worxLandroid::byId(init('Jeeid'));
-	if (!is_object($worxLandroid)) {
+	$ = fullyKiosK::byId(init('Jeeid'));
+	if (!is_object($fullyKiosK)) {
 		throw new Exception(__('L\'équipement est introuvable : ', __FILE__) . init('Jeeid'));
 	}
-	if ($worxLandroid->getEqType_name() != 'worxLandroid') {
-		throw new Exception(__('Cet équipement n\'est pas de type worxLandroid : ', __FILE__) . $worxLandroid->getEqType_name());
+	if ($fullyKiosK->getEqType_name() != 'fullyKiosK') {
+		throw new Exception(__('Cet équipement n\'est pas de type fullyKiosK : ', __FILE__) . $fullyKiosK->getEqType_name());
 	}
-	
-	$ip = $worxLandroid->getConfiguration('addressip');
-	$user = $worxLandroid->getConfiguration('user','admin');
-	$pin = $worxLandroid->getConfiguration('pincode');
-	$landroidURL = "http://{$user}:{$pin}@{$ip}/";
+
+	$ip = $fullyKiosK->getConfiguration('addressip');
+	$user = $fullyKiosK->getConfiguration('user','admin');
+	$pin = $fullyKiosK->getConfiguration('pincode');
+	$fullyURL = "http://{$user}:{$pin}@{$ip}/";
 
 	$scheme = ( (! empty($_SERVER['REQUEST_SCHEME']) && $_SERVER['REQUEST_SCHEME'] == 'https') || (! empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') || (! empty($_SERVER['SERVER_PORT']) && $_SERVER['SERVER_PORT'] == '443') )  ? 'https' : 'http';
-	
-	$proxypath = $scheme.'://'.$_SERVER['HTTP_HOST'].'/plugins/worxLandroid/proxy/'.init('Jeeid').'/';
+
+	$proxypath = $scheme.'://'.$_SERVER['HTTP_HOST'].'/plugins/fullyKiosK/proxy/'.init('Jeeid').'/';
 	$url= $landroidURL.$_GET['Jeeq'].'?'.$_SERVER["QUERY_STRING"];
 
 	include('vx_curl.class.php');
@@ -53,7 +53,7 @@
 		{
 			header(trim($header));
 		}
-		
+
 		//redirect or output
 		if(isset($curl->headers['location']))
 		{

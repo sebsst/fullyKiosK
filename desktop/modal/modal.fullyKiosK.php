@@ -23,22 +23,20 @@ if (!isConnect('admin')) {
 if (init('id') == '') {
 	throw new Exception(__('L\'id ne peut etre vide', __FILE__));
 }
-$worxLandroid = worxLandroid::byId(init('id'));
-if (!is_object($worxLandroid)) {
+$fullyKiosK = fullyKiosK::byId(init('id'));
+if (!is_object($fullyKiosK)) {
 	throw new Exception(__('L\'équipement est introuvable : ', __FILE__) . init('id'));
 }
-if ($worxLandroid->getEqType_name() != 'worxLandroid') {
-	throw new Exception(__('Cet équipement n\'est pas de type worxLandroid : ', __FILE__) . $worxLandroid->getEqType_name());
+if ($fullyKiosK->getEqType_name() != 'fullyKiosK') {
+	throw new Exception(__('Cet équipement n\'est pas de type fullyKiosK : ', __FILE__) . $fullyKiosK->getEqType_name());
 }
-$ip = $worxLandroid->getConfiguration('addressip');
-$user = $worxLandroid->getConfiguration('user','admin');
-$pin = $worxLandroid->getConfiguration('pincode');
+$ip = $fullyKiosK->getConfiguration('addressip');
+$password = $fullyKiosK->getConfiguration('password');
 
 if($_SERVER['SERVER_NAME'] == config::byKey('externalAddr'))
-	$url ='/plugins/worxLandroid/proxy/'.init('id').'/'; // external -> proxy -> mower
+	$url ='/plugins/fullyKiosK/proxy/'.init('id').'/'; // external -> proxy -> mower
 else
-	$url = "http://{$user}:{$pin}@{$ip}"; //local -> direct to mower
+	$url = "http://{$ip}:2323"; //local -> direct to mower
 
 ?>
 <iframe src="<?php echo $url?>" style="width:325px; margin:auto;display: block;height: 100%;"></iframe>
-

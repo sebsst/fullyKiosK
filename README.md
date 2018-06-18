@@ -1,2 +1,2 @@
-# jeedom-worxLandroid
-Plugin worxLandroid pour la gerer les tondeuses compatibles de la marque
+# jeedom-fullyKiosK
+Plugin fullyKiosK - pour gérer les tablettes utilisant l'application fullyKiosK

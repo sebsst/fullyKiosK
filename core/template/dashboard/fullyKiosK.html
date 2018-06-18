@@ -1,4 +1,4 @@
-<div class="eqLogic eqLogic-widget worxLandroid allowResize allowReorderCmd" data-eqLogic_id="#id#" data-eqLogic_uid="#uid#" data-version="#version#" style="border:#border#;border-radius:#border-radius#;background-color: #background-color#;color: #color#;width: #width#;height: #height#;#style#" data-category="#category#">
+<div class="eqLogic eqLogic-widget fullyKiosK allowResize allowReorderCmd" data-eqLogic_id="#id#" data-eqLogic_uid="#uid#" data-version="#version#" style="border:#border#;border-radius:#border-radius#;background-color: #background-color#;color: #color#;width: #width#;height: #height#;#style#" data-category="#category#">
 	<span class="cmd modelconfig pull-left cursor" data-cmd_id="#refresh_id#" style="margin-top: 3px;margin-left: 3px;">
 		<i class='fa fa-cogs'></i>
 	</span>
@@ -22,14 +22,14 @@
 		}else{
 			$('.eqLogic[data-eqLogic_uid=#uid#] .refresh').remove();
 		}
-		
-		$('.worxLandroid[data-eqLogic_id=#id#] .modelconfig').off().on('click', function () {
+
+		$('.fullyKiosK[data-eqLogic_id=#id#] .modelconfig').off().on('click', function () {
 			$('#md_modal').dialog({
 				title: "Connexion à #name#",
 				width: "90%",
 				maxWidth: "400px"
 			});
-			$('#md_modal').load('index.php?v=d&plugin=worxLandroid&modal=modal.worxLandroid&id=#id#').dialog('open');
+			$('#md_modal').load('index.php?v=d&plugin=fullyKiosK&modal=modal.fullyKiosK&id=#id#').dialog('open');
 		});
 	</script>
 </div>

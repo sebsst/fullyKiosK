@@ -1,9 +1,9 @@
 {
-	"id" : "worxLandroid",
-	"name" : "worxLandroid",
-	"description" : "Plugin worxLandroid pour la gerer les tondeuses compatibles de la marque",
+	"id" : "fullyKiosK",
+	"name" : "fullyKiosK",
+	"description" : "Plugin fullyKiosK",
 	"licence" : "AGPL",
-	"author" : "Virux",
+	"author" : "Ssc",
 	"require" : "2.3",
 	"category" : "devicecommunication"
 }
