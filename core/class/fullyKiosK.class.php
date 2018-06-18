@@ -50,7 +50,7 @@ class fullyKiosK extends eqLogic {
 			),
 			'loadUrl' => array(
 				'name' => 'loadUrl',
-				'cmd' => 'loadUrl',
+				'cmd' => 'loadUrl&url=#message#',
 				'subtype' => 'message',
 
 			),
@@ -340,6 +340,9 @@ class fullyKiosKCmd extends cmd {
 					$cmdval = $params['cmd'];
 					if($this->getSubType() == 'slider')
 						$cmdval = str_replace('[[[VALUE]]]',$_options['slider'],$cmdval);
+					if($this->getSubType() == 'message')
+						$cmdval = str_replace('[[[VALUE]]]',$_options['message'],$cmdval);
+
 
 					$eqLogic = $this->getEqLogic();
 					$ip = $eqLogic->getConfiguration('addressip');
