@@ -42,7 +42,7 @@ class fullyKiosK extends eqLogic {
 		self::$_actionMap = array(
 			'screenOn' => array(
 				'name' => 'ScreenOn',
-				'cmd' => 'cmd=screenOn',
+				'cmd' => '?cmd=screenOn',
 			),
 		);
 
@@ -112,10 +112,9 @@ class fullyKiosK extends eqLogic {
 			if(is_null($jsondata))
 			{
 				$ip = $this->getConfiguration('addressip');
-				$user = $this->getConfiguration('user','admin');
 				$password = $this->getConfiguration('password');
 
-				$url = "http://{$user}:{$password}@{$ip}/jsondata.cgi";
+				$url = "http://{$ip}/?cmd=deviceInfo";
 				log::add('fullyKiosK', 'debug', __METHOD__.' '.__LINE__.' requesting '.$url);
 
 				//$jsondata = file_get_contents($url);
