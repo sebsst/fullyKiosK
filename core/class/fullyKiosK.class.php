@@ -58,13 +58,47 @@ class fullyKiosK extends eqLogic {
 	 		//	'isvisible' => true,
 	 		//	'restkey' =>'',
 	 		//),
-	 		'batteryLevel' => array(
+	 		'deviceModel' => array(
+				'name' => "deviceModel",
+				'type' => 'info',
+				'subtype' => 'string',
+				'isvisible' => true,
+				'restkey' => 'deviceModel',
+
+			),
+			'startUrl' => array(
+				'name' => "startUrl",
+				'type' => 'info',
+				'subtype' => 'string',
+				'isvisible' => true,
+				'restkey' => 'startUrl',
+
+			),
+
+			'batteryLevel' => array(
 				'name' => "batteryLevel",
 				'type' => 'info',
 				'subtype' => 'numeric',
 				'isvisible' => true,
 				'unite' => '%',
 				'restkey' => 'batteryLevel',
+
+			),
+	 		'plugged' => array(
+				'name' => "plugged",
+				'type' => 'info',
+				'subtype' => 'binary',
+				'isvisible' => true,
+				'restkey' => 'plugged',
+
+			),
+
+			'inScreenOn' => array(
+				'name' => "inScreenOn",
+				'type' => 'info',
+				'subtype' => 'binary',
+				'isvisible' => true,
+				'restkey' => 'inScreenOn',
 
 			),
 		);
