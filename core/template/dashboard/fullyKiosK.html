@@ -1,0 +1,35 @@
+<div class="eqLogic eqLogic-widget worxLandroid allowResize allowReorderCmd" data-eqLogic_id="#id#" data-eqLogic_uid="#uid#" data-version="#version#" style="border:#border#;border-radius:#border-radius#;background-color: #background-color#;color: #color#;width: #width#;height: #height#;#style#" data-category="#category#">
+	<span class="cmd modelconfig pull-left cursor" data-cmd_id="#refresh_id#" style="margin-top: 3px;margin-left: 3px;">
+		<i class='fa fa-cogs'></i>
+	</span>
+	<span class="cmd refresh pull-right cursor" data-cmd_id="#refresh_id#" style="margin-top: 3px;margin-right: 3px;">
+		<i class='fa fa-refresh'></i>
+	</span>
+	<center class="widget-name">
+		<a href="#eqLink#" style="font-size : 1.5em;#hideEqLogicName#">#name_display# <span style="font-size: 0.85em;">#object_name#</span></a>
+	</center>
+	<div class="verticalAlign">
+		<center style="padding: 5px;">
+			#cmd#
+		</center>
+	</div>
+	<span class="statusCmd" style="position : absolute;left : 5px;bottom : 0px; width : 30px;z-index: 1030;"></span>
+	<script>
+		if ('#refresh_id#' != ''){
+			$('.eqLogic[data-eqLogic_uid=#uid#] .refresh').on('click', function () {
+				jeedom.cmd.execute({id: '#refresh_id#'});
+			});
+		}else{
+			$('.eqLogic[data-eqLogic_uid=#uid#] .refresh').remove();
+		}
+		
+		$('.worxLandroid[data-eqLogic_id=#id#] .modelconfig').off().on('click', function () {
+			$('#md_modal').dialog({
+				title: "Connexion à #name#",
+				width: "90%",
+				maxWidth: "400px"
+			});
+			$('#md_modal').load('index.php?v=d&plugin=worxLandroid&modal=modal.worxLandroid&id=#id#').dialog('open');
+		});
+	</script>
+</div>

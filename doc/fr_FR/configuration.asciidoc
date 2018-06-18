@@ -1,0 +1,3 @@
+==== Configuration du plugin
+
+Créer un équipement pour votre tondeuse, puis renseigner son IP, son identifiant (en principe admin) et son code pin.

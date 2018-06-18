@@ -1,0 +1,3 @@
+==== worx Landroid
+
+Ce plugin permet d'utiliser les tondeuses compatibles de la marque Worx Landroid

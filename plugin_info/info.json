@@ -1,0 +1,9 @@
+{
+	"id" : "worxLandroid",
+	"name" : "worxLandroid",
+	"description" : "Plugin worxLandroid pour la gerer les tondeuses compatibles de la marque",
+	"licence" : "AGPL",
+	"author" : "Virux",
+	"require" : "2.3",
+	"category" : "devicecommunication"
+}

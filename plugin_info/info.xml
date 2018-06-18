@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<info>
+	<id>worxLandroid</id>
+	<name>worxLandroid</name>
+	<description>Plugin worxLandroid pour la gerer les tondeuses compatibles de la marque</description>
+	<licence>AGPL</licence>
+	<author>Virux</author>
+	<installation>Aucune</installation>
+	<require>2.3</require>
+	<category>devicecommunication</category>
+</info>
+

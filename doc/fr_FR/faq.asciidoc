@@ -1,0 +1,12 @@
+[panel,primary]
+.Est-ce que le plugin a besoin d'une connexion internet (cloud) ?
+--
+Non, le plugin se connecte directement à la tondeuse par le réseau local.
+--
+
+[panel,primary]
+.La tondeuse se déconnecte au bout de 20min, pourquoi ?
+--
+La tondeuse se met automatiquement en veille après 20min si elle est en mode "piégée".
+--
+-- 
