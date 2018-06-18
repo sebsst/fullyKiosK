@@ -66,6 +66,19 @@ class fullyKiosK extends eqLogic {
 	}
 
 	public static function cron() {
+
+	}
+
+	/*
+	* Fonction exécutée automatiquement toutes les heures par Jeedom
+	public static function cronHourly() {
+
+	}
+	*/
+
+
+	//* Fonction exécutée automatiquement tous les jours par Jeedom
+	public static function cron5() {
 		foreach (eqLogic::byType('fullyKiosK') as $fullyKiosK)
 		{
 			$fullyKiosK->getInformations();
@@ -79,19 +92,6 @@ class fullyKiosK extends eqLogic {
 		}
 	}
 
-	/*
-	* Fonction exécutée automatiquement toutes les heures par Jeedom
-	public static function cronHourly() {
-
-	}
-	*/
-
-	/*
-	* Fonction exécutée automatiquement tous les jours par Jeedom
-	public static function cronDayly() {
-
-	}
-	*/
 
 	/*     * *********************Méthodes d'instance************************* */
 
@@ -299,7 +299,7 @@ class fullyKiosKCmd extends cmd {
 					$eqLogic = $this->getEqLogic();
 					$ip = $eqLogic->getConfiguration('addressip');
 					$password = $eqLogic->getConfiguration('password');
-					$url = "http://{$ip}:2323/?type=json&cmd=deviceInfo&password={$password}";
+					$url = "http://{$ip}:2323/?type=json&cmd={$cmdval}&password={$password}";
 
 					$ch = curl_init();
 					curl_setopt($ch, CURLOPT_URL, $url);
