@@ -341,7 +341,7 @@ class fullyKiosKCmd extends cmd {
 					if($this->getSubType() == 'slider')
 						$cmdval = str_replace('[[[VALUE]]]',$_options['slider'],$cmdval);
 					if($this->getSubType() == 'message')
-						$cmdval = str_replace('[[[VALUE]]]',$_options['message'],$cmdval);
+						$cmdval = str_replace('#message#',$_options['message'],$cmdval);
 
 
 					$eqLogic = $this->getEqLogic();
