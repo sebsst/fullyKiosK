@@ -58,7 +58,19 @@ class fullyKiosK extends eqLogic {
 				'name' => 'loadStartURL',
 				'cmd' => 'loadStartURL',
 			),
+			'restartApp' => array(
+				'name' => 'restartApp',
+				'cmd' => 'restartApp',
+			),
+			'exitApp' => array(
+				'name' => 'exitApp',
+				'cmd' => 'exitApp',
+			),
 	
+			'triggerMotion' => array(
+				'name' => 'triggerMotion',
+				'cmd' => 'triggerMotion',
+			),
 			'toForeground' => array(
 				'name' => 'toForeground',
 				'cmd' => 'toForeground',
