@@ -35,13 +35,13 @@
 
 	$ip = $fullyKiosK->getConfiguration('addressip');
 	$user = $fullyKiosK->getConfiguration('user','admin');
-	$pin = $fullyKiosK->getConfiguration('pincode');
+	$password = $fullyKiosK->getConfiguration('password');
 	$fullyURL = "http://{$user}:{$pin}@{$ip}/";
 
-	$scheme = ( (! empty($_SERVER['REQUEST_SCHEME']) && $_SERVER['REQUEST_SCHEME'] == 'https') || (! empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') || (! empty($_SERVER['SERVER_PORT']) && $_SERVER['SERVER_PORT'] == '443') )  ? 'https' : 'http';
+	$scheme = ( (! empty($_SERVER['REQUEST_SCHEME']) && $_SERVER['REQUEST_SCHEME'] == 'https') || (! empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') || (! empty($_SERVER['SERVER_PORT']) && $_SERVER['SERVER_PORT'] == '2323') )  ? 'https' : 'http';
 
 	$proxypath = $scheme.'://'.$_SERVER['HTTP_HOST'].'/plugins/fullyKiosK/proxy/'.init('Jeeid').'/';
-	$url= $landroidURL.$_GET['Jeeq'].'?'.$_SERVER["QUERY_STRING"];
+	$url= $fullyKiosKURL.$_GET['Jeeq'].'?'.$_SERVER["QUERY_STRING"];
 
 	include('vx_curl.class.php');
 	$curl = new vx_curl();
