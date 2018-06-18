@@ -54,7 +54,28 @@ class fullyKiosK extends eqLogic {
 				'subtype' => 'message',
 
 			),
+			'loadStartURL' => array(
+				'name' => 'loadStartURL',
+				'cmd' => 'loadStartURL',
+			),
+	
+			'toForeground' => array(
+				'name' => 'toForeground',
+				'cmd' => 'toForeground',
+			),
+			'startApplication' => array(
+				'name' => 'startApplication',
+				'cmd' => 'startApplication&package=#message#',
+				'subtype' => 'message',
 
+			),
+	
+			'textToSpeech' => array(
+				'name' => 'textToSpeech',
+				'cmd' => 'textToSpeech&text=#message#',
+				'subtype' => 'message',
+
+			),
 		);
 
 		self::$_infosMap = array(
