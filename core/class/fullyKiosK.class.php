@@ -116,7 +116,7 @@ class fullyKiosK extends eqLogic {
 	
 			'textToSpeech' => array(
 				'name' => 'textToSpeech',
-				'cmd' => 'textToSpeech&text="#message#"',
+				'cmd' => 'textToSpeech&text=#message#',
 				'subtype' => 'message',
 
 			),
