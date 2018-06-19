@@ -448,7 +448,7 @@ class fullyKiosK extends eqLogic {
 		}
 		$version = jeedom::versionAlias($_version);
 		$cmd_html = '';
-		$br_before = 0;
+		$br_before = 1;
 		foreach ($this->getCmd(null, null, true) as $cmd) {
 			if (isset($replace['#refresh_id#']) && $cmd->getId() == $replace['#refresh_id#']) {
 				continue;
