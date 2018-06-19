@@ -563,7 +563,7 @@ class fullyKiosK extends eqLogic {
 				$br_before = 1;
 			}
 		}
-		$eqlogic = $this->getEqLogic();
+		$eqlogic = $cmd->getEqLogic();
 		$ip = $eqLogic->getConfiguration('addressip');
 
 		$replace['#cmd#'] = $cmd_html;
