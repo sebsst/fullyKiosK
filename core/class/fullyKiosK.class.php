@@ -174,7 +174,7 @@ class fullyKiosK extends eqLogic {
 				'name' => "keyguardLocked",
 				'type' => 'info',
 				'subtype' => 'binary',
-				'isvisible' => true,
+				'isvisible' => false,
 				'restkey' => 'keyguardLocked',
 
 			),
@@ -182,7 +182,7 @@ class fullyKiosK extends eqLogic {
 				'name' => "isDeviceAdmin",
 				'type' => 'info',
 				'subtype' => 'binary',
-				'isvisible' => true,
+				'isvisible' => false,
 				'restkey' => 'isDeviceAdmin',
 
 			),
