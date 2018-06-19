@@ -32,7 +32,7 @@ $eqLogics = eqLogic::byType($plugin->getId());
 				<span style="font-size : 1.1em;position:relative; top : 15px;word-break: break-all;white-space: pre-wrap;word-wrap: break-word;color:#94ca02"><center>{{Configuration}}</center></span>
 			</div>
 		</div>
-		<legend><i class="fa fa-table"></i> {{Mes tondeuses}}</legend>
+		<legend><i class="fa fa-table"></i> {{Mes tablettes}}</legend>
 		<div class="eqLogicThumbnailContainer">
 			<div class="cursor eqLogicAction" data-action="add" style="text-align: center; background-color : #ffffff; height : 200px;margin-bottom : 10px;padding : 5px;border-radius: 2px;width : 140px;margin-left : 10px;" >
 				<i class="fa fa-plus-circle" style="font-size : 7em;color:#94ca02;margin-top : 25px;"></i>
