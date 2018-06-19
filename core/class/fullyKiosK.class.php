@@ -380,33 +380,6 @@ class fullyKiosK extends eqLogic {
 	public function postSave() {
 		self::initInfosMap();
 		$order = 0;
-
-
-
-		//Cmd Infos
-		foreach(self::$_infosMap as $cmdLogicalId=>$params)
-		{
-			$fullyKiosKCmd = $this->getCmd('info', $cmdLogicalId);
-			if (!is_object($fullyKiosKCmd))
-			{
-				log::add('fullyKiosK', 'debug', __METHOD__.' '.__LINE__.' cmdInfo create '.$cmdLogicalId.'('.__($params['name'], __FILE__).') '.($params['subtype'] ?: 'subtypedefault'));
-				$fullyKiosKCmd = new fullyKiosKCmd();
-
-				$fullyKiosKCmd->setLogicalId($cmdLogicalId);
-				$fullyKiosKCmd->setEqLogic_id($this->getId());
-				$fullyKiosKCmd->setName(__($params['name'], __FILE__));
-				$fullyKiosKCmd->setType($params['type'] ?: 'info');
-				$fullyKiosKCmd->setSubType($params['subtype'] ?: 'numeric');
-				$fullyKiosKCmd->setIsVisible($params['isvisible'] ?: false);
-				if(isset($params['unite']))
-					$fullyKiosKCmd->setUnite($params['unite']);
-				$fullyKiosKCmd->setTemplate('dashboard',$params['tpldesktop']?: 'badge');
-				$fullyKiosKCmd->setTemplate('mobile',$params['tplmobile']?: 'badge');
-				$fullyKiosKCmd->setOrder($order++);
-
-				$fullyKiosKCmd->save();
-			}
-		}
 		//Cmd Actions
 		foreach(self::$_actionMap as $cmdLogicalId => $params)
 		{
@@ -434,6 +407,33 @@ class fullyKiosK extends eqLogic {
 				$fullyKiosKCmd->save();
 			}
 		}
+
+
+		//Cmd Infos
+		foreach(self::$_infosMap as $cmdLogicalId=>$params)
+		{
+			$fullyKiosKCmd = $this->getCmd('info', $cmdLogicalId);
+			if (!is_object($fullyKiosKCmd))
+			{
+				log::add('fullyKiosK', 'debug', __METHOD__.' '.__LINE__.' cmdInfo create '.$cmdLogicalId.'('.__($params['name'], __FILE__).') '.($params['subtype'] ?: 'subtypedefault'));
+				$fullyKiosKCmd = new fullyKiosKCmd();
+
+				$fullyKiosKCmd->setLogicalId($cmdLogicalId);
+				$fullyKiosKCmd->setEqLogic_id($this->getId());
+				$fullyKiosKCmd->setName(__($params['name'], __FILE__));
+				$fullyKiosKCmd->setType($params['type'] ?: 'info');
+				$fullyKiosKCmd->setSubType($params['subtype'] ?: 'numeric');
+				$fullyKiosKCmd->setIsVisible($params['isvisible'] ?: false);
+				if(isset($params['unite']))
+					$fullyKiosKCmd->setUnite($params['unite']);
+				$fullyKiosKCmd->setTemplate('dashboard',$params['tpldesktop']?: 'badge');
+				$fullyKiosKCmd->setTemplate('mobile',$params['tplmobile']?: 'badge');
+				$fullyKiosKCmd->setOrder($order++);
+
+				$fullyKiosKCmd->save();
+			}
+		}
+
 		//refreshcmdinfo
 		$this->getInformations();
 		
