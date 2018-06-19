@@ -563,11 +563,11 @@ class fullyKiosK extends eqLogic {
 				$br_before = 1;
 			}
 		}
-		$eqlogic = $cmd->getEqLogic();
-		$ip = $eqLogic->getConfiguration('addressip');
+		//$eqlogic = $cmd->getEqLogic();
+		//$ip = $eqLogic->getConfiguration('addressip');
 
 		$replace['#cmd#'] = $cmd_html;
-		$replace['#ipaddress#'] = $ip;
+		//$replace['#ipaddress#'] = $ip;
 		return template_replace($replace, getTemplate('core', $version, 'fullyKiosK', 'fullyKiosK'));
 	}
 
