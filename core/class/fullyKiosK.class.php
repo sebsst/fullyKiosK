@@ -144,7 +144,15 @@ class fullyKiosK extends eqLogic {
 				'unite' => '%',
 				'restkey' => 'batteryLevel',
 
-			),		 		
+			),	
+			'wifiSignalLevel' => array(
+				'name' => "wifiSignalLevel",
+				'type' => 'info',
+				'subtype' => 'numeric',
+				'isvisible' => false,
+				'restkey' => 'wifiSignalLevel',
+
+			),	
 			'motionDetectorState' => array(
 				'name' => "motionDetectorState",
 				'type' => 'info',
@@ -152,7 +160,55 @@ class fullyKiosK extends eqLogic {
 				'isvisible' => true,
 				'restkey' => 'motionDetectorState',
 
+			),				
+			'displayHeightPixels' => array(
+				'name' => "displayHeightPixels",
+				'type' => 'info',
+				'subtype' => 'numeric',
+				'isvisible' => false,
+				'restkey' => 'displayHeightPixels',
+
 			),		 		
+			'displayWidthPixels' => array(
+				'name' => "displayWidthPixels",
+				'type' => 'info',
+				'subtype' => 'numeric',
+				'isvisible' => false,
+				'restkey' => 'displayWidthPixels',
+
+			),	 	 		
+			'appFreeMemory' => array(
+				'name' => "appFreeMemory",
+				'type' => 'info',
+				'subtype' => 'numeric',
+				'isvisible' => false,
+				'restkey' => 'appFreeMemory',
+
+			),	 			 		
+			'appUsedMemory' => array(
+				'name' => "appUsedMemory",
+				'type' => 'info',
+				'subtype' => 'numeric',
+				'isvisible' => false,
+				'restkey' => 'appUsedMemory',
+
+			),	 			 		
+			'totalFreeMemory' => array(
+				'name' => "totalFreeMemory",
+				'type' => 'info',
+				'subtype' => 'numeric',
+				'isvisible' => false,
+				'restkey' => 'totalFreeMemory',
+
+			),	 			 		
+			'totalUsedMemory' => array(
+				'name' => "totalUsedMemory",
+				'type' => 'info',
+				'subtype' => 'numeric',
+				'isvisible' => false,
+				'restkey' => 'totalUsedMemory',
+
+			),	 				
 			'plugged' => array(
 				'name' => "plugged",
 				'type' => 'info',
@@ -161,7 +217,15 @@ class fullyKiosK extends eqLogic {
 				'restkey' => 'plugged',
 
 			),
+	 		
+			'kioskMode' => array(
+				'name' => "kioskMode",
+				'type' => 'info',
+				'subtype' => 'binary',
+				'isvisible' => false,
+				'restkey' => 'kioskMode',
 
+			),
 			'isScreenOn' => array(
 				'name' => "isScreenOn",
 				'type' => 'info',
@@ -203,6 +267,7 @@ class fullyKiosK extends eqLogic {
 				'restkey' => 'foregroundApp',
 
 			),
+
 			
 	 		'appVersionName' => array(
 				'name' => "appVersionName",
@@ -243,11 +308,35 @@ class fullyKiosK extends eqLogic {
 				'name' => "locationProvider",
 				'type' => 'info',
 				'subtype' => 'string',
-				'isvisible' => true,
+				'isvisible' => false,
 				'restkey' => 'locationProvider',
 
 			),
+			'locationLongitude' => array(
+				'name' => "locationLongitude",
+				'type' => 'info',
+				'subtype' => 'string',
+				'isvisible' => false,
+				'restkey' => 'locationLongitude',
 
+			),
+				
+	 		'locationLatitude' => array(
+				'name' => "locationLatitude",
+				'type' => 'info',
+				'subtype' => 'string',
+				'isvisible' => false,
+				'restkey' => 'locationLatitude',
+
+			),		
+	 		'locationAltitude' => array(
+				'name' => "locationAltitude",
+				'type' => 'info',
+				'subtype' => 'string',
+				'isvisible' => false,
+				'restkey' => 'locationAltitude',
+
+			),
 	 		'screenBrightness' => array(
 				'name' => "screenBrightness",
 				'type' => 'info',
@@ -274,6 +363,14 @@ class fullyKiosK extends eqLogic {
 
 			),
 
+			'lastAppStart' => array(
+				'name' => "lastAppStart",
+				'type' => 'info',
+				'subtype' => 'string',
+				'isvisible' => false,
+				'restkey' => 'lastAppStart',
+
+			),
 
 		//	),
 
