@@ -39,4 +39,4 @@ else
 	$url = "http://{$ip}:2323/?cmd=deviceInfo&password={$password}"; //local -> direct to tablet
 
 ?>
-<iframe src="<?php echo $url?>" style="width:120px; margin:auto;display: block;height: 100%;"></iframe>
+<iframe src="<?php echo $url?>" style="width:100%; margin:auto;display: block;height: 100%;"></iframe>
