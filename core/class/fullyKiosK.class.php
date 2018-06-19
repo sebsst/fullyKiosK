@@ -35,8 +35,67 @@ class fullyKiosK extends eqLogic {
 	public static function cron() {
 
 	}
+	
+	// Basic features
+/?cmd=deviceInfo&password=[pass]
+/?cmd=loadStartURL&password=[pass]
+/?cmd=loadURL&url=[url]&password=[pass]
+/?cmd=clearCache&password=[pass] 
+/?cmd=restartApp&password=[pass] 
+/?cmd=exitApp&password=[pass] 
+/?cmd=screenOn&password=[pass]
+/?cmd=screenOff&password=[pass]
+/?cmd=forceSleep&password=[pass] 
+
+// Screensaver and daydream
+/?cmd=startScreensaver&password=[pass] (ver. 1.21+)
+/?cmd=stopScreensaver&password=[pass] (ver. 1.21+)
+/?cmd=startDaydream&password=[pass] (ver. 1.24.1+)
+/?cmd=stopDaydream&password=[pass] (ver. 1.24.1+)
+
+// Lock/unlock device for maintenance
+/?cmd=enableMaintenanceMode&password=[pass]
+/?cmd=disableMaintenanceMode&password=[pass]
+
+// Other apps and bring Fully app to foreground
+/?cmd=startApplication&package=[pkg]&password=[pass] (ver. 1.21+)
+/?cmd=toForeground&password=[pass]
+
+// Return to webview if any other view (PDF, Video, Settings) is open
+/?cmd=popFragment&password=[pass] 
+
+// Load full usage stats CSV file
+/?cmd=loadStatsCSV&password=[pass]
+
+// Get screenshot image (PNG)
+/?cmd=getScreenshot&password=[pass]
+
+// Get camshot image (requires Motion Detection)
+/?cmd=getCamshot&password=[pass] 
+
+// Simulate motion
+/?cmd=triggerMotion&password=[pass] 
+
+// Text to speech
+/?cmd=textToSpeech&text=[text]&password=[pass] 
+/?cmd=textToSpeech&text=[text]&locale=[locale]&password=[pass] 
+
+// Change any of 120+ Fully settings, look in Remote Admin for keys
+/?cmd=setBooleanSetting&key=[key]&value=[true|false]&password=[pass] 
+/?cmd=setStringSetting&key=[key]&value=[value]&password=[pass] 
+
+// Import settings file (dat/json) from /sdcard
+/?cmd=importSettingsFile&filename=[filename]&password=[pass]
+
+// Download and upzip file to /sdcard
+/?cmd=loadZipFile&url=[url]&password=[pass]
+
+// Download and launche APK file, user input is required, ver. 1.20+
+/?cmd=loadApkFile&url=[url]&password=[pass]
 	*/
 
+	
+	
 	public static function initInfosMap(){
 
 		self::$_actionMap = array(
@@ -48,6 +107,35 @@ class fullyKiosK extends eqLogic {
 				'name' => 'ScreenOff',
 				'cmd' => 'screenOff',
 			),
+			'clearCache' => array(
+				'name' => 'clearCache',
+				'cmd' => 'clearCache',
+			),	
+			'forceSleep' => array(
+				'name' => 'forceSleep',
+				'cmd' => 'forceSleep',
+			),	
+			'startScreensaver' => array(
+				'name' => 'startScreensaver',
+				'cmd' => 'startScreensaver',
+			),	
+			'stopScreensaver' => array(
+				'name' => 'stopScreensaver',
+				'cmd' => 'stopScreensaver',
+			),	
+			'startDaydream' => array(
+				'name' => 'startDaydream',
+				'cmd' => 'startDaydream',
+			),	
+			'stopDaydream' => array(
+				'name' => 'stopDaydream',
+				'cmd' => 'stopDaydream',
+			),		
+			'popFragment' => array(
+				'name' => 'stopDaydream',
+				'cmd' => 'stopDaydream',
+			),	
+			
 			'loadURL' => array(
 				'name' => 'loadURL',
 				'cmd' => 'loadURL&url=#message#',
@@ -84,7 +172,7 @@ class fullyKiosK extends eqLogic {
 	
 			'textToSpeech' => array(
 				'name' => 'textToSpeech',
-				'cmd' => 'textToSpeech&text=#message#',
+				'cmd' => 'textToSpeech&text="#message#"',
 				'subtype' => 'message',
 
 			),
