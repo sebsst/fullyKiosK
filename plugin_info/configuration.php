@@ -29,12 +29,5 @@ if (!isConnect()) {
 			Plugin fullyKiosK
 		</h4>
 	</div>
-	<div class="form-group">
-		<br>
-		<label class="col-sm-4 control-label">{{Configuration}} :</label>
-		<div class="col-lg-4">
-			<a class="btn btn-info" href=/index.php?v=d&m=fullyKiosK&p=fullyKiosK> {{Accès à la configuration}}</a>
-		</div>
-	</div>
 </div>
 </form>
