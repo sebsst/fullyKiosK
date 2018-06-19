@@ -123,7 +123,7 @@ class fullyKiosK extends eqLogic {
 	
 			'Refresh' => array(
 				'name' => 'Refresh',
-				'cmd' => 'deviceInfo',
+				'cmd' => 'deviceInfo&type=json',
 
 			),			
 		);
