@@ -79,13 +79,7 @@ class fullyKiosK extends eqLogic {
 				'name' => 'popFragment',
 				'cmd' => 'popFragment',
 			),	
-			
-			'loadURL' => array(
-				'name' => 'loadURL',
-				'cmd' => 'loadURL&url=#message#',
-				'subtype' => 'message',
 
-			),
 			'loadStartURL' => array(
 				'name' => 'loadStartURL',
 				'cmd' => 'loadStartURL',
@@ -106,6 +100,12 @@ class fullyKiosK extends eqLogic {
 			'toForeground' => array(
 				'name' => 'toForeground',
 				'cmd' => 'toForeground',
+			),			
+			'loadURL' => array(
+				'name' => 'loadURL',
+				'cmd' => 'loadURL&url=#message#',
+				'subtype' => 'message',
+
 			),
 			'startApplication' => array(
 				'name' => 'startApplication',
@@ -135,6 +135,57 @@ class fullyKiosK extends eqLogic {
 	 		//	'isvisible' => true,
 	 		//	'restkey' =>'',
 	 		//),
+	
+			'batteryLevel' => array(
+				'name' => "batteryLevel",
+				'type' => 'info',
+				'subtype' => 'numeric',
+				'isvisible' => true,
+				'unite' => '%',
+				'restkey' => 'batteryLevel',
+
+			),		 		
+			'motionDetectorState' => array(
+				'name' => "motionDetectorState",
+				'type' => 'info',
+				'subtype' => 'numeric',
+				'isvisible' => true,
+				'restkey' => 'motionDetectorState',
+
+			),		 		
+			'plugged' => array(
+				'name' => "plugged",
+				'type' => 'info',
+				'subtype' => 'binary',
+				'isvisible' => true,
+				'restkey' => 'plugged',
+
+			),
+
+			'isScreenOn' => array(
+				'name' => "isScreenOn",
+				'type' => 'info',
+				'subtype' => 'binary',
+				'isvisible' => true,
+				'restkey' => 'isScreenOn',
+
+			),
+	 		'keyguardLocked' => array(
+				'name' => "keyguardLocked",
+				'type' => 'info',
+				'subtype' => 'binary',
+				'isvisible' => true,
+				'restkey' => 'keyguardLocked',
+
+			),
+	 		'isDeviceAdmin' => array(
+				'name' => "isDeviceAdmin",
+				'type' => 'info',
+				'subtype' => 'binary',
+				'isvisible' => true,
+				'restkey' => 'isDeviceAdmin',
+
+			),
 	 		'deviceModel' => array(
 				'name' => "deviceModel",
 				'type' => 'info',
@@ -178,14 +229,7 @@ class fullyKiosK extends eqLogic {
 				'restkey' => 'deviceManufacturer',
 
 			),
-	 		'displayHeightPixels' => array(
-				'name' => "displayHeightPixels",
-				'type' => 'info',
-				'subtype' => 'numeric',
-				'isvisible' => true,
-				'restkey' => 'displayHeightPixels',
 
-			),
 	 		'ip4' => array(
 				'name' => "ip",
 				'type' => 'info',
@@ -203,30 +247,7 @@ class fullyKiosK extends eqLogic {
 				'restkey' => 'locationProvider',
 
 			),
-	 		'motionDetectorState' => array(
-				'name' => "motionDetectorState",
-				'type' => 'info',
-				'subtype' => 'numeric',
-				'isvisible' => true,
-				'restkey' => 'motionDetectorState',
 
-			),
-	 		'keyguardLocked' => array(
-				'name' => "keyguardLocked",
-				'type' => 'info',
-				'subtype' => 'binary',
-				'isvisible' => true,
-				'restkey' => 'keyguardLocked',
-
-			),
-	 		'isDeviceAdmin' => array(
-				'name' => "isDeviceAdmin",
-				'type' => 'info',
-				'subtype' => 'binary',
-				'isvisible' => true,
-				'restkey' => 'isDeviceAdmin',
-
-			),
 	 		'screenBrightness' => array(
 				'name' => "screenBrightness",
 				'type' => 'info',
@@ -253,32 +274,9 @@ class fullyKiosK extends eqLogic {
 
 			),
 
-			'batteryLevel' => array(
-				'name' => "batteryLevel",
-				'type' => 'info',
-				'subtype' => 'numeric',
-				'isvisible' => true,
-				'unite' => '%',
-				'restkey' => 'batteryLevel',
-
-			),
-	 		'plugged' => array(
-				'name' => "plugged",
-				'type' => 'info',
-				'subtype' => 'binary',
-				'isvisible' => true,
-				'restkey' => 'plugged',
 
 			),
 
-			'isScreenOn' => array(
-				'name' => "isScreenOn",
-				'type' => 'info',
-				'subtype' => 'binary',
-				'isvisible' => true,
-				'restkey' => 'isScreenOn',
-
-			),
 		);
 	}
 
