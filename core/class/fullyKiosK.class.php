@@ -315,6 +315,7 @@ class fullyKiosK extends eqLogic {
 	public function refresh() {
 		try {
 			$this->getInformations();
+			$this->refreshWidget();
 		} catch (Exception $exc) {
 			log::add('fullyKiosK', 'error', __('Erreur pour ', __FILE__) . $eqLogic->getHumanName() . ' : ' . $exc->getMessage());
 		}
@@ -374,7 +375,6 @@ class fullyKiosK extends eqLogic {
 					$this->checkAndUpdateCmd($cmdLogicalId,$value);
 				}
 			}
-			$this->refreshWidget();
 			return true;
 		}
 	}
