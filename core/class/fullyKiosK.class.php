@@ -480,8 +480,8 @@ class fullyKiosK extends eqLogic {
 		}
 	}
         public function preSave() {
-  		$this->setDisplay("width","400px");
-      		$this->setDisplay("height","350px");	
+  		$this->setDisplay("width","520px");
+      		$this->setDisplay("height","510px");	
 	}
 	public function postSave() {
 		self::initInfosMap();
