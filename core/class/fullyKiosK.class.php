@@ -35,63 +35,7 @@ class fullyKiosK extends eqLogic {
 	public static function cron() {
 
 	}
-	
-	// Basic features
-/?cmd=deviceInfo&password=[pass]
-/?cmd=loadStartURL&password=[pass]
-/?cmd=loadURL&url=[url]&password=[pass]
-/?cmd=clearCache&password=[pass] 
-/?cmd=restartApp&password=[pass] 
-/?cmd=exitApp&password=[pass] 
-/?cmd=screenOn&password=[pass]
-/?cmd=screenOff&password=[pass]
-/?cmd=forceSleep&password=[pass] 
 
-// Screensaver and daydream
-/?cmd=startScreensaver&password=[pass] (ver. 1.21+)
-/?cmd=stopScreensaver&password=[pass] (ver. 1.21+)
-/?cmd=startDaydream&password=[pass] (ver. 1.24.1+)
-/?cmd=stopDaydream&password=[pass] (ver. 1.24.1+)
-
-// Lock/unlock device for maintenance
-/?cmd=enableMaintenanceMode&password=[pass]
-/?cmd=disableMaintenanceMode&password=[pass]
-
-// Other apps and bring Fully app to foreground
-/?cmd=startApplication&package=[pkg]&password=[pass] (ver. 1.21+)
-/?cmd=toForeground&password=[pass]
-
-// Return to webview if any other view (PDF, Video, Settings) is open
-/?cmd=popFragment&password=[pass] 
-
-// Load full usage stats CSV file
-/?cmd=loadStatsCSV&password=[pass]
-
-// Get screenshot image (PNG)
-/?cmd=getScreenshot&password=[pass]
-
-// Get camshot image (requires Motion Detection)
-/?cmd=getCamshot&password=[pass] 
-
-// Simulate motion
-/?cmd=triggerMotion&password=[pass] 
-
-// Text to speech
-/?cmd=textToSpeech&text=[text]&password=[pass] 
-/?cmd=textToSpeech&text=[text]&locale=[locale]&password=[pass] 
-
-// Change any of 120+ Fully settings, look in Remote Admin for keys
-/?cmd=setBooleanSetting&key=[key]&value=[true|false]&password=[pass] 
-/?cmd=setStringSetting&key=[key]&value=[value]&password=[pass] 
-
-// Import settings file (dat/json) from /sdcard
-/?cmd=importSettingsFile&filename=[filename]&password=[pass]
-
-// Download and upzip file to /sdcard
-/?cmd=loadZipFile&url=[url]&password=[pass]
-
-// Download and launche APK file, user input is required, ver. 1.20+
-/?cmd=loadApkFile&url=[url]&password=[pass]
 	*/
 
 	
@@ -132,8 +76,8 @@ class fullyKiosK extends eqLogic {
 				'cmd' => 'stopDaydream',
 			),		
 			'popFragment' => array(
-				'name' => 'stopDaydream',
-				'cmd' => 'stopDaydream',
+				'name' => 'popFragment',
+				'cmd' => 'popFragment',
 			),	
 			
 			'loadURL' => array(
@@ -193,12 +137,113 @@ class fullyKiosK extends eqLogic {
 				'restkey' => 'deviceModel',
 
 			),
+			
+	 		'foregroundApp' => array(
+				'name' => "foregroundApp",
+				'type' => 'info',
+				'subtype' => 'string',
+				'isvisible' => true,
+				'restkey' => 'foregroundApp',
+
+			),
+			
+	 		'appVersionName' => array(
+				'name' => "appVersionName",
+				'type' => 'info',
+				'subtype' => 'string',
+				'isvisible' => true,
+				'restkey' => 'appVersionName',
+
+			),
+			
+	 		'ssid' => array(
+				'name' => "ssid",
+				'type' => 'info',
+				'subtype' => 'string',
+				'isvisible' => true,
+				'restkey' => 'ssid',
+
+			),
+	 		'deviceManufacturer' => array(
+				'name' => "deviceManufacturer",
+				'type' => 'info',
+				'subtype' => 'string',
+				'isvisible' => true,
+				'restkey' => 'deviceManufacturer',
+
+			),
+	 		'displayHeightPixels' => array(
+				'name' => "displayHeightPixels",
+				'type' => 'info',
+				'subtype' => 'numeric',
+				'isvisible' => true,
+				'restkey' => 'displayHeightPixels',
+
+			),
+	 		'ip4' => array(
+				'name' => "sip4sid",
+				'type' => 'info',
+				'subtype' => 'string',
+				'isvisible' => true,
+				'restkey' => 'ip4',
+
+			),
+			
+	 		'locationProvider' => array(
+				'name' => "locationProvider",
+				'type' => 'info',
+				'subtype' => 'string',
+				'isvisible' => true,
+				'restkey' => 'locationProvider',
+
+			),
+	 		'motionDetectorState' => array(
+				'name' => "motionDetectorState",
+				'type' => 'info',
+				'subtype' => 'numeric',
+				'isvisible' => true,
+				'restkey' => 'motionDetectorState',
+
+			),
+	 		'keyguardLocked' => array(
+				'name' => "keyguardLocked",
+				'type' => 'info',
+				'subtype' => 'binary',
+				'isvisible' => true,
+				'restkey' => 'keyguardLocked',
+
+			),
+	 		'isDeviceAdmin' => array(
+				'name' => "isDeviceAdmin",
+				'type' => 'info',
+				'subtype' => 'binary',
+				'isvisible' => true,
+				'restkey' => 'isDeviceAdmin',
+
+			),
+	 		'screenBrightness' => array(
+				'name' => "screenBrightness",
+				'type' => 'info',
+				'subtype' => 'string',
+				'isvisible' => true,
+				'restkey' => 'screenBrightness',
+
+			),
 			'startUrl' => array(
 				'name' => "startUrl",
 				'type' => 'info',
 				'subtype' => 'string',
 				'isvisible' => true,
 				'restkey' => 'startUrl',
+
+			),
+
+			'currentPage' => array(
+				'name' => "currentPage",
+				'type' => 'info',
+				'subtype' => 'string',
+				'isvisible' => true,
+				'restkey' => 'currentPage',
 
 			),
 
