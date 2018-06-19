@@ -374,6 +374,7 @@ class fullyKiosK extends eqLogic {
 					$this->checkAndUpdateCmd($cmdLogicalId,$value);
 				}
 			}
+			$fullyKiosK->refreshWidget();
 			return true;
 		}
 	}
@@ -437,6 +438,7 @@ class fullyKiosK extends eqLogic {
 
 		//refreshcmdinfo
 		$this->getInformations();
+		
 	}
 
 	public function toHtml($_version = 'dashboard') {
