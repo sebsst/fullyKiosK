@@ -327,8 +327,8 @@ class fullyKiosK extends eqLogic {
 		{
 			$equipement = $this->getName();
 
-			if(is_null($jsondata))
-			{
+			//if(is_null($jsondata))
+			//{
 				$ip = $this->getConfiguration('addressip');
 				$password = $this->getConfiguration('password');
 
@@ -342,7 +342,7 @@ class fullyKiosK extends eqLogic {
 				curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 				$jsondata = curl_exec($ch);
 				curl_close($ch);
-			}
+			//}
 
  			log::add('fullyKiosK', 'debug', __METHOD__.' '.__LINE__.' $jsondata '.$jsondata);
 
