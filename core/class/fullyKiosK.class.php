@@ -120,6 +120,12 @@ class fullyKiosK extends eqLogic {
 				'subtype' => 'message',
 
 			),
+	
+			'Refresh' => array(
+				'name' => 'Refresh',
+				'cmd' => 'deviceInfo',
+
+			),			
 		);
 
 		self::$_infosMap = array(
