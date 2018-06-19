@@ -2,6 +2,12 @@
 	<span class="cmd modelconfig pull-left cursor" data-cmd_id="#refresh_id#" style="margin-top: 3px;margin-left: 3px;">
 		<i class='fa fa-cogs'></i>
 	</span>
+	<span class="cmd getCamshot pull-left cursor" data-cmd_id="#refresh_id#" style="margin-top: 3px;margin-left: 7px;">
+		<i class='fa fa-camera'></i>
+	</span>
+	<span class="cmd getScreenshot pull-left cursor" data-cmd_id="#refresh_id#" style="margin-top: 3px;margin-left: 11px;">
+		<i class='fa fa-tablet'></i>
+	</span>
 	<span class="cmd refresh pull-right cursor" data-cmd_id="#refresh_id#" style="margin-top: 3px;margin-right: 3px;">
 		<i class='fa fa-refresh'></i>
 	</span>
@@ -13,7 +19,7 @@
 			#cmd# 
 
 	</div>
-	
+
 	<span class="statusCmd" style="position : absolute;left : 5px;bottom : 0px; width : 40px;z-index: 1030;"></span>
 	<script>
 
@@ -33,7 +39,11 @@
 			$('#md_modal').load('index.php?v=d&plugin=fullyKiosK&modal=modal.fullyKiosK&id=#id#').dialog('open');
 		});
 		$('.fullyKiosK[data-eqLogic_id=#id#] .getCamshot').off().on('click', function () {
-			$('#md_modal').load('index.php?v=d&plugin=fullyKiosK&modal=modal.camShotDisplay&src=http//#ip#:2323/?cmd=getCamshot').dialog('open');
+		 $('#md_modal').load('index.php?v=d&plugin=fullyKiosK&modal=modal.camShotDisplay&src=http://#ipaddress#:2323/?cmd=getCamshot').dialog('open');
 		});		
+		$('.fullyKiosK[data-eqLogic_id=#id#] .getScreenshot').off().on('click', function () {
+			$('#md_modal').load('index.php?v=d&plugin=fullyKiosK&modal=modal.camShotDisplay&src=http://#ipaddress#:2323/?cmd=getScreenshot').dialog('open');
+		});		
+
 	</script>
 </div>

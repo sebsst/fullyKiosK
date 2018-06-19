@@ -479,7 +479,10 @@ class fullyKiosK extends eqLogic {
 			return true;
 		}
 	}
-
+        public function preSave() {
+  		$this->setDisplay("width","520px");
+      		$this->setDisplay("height","510px");	
+	}
 	public function postSave() {
 		self::initInfosMap();
 		$order = 0;
@@ -536,6 +539,7 @@ class fullyKiosK extends eqLogic {
 			}
 		}
 		//refreshcmdinfo
+  	   		
 		$this->getInformations();
 		
 	}
@@ -563,7 +567,11 @@ class fullyKiosK extends eqLogic {
 				$br_before = 1;
 			}
 		}
+		//$eqlogic = $cmd->getEqLogic();
+		$ip = $this->getConfiguration('addressip');
+
 		$replace['#cmd#'] = $cmd_html;
+		$replace['#ipaddress#'] = $ip;
 		return template_replace($replace, getTemplate('core', $version, 'fullyKiosK', 'fullyKiosK'));
 	}
 
