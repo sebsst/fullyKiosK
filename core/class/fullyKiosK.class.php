@@ -313,7 +313,13 @@ class fullyKiosK extends eqLogic {
 	public function refresh() {
 		try {
 			$this->getInformations();
-			$this->refreshWidget();
+			$mc = cache::byKey('fullyKiosKWidgetmobile' . $fullyKiosK->getId());
+			$mc->remove();
+			$mc = cache::byKey('fullyKiosKWidgetdashboard' . $fullyKiosK->getId());
+			$mc->remove();
+			$fullyKiosK->toHtml('mobile');
+			$fullyKiosK->toHtml('dashboard');
+			$fullyKiosK->refreshWidget();
 		} catch (Exception $exc) {
 			log::add('fullyKiosK', 'error', __('Erreur pour ', __FILE__) . $eqLogic->getHumanName() . ' : ' . $exc->getMessage());
 		}
