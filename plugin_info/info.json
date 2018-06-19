@@ -5,5 +5,5 @@
 	"licence" : "AGPL",
 	"author" : "Ssc",
 	"require" : "2.3",
-	"category" : "devicecommunication"
+	"category" : "monitoring"
 }
