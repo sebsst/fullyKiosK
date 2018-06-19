@@ -536,6 +536,8 @@ class fullyKiosK extends eqLogic {
 			}
 		}
 		//refreshcmdinfo
+    		$this->setDisplay("width","450px");
+      		$this->setDisplay("height","260px");	   		
 		$this->getInformations();
 		
 	}
