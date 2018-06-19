@@ -374,7 +374,7 @@ class fullyKiosK extends eqLogic {
 					$this->checkAndUpdateCmd($cmdLogicalId,$value);
 				}
 			}
-			$fullyKiosK->refreshWidget();
+			$this->refreshWidget();
 			return true;
 		}
 	}
