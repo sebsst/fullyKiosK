@@ -187,7 +187,7 @@ class fullyKiosK extends eqLogic {
 
 			),
 	 		'ip4' => array(
-				'name' => "sip4sid",
+				'name' => "ip",
 				'type' => 'info',
 				'subtype' => 'string',
 				'isvisible' => true,
