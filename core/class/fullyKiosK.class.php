@@ -479,7 +479,10 @@ class fullyKiosK extends eqLogic {
 			return true;
 		}
 	}
-
+        public function preSave() {
+  		$this->setDisplay("width","800px");
+      		$this->setDisplay("height","800px");	
+	}
 	public function postSave() {
 		self::initInfosMap();
 		$order = 0;
@@ -536,8 +539,7 @@ class fullyKiosK extends eqLogic {
 			}
 		}
 		//refreshcmdinfo
-    		$this->setDisplay("width","450px");
-      		$this->setDisplay("height","260px");	   		
+  	   		
 		$this->getInformations();
 		
 	}
