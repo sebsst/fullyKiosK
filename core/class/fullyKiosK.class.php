@@ -390,7 +390,7 @@ class fullyKiosK extends eqLogic {
 
 
 	//* Fonction exécutée automatiquement tous les jours par Jeedom
-	public static function cron5() {
+	public static function cron15() {
 		foreach (eqLogic::byType('fullyKiosK') as $fullyKiosK)
 		{
 			$fullyKiosK->getInformations();
