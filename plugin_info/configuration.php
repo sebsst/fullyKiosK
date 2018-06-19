@@ -27,7 +27,15 @@ if (!isConnect()) {
 	<div class="panel-heading" role="tab">
 		<h4 class="panel-title">
 			Plugin fullyKiosK
+
 		</h4>
 	</div>
 </div>
+	<div class="form-group">
+		<br>
+		<label class="col-sm-4 control-label">{{Configuration}} :</label>
+		<div class="col-lg-4">
+			<a class="btn btn-info" href=/index.php?v=d&m=fullyKiosK&p=fullyKiosK> {{Accès Ã  la configuration}}</a>
+		</div>
+	</div>	
 </form>
