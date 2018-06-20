@@ -122,7 +122,7 @@ class fullyKiosK extends eqLogic {
 	
 			'setBooleanSetting' => array(
 				'name' => 'setBooleanSetting',
-				'cmd' => "setBooleanSetting&key='#title#'&value=#message#",
+				'cmd' => "setBooleanSetting&key=#title#&value=#message#",
 				'subtype' => 'message',
 
 			),
