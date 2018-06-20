@@ -120,6 +120,21 @@ class fullyKiosK extends eqLogic {
 
 			),
 	
+			'setBooleanSetting' => array(
+				'name' => 'setBooleanSetting',
+				'cmd' => "setBooleanSetting&key=#title#&value=#message#",
+				'subtype' => 'message',
+
+			),
+	
+			'setStringSetting' => array(
+				'name' => 'setStringSetting',
+				'cmd' => "setStringSetting&key='#message#'&value=#message#",
+				'subtype' => 'message',
+
+			),
+
+	
 			'Refresh' => array(
 				'name' => 'Refresh',
 				'cmd' => 'deviceInfo&type=json',
@@ -480,7 +495,7 @@ class fullyKiosK extends eqLogic {
 	}
         public function preSave() {
   		$this->setDisplay("width","520px");
-      		$this->setDisplay("height","510px");	
+      		$this->setDisplay("height","610px");	
 	}
 	public function postSave() {
 		self::initInfosMap();
@@ -622,10 +637,13 @@ class fullyKiosKCmd extends cmd {
 					$cmdval = $params['cmd'];
 					if($this->getSubType() == 'slider')
 						$cmdval = str_replace('[[[VALUE]]]',$_options['slider'],$cmdval);
-					if($this->getSubType() == 'message')
+					if($this->getSubType() == 'message') {
 						$cmdval = str_replace('#message#',urlencode($_options['message']),$cmdval);
+                                                $cmdval = str_replace('#title#',urlencode($_options['title']),$cmdval);
+                                                if($this->getName() == 'setBooleanSetting')
+						   $cmdval = str_replace('#message#',$_options['message'] === 'true',$cmdval);
 
-
+					}
 					$eqLogic = $this->getEqLogic();
 					$ip = $eqLogic->getConfiguration('addressip');
 					$password = $eqLogic->getConfiguration('password');
