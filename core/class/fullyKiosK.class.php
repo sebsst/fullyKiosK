@@ -120,6 +120,21 @@ class fullyKiosK extends eqLogic {
 
 			),
 	
+			'setBooleanSetting' => array(
+				'name' => 'setBooleanSetting',
+				'cmd' => "setBooleanSetting&key='#title#'&value=#message#",
+				'subtype' => 'message',
+
+			),
+	
+			'setStringSetting' => array(
+				'name' => 'setStringSetting',
+				'cmd' => "setStringSetting&key='#message#'&value=#message#",
+				'subtype' => 'message',
+
+			),
+
+	
 			'Refresh' => array(
 				'name' => 'Refresh',
 				'cmd' => 'deviceInfo&type=json',
