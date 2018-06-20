@@ -16,8 +16,7 @@
 * along with Jeedom. If not, see <http://www.gnu.org/licenses/>.
 */
 /*
- -- info --
-  //Redpine Signals, Inc.
+
 
 /* * ***************************Includes********************************* */
 require_once dirname(__FILE__) . '/../../../../core/php/core.inc.php';
@@ -116,7 +115,7 @@ class fullyKiosK extends eqLogic {
 	
 			'textToSpeech' => array(
 				'name' => 'textToSpeech',
-				'cmd' => 'textToSpeech&text="#message#"',
+				'cmd' => "textToSpeech&text='#message#'",
 				'subtype' => 'message',
 
 			),
@@ -569,9 +568,11 @@ class fullyKiosK extends eqLogic {
 		}
 		//$eqlogic = $cmd->getEqLogic();
 		$ip = $this->getConfiguration('addressip');
+		$password = $this->getConfiguration('password');
 
 		$replace['#cmd#'] = $cmd_html;
 		$replace['#ipaddress#'] = $ip;
+		$replace['#password#'] = $password;
 		return template_replace($replace, getTemplate('core', $version, 'fullyKiosK', 'fullyKiosK'));
 	}
 
@@ -622,13 +623,13 @@ class fullyKiosKCmd extends cmd {
 					if($this->getSubType() == 'slider')
 						$cmdval = str_replace('[[[VALUE]]]',$_options['slider'],$cmdval);
 					if($this->getSubType() == 'message')
-						$cmdval = str_replace('#message#',$_options['message'],$cmdval);
+						$cmdval = str_replace('#message#',urlencode($_options['message']),$cmdval);
 
 
 					$eqLogic = $this->getEqLogic();
 					$ip = $eqLogic->getConfiguration('addressip');
 					$password = $eqLogic->getConfiguration('password');
-					$url = "http://{$ip}:2323/?cmd={$cmdval}&password={$password}";
+					$url = 'http://'.$ip.':2323/?cmd='.$cmdval.'&password='.$password;
 
 					$ch = curl_init();
 					curl_setopt($ch, CURLOPT_URL, $url);
