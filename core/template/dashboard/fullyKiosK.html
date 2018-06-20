@@ -39,9 +39,13 @@
 			$('#md_modal').load('index.php?v=d&plugin=fullyKiosK&modal=modal.fullyKiosK&id=#id#').dialog('open');
 		});
 		$('.fullyKiosK[data-eqLogic_id=#id#] .getCamshot').off().on('click', function () {
-		 $('#md_modal').load('index.php?v=d&plugin=fullyKiosK&modal=modal.camShotDisplay&src=http://#ipaddress#:2323/?cmd=getCamshot' + '\&' + 'password=#password#').dialog('open');
+		 var uri =  "http://#ipaddress#:2323/?cmd=getCamshot&password=#password#'";
+		 var source = encodeURI(uri);
+		 $('#md_modal').load('index.php?v=d&plugin=fullyKiosK&modal=modal.camShotDisplay&src=' + source).dialog('open');
 		});		
 		$('.fullyKiosK[data-eqLogic_id=#id#] .getScreenshot').off().on('click', function () {
+			var uri =  "http://#ipaddress#:2323/?cmd=getScreenshot&password=#password#'";
+		        var source = encodeURI(uri);
 			$('#md_modal').load('index.php?v=d&plugin=fullyKiosK&modal=modal.camShotDisplay&src=http://#ipaddress#:2323/?cmd=getScreenshot\&password=#password#').dialog('open');
 		});		
 
