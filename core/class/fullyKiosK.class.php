@@ -116,7 +116,7 @@ class fullyKiosK extends eqLogic {
 	
 			'textToSpeech' => array(
 				'name' => 'textToSpeech',
-				'cmd' => 'textToSpeech&text=#message#',
+				'cmd' => "textToSpeech&text='#message#'",
 				'subtype' => 'message',
 
 			),
@@ -569,9 +569,11 @@ class fullyKiosK extends eqLogic {
 		}
 		//$eqlogic = $cmd->getEqLogic();
 		$ip = $this->getConfiguration('addressip');
+		$password = $this->getConfiguration('password');
 
 		$replace['#cmd#'] = $cmd_html;
 		$replace['#ipaddress#'] = $ip;
+		$replace['#password#'] = $password;
 		return template_replace($replace, getTemplate('core', $version, 'fullyKiosK', 'fullyKiosK'));
 	}
 
