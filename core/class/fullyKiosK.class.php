@@ -637,12 +637,13 @@ class fullyKiosKCmd extends cmd {
 					$cmdval = $params['cmd'];
 					if($this->getSubType() == 'slider')
 						$cmdval = str_replace('[[[VALUE]]]',$_options['slider'],$cmdval);
-					if($this->getSubType() == 'message')
+					if($this->getSubType() == 'message') {
 						$cmdval = str_replace('#message#',urlencode($_options['message']),$cmdval);
-                                        if($this->getName() == 'setBooleanSetting')
-						$cmdval = str_replace('#message#',$_options['message'] === 'true',$cmdval);
+                                                $cmdval = str_replace('#title#',urlencode($_options['title']),$cmdval);
+                                                if($this->getName() == 'setBooleanSetting')
+						   $cmdval = str_replace('#message#',$_options['message'] === 'true',$cmdval);
 
-					
+					}
 					$eqLogic = $this->getEqLogic();
 					$ip = $eqLogic->getConfiguration('addressip');
 					$password = $eqLogic->getConfiguration('password');
