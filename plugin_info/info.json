@@ -6,4 +6,6 @@
 	"author" : "Ssc",
 	"require" : "2.3",
 	"category" : "monitoring"
+	"changelog" : "hhttps://sebsst.github.io/fullyKiosK/changelog.html"
+        "documentation" : "https://sebsst.github.io/fullyKiosK/"
 }
