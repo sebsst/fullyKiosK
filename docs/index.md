@@ -8,9 +8,9 @@ Ce plugin permet d'accéder aux fonctions des tablettes utilisant l'application 
 
 Renseigner l'adresse IP et le mot de passe
 
-### Fonctions disponible
+### Fonctions disponibles
 
-Voici la liste des fonctions disponible. 
+Voici la liste des fonctions disponibles. 
 
 Fonctions basiques
 - /?cmd=deviceInfo&password=[pass]
