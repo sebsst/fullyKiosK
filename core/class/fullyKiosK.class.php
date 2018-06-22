@@ -43,15 +43,15 @@ class fullyKiosK extends eqLogic {
 
 		self::$_actionMap = array(
 			'screenOn' => array(
-				'name' => 'ScreenOn',
+				'name' => __('Allumer écran',__FILE__),
 				'cmd' => 'screenOn',
 			),
 			'screenOff' => array(
-				'name' => 'ScreenOff',
+				'name' => __('Eteindre écran',__FILE__),
 				'cmd' => 'screenOff',
 			),
 			'clearCache' => array(
-				'name' => 'clearCache',
+				'name' => __('Vider cache',__FILE__),
 				'cmd' => 'clearCache',
 			),	
 			'forceSleep' => array(
@@ -59,78 +59,265 @@ class fullyKiosK extends eqLogic {
 				'cmd' => 'forceSleep',
 			),	
 			'startScreensaver' => array(
-				'name' => 'startScreensaver',
+				'name' => __('Ecran de veille',__FILE__),
 				'cmd' => 'startScreensaver',
 			),	
 			'stopScreensaver' => array(
-				'name' => 'stopScreensaver',
+				'name' => __('Arrêter écran veille',__FILE__),
 				'cmd' => 'stopScreensaver',
 			),	
 			'startDaydream' => array(
 				'name' => 'startDaydream',
+				'isvisible' => false,
 				'cmd' => 'startDaydream',
 			),	
 			'stopDaydream' => array(
 				'name' => 'stopDaydream',
+				'isvisible' => false,
 				'cmd' => 'stopDaydream',
 			),		
 			'popFragment' => array(
-				'name' => 'popFragment',
+				'name' => __('Retourner vue web',__FILE__),
 				'cmd' => 'popFragment',
 			),	
 
 			'loadStartURL' => array(
-				'name' => 'loadStartURL',
+				'name' => __('Lancer URL de démarrage',__FILE__),
 				'cmd' => 'loadStartURL',
 			),
 			'restartApp' => array(
-				'name' => 'restartApp',
+				'name' => __('Redémarrer application',__FILE__),
 				'cmd' => 'restartApp',
 			),
 			'exitApp' => array(
-				'name' => 'exitApp',
+				'name' => __('Quitter application',__FILE__),
 				'cmd' => 'exitApp',
 			),
 	
 			'triggerMotion' => array(
-				'name' => 'triggerMotion',
+				'name' => __('Simuler mouvement',__FILE__),
 				'cmd' => 'triggerMotion',
 			),
 			'toForeground' => array(
-				'name' => 'toForeground',
+				'name' => __("Basculer vers fully",__FILE__),
+				'isvisible' => false,				
 				'cmd' => 'toForeground',
 			),			
 			'loadURL' => array(
-				'name' => 'loadURL',
+				'name' => __('Charger URL',__FILE__),
 				'cmd' => 'loadURL&url=#message#',
 				'subtype' => 'message',
+				'title_disable' => true,
 
 			),
 			'startApplication' => array(
-				'name' => 'startApplication',
+				'name' => __('Démarrer application',__FILE__),
 				'cmd' => 'startApplication&package=#message#',
 				'subtype' => 'message',
+				'title_disable' => true,
 
 			),
 	
 			'textToSpeech' => array(
-				'name' => 'textToSpeech',
+				'name' => __('Envoyer TTS',__FILE__),
 				'cmd' => "textToSpeech&text='#message#'",
 				'subtype' => 'message',
+				'title_disable' => true,
 
 			),
 	
 			'setBooleanSetting' => array(
-				'name' => 'setBooleanSetting',
+				'name' => __('Paramètre true/false',__FILE__),
 				'cmd' => "setBooleanSetting&key=#title#&value=#message#",
+				'title_possibility_list' => array(
+                                 'setRemoveSystemUI',
+                                 'showMenuHint',
+                                 'screenOffInDarkness',
+				'useWideViewport',
+				'geoLocationAccess',
+				'launchOnBoot',
+				'showBackButton',
+				'enablePullToRefresh',
+				'ignoreMotionWhenMoving',
+				'kioskHomeStartURL',
+				'disableCamera',
+				'keepSleepingIfUnplugged',
+				'microphoneAccess',
+				'actionBarInSettings',
+				'remoteAdminLan',
+				'desktopMode',
+				'thirdPartyCookies',
+				'knoxDisableStatusBar',
+				'disablePowerButton',
+				'reloadOnInternet',
+				'screensaverFullscreen',
+				'pageTransitions',
+				'playAlarmSoundUntilPin',
+				'showAppLauncherOnStart',
+				'usageStatistics',
+				'movementDetection',
+				'restartOnCrash',
+				'sleepOnPowerConnect',
+				'readNfcTag',
+				'swipeNavigation',
+				'screenOnOnMovement',
+				'acra.legacyAlreadyConvertedToJson',
+				'sleepOnPowerDisconnect',
+				'knoxDisableUsbHostStorage',
+				'deleteHistoryOnReload',
+				'autoplayVideos',
+				'loadOverview',
+				'enableZoom',
+				'reloadOnWifiOn',
+				'advancedKioskProtection',
+				'motionDetectionAcoustic',
+				'reloadOnScreenOn',
+				'enableBackButton',
+				'mdmDisableUsbStorage',
+				'setWifiWakelock',
+				'lockSafeMode',
+				'deleteWebstorageOnReload',
+				'knoxDisableMtp',
+				'audioRecordUploads',
+				'showHomeButton',
+				'autoplayAudio',
+				'showPrintButton',
+				'knoxDisableScreenCapture',
+				'enableVersionInfo',
+				'forceScreenUnlock',
+				'waitInternetOnReload',
+				'disableVolumeButtons',
+				'showStatusBar',
+				'disableStatusBar',
+				'detectIBeacons',
+				'screensaverDaydream',
+				'videoCaptureUploads',
+				'stopScreensaverOnMovement',
+				'webcamAccess',
+				'knoxDisableSafeMode',
+				'disableOtherApps',
+				'playAlarmSoundOnMovement',
+				'forceImmersive',
+				'enableTapSound',
+				'showActionBar',
+				'ignoreJustOnceLauncher',
+				'remoteAdmin',
+				'keepScreenOn',
+				'cameraCaptureUploads',
+				'showCamPreview',
+				'pauseMotionInBackground',
+				'setCpuWakelock',
+				'softKeyboard',
+				'enablePopups',
+				'mdmDisableStatusBar',
+				'textSelection',
+				'fileUploads',
+				'jsAlerts',
+				'disableHomeButton',
+				'webviewDebugging',
+				'showNavigationBar',
+				'showAddressBar',
+				'mdmDisableScreenCapture',
+				'autoImportSettings',
+				'motionDetection',
+				'kioskMode',
+				'singleAppMode',
+				'enableUrlOtherApps',
+				'cloudService',
+				'isRunning',
+				'websiteIntegration',
+				'reloadOnScreensaverStop',
+				'deleteCookiesOnReload',
+				'knoxDisableCamera',
+				'knoxEnabled',
+				'showProgressBar',
+				'formAutoComplete',
+				'playMedia',
+				'showRefreshButton',
+				'stopScreensaverOnMotion',
+				'redirectBlocked',
+				'showForwardButton',
+				'mdmDisableADB',
+				'restartAfterUpdate',
+				'enableFullscreenVideos',
+				'clearCacheEach',
+				'confirmExit',
+				'ignoreSSLerrors',
+				'runInForeground',
+				'deleteCacheOnReload',
+				'screenOnOnMotion') ,
 				'subtype' => 'message',
 
 			),
 	
 			'setStringSetting' => array(
-				'name' => 'setStringSetting',
+				'name' => __('Paramètre valeur',__FILE__),
 				'cmd' => "setStringSetting&key='#message#'&value=#message#",
 				'subtype' => 'message',
+				'title_possibility_list' => array(
+				        'wifiKey',
+                                         'movementBeaconList',
+                                         'authUsername',
+                                         'motionSensitivity',
+                                         'remoteAdminPassword',
+                                         'graphicsAccelerationMode',
+                                         'authPassword',
+                                         'addressBarBgColor',
+                                         'motionSensitivityAcoustic',
+                                         'kioskWifiPin',
+                                         'wifiSSID',
+                                         'darknessLevel',
+                                         'cacheMode',
+                                         'movementBeaconDistance',
+                                         'screensaverBrightness',
+                                         'alarmSoundFileUrl',
+                                         'actionBarTitle',
+                                         'urlBlacklist',
+                                         'appLauncherScaling',
+                                         'timeToScreensaverV2',
+                                         'remotePdfFileMode',
+                                         'mdmApkToInstall',
+                                         'startURL',
+                                         'actionBarBgColor',
+                                         'compassSensitivity',
+                                         'searchProviderUrl',
+                                         'defaultWebviewBackgroundColor',
+                                         'reloadPageFailure',
+                                         'actionBarIconUrl',
+                                         'initialScale',
+                                         'actionBarBgUrl',
+                                         'acra.lastVersionNr',
+                                         'actionBarFgColor',
+                                         'fadeInOutDuration',
+                                         'reloadEachSeconds',
+                                         'accelerometerSensitivity',
+                                         'kioskExitGesture',
+                                         'kioskAppWhitelist',
+                                         'screensaverWallpaperURL',
+                                         'forceScreenOrientation',
+                                         'kioskPin',
+                                         'appLauncherBackgroundColor',
+                                         'motionCameraId',
+                                         'urlWhitelist',
+                                         'volumeLicenseKey',
+                                         'launcherInjectCode',
+                                         'sleepSchedule',
+                                         'timeToScreenOffV2',
+                                         'statusBarColor',
+                                         'lastVersionInfo',
+                                         'screensaverPlaylist',
+                                         'launcherApps',
+                                         'batteryWarning',
+                                         'localPdfFileMode',
+                                         'navigationBarColor',
+                                         'motionFps',
+                                         'errorURL',
+                                         'screenBrightness',
+                                         'remoteFileMode',
+                                         'fontSize',
+                                         'singleAppIntent',
+                                         'userAgent')
+
 
 			),
 
@@ -151,8 +338,9 @@ class fullyKiosK extends eqLogic {
 	 		//),
 	
 			'batteryLevel' => array(
-				'name' => "batteryLevel",
+				'name' => __('Batterie',__FILE__),
 				'type' => 'info',
+				//'icon' => '<i class="fa jeedom-batterie2">',
 				'subtype' => 'numeric',
 				'isvisible' => true,
 				'unite' => '%',
@@ -160,7 +348,7 @@ class fullyKiosK extends eqLogic {
 
 			),	
 			'wifiSignalLevel' => array(
-				'name' => "wifiSignalLevel",
+				'name' => __('Niveau Wifi',__FILE__),
 				'type' => 'info',
 				'subtype' => 'numeric',
 				'isvisible' => false,
@@ -168,7 +356,7 @@ class fullyKiosK extends eqLogic {
 
 			),	
 			'motionDetectorState' => array(
-				'name' => "motionDetectorState",
+				'name' => __('Détection mouvement',__FILE__),
 				'type' => 'info',
 				'subtype' => 'numeric',
 				'isvisible' => true,
@@ -176,7 +364,7 @@ class fullyKiosK extends eqLogic {
 
 			),				
 			'displayHeightPixels' => array(
-				'name' => "displayHeightPixels",
+				'name' => __('Résolution écran, hauteur',__FILE__),
 				'type' => 'info',
 				'subtype' => 'numeric',
 				'isvisible' => false,
@@ -184,7 +372,7 @@ class fullyKiosK extends eqLogic {
 
 			),		 		
 			'displayWidthPixels' => array(
-				'name' => "displayWidthPixels",
+				'name' => __('Résolution écran, largeur',__FILE__),
 				'type' => 'info',
 				'subtype' => 'numeric',
 				'isvisible' => false,
@@ -192,7 +380,7 @@ class fullyKiosK extends eqLogic {
 
 			),	 	 		
 			'appFreeMemory' => array(
-				'name' => "appFreeMemory",
+				'name' => __('Mémoire disponible',__FILE__),
 				'type' => 'info',
 				'subtype' => 'numeric',
 				'isvisible' => false,
@@ -200,7 +388,7 @@ class fullyKiosK extends eqLogic {
 
 			),	 			 		
 			'appUsedMemory' => array(
-				'name' => "appUsedMemory",
+				'name' => __('Mémoire utilisée par application',__FILE__),
 				'type' => 'info',
 				'subtype' => 'numeric',
 				'isvisible' => false,
@@ -208,7 +396,7 @@ class fullyKiosK extends eqLogic {
 
 			),	 			 		
 			'totalFreeMemory' => array(
-				'name' => "totalFreeMemory",
+				'name' => __('Mémoire disponible totale',__FILE__),
 				'type' => 'info',
 				'subtype' => 'numeric',
 				'isvisible' => false,
@@ -216,7 +404,7 @@ class fullyKiosK extends eqLogic {
 
 			),	 			 		
 			'totalUsedMemory' => array(
-				'name' => "totalUsedMemory",
+				'name' => __('Utilisation mémoire totale',__FILE__),
 				'type' => 'info',
 				'subtype' => 'numeric',
 				'isvisible' => false,
@@ -224,24 +412,25 @@ class fullyKiosK extends eqLogic {
 
 			),	 				
 			'plugged' => array(
-				'name' => "plugged",
+				'name' => __('Branché',__FILE__),
 				'type' => 'info',
 				'subtype' => 'binary',
 				'isvisible' => true,
+				//'icon' => '<i class="fa techno-charging"></i>',
 				'restkey' => 'plugged',
 
 			),
 	 		
 			'kioskMode' => array(
-				'name' => "kioskMode",
+				'name' => __('Mode kiosque',__FILE__),
 				'type' => 'info',
 				'subtype' => 'binary',
-				'isvisible' => false,
+				'isvisible' => true,
 				'restkey' => 'kioskMode',
 
 			),
 			'isScreenOn' => array(
-				'name' => "isScreenOn",
+				'name' => __('Ecran allumé',__FILE__),
 				'type' => 'info',
 				'subtype' => 'binary',
 				'isvisible' => true,
@@ -249,7 +438,7 @@ class fullyKiosK extends eqLogic {
 
 			),
 	 		'keyguardLocked' => array(
-				'name' => "keyguardLocked",
+				'name' => __('Verrouillage keyguard',__FILE__),
 				'type' => 'info',
 				'subtype' => 'binary',
 				'isvisible' => false,
@@ -257,7 +446,7 @@ class fullyKiosK extends eqLogic {
 
 			),
 	 		'isDeviceAdmin' => array(
-				'name' => "isDeviceAdmin",
+				'name' => __('Administrateur tablette',__FILE__),
 				'type' => 'info',
 				'subtype' => 'binary',
 				'isvisible' => false,
@@ -265,7 +454,7 @@ class fullyKiosK extends eqLogic {
 
 			),
 	 		'deviceModel' => array(
-				'name' => "deviceModel",
+				'name' => __('Modèle équipement',__FILE__),
 				'type' => 'info',
 				'subtype' => 'string',
 				'isvisible' => true,
@@ -274,7 +463,7 @@ class fullyKiosK extends eqLogic {
 			),
 			
 	 		'foregroundApp' => array(
-				'name' => "foregroundApp",
+				'name' => __('Application en cours',__FILE__),
 				'type' => 'info',
 				'subtype' => 'string',
 				'isvisible' => true,
@@ -284,10 +473,10 @@ class fullyKiosK extends eqLogic {
 
 			
 	 		'appVersionName' => array(
-				'name' => "appVersionName",
+				'name' => __('Version',__FILE__),
 				'type' => 'info',
 				'subtype' => 'string',
-				'isvisible' => true,
+				'isvisible' => false,
 				'restkey' => 'appVersionName',
 
 			),
@@ -301,10 +490,10 @@ class fullyKiosK extends eqLogic {
 
 			),
 	 		'deviceManufacturer' => array(
-				'name' => "deviceManufacturer",
+				'name' => __('Fabricant',__FILE__),
 				'type' => 'info',
 				'subtype' => 'string',
-				'isvisible' => true,
+				'isvisible' => false,
 				'restkey' => 'deviceManufacturer',
 
 			),
@@ -319,7 +508,7 @@ class fullyKiosK extends eqLogic {
 			),
 			
 	 		'locationProvider' => array(
-				'name' => "locationProvider",
+				'name' => __('Position',__FILE__),
 				'type' => 'info',
 				'subtype' => 'string',
 				'isvisible' => false,
@@ -327,7 +516,7 @@ class fullyKiosK extends eqLogic {
 
 			),
 			'locationLongitude' => array(
-				'name' => "locationLongitude",
+				'name' => __('Position, Longitude',__FILE__),
 				'type' => 'info',
 				'subtype' => 'string',
 				'isvisible' => false,
@@ -336,7 +525,7 @@ class fullyKiosK extends eqLogic {
 			),
 				
 	 		'locationLatitude' => array(
-				'name' => "locationLatitude",
+				'name' => __('Postion, Latitude',__FILE__),
 				'type' => 'info',
 				'subtype' => 'string',
 				'isvisible' => false,
@@ -344,7 +533,7 @@ class fullyKiosK extends eqLogic {
 
 			),		
 	 		'locationAltitude' => array(
-				'name' => "locationAltitude",
+				'name' => __('Position, altitude',__FILE__),
 				'type' => 'info',
 				'subtype' => 'string',
 				'isvisible' => false,
@@ -352,7 +541,7 @@ class fullyKiosK extends eqLogic {
 
 			),
 	 		'screenBrightness' => array(
-				'name' => "screenBrightness",
+				'name' => __('Luminosité écran',__FILE__),
 				'type' => 'info',
 				'subtype' => 'string',
 				'isvisible' => true,
@@ -360,7 +549,7 @@ class fullyKiosK extends eqLogic {
 
 			),
 			'startUrl' => array(
-				'name' => "startUrl",
+				'name' => __('Page de démarrage',__FILE__),
 				'type' => 'info',
 				'subtype' => 'string',
 				'isvisible' => true,
@@ -369,7 +558,7 @@ class fullyKiosK extends eqLogic {
 			),
 
 			'currentPage' => array(
-				'name' => "currentPage",
+				'name' => __('Page courante',__FILE__),
 				'type' => 'info',
 				'subtype' => 'string',
 				'isvisible' => true,
@@ -378,7 +567,7 @@ class fullyKiosK extends eqLogic {
 			),
 
 			'lastAppStart' => array(
-				'name' => "lastAppStart",
+				'name' => __('Application démarrée le',__FILE__),
 				'type' => 'info',
 				'subtype' => 'string',
 				'isvisible' => false,
@@ -494,8 +683,8 @@ class fullyKiosK extends eqLogic {
 		}
 	}
         public function preSave() {
-  		$this->setDisplay("width","520px");
-      		$this->setDisplay("height","610px");	
+  		$this->setDisplay("width","760px");
+      		$this->setDisplay("height","480px");	
 	}
 	public function postSave() {
 		self::initInfosMap();
@@ -516,6 +705,9 @@ class fullyKiosK extends eqLogic {
 				$fullyKiosKCmd->setType($params['type'] ?: 'info');
 				$fullyKiosKCmd->setSubType($params['subtype'] ?: 'numeric');
 				$fullyKiosKCmd->setIsVisible($params['isvisible'] ?: false);
+				//$fullyKiosKCmd->setDisplay('icon', $params['icon'] ?: null);
+
+
 				if(isset($params['unite']))
 					$fullyKiosKCmd->setUnite($params['unite']);
 				$fullyKiosKCmd->setTemplate('dashboard',$params['tpldesktop']?: 'badge');
@@ -540,6 +732,10 @@ class fullyKiosK extends eqLogic {
 				$fullyKiosKCmd->setType($params['type'] ?: 'action');
 				$fullyKiosKCmd->setSubType($params['subtype'] ?: 'other');
 				$fullyKiosKCmd->setIsVisible($params['isvisible'] ?: true);
+				$fullyKiosKCmd->setDisplay('title_disable', $params['title_disable'] ?: false);
+				$fullyKiosKCmd->setDisplay('title_possibility_list', json_encode($params['title_possibility_list'] ?: null));//json_encode(array("1","2"));
+				//$fullyKiosKCmd->setDisplay('icon', $params['icon'] ?: null);
+
 				if(isset($params['tpldesktop']))
 					$fullyKiosKCmd->setTemplate('dashboard',$params['tpldesktop']);
 				if(isset($params['tplmobile']))
