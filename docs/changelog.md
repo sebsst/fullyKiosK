@@ -4,7 +4,7 @@ En cas d'absence de note dans ce chapitre, les mises à jour ne concernent que l
 
 ## 22/06/2018
 - description des commandes en français
-- autocomplete paramètres possible 
+- autocomplete des paramètres possible 
 - cacher les titres si inutile
 
 
