@@ -6,6 +6,7 @@ En cas d'absence de note dans ce chapitre, les mises à jour ne concernent que l
 - description des commandes en français
 - autocomplete des paramètres possible 
 - cacher les titres si inutile
+- attention la recréation de l'équipement pourrait être nécessaire
 
 
 ## 20/06/2018
