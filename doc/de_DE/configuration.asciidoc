@@ -1,0 +1,3 @@
+==== Configuration du plugin
+
+Installer l'application fullyKiosk sur votre tablette et renseigner son adresse IP et le mot de passe correspondant

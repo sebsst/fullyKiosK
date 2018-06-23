@@ -1,0 +1,3 @@
+==== fullyKiosK
+
+Ce plugin permet de piloter les tablettes utilisant l'application fully-Kiosk
