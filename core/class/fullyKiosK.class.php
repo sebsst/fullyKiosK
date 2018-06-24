@@ -843,7 +843,8 @@ class fullyKiosKCmd extends cmd {
 				return;
 
 			fullyKiosK::initInfosMap();
-			if (isset(fullyKiosK::$_actionMap[$this->getLogicalId()]))
+			$command = $this->getConfiguration('cmd','');
+			if (isset(fullyKiosK::$_actionMap[$this->getLogicalId()]) || $command != '')
 			{
 				$params = fullyKiosK::$_actionMap[$this->getLogicalId()];
 
@@ -851,7 +852,7 @@ class fullyKiosKCmd extends cmd {
 				{
 					log::add('fullyKiosK', 'debug', __METHOD__.'calling back');
 					call_user_func($params['callback'], $this);
-				}elseif(isset($params['cmd']))
+				}elseif(isset($params['cmd']) || $command != '';) 
 				{
 					$cmdval = $params['cmd'];
 					$cmdval = $this->getConfiguration('cmd');
