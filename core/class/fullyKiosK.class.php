@@ -854,7 +854,7 @@ class fullyKiosKCmd extends cmd {
 				}elseif(isset($params['cmd']))
 				{
 					$cmdval = $params['cmd'];
-					$cmdval = this->getConfiguration('cmd');
+					$cmdval = $this->getConfiguration('cmd');
 					if($this->getSubType() == 'slider')
 						$cmdval = str_replace('[[[VALUE]]]',$_options['slider'],$cmdval);
 					if($this->getSubType() == 'message') {
