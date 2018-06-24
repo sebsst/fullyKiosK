@@ -1,0 +1,53 @@
+<div class="eqLogic eqLogic-widget fullyKiosK allowResize allowReorderCmd" data-eqLogic_id="#id#" data-eqLogic_uid="#uid#" data-version="#version#" style="border:#border#;border-radius:#border-radius#;background-color: #background-color#;color: #color#;width: #width#;height: #height#;#style#" data-category="#category#">
+	<span class="cmd modelconfig pull-left cursor" data-cmd_id="#refresh_id#" style="margin-top: 3px;margin-left: 3px;">
+		<i class='fa fa-cogs'></i>
+	</span>
+	<span class="cmd getCamshot pull-left cursor" data-cmd_id="#refresh_id#" style="margin-top: 3px;margin-left: 7px;">
+		<i class='fa fa-camera'></i>
+	</span>
+	<span class="cmd getScreenshot pull-left cursor" data-cmd_id="#refresh_id#" style="margin-top: 3px;margin-left: 11px;">
+		<i class='fa fa-tablet'></i>
+	</span>
+	<span class="cmd refresh pull-right cursor" data-cmd_id="#refresh_id#" style="margin-top: 3px;margin-right: 3px;">
+		<i class='fa fa-refresh'></i>
+	</span>
+	<center class="widget-name">
+		<a href="#eqLink#" style="font-size : 1.5em;#hideEqLogicName#">#name_display# <span style="font-size: 0.85em;">#object_name#</span></a>
+	</center>
+	<div class="verticalAlign">
+
+			#cmd# 
+
+	</div>
+
+	<span class="statusCmd" style="position : absolute;left : 5px;bottom : 0px; width : 40px;z-index: 1030;"></span>
+	<script>
+
+		if ('#refresh_id#' != ''){	+
+			$('.eqLogic[data-eqLogic_uid=#uid#] .refresh').on('click', function () {	
+				jeedom.cmd.execute({id: '#refresh_id#'});	
+			});	
+		}else{	
+			$('.eqLogic[data-eqLogic_uid=#uid#] .refresh').remove();	
+		}
+		$('.fullyKiosK[data-eqLogic_id=#id#] .modelconfig').off().on('click', function () {
+			$('#md_modal').dialog({
+				title: "Connexion à #name#",
+				width: "90%",
+				maxWidth: "400px"
+			});
+			$('#md_modal').load('index.php?v=d&plugin=fullyKiosK&modal=modal.fullyKiosK&id=#id#').dialog('open');
+		});
+		$('.fullyKiosK[data-eqLogic_id=#id#] .getCamshot').off().on('click', function () {
+		 var uri =  "http://#ipaddress#:2323/?cmd=getCamshot&pwd=#password#";
+		 var source = encodeURI(uri);
+		 $('#md_modal').load('index.php?v=d&plugin=fullyKiosK&modal=modal.camShotDisplay&src=' + source).dialog('open');
+		});		
+		$('.fullyKiosK[data-eqLogic_id=#id#] .getScreenshot').off().on('click', function () {
+			var uri =  "http://#ipaddress#:2323/?cmd=getScreenshot&password=#password#";
+		        var source = encodeURI(uri);
+			$('#md_modal').load('index.php?v=d&plugin=fullyKiosK&modal=modal.camShotDisplay&src=http://#ipaddress#:2323/?cmd=getScreenshot\&pwd=#password#').dialog('open');
+		});		
+
+	</script>
+</div>
