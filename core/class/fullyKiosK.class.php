@@ -706,7 +706,7 @@ class fullyKiosK extends eqLogic {
 				$fullyKiosKCmd->setType($params['type'] ?: 'info');
 				$fullyKiosKCmd->setSubType($params['subtype'] ?: 'numeric');
 				$fullyKiosKCmd->setIsVisible($params['isvisible'] ?: false);
-				//$fullyKiosKCmd->setDisplay('icon', $params['icon'] ?: null);
+				$fullyKiosKCmd->setDisplay('icon', $params['icon'] ?: null);
 
 
 				$fullyKiosKCmd->setDisplay('forceReturnLineBefore', $params['forceReturnLineBefore'] ?: false);
@@ -739,7 +739,7 @@ class fullyKiosK extends eqLogic {
 				$fullyKiosKCmd->setDisplay('forceReturnLineBefore', $params['forceReturnLineBefore'] ?: false);
 	                        $fullyKiosKCmd->setDisplay('title_disable', $params['title_disable'] ?: false);
 				$fullyKiosKCmd->setDisplay('title_possibility_list', json_encode($params['title_possibility_list'] ?: null));//json_encode(array("1","2"));
-				//$fullyKiosKCmd->setDisplay('icon', $params['icon'] ?: null);
+				$fullyKiosKCmd->setDisplay('icon', $params['icon'] ?: null);
 
 				if(isset($params['tpldesktop']))
 					$fullyKiosKCmd->setTemplate('dashboard',$params['tpldesktop']);
@@ -771,6 +771,14 @@ class fullyKiosK extends eqLogic {
 			if (isset($replace['#refresh_id#']) && $cmd->getId() == $replace['#refresh_id#']) {
 				continue;
 			}
+			if (isset($replace['#batteryLevel_id#']) && $cmd->getId() == $replace['#batteryLevel_id#']) {
+				
+				continue;
+			}
+			
+			
+			
+			
 			if ($br_before == 0 && $cmd->getDisplay('forceReturnLineBefore', 0) == 1) {
 				$cmd_html .= '<br/>';
 			}
