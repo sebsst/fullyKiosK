@@ -108,6 +108,7 @@ class fullyKiosK extends eqLogic {
 				'cmd' => 'loadURL&url=#message#',
 				'subtype' => 'message',
 				'title_disable' => true,
+				'forceReturnLineBefore' => true,
 
 			),
 			'startApplication' => array(
@@ -708,6 +709,8 @@ class fullyKiosK extends eqLogic {
 				//$fullyKiosKCmd->setDisplay('icon', $params['icon'] ?: null);
 
 
+				$fullyKiosKCmd->setDisplay('forceReturnLineBefore', $params['forceReturnLineBefore'] ?: false);
+
 				if(isset($params['unite']))
 					$fullyKiosKCmd->setUnite($params['unite']);
 				$fullyKiosKCmd->setTemplate('dashboard',$params['tpldesktop']?: 'badge');
@@ -732,7 +735,9 @@ class fullyKiosK extends eqLogic {
 				$fullyKiosKCmd->setType($params['type'] ?: 'action');
 				$fullyKiosKCmd->setSubType($params['subtype'] ?: 'other');
 				$fullyKiosKCmd->setIsVisible($params['isvisible'] ?: true);
-				$fullyKiosKCmd->setDisplay('title_disable', $params['title_disable'] ?: false);
+
+				$fullyKiosKCmd->setDisplay('forceReturnLineBefore', $params['forceReturnLineBefore'] ?: false);
+	                        $fullyKiosKCmd->setDisplay('title_disable', $params['title_disable'] ?: false);
 				$fullyKiosKCmd->setDisplay('title_possibility_list', json_encode($params['title_possibility_list'] ?: null));//json_encode(array("1","2"));
 				//$fullyKiosKCmd->setDisplay('icon', $params['icon'] ?: null);
 
