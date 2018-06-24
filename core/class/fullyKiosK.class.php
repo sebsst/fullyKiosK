@@ -341,7 +341,7 @@ class fullyKiosK extends eqLogic {
 			'batteryLevel' => array(
 				'name' => __('Batterie',__FILE__),
 				'type' => 'info',
-				//'icon' => '<i class="fa jeedom-batterie2">',
+				'icon' => '<i class="fa jeedom-batterie2"></i>',
 				'subtype' => 'numeric',
 				'isvisible' => true,
 				'unite' => '%',
@@ -417,7 +417,7 @@ class fullyKiosK extends eqLogic {
 				'type' => 'info',
 				'subtype' => 'binary',
 				'isvisible' => true,
-				//'icon' => '<i class="fa techno-charging"></i>',
+				'icon' => '<i class="fa techno-charging"></i>',
 				'restkey' => 'plugged',
 
 			),
