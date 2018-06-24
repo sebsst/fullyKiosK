@@ -852,7 +852,7 @@ class fullyKiosKCmd extends cmd {
 				{
 					log::add('fullyKiosK', 'debug', __METHOD__.'calling back');
 					call_user_func($params['callback'], $this);
-				}elseif(isset($params['cmd']) || $command != '';) 
+				}elseif(isset($params['cmd']) || $command != '') 
 				{
 					$cmdval = $params['cmd'];
 					$cmdval = $this->getConfiguration('cmd');
