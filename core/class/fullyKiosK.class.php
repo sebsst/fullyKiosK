@@ -708,6 +708,8 @@ class fullyKiosK extends eqLogic {
 				$fullyKiosKCmd->setIsVisible($params['isvisible'] ?: false);
 				$fullyKiosKCmd->setDisplay('icon', $params['icon'] ?: null);
 
+				$fullyKiosKCmd->setConfiguration('cmd', $params['cmd'] ?: null);
+
 
 				$fullyKiosKCmd->setDisplay('forceReturnLineBefore', $params['forceReturnLineBefore'] ?: false);
 
@@ -735,6 +737,8 @@ class fullyKiosK extends eqLogic {
 				$fullyKiosKCmd->setType($params['type'] ?: 'action');
 				$fullyKiosKCmd->setSubType($params['subtype'] ?: 'other');
 				$fullyKiosKCmd->setIsVisible($params['isvisible'] ?: true);
+
+				$fullyKiosKCmd->setConfiguration('cmd', $params['cmd'] ?: null);
 
 				$fullyKiosKCmd->setDisplay('forceReturnLineBefore', $params['forceReturnLineBefore'] ?: false);
 	                        $fullyKiosKCmd->setDisplay('title_disable', $params['title_disable'] ?: false);
@@ -850,6 +854,7 @@ class fullyKiosKCmd extends cmd {
 				}elseif(isset($params['cmd']))
 				{
 					$cmdval = $params['cmd'];
+					$cmdval = this->getConfiguration('cmd');
 					if($this->getSubType() == 'slider')
 						$cmdval = str_replace('[[[VALUE]]]',$_options['slider'],$cmdval);
 					if($this->getSubType() == 'message') {
