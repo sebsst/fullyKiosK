@@ -771,14 +771,14 @@ class fullyKiosK extends eqLogic {
 			if (isset($replace['#refresh_id#']) && $cmd->getId() == $replace['#refresh_id#']) {
 				continue;
 			}
-			if (isset($replace['#batteryLevel_id#']) && $cmd->getId() == $replace['#batteryLevel_id#']) {
-				            $replace['#' . $cmd->getLogicalId() . '_history#'] = '';
+			//if (isset($replace['#batteryLevel_id#']) && $cmd->getId() == $replace['#batteryLevel_id#']) {
+			//	            $replace['#' . $cmd->getLogicalId() . '_history#'] = '';
 		            $replace['#' . $cmd->getLogicalId() . '_id#'] = $cmd->getId();
             	            $replace['#' . $cmd->getLogicalId() . '#'] = $cmd->execCmd();
                             $replace['#' . $cmd->getLogicalId() . '_collect#'] = $cmd->getCollectDate();
 
-				continue;
-			}
+			//	continue;
+			//}
 			
 			
 			
