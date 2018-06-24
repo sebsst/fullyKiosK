@@ -720,6 +720,10 @@ class fullyKiosK extends eqLogic {
 				$fullyKiosKCmd->setOrder($order++);
 
 				$fullyKiosKCmd->save();
+			}elseif($fullyKiosKCmd->getConfiguration('cmd','') != '') {
+			  	$fullyKiosKCmd->setConfiguration('cmd', $params['cmd'] ?: null);
+				$fullyKiosKCmd->save();
+
 			}
 		}
 		//Cmd Actions
@@ -755,7 +759,12 @@ class fullyKiosK extends eqLogic {
 					$fullyKiosKCmd->setValue($this->getCmd('info', $params['linkedInfo']));
 
 				$fullyKiosKCmd->save();
+			} elseif($fullyKiosKCmd->getConfiguration('cmd','') != '') {
+			  	$fullyKiosKCmd->setConfiguration('cmd', $params['cmd'] ?: null);
+				$fullyKiosKCmd->save();
+
 			}
+				
 		}
 		//refreshcmdinfo
   	   		
