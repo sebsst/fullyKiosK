@@ -417,7 +417,7 @@ class fullyKiosK extends eqLogic {
 				'type' => 'info',
 				'subtype' => 'binary',
 				'isvisible' => true,
-				'icon' => '<i class="fa techno-charging"></i>',
+				//'icon' => '<i class="fa techno-charging"></i>',
 				'restkey' => 'plugged',
 
 			),
