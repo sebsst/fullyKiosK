@@ -720,8 +720,8 @@ class fullyKiosK extends eqLogic {
 				$fullyKiosKCmd->setOrder($order++);
 
 				$fullyKiosKCmd->save();
-			}elseif($fullyKiosKCmd->getConfiguration('cmd','') != '') {
-			  	$fullyKiosKCmd->setConfiguration('cmd', $params['cmd'] ?: null);
+			}elseif($fullyKiosKCmd->getConfiguration('restKey','') != '') {
+			  	$fullyKiosKCmd->setConfiguration('restKey', $params['restKey'] ?: null);
 				$fullyKiosKCmd->save();
 
 			}
