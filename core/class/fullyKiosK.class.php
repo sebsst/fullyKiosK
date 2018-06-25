@@ -345,7 +345,7 @@ class fullyKiosK extends eqLogic {
 				'type' => 'info',
 				'icon' => '<i class="fa jeedom-batterie2"></i>',
 				'subtype' => 'numeric',
-				'isvisible' => true,
+				'isvisible' => false,
 				'unite' => '%',
 				'restkey' => 'batteryLevel',
 
