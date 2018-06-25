@@ -7,6 +7,8 @@ Ce plugin permet d'accéder aux fonctions des tablettes utilisant l'application 
 ### Configuration du plugin
 
 Renseigner l'adresse IP et le mot de passe
+- Vous pouvez cocher ou décocher l'affichage sur le widget de certaines fonctionnalités en fonction de votre besoin
+- vous pouvez ajouer vos propres actions par exemple en ajoutant une commande action "Lancer URL jeedom.com" avec la valeur correspondante loadURL&url=www.jeedom.com
 
 ### Fonctions disponibles
 
@@ -237,6 +239,19 @@ Plus de détails sur le site de fully kiosk: https://www.ozerov.de/fully-kiosk-b
 
 Pour les fonctions screenshot et camshot les fichiers résultats ne sont pas stockés, mais si vous avez un besoin de ce côté là vous pouvez toujours vous servir du plugin camera et mettre l'url de snapshot:
 http://[iptablette]:2323/?cmd=getCamshot&password=[pass] 
+
+## Autres fonctionnalités
+- Fully Kiosk permet d'injecter des fonctions JS comme par exemple lancer une application avec des paramètres.
+Dans les settings vous devez activer la fonction : Advanced Web Settings >> Enable JavaScript Interface
+Dans ce cas là vous pouvez créer un design contenant une zone HTML avec le script souhaité. 
+
+-Exemple qui permet de lancer VLC avec un flux d'une caméra:
+
+<script>fully.startApplication('org.videolan.vlc',"android.intent.action.VIEW", 'rtsp://userid:password@192.168.0.xx:88/videoSub'); </script>
+
+Ensuite il suffit de charger le design sur la tablette en utilisant l'URL du design.
+Attention le script pourrait poser des problèmes sur un device où fully kiosk n'est pas installé.
+Vous pouvez vous référer au site officiel pour mettre en place ce type de fonctionnalités.
 
 
 ## Changelog
