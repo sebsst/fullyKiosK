@@ -342,7 +342,7 @@ class fullyKiosK extends eqLogic {
 				'type' => 'info',
 				//'icon' => '<i class="fa jeedom-batterie2">',
 				'subtype' => 'numeric',
-				'isvisible' => true,
+				'isvisible' => false,
 				'unite' => '%',
 				'restkey' => 'batteryLevel',
 
@@ -359,7 +359,7 @@ class fullyKiosK extends eqLogic {
 				'name' => __('Détection mouvement',__FILE__),
 				'type' => 'info',
 				'subtype' => 'numeric',
-				'isvisible' => true,
+				'isvisible' => false,
 				'restkey' => 'motionDetectorState',
 
 			),				
