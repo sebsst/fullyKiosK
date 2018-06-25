@@ -810,7 +810,7 @@ class fullyKiosK extends eqLogic {
 			}
 
 			$cmd_html .= $cmd->toHtml($_version, '', $replace['#cmd-background-color#']);
-			log::add('fullyKiosK', 'debug', __METHOD__.' '.__LINE__.' cmdAction to html '. $cmd->toHtml($_version, '', $replace['#cmd-background-color#']);
+			log::add('fullyKiosK', 'debug', ' cmdAction to html '. $cmd->toHtml($_version, '', $replace['#cmd-background-color#']));
 			$br_before = 0;
 			if ($cmd->getDisplay('forceReturnLineAfter', 0) == 1) {
 				$cmd_html .= '<br/>';
