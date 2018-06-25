@@ -17,7 +17,7 @@
 
 $('#bt_wl_modal').on('click', function() {
 	$('#md_modal').dialog({
-		title: "Connexion à #name#",
+		title: "Connexion à fullyKiosk",
 		width: "90%",
 		maxWidth: "400px"
 	});
