@@ -17,7 +17,7 @@
 
 $('#bt_wl_modal').on('click', function() {
 	$('#md_modal').dialog({
-		title: "Connexion à #name#",
+		title: "Connexion à fullyKiosk",
 		width: "90%",
 		maxWidth: "400px"
 	});
@@ -43,10 +43,9 @@ function addCmdToTable(_cmd) {
 if (init(_cmd.type) == 'action') {	
         tr += '<input class="cmdAttr form-control input-sm" data-l1key="configuration" data-l2key="cmd" placeholder="{{Valeur}}">';
 }
-if (init(_cmd.type) == '') {info	
-        tr += '<span class="cmdAttr form-control input-sm" data-l1key="configuration" data-l2key="value" placeholder="{{Valeur}}">';
-}
-	
+if (init(_cmd.type) == 'info') {	
+        tr += '<span class="cmdAttr" data-l1key="logicalId"  placeholder="{{Valeur}}">';
+}	
         tr += '</td>';
 	tr += '	<td>';
 	tr += '		<span class="type" type="' + init(_cmd.type) + '">' + jeedom.cmd.availableType() + '</span>';
