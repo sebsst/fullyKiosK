@@ -794,7 +794,7 @@ class fullyKiosK extends eqLogic {
 			if($cmd->getLogicalId() == 'plugged'){
 			    if($cmd->execCmd()){ 	
 		            $replace['#' . $cmd->getLogicalId() . '_icon#'] = 'techno-charging'; }
-		            else { $replace['#' . $cmd->getLogicalId() . '_icon#'] = 'techno-low2'; }
+		            else { $replace['#' . $cmd->getLogicalId() . '_icon#'] = 'notechno-low2'; }
 
 				    
 
