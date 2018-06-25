@@ -1,0 +1,5 @@
+[panel,primary]
+.Est-ce que le plugin a besoin d'une connexion internet (cloud) ?
+--
+Non, le plugin se connecte directement à la tablette par le port 2323
+--

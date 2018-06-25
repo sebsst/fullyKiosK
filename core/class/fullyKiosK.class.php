@@ -78,6 +78,7 @@ class fullyKiosK extends eqLogic {
 			),		
 			'popFragment' => array(
 				'name' => __('Retourner vue web',__FILE__),
+				'isvisible' => false,
 				'cmd' => 'popFragment',
 			),	
 
@@ -96,6 +97,7 @@ class fullyKiosK extends eqLogic {
 	
 			'triggerMotion' => array(
 				'name' => __('Simuler mouvement',__FILE__),
+				'isvisible' => false,
 				'cmd' => 'triggerMotion',
 			),
 			'toForeground' => array(
@@ -108,6 +110,7 @@ class fullyKiosK extends eqLogic {
 				'cmd' => 'loadURL&url=#message#',
 				'subtype' => 'message',
 				'title_disable' => true,
+				'forceReturnLineBefore' => true,
 
 			),
 			'startApplication' => array(
@@ -340,7 +343,7 @@ class fullyKiosK extends eqLogic {
 			'batteryLevel' => array(
 				'name' => __('Batterie',__FILE__),
 				'type' => 'info',
-				//'icon' => '<i class="fa jeedom-batterie2">',
+				'icon' => '<i class="fa jeedom-batterie2"></i>',
 				'subtype' => 'numeric',
 				'isvisible' => false,
 				'unite' => '%',
@@ -351,7 +354,7 @@ class fullyKiosK extends eqLogic {
 				'name' => __('Niveau Wifi',__FILE__),
 				'type' => 'info',
 				'subtype' => 'numeric',
-				'isvisible' => false,
+				'isvisible' => true,
 				'restkey' => 'wifiSignalLevel',
 
 			),	
@@ -485,7 +488,7 @@ class fullyKiosK extends eqLogic {
 				'name' => "ssid",
 				'type' => 'info',
 				'subtype' => 'string',
-				'isvisible' => true,
+				'isvisible' => false,
 				'restkey' => 'ssid',
 
 			),
@@ -544,7 +547,7 @@ class fullyKiosK extends eqLogic {
 				'name' => __('Luminosité écran',__FILE__),
 				'type' => 'info',
 				'subtype' => 'string',
-				'isvisible' => true,
+				'isvisible' => false,
 				'restkey' => 'screenBrightness',
 
 			),
@@ -683,8 +686,8 @@ class fullyKiosK extends eqLogic {
 		}
 	}
         public function preSave() {
-  		$this->setDisplay("width","760px");
-      		$this->setDisplay("height","480px");	
+  		$this->setDisplay("width","520px");
+      		$this->setDisplay("height","510px");	
 	}
 	public function postSave() {
 		self::initInfosMap();
@@ -705,8 +708,12 @@ class fullyKiosK extends eqLogic {
 				$fullyKiosKCmd->setType($params['type'] ?: 'info');
 				$fullyKiosKCmd->setSubType($params['subtype'] ?: 'numeric');
 				$fullyKiosKCmd->setIsVisible($params['isvisible'] ?: false);
-				//$fullyKiosKCmd->setDisplay('icon', $params['icon'] ?: null);
+				$fullyKiosKCmd->setDisplay('icon', $params['icon'] ?: null);
 
+				$fullyKiosKCmd->setConfiguration('cmd', $params['cmd'] ?: null);
+
+
+				$fullyKiosKCmd->setDisplay('forceReturnLineBefore', $params['forceReturnLineBefore'] ?: false);
 
 				if(isset($params['unite']))
 					$fullyKiosKCmd->setUnite($params['unite']);
@@ -715,6 +722,10 @@ class fullyKiosK extends eqLogic {
 				$fullyKiosKCmd->setOrder($order++);
 
 				$fullyKiosKCmd->save();
+			}elseif($fullyKiosKCmd->getConfiguration('restKey','') != '') {
+			  	$fullyKiosKCmd->setConfiguration('restKey', $params['restKey'] ?: null);
+				$fullyKiosKCmd->save();
+
 			}
 		}
 		//Cmd Actions
@@ -732,9 +743,13 @@ class fullyKiosK extends eqLogic {
 				$fullyKiosKCmd->setType($params['type'] ?: 'action');
 				$fullyKiosKCmd->setSubType($params['subtype'] ?: 'other');
 				$fullyKiosKCmd->setIsVisible($params['isvisible'] ?: true);
-				$fullyKiosKCmd->setDisplay('title_disable', $params['title_disable'] ?: false);
+
+				$fullyKiosKCmd->setConfiguration('cmd', $params['cmd'] ?: null);
+
+				$fullyKiosKCmd->setDisplay('forceReturnLineBefore', $params['forceReturnLineBefore'] ?: false);
+	                        $fullyKiosKCmd->setDisplay('title_disable', $params['title_disable'] ?: false);
 				$fullyKiosKCmd->setDisplay('title_possibility_list', json_encode($params['title_possibility_list'] ?: null));//json_encode(array("1","2"));
-				//$fullyKiosKCmd->setDisplay('icon', $params['icon'] ?: null);
+				$fullyKiosKCmd->setDisplay('icon', $params['icon'] ?: null);
 
 				if(isset($params['tpldesktop']))
 					$fullyKiosKCmd->setTemplate('dashboard',$params['tpldesktop']);
@@ -746,7 +761,12 @@ class fullyKiosK extends eqLogic {
 					$fullyKiosKCmd->setValue($this->getCmd('info', $params['linkedInfo']));
 
 				$fullyKiosKCmd->save();
+			} elseif($fullyKiosKCmd->getConfiguration('cmd','') != '') {
+			  	$fullyKiosKCmd->setConfiguration('cmd', $params['cmd'] ?: null);
+				$fullyKiosKCmd->save();
+
 			}
+				
 		}
 		//refreshcmdinfo
   	   		
@@ -766,11 +786,32 @@ class fullyKiosK extends eqLogic {
 			if (isset($replace['#refresh_id#']) && $cmd->getId() == $replace['#refresh_id#']) {
 				continue;
 			}
+			//if (isset($replace['#batteryLevel_id#']) && $cmd->getId() == $replace['#batteryLevel_id#']) {
+			//	            $replace['#' . $cmd->getLogicalId() . '_history#'] = '';
+			if($cmd->getLogicalId() == 'batteryLevel'){
+		            $replace['#' . $cmd->getLogicalId() . '_id#'] = $cmd->getId();
+            	            $replace['#' . $cmd->getLogicalId() . '#'] = $cmd->execCmd();
+                            $replace['#' . $cmd->getLogicalId() . '_collect#'] = $cmd->getCollectDate();
+			}
+			if($cmd->getLogicalId() == 'plugged'){
+			    if($cmd->execCmd()){ 	
+		            $replace['#' . $cmd->getLogicalId() . '_icon#'] = 'techno-charging'; }
+		            else { $replace['#' . $cmd->getLogicalId() . '_icon#'] = 'notechno-low2'; }
+
+				    
+
+			}
+			//	continue;
+			//}
+			
+			
+			
+			
 			if ($br_before == 0 && $cmd->getDisplay('forceReturnLineBefore', 0) == 1) {
 				$cmd_html .= '<br/>';
 			}
-
 			$cmd_html .= $cmd->toHtml($_version, '', $replace['#cmd-background-color#']);
+			log::add('fullyKiosK', 'debug', ' cmdAction to html '. $cmd->toHtml($_version, '', $replace['#cmd-background-color#']));
 			$br_before = 0;
 			if ($cmd->getDisplay('forceReturnLineAfter', 0) == 1) {
 				$cmd_html .= '<br/>';
@@ -820,7 +861,8 @@ class fullyKiosKCmd extends cmd {
 				return;
 
 			fullyKiosK::initInfosMap();
-			if (isset(fullyKiosK::$_actionMap[$this->getLogicalId()]))
+			$command = $this->getConfiguration('cmd','');
+			if (isset(fullyKiosK::$_actionMap[$this->getLogicalId()]) || $command != '')
 			{
 				$params = fullyKiosK::$_actionMap[$this->getLogicalId()];
 
@@ -828,9 +870,10 @@ class fullyKiosKCmd extends cmd {
 				{
 					log::add('fullyKiosK', 'debug', __METHOD__.'calling back');
 					call_user_func($params['callback'], $this);
-				}elseif(isset($params['cmd']))
+				}elseif(isset($params['cmd']) || $command != '') 
 				{
 					$cmdval = $params['cmd'];
+					$cmdval = $this->getConfiguration('cmd');
 					if($this->getSubType() == 'slider')
 						$cmdval = str_replace('[[[VALUE]]]',$_options['slider'],$cmdval);
 					if($this->getSubType() == 'message') {
