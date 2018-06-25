@@ -808,7 +808,9 @@ class fullyKiosK extends eqLogic {
 			if ($br_before == 0 && $cmd->getDisplay('forceReturnLineBefore', 0) == 1) {
 				$cmd_html .= '<br/>';
 			}
-
+			if ($cmd->getSubtype == 'string') {
+				$cmd_html .= '</center>';
+			}
 			$cmd_html .= $cmd->toHtml($_version, '', $replace['#cmd-background-color#']);
 			log::add('fullyKiosK', 'debug', ' cmdAction to html '. $cmd->toHtml($_version, '', $replace['#cmd-background-color#']));
 			$br_before = 0;
