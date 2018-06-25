@@ -78,6 +78,7 @@ class fullyKiosK extends eqLogic {
 			),		
 			'popFragment' => array(
 				'name' => __('Retourner vue web',__FILE__),
+				'isvisible' => false,
 				'cmd' => 'popFragment',
 			),	
 
@@ -96,6 +97,7 @@ class fullyKiosK extends eqLogic {
 	
 			'triggerMotion' => array(
 				'name' => __('Simuler mouvement',__FILE__),
+				'isvisible' => false,
 				'cmd' => 'triggerMotion',
 			),
 			'toForeground' => array(
@@ -352,7 +354,7 @@ class fullyKiosK extends eqLogic {
 				'name' => __('Niveau Wifi',__FILE__),
 				'type' => 'info',
 				'subtype' => 'numeric',
-				'isvisible' => false,
+				'isvisible' => true,
 				'restkey' => 'wifiSignalLevel',
 
 			),	
@@ -360,7 +362,7 @@ class fullyKiosK extends eqLogic {
 				'name' => __('Détection mouvement',__FILE__),
 				'type' => 'info',
 				'subtype' => 'numeric',
-				'isvisible' => true,
+				'isvisible' => false,
 				'restkey' => 'motionDetectorState',
 
 			),				
@@ -486,7 +488,7 @@ class fullyKiosK extends eqLogic {
 				'name' => "ssid",
 				'type' => 'info',
 				'subtype' => 'string',
-				'isvisible' => true,
+				'isvisible' => false,
 				'restkey' => 'ssid',
 
 			),
@@ -545,7 +547,7 @@ class fullyKiosK extends eqLogic {
 				'name' => __('Luminosité écran',__FILE__),
 				'type' => 'info',
 				'subtype' => 'string',
-				'isvisible' => true,
+				'isvisible' => false,
 				'restkey' => 'screenBrightness',
 
 			),
