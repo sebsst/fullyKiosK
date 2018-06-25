@@ -2,6 +2,10 @@
 
 En cas d'absence de note dans ce chapitre, les mises à jour ne concernent que la doc et des corrections mineures
 
+## 25/06/2018
+- possibilité d'ajouter de nouvelles commandes 
+- widget légèrement revu (affichage de la batterie en entête)
+
 ## 22/06/2018
 - description des commandes en français
 - autocomplete des paramètres possible 
