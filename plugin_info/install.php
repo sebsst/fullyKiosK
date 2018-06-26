@@ -30,14 +30,7 @@ function fullyKiosK_update() {
         { $eqpt->setConfiguration('refreshDelay', '15');
           $eqpt->save();
         }
-      // add actions if missing
-         worxLandroidS::newAction($eqpt,'off_today',$commandIn,"off_today",'other');
-         worxLandroidS::newAction($eqpt,'on_today',$commandIn,"on_today",'other');
-         worxLandroidS::newAction($eqpt,'rain_delay_0',$commandIn,"0",'other');
-         worxLandroidS::newAction($eqpt,'rain_delay_30',$commandIn,"30",'other');
-         worxLandroidS::newAction($eqpt,'rain_delay_60',$commandIn,"60",'other');
-         worxLandroidS::newAction($eqpt,'rain_delay_120',$commandIn,"120",'other');
-         worxLandroidS::newAction($eqpt,'rain_delay_240',$commandIn,"240",'other');
+        fullyKiosK->setConfiguration('functionality::cronHourly::enable','');
  
     }
   
