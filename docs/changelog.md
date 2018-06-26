@@ -1,6 +1,8 @@
 # Changelog
 
 En cas d'absence de note dans ce chapitre, les mises à jour ne concernent que la doc et des corrections mineures
+## 27/06/2018
+- possibilité de choisir le délai de rafraîchissement des données 
 
 ## 25/06/2018
 - possibilité d'ajouter de nouvelles commandes 
