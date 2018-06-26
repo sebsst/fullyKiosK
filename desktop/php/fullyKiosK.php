@@ -110,10 +110,10 @@ $eqLogics = eqLogic::byType($plugin->getId());
 						<label class="col-sm-3 control-label">{{Délai de rafraîchissement en minutes}}</label>
 						<div class="col-sm-3">
 						<select id="sel_object" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="refreshDelay">
-							<option value="15">{{15}}</option>
+
 							<option value="1">{{1}}</option>
 							<option value="5">{{5}}</option>
-						
+							<option value="15">{{15}}</option>						
 							<option value="30">{{30}}</option>
 							<option value="60">{{60}}</option>
 
