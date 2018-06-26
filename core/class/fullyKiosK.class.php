@@ -584,7 +584,20 @@ class fullyKiosK extends eqLogic {
 	}
 
 	public static function cron() {
-
+		foreach (eqLogic::byType('fullyKiosK') as $fullyKiosK)
+		{
+			if($fullyKiosK->getConfiguration('refreshDelay')=='1'){ 
+		
+				$fullyKiosK->getInformations();
+				$mc = cache::byKey('fullyKiosKWidgetmobile' . $fullyKiosK->getId());
+				$mc->remove();
+				$mc = cache::byKey('fullyKiosKWidgetdashboard' . $fullyKiosK->getId());
+				$mc->remove();
+				$fullyKiosK->toHtml('mobile');
+				$fullyKiosK->toHtml('dashboard');
+				$fullyKiosK->refreshWidget(); 
+		        } 
+		}
 	}
 
 	/*
@@ -594,22 +607,76 @@ class fullyKiosK extends eqLogic {
 	}
 	*/
 
-
+	//* Fonction exécutée automatiquement tous les jours par Jeedom
+	public static function cron5() {
+		foreach (eqLogic::byType('fullyKiosK') as $fullyKiosK)
+		{
+			if($fullyKiosK->getConfiguration('refreshDelay')=='5'){ 
+		
+				$fullyKiosK->getInformations();
+				$mc = cache::byKey('fullyKiosKWidgetmobile' . $fullyKiosK->getId());
+				$mc->remove();
+				$mc = cache::byKey('fullyKiosKWidgetdashboard' . $fullyKiosK->getId());
+				$mc->remove();
+				$fullyKiosK->toHtml('mobile');
+				$fullyKiosK->toHtml('dashboard');
+				$fullyKiosK->refreshWidget(); 
+		        } 
+		}
+	}
+	
+	//* Fonction exécutée automatiquement tous les jours par Jeedom
+	public static function cron30() {
+		foreach (eqLogic::byType('fullyKiosK') as $fullyKiosK)
+		{
+			if($fullyKiosK->getConfiguration('refreshDelay')=='30'){ 
+		
+				$fullyKiosK->getInformations();
+				$mc = cache::byKey('fullyKiosKWidgetmobile' . $fullyKiosK->getId());
+				$mc->remove();
+				$mc = cache::byKey('fullyKiosKWidgetdashboard' . $fullyKiosK->getId());
+				$mc->remove();
+				$fullyKiosK->toHtml('mobile');
+				$fullyKiosK->toHtml('dashboard');
+				$fullyKiosK->refreshWidget(); 
+		        } 
+		}
+	}	
+	//* Fonction exécutée automatiquement tous les jours par Jeedom
+	public static function cronHourly() {
+		foreach (eqLogic::byType('fullyKiosK') as $fullyKiosK)
+		{
+			if($fullyKiosK->getConfiguration('refreshDelay')=='60'){ 
+		
+				$fullyKiosK->getInformations();
+				$mc = cache::byKey('fullyKiosKWidgetmobile' . $fullyKiosK->getId());
+				$mc->remove();
+				$mc = cache::byKey('fullyKiosKWidgetdashboard' . $fullyKiosK->getId());
+				$mc->remove();
+				$fullyKiosK->toHtml('mobile');
+				$fullyKiosK->toHtml('dashboard');
+				$fullyKiosK->refreshWidget(); 
+		        } 
+		}
+	}	
+	
 	//* Fonction exécutée automatiquement tous les jours par Jeedom
 	public static function cron15() {
 		foreach (eqLogic::byType('fullyKiosK') as $fullyKiosK)
 		{
-			$fullyKiosK->getInformations();
-			$mc = cache::byKey('fullyKiosKWidgetmobile' . $fullyKiosK->getId());
-			$mc->remove();
-			$mc = cache::byKey('fullyKiosKWidgetdashboard' . $fullyKiosK->getId());
-			$mc->remove();
-			$fullyKiosK->toHtml('mobile');
-			$fullyKiosK->toHtml('dashboard');
-			$fullyKiosK->refreshWidget();
+			if($fullyKiosK->getConfiguration('refreshDelay')=='15'){ 
+		
+				$fullyKiosK->getInformations();
+				$mc = cache::byKey('fullyKiosKWidgetmobile' . $fullyKiosK->getId());
+				$mc->remove();
+				$mc = cache::byKey('fullyKiosKWidgetdashboard' . $fullyKiosK->getId());
+				$mc->remove();
+				$fullyKiosK->toHtml('mobile');
+				$fullyKiosK->toHtml('dashboard');
+				$fullyKiosK->refreshWidget(); 
+		        } 
 		}
 	}
-
 
 	/*     * *********************Méthodes d'instance************************* */
 
