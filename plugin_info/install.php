@@ -26,7 +26,7 @@ function fullyKiosK_install() {
 function fullyKiosK_update() {
 
       foreach (eqLogic::byType('fullyKiosK', false) as $eqpt) {
-        if( $eqpt->getConfiguration('refreshDelay','15') == '')
+        if( $eqpt->getConfiguration('refreshDelay') == '15')
         { $eqpt->setConfiguration('refreshDelay', '30');
           $eqpt->save();
         }
