@@ -19,11 +19,21 @@
 require_once dirname(__FILE__) . '/../../../core/php/core.inc.php';
 
 function fullyKiosK_install() {
+  
 
 }
 
 function fullyKiosK_update() {
 
+      foreach (eqLogic::byType('fullyKiosK', false) as $eqpt) {
+        if( $eqpt->getConfiguration('refreshDelay', '') == '')
+        { $eqpt->setConfiguration('refreshDelay', '15');
+          $eqpt->save();
+        }
+
+ 
+    }
+  
 }
 
 

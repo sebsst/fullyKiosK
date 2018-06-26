@@ -345,7 +345,7 @@ class fullyKiosK extends eqLogic {
 				'type' => 'info',
 				'icon' => '<i class="fa jeedom-batterie2"></i>',
 				'subtype' => 'numeric',
-				'isvisible' => false,
+				'isvisible' => true,
 				'unite' => '%',
 				'restkey' => 'batteryLevel',
 
@@ -584,7 +584,23 @@ class fullyKiosK extends eqLogic {
 	}
 
 	public static function cron() {
-
+		$notfound = true;
+		foreach (eqLogic::byType('fullyKiosK') as $fullyKiosK)
+		{
+			if($fullyKiosK->getConfiguration('refreshDelay')=='1'){ 
+		                $notfound = false;
+				$fullyKiosK->getInformations();
+				$mc = cache::byKey('fullyKiosKWidgetmobile' . $fullyKiosK->getId());
+				$mc->remove();
+				$mc = cache::byKey('fullyKiosKWidgetdashboard' . $fullyKiosK->getId());
+				$mc->remove();
+				$fullyKiosK->toHtml('mobile');
+				$fullyKiosK->toHtml('dashboard');
+				$fullyKiosK->refreshWidget(); 
+		        } 
+		}
+		if($notfound){ config::save('functionality::cron::enable', 0 ,'fullyKiosK'); }
+		
 	}
 
 	/*
@@ -594,22 +610,87 @@ class fullyKiosK extends eqLogic {
 	}
 	*/
 
-
 	//* Fonction exécutée automatiquement tous les jours par Jeedom
-	public static function cron15() {
+	public static function cron5() {
+		$notfound = true;
 		foreach (eqLogic::byType('fullyKiosK') as $fullyKiosK)
 		{
-			$fullyKiosK->getInformations();
-			$mc = cache::byKey('fullyKiosKWidgetmobile' . $fullyKiosK->getId());
-			$mc->remove();
-			$mc = cache::byKey('fullyKiosKWidgetdashboard' . $fullyKiosK->getId());
-			$mc->remove();
-			$fullyKiosK->toHtml('mobile');
-			$fullyKiosK->toHtml('dashboard');
-			$fullyKiosK->refreshWidget();
+			if($fullyKiosK->getConfiguration('refreshDelay')=='5'){ 
+				$found = false;
+				$fullyKiosK->getInformations();
+				$mc = cache::byKey('fullyKiosKWidgetmobile' . $fullyKiosK->getId());
+				$mc->remove();
+				$mc = cache::byKey('fullyKiosKWidgetdashboard' . $fullyKiosK->getId());
+				$mc->remove();
+				$fullyKiosK->toHtml('mobile');
+				$fullyKiosK->toHtml('dashboard');
+				$fullyKiosK->refreshWidget(); 
+		        } 
 		}
+		if($notfound){ config::save('functionality::cron5::enable', 0 ,'fullyKiosK'); }
 	}
+	
+	//* Fonction exécutée automatiquement tous les jours par Jeedom
+	public static function cron30() {
+                $notfound = true;
+		foreach (eqLogic::byType('fullyKiosK') as $fullyKiosK)
+		{  
+			if($fullyKiosK->getConfiguration('refreshDelay')=='30'){ 
+		                $notfound = false;
+				$fullyKiosK->getInformations();
+				$mc = cache::byKey('fullyKiosKWidgetmobile' . $fullyKiosK->getId());
+				$mc->remove();
+				$mc = cache::byKey('fullyKiosKWidgetdashboard' . $fullyKiosK->getId());
+				$mc->remove();
+				$fullyKiosK->toHtml('mobile');
+				$fullyKiosK->toHtml('dashboard');
+				$fullyKiosK->refreshWidget(); 
+		        } 
+		}
+		if($notfound){ config::save('functionality::cron30::enable', 0 ,'fullyKiosK'); }
 
+	}	
+	//* Fonction exécutée automatiquement tous les jours par Jeedom
+	public static function cronHourly() {
+		$notfound = true;
+		foreach (eqLogic::byType('fullyKiosK') as $fullyKiosK)
+		{
+			if($fullyKiosK->getConfiguration('refreshDelay')=='60'){ 
+		                $notfound = false;
+				$fullyKiosK->getInformations();
+				$mc = cache::byKey('fullyKiosKWidgetmobile' . $fullyKiosK->getId());
+				$mc->remove();
+				$mc = cache::byKey('fullyKiosKWidgetdashboard' . $fullyKiosK->getId());
+				$mc->remove();
+				$fullyKiosK->toHtml('mobile');
+				$fullyKiosK->toHtml('dashboard');
+				$fullyKiosK->refreshWidget(); 
+		        } 
+		}
+		if($notfound){ config::save('functionality::cronHourly::enable', 0 ,'fullyKiosK'); }
+
+	}	
+	
+	//* Fonction exécutée automatiquement tous les jours par Jeedom
+	public static function cron15() {
+		$notfound = true;
+		foreach (eqLogic::byType('fullyKiosK') as $fullyKiosK)
+		{
+			if($fullyKiosK->getConfiguration('refreshDelay')=='15'){ 
+		                $notfound = false;
+				$fullyKiosK->getInformations();
+				$mc = cache::byKey('fullyKiosKWidgetmobile' . $fullyKiosK->getId());
+				$mc->remove();
+				$mc = cache::byKey('fullyKiosKWidgetdashboard' . $fullyKiosK->getId());
+				$mc->remove();
+				$fullyKiosK->toHtml('mobile');
+				$fullyKiosK->toHtml('dashboard');
+				$fullyKiosK->refreshWidget(); 
+		        } 
+		}
+		if($notfound){ config::save('functionality::cron15::enable', 0 ,'fullyKiosK');}
+		
+	}
 
 	/*     * *********************Méthodes d'instance************************* */
 
@@ -692,7 +773,15 @@ class fullyKiosK extends eqLogic {
 	public function postSave() {
 		self::initInfosMap();
 		$order = 0;
-
+                
+		switch ($this->getConfiguration('refreshDelay','')){
+			case '1' : config::save('functionality::cron1::enable', 1 ,'fullyKiosK'); break;
+ 			case '5' : config::save('functionality::cron5::enable', 1 ,'fullyKiosK'); break;
+ 			case '15' : config::save('functionality::cron15::enable', 1 ,'fullyKiosK'); break;
+ 			case '30' : config::save('functionality::cron30::enable', 1 ,'fullyKiosK'); break;
+ 			case '60' : config::save('functionality::cronHourly::enable', 1 ,'fullyKiosK'); break;
+ 		 }
+		
 		//Cmd Infos
 		foreach(self::$_infosMap as $cmdLogicalId=>$params)
 		{
@@ -792,6 +881,7 @@ class fullyKiosK extends eqLogic {
 		            $replace['#' . $cmd->getLogicalId() . '_id#'] = $cmd->getId();
             	            $replace['#' . $cmd->getLogicalId() . '#'] = $cmd->execCmd();
                             $replace['#' . $cmd->getLogicalId() . '_collect#'] = $cmd->getCollectDate();
+				continue;
 			}
 			if($cmd->getLogicalId() == 'plugged'){
 			    if($cmd->execCmd()){ 	
