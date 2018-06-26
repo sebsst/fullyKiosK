@@ -25,15 +25,16 @@ function fullyKiosK_install() {
 
 function fullyKiosK_update() {
 
+          config::save('functionality::cron5::enable', 0, 'fullyKiosK');
+        config::save('functionality::cron::enable', 0 , 'fullyKiosK');
+        config::save('functionality::cronHourly::enable', 0 , 'fullyKiosK');
       foreach (eqLogic::byType('fullyKiosK', false) as $eqpt) {
         if( $eqpt->getConfiguration('refreshDelay','') == '')
         { $eqpt->setConfiguration('refreshDelay', '15');
           $eqpt->save();
           fullyKiosK->setConfiguration('functionality::cron15::enable', '1');
         }
-        config::save('functionality::cron5::enable', 0, 'fullyKiosK');
-        config::save('functionality::cron::enable', 0 , 'fullyKiosK');
-        config::save('functionality::cronHourly::enable', 0 , 'fullyKiosK');
+
  
     }
   
