@@ -31,9 +31,9 @@ function fullyKiosK_update() {
           $eqpt->save();
           fullyKiosK->setConfiguration('functionality::cron15::enable', '1');
         }
-        fullyKiosK->setConfiguration('functionality::cron5::enable','');
-        fullyKiosK->setConfiguration('functionality::cron::enable','');
-        fullyKiosK->setConfiguration('functionality::cronHourly::enable','');
+        config::save('functionality::cron5::enable','', 'fullyKiosK');
+        config::save('functionality::cron::enable','', 'fullyKiosK');
+        config::save('functionality::cronHourly::enable','', 'fullyKiosK');
  
     }
   
