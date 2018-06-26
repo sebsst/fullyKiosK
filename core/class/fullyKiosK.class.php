@@ -598,6 +598,7 @@ class fullyKiosK extends eqLogic {
 				$fullyKiosK->refreshWidget(); 
 		        } 
 		}
+		 config::save('functionality::cron::enable', 0 ,'fullyKiosK');
 	}
 
 	/*
