@@ -29,7 +29,10 @@ function fullyKiosK_update() {
         if( $eqpt->getConfiguration('refreshDelay','') == '')
         { $eqpt->setConfiguration('refreshDelay', '15');
           $eqpt->save();
+          fullyKiosK->setConfiguration('functionality::cron15::enable', '1');
         }
+        fullyKiosK->setConfiguration('functionality::cron5::enable','');
+        fullyKiosK->setConfiguration('functionality::cron::enable','');
         fullyKiosK->setConfiguration('functionality::cronHourly::enable','');
  
     }
