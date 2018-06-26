@@ -106,8 +106,9 @@ $eqLogics = eqLogic::byType($plugin->getId());
 						</div>
 					</div>
 					<div class="form-group">
-						<div class="col-sm-3">
+
 						<label class="col-sm-3 control-label">{{Délai de rafraîchissement}}</label>
+						<div class="col-sm-3">
 						<select id="sel_object" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="refreshDelay">
 							<option value="">{{1}}</option>
 							<option value="">{{5}}</option>
