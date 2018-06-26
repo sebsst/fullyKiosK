@@ -773,15 +773,15 @@ class fullyKiosK extends eqLogic {
 	public function postSave() {
 		self::initInfosMap();
 		$order = 0;
-                /*
-		switch($this->getConfiguration('refreshDelay','15'){
-			case '1' : config::save('functionality::cron1::enable', 1 ,'fullyKiosK'); 
- 			case '5' : config::save('functionality::cron5::enable', 1 ,'fullyKiosK'); 
- 			case '15' : config::save('functionality::cron15::enable', 1 ,'fullyKiosK'); 
- 			case '30' : config::save('functionality::cron30::enable', 1 ,'fullyKiosK'); 
- 			case '60' : config::save('functionality::cronHourly::enable', 1 ,'fullyKiosK'); 
+                
+		switch ($this->getConfiguration('refreshDelay','')){
+			case '1' : config::save('functionality::cron1::enable', 1 ,'fullyKiosK'); break;
+ 			case '5' : config::save('functionality::cron5::enable', 1 ,'fullyKiosK'); break;
+ 			case '15' : config::save('functionality::cron15::enable', 1 ,'fullyKiosK'); break;
+ 			case '30' : config::save('functionality::cron30::enable', 1 ,'fullyKiosK'); break;
+ 			case '60' : config::save('functionality::cronHourly::enable', 1 ,'fullyKiosK'); break;
  		 }
-		*/
+		
 		//Cmd Infos
 		foreach(self::$_infosMap as $cmdLogicalId=>$params)
 		{
