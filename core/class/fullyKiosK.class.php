@@ -881,6 +881,7 @@ class fullyKiosK extends eqLogic {
 		            $replace['#' . $cmd->getLogicalId() . '_id#'] = $cmd->getId();
             	            $replace['#' . $cmd->getLogicalId() . '#'] = $cmd->execCmd();
                             $replace['#' . $cmd->getLogicalId() . '_collect#'] = $cmd->getCollectDate();
+				continue;
 			}
 			if($cmd->getLogicalId() == 'plugged'){
 			    if($cmd->execCmd()){ 	
