@@ -625,7 +625,7 @@ class fullyKiosK extends eqLogic {
 				$fullyKiosK->refreshWidget(); 
 		        } 
 		}
-		if($notfound){ config::save('functionality::cron5::enable', 0 ,'fullyKiosK');};
+		if($notfound){ config::save('functionality::cron5::enable', 0 ,'fullyKiosK'); }
 	}
 	
 	//* Fonction exécutée automatiquement tous les jours par Jeedom
@@ -645,7 +645,7 @@ class fullyKiosK extends eqLogic {
 				$fullyKiosK->refreshWidget(); 
 		        } 
 		}
-		if($notfound){ config::save('functionality::cron30::enable', 0 ,'fullyKiosK');};
+		if($notfound){ config::save('functionality::cron30::enable', 0 ,'fullyKiosK'); }
 
 	}	
 	//* Fonction exécutée automatiquement tous les jours par Jeedom
@@ -665,7 +665,7 @@ class fullyKiosK extends eqLogic {
 				$fullyKiosK->refreshWidget(); 
 		        } 
 		}
-		if($notfound){ config::save('functionality::cron60::enable', 0 ,'fullyKiosK');};
+		if($notfound){ config::save('functionality::cronHourly::enable', 0 ,'fullyKiosK'); }
 
 	}	
 	
@@ -772,12 +772,12 @@ class fullyKiosK extends eqLogic {
 		self::initInfosMap();
 		$order = 0;
                 
-		switch($this->getConfiguration('refreshDelay'){
-			case '1' : config::save('functionality::cron1::enable', 1 ,'fullyKiosK'); break;
- 			case '5' : config::save('functionality::cron5::enable', 1 ,'fullyKiosK'); break;
- 			case '15' : config::save('functionality::cron15::enable', 1 ,'fullyKiosK'); break;
- 			case '30' : config::save('functionality::cron30::enable', 1 ,'fullyKiosK'); break;
- 			case '60' : config::save('functionality::cronHourly::enable', 1 ,'fullyKiosK'); break;
+		switch($this->getConfiguration('refreshDelay','15'){
+			case '1' : config::save('functionality::cron1::enable', 1 ,'fullyKiosK'); 
+ 			case '5' : config::save('functionality::cron5::enable', 1 ,'fullyKiosK'); 
+ 			case '15' : config::save('functionality::cron15::enable', 1 ,'fullyKiosK'); 
+ 			case '30' : config::save('functionality::cron30::enable', 1 ,'fullyKiosK'); 
+ 			case '60' : config::save('functionality::cronHourly::enable', 1 ,'fullyKiosK'); 
  		 }
 		
 		//Cmd Infos
