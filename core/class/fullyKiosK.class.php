@@ -134,7 +134,15 @@ class fullyKiosK extends eqLogic {
 				'title_disable' => true,
 
 			),
-	
+		
+			'loadTabX' => array(
+				'name' => __('Charger onglet',__FILE__),
+				'cmd' => "focusTabByIndex&index='#listValue#'",
+				'subtype' => 'message',
+				'listValue' => array('a|0','b|1'),
+				'//title_disable' => true,
+
+			),
 			
 			'textToSpeech' => array(
 				'name' => __('Envoyer TTS',__FILE__),
@@ -857,6 +865,8 @@ class fullyKiosK extends eqLogic {
 				$fullyKiosKCmd->setIsVisible($params['isvisible'] ?: true);
 
 				$fullyKiosKCmd->setConfiguration('cmd', $params['cmd'] ?: null);
+
+				$fullyKiosKCmd->setConfiguration('listValue', json_encode($params['listValue']) ?: null);
 
 				$fullyKiosKCmd->setDisplay('forceReturnLineBefore', $params['forceReturnLineBefore'] ?: false);
 	                        $fullyKiosKCmd->setDisplay('title_disable', $params['title_disable'] ?: false);
