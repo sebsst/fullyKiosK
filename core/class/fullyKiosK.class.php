@@ -128,7 +128,7 @@ class fullyKiosK extends eqLogic {
 			),
 	
 			'loadTab' => array(
-				'name' => __('Charger onglet',__FILE__),
+				'name' => __('Charger onglet N°',__FILE__),
 				'cmd' => "focusTabByIndex&index='#message#'",
 				'subtype' => 'message',
 				'title_disable' => true,
@@ -136,7 +136,7 @@ class fullyKiosK extends eqLogic {
 			),
 		
 			'loadTabX' => array(
-				'name' => __('Charger ongletX',__FILE__),
+				'name' => __('Charg ongletX',__FILE__),
 				'cmd' => "focusTabByIndex&index='#listValue#'",
 				'subtype' => 'message',
 				'listValue' => array('a|0','b|1'),
