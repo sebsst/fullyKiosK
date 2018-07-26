@@ -135,25 +135,20 @@ class fullyKiosK extends eqLogic {
 
 			),
 		
-			'loadTabX' => array(
-				'name' => __('Charg ongletX',__FILE__),
-				'cmd' => "focusTabByIndex&index='#listValue#'",
-				'subtype' => 'message',
-				'listValue' => array('a|0','b|1'),
-				'//title_disable' => true,
-
-			),
 			
 			'textToSpeech' => array(
 				'name' => __('Envoyer TTS',__FILE__),
 				'cmd' => "textToSpeech&text='#message#'",
 				'subtype' => 'message',
+				'message_placeholder' => __('Message à envoyer',__FILE__),
 				'title_disable' => true,
 
 			),
 	
 			'setBooleanSetting' => array(
 				'name' => __('Paramètre true/false',__FILE__),
+				'title_placeholder' => __('Choisir paramètre',__FILE__),
+				'message_placeholder' => __('true ou false',__FILE__),	
 				'cmd' => "setBooleanSetting&key=#title#&value=#message#",
 				'title_possibility_list' => array(
                                  'setRemoveSystemUI',
@@ -870,6 +865,9 @@ class fullyKiosK extends eqLogic {
 
 				$fullyKiosKCmd->setDisplay('forceReturnLineBefore', $params['forceReturnLineBefore'] ?: false);
 	                        $fullyKiosKCmd->setDisplay('title_disable', $params['title_disable'] ?: false);
+	                        $fullyKiosKCmd->setDisplay('title_placeholder', $params['title_placeholder'] ?: false);
+			        $fullyKiosKCmd->setDisplay('message_placeholder', $params['message_placeholder'] ?: false);
+
 				$fullyKiosKCmd->setDisplay('title_possibility_list', json_encode($params['title_possibility_list'] ?: null));//json_encode(array("1","2"));
 				$fullyKiosKCmd->setDisplay('icon', $params['icon'] ?: null);
 
