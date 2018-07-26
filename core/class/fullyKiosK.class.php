@@ -108,6 +108,7 @@ class fullyKiosK extends eqLogic {
 			'javascript' => array(
 				'name' => __('Commande javascript',__FILE__),
 				'cmd' => 'loadURL&url=javascript:#message#',
+				'message_placeholder' => 'exemple: fully.textToSpeech("blab bla bla")',
 				'subtype' => 'message',
 				'title_disable' => true,
 			),			
@@ -130,6 +131,7 @@ class fullyKiosK extends eqLogic {
 			'loadTab' => array(
 				'name' => __('Charger onglet N°',__FILE__),
 				'cmd' => "focusTabByIndex&index='#message#'",
+				'message_placeholder => '0 = premier onglet',
 				'subtype' => 'message',
 				'title_disable' => true,
 
