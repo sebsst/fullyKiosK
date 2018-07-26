@@ -104,6 +104,12 @@ class fullyKiosK extends eqLogic {
 				'name' => __("Basculer vers fully",__FILE__),
 				'isvisible' => false,				
 				'cmd' => 'toForeground',
+			),
+			'javascript' => array(
+				'name' => __('Commande javascript',__FILE__),
+				'cmd' => 'loadURL&url=javascript:#message#',
+				'subtype' => 'message',
+				'title_disable' => true,
 			),			
 			'loadURL' => array(
 				'name' => __('Charger URL',__FILE__),
@@ -121,6 +127,15 @@ class fullyKiosK extends eqLogic {
 
 			),
 	
+			'loadTab' => array(
+				'name' => __('Charger onglet',__FILE__),
+				'cmd' => "focusTabByIndex&index='#message#'",
+				'subtype' => 'message',
+				'title_disable' => true,
+
+			),
+	
+			
 			'textToSpeech' => array(
 				'name' => __('Envoyer TTS',__FILE__),
 				'cmd' => "textToSpeech&text='#message#'",
@@ -413,7 +428,15 @@ class fullyKiosK extends eqLogic {
 				'isvisible' => false,
 				'restkey' => 'totalUsedMemory',
 
-			),	 				
+			),
+			'currentTabIndex' => array(
+				'name' => __('onglet Actuel',__FILE__),
+				'type' => 'info',
+				'subtype' => 'numeric',
+				'isvisible' => false,
+				'restkey' => 'currentTabIndex',
+
+			),			
 			'plugged' => array(
 				'name' => __('Branché',__FILE__),
 				'type' => 'info',
