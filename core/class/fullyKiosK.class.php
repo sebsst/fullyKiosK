@@ -130,7 +130,7 @@ class fullyKiosK extends eqLogic {
 	
 			'loadTab' => array(
 				'name' => __('Charger onglet N°',__FILE__),
-				'cmd' => "focusTabByIndex&index='#message#'",
+				'cmd' => "focusTabByIndex&index=#message#",
 				'message_placeholder' => '0 = premier onglet',
 				'subtype' => 'message',
 				'title_disable' => true,
