@@ -50,6 +50,11 @@ class fullyKiosK extends eqLogic {
 				'name' => __('Eteindre écran',__FILE__),
 				'cmd' => 'screenOff',
 			),
+			'screenOff2' => array(
+				'name' => __('Eteindre écran',__FILE__),
+				'cmd' => 'screenOff2',
+				'icon' => 'animal-animal',
+			),
 			'clearCache' => array(
 				'name' => __('Vider cache',__FILE__),
 				'cmd' => 'clearCache',
@@ -868,6 +873,8 @@ class fullyKiosK extends eqLogic {
 				$fullyKiosKCmd->setDisplay('forceReturnLineBefore', $params['forceReturnLineBefore'] ?: false);
 	                        $fullyKiosKCmd->setDisplay('title_disable', $params['title_disable'] ?: false);
 	                        $fullyKiosKCmd->setDisplay('title_placeholder', $params['title_placeholder'] ?: false);
+				$fullyKiosKCmd->setDisplay('icon', $params['icon'] ?: false);
+				
 			        $fullyKiosKCmd->setDisplay('message_placeholder', $params['message_placeholder'] ?: false);
 
 				$fullyKiosKCmd->setDisplay('title_possibility_list', json_encode($params['title_possibility_list'] ?: null));//json_encode(array("1","2"));
