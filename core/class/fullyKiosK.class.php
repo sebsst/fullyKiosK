@@ -51,7 +51,7 @@ class fullyKiosK extends eqLogic {
 				'cmd' => 'screenOff',
 			),
 			'screenOff2' => array(
-				'name' => __('Eteindre écran',__FILE__),
+				'name' => __('Eteindre écran2',__FILE__),
 				'cmd' => 'screenOff2',
 				'icon' => 'animal-animal',
 			),
