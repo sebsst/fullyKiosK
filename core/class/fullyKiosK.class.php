@@ -955,6 +955,7 @@ class fullyKiosK extends eqLogic {
 		$replace['#cmd#'] = $cmd_html;
 		$replace['#ipaddress#'] = $ip;
 		$replace['#password#'] = $password;
+		$replace['width: 146px'] = 'width: 356px';
 		return template_replace($replace, getTemplate('core', $version, 'fullyKiosK', 'fullyKiosK'));
 	}
 
