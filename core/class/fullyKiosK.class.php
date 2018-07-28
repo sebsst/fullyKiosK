@@ -113,7 +113,7 @@ class fullyKiosK extends eqLogic {
 			'javascript' => array(
 				'name' => __('Commande javascript',__FILE__),
 				'cmd' => 'loadURL&url=javascript:#message#',
-				'message_placeholder' => 'exemple: fully.textToSpeech("blab bla bla")',
+				'message_placeholder' => "exemple: fully.textToSpeech('blab bla bla')",
 				'subtype' => 'message',
 				'title_disable' => true,
 			),			
