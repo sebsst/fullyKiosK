@@ -116,7 +116,26 @@ class fullyKiosK extends eqLogic {
 				'message_placeholder' => "exemple: fully.textToSpeech('blab bla bla')",
 				'subtype' => 'message',
 				'title_disable' => true,
-			),			
+			),	
+			'TTS_javascript' => array(
+				'name' => __('TTS javascript',__FILE__),
+				'cmd' => "loadURL&url=javascript:fully.textToSpeech('#message#','#title#')",
+				'message_placeholder' => "Message à envoyer",
+				'title_placeholder' => "fr_FR",
+				'subtype' => 'message',
+				'title_possibility_list' => array(
+                                 'fr_FR',
+                                 'en_EN',
+                                 'es_ES',
+			         'de_DE',)
+					
+				//'title_disable' => true,
+			),	
+			
+			
+
+			
+			
 			'loadURL' => array(
 				'name' => __('Charger URL',__FILE__),
 				'cmd' => 'loadURL&url=#message#',
@@ -753,7 +772,7 @@ class fullyKiosK extends eqLogic {
 				$ip = $this->getConfiguration('addressip');
 				$password = $this->getConfiguration('password');
 
-				$url = "http://{$ip}:2323/?type=json&cmd=deviceInfo";
+				$url = "http://{$ip}:2323/?type=json&cmd=deviceInfo&password=".$password;
 				log::add('fullyKiosK', 'debug', __METHOD__.' '.__LINE__.' requesting '.$url);
 
 				//$jsondata = file_get_contents($url);
