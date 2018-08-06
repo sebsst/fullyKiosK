@@ -1187,7 +1187,7 @@ class fullyKiosKCmd extends cmd {
 					
 					if($this->getName() == 'TTS_javascript'){
 						   $cmdval = str_replace('#title#',$_options['title'],$cmdval);
-						   $cmdval = str_replace('#message#',$_options['message'],$cmdval);
+						   $cmdval = str_replace('#message#',str_replac("'","\'",$_options['message']),$cmdval);
 					}
 					
 					if($this->getName() == 'javascript'){
