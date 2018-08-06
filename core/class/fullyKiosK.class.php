@@ -110,18 +110,6 @@ class fullyKiosK extends eqLogic {
 				'isvisible' => false,				
 				'cmd' => 'toForeground',
 			),
-			'javascript' => array(
-				'name' => __('Commande javascript',__FILE__),
-				'cmd' => 'loadURL&url=javascript:#message#',
-				'message_placeholder' => "exemple: fully.setStartUrl('url')",
-				'subtype' => 'message',
-				'title_disable' => true,
-			),	
-			
-			
-
-			
-			
 			'loadURL' => array(
 				'name' => __('Charger URL',__FILE__),
 				'cmd' => 'loadURL&url=#message#',
@@ -130,6 +118,13 @@ class fullyKiosK extends eqLogic {
 				'forceReturnLineBefore' => true,
 
 			),
+			'javascript' => array(
+				'name' => __('Commande javascript',__FILE__),
+				'cmd' => 'loadURL&url=javascript:#message#',
+				'message_placeholder' => "exemple: fully.setStartUrl('url')",
+				'subtype' => 'message',
+				'title_disable' => true,
+			),	
 			'startApplication' => array(
 				'name' => __('Démarrer application',__FILE__),
 				'cmd' => 'startApplication&package=#message#',
