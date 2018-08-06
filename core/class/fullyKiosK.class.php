@@ -441,7 +441,7 @@ Constant Value: 0 (0x00000000)
 	
 			'Refresh' => array(
 				'name' => 'Refresh',
-				'cmd' => 'deviceInfo&type=json',
+				'cmd' => 'deviceInfo&type=json&password=#password#',
 
 			),			
 		);
