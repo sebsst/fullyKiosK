@@ -50,11 +50,11 @@ class fullyKiosK extends eqLogic {
 				'name' => __('Eteindre écran',__FILE__),
 				'cmd' => 'screenOff',
 			),
-			'screenOff3' => array(
-				'name' => __('Eteindre écran3',__FILE__),
-				'cmd' => 'screenOff3',
-				'icon' => '<i class="icon animal-spotted1">meuuh</i>',
-			),
+			//'screenOff3' => array(
+			//	'name' => __('Eteindre écran3',__FILE__),
+			//	'cmd' => 'screenOff3',
+			//	'icon' => '<i class="icon animal-spotted1">meuuh</i>',
+			//),
 			'clearCache' => array(
 				'name' => __('Vider cache',__FILE__),
 				'cmd' => 'clearCache',
