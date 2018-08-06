@@ -876,6 +876,7 @@ Constant Value: 0 (0x00000000)
 				{
 					//log::add('fullyKiosK', 'debug',  __METHOD__.' '.__LINE__.' '.$cmdLogicalId.' => '.json_encode($json[$params['restkey']]));
 					$value = $json[$params['restkey']];
+					str_replace("\n", "\", $value);
 					if(isset($params['cbTransform']) && is_callable($params['cbTransform']))
 					{
 						$value = call_user_func($params['cbTransform'], $value);
