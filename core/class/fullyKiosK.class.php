@@ -1180,6 +1180,10 @@ class fullyKiosKCmd extends cmd {
 					$cmdval = $this->getConfiguration('cmd');
 					if($this->getSubType() == 'slider')
 						$cmdval = str_replace('[[[VALUE]]]',$_options['slider'],$cmdval);
+					
+					if($this->getName() == 'setAudioVolume'){
+						   $cmdval = str_replace('#title#',substr($_options['title'],0,2),$cmdval);
+					}
 					if($this->getSubType() == 'message') {
 						$cmdval = str_replace('#message#',urlencode($_options['message']),$cmdval);
                                                 $cmdval = str_replace('#title#',urlencode($_options['title']),$cmdval);
