@@ -1071,7 +1071,7 @@ Constant Value: 0 (0x00000000)
 		$replace['#ipaddress#'] = $ip;
 		$replace['#password#'] = $password;
 		$replace['width: 146px'] = 'width: 356px';
-		$replace['resize:vertical;'] = 'resize:vertical;resize:horizontal;';
+		$replace['resize:vertical;'] = 'resize:both;';
 
 		return template_replace($replace, getTemplate('core', $version, 'fullyKiosK', 'fullyKiosK'));
 	}
