@@ -921,6 +921,7 @@ class fullyKiosK extends eqLogic {
 		$this->getInformations();
 		
 	}
+	
 
 	public function toHtml($_version = 'dashboard') {
 		$replace = $this->preToHtml($_version);
@@ -958,7 +959,40 @@ class fullyKiosK extends eqLogic {
 				$cmd_html .= '<br/>';
 				$br_before = 1;
 			}
+	
 		}
+		foreach ($this->getCmd('action', null, true) as $cmd) {
+			if (isset($replace['#refresh_id#']) && $cmd->getId() == $replace['#refresh_id#']) {
+				continue;
+			}
+			//if (isset($replace['#batteryLevel_id#']) && $cmd->getId() == $replace['#batteryLevel_id#']) {
+			//	            $replace['#' . $cmd->getLogicalId() . '_history#'] = '';
+			if($cmd->getLogicalId() == 'batteryLevel'){
+		            $replace['#' . $cmd->getLogicalId() . '_id#'] = $cmd->getId();
+            	            $replace['#' . $cmd->getLogicalId() . '#'] = $cmd->execCmd();
+                            $replace['#' . $cmd->getLogicalId() . '_collect#'] = $cmd->getCollectDate();
+				continue;
+			}
+			if($cmd->getLogicalId() == 'plugged'){
+			    if($cmd->execCmd()){ 	
+		            $replace['#' . $cmd->getLogicalId() . '_icon#'] = 'techno-charging'; }
+		            else { $replace['#' . $cmd->getLogicalId() . '_icon#'] = 'notechno-low2'; }
+			}
+			
+			if ($br_before == 0 && $cmd->getDisplay('forceReturnLineBefore', 0) == 1) {
+				$cmd_html .= '<br/>';
+			}
+			$cmd_html .= $cmd->toHtml($_version, '', $replace['#cmd-background-color#']);
+			log::add('fullyKiosK', 'debug', ' cmdAction to html '. $cmd->toHtml($_version, '', $replace['#cmd-background-color#']));
+			$br_before = 0;
+			if ($cmd->getDisplay('forceReturnLineAfter', 0) == 1) {
+				$cmd_html .= '<br/>';
+				$br_before = 1;
+			}
+	
+		}
+
+		
 		//$eqlogic = $cmd->getEqLogic();
 		$ip = $this->getConfiguration('addressip');
 		$password = $this->getConfiguration('password');
