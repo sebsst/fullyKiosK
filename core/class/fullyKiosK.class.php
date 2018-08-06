@@ -1184,6 +1184,18 @@ class fullyKiosKCmd extends cmd {
 					if($this->getName() == 'setAudioVolume'){
 						   $cmdval = str_replace('#title#',intval(substr($_options['title'],0,2)),$cmdval);
 					}
+					
+					if($this->getName() == 'TTS_javascript'){
+						   $cmdval = str_replace('#title#',htmlspecialchars($_options['title']),$cmdval);
+						   $cmdval = str_replace('#message#',htmlspecialchars($_options['message']),$cmdval);
+					}
+					
+					if($this->getName() == 'javascript'){
+						   $cmdval = str_replace('#title#',htmlspecialchars($_options['title']),$cmdval);
+						   $cmdval = str_replace('#message#',htmlspecialchars($_options['message']),$cmdval);
+					}
+					
+					
 					if($this->getSubType() == 'message') {
 						$cmdval = str_replace('#message#',urlencode($_options['message']),$cmdval);
                                                 $cmdval = str_replace('#title#',urlencode($_options['title']),$cmdval);
