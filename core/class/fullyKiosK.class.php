@@ -112,9 +112,9 @@ class fullyKiosK extends eqLogic {
 			),
 			'loadURL' => array(
 				'name' => __('Charger URL',__FILE__),
-				'cmd' => 'loadURL&url=#message#',
+				'cmd' => 'loadURL&url=#title#',
 				'subtype' => 'message',
-				'title_disable' => true,
+				'message_disable' => true,
 				'forceReturnLineBefore' => true,
 
 			),
@@ -175,9 +175,9 @@ class fullyKiosK extends eqLogic {
 			),	
 			'startApplication' => array(
 				'name' => __('Démarrer application',__FILE__),
-				'cmd' => 'startApplication&package=#message#',
+				'cmd' => 'startApplication&package=#title#',
 				'subtype' => 'message',
-				'title_disable' => true,
+				'message_disable' => true,
 
 			),
 	
