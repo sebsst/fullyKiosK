@@ -4,6 +4,8 @@ En cas d'absence de note dans ce chapitre, les mises à jour ne concernent que l
 ## 06/08/2018
 - ajout fonctionnalité fullykiosk 1.26
 - ajout injection de code javascript
+- correction refresh values (ajout du mot de passe)
+- changement largeur input message
 
 
 ## 27/06/2018
