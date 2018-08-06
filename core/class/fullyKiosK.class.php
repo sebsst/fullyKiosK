@@ -1125,9 +1125,9 @@ Constant Value: 0 (0x00000000)
 		$replace['#cmd#'] = $cmd_html;
 		$replace['#ipaddress#'] = $ip;
 		$replace['#password#'] = $password;
-		//$replace['width: 146px'] = 'width: 356px';
+		$replace['width: 146px'] = 'width: 256px';
 		//$replace['resize:vertical;'] = 'resize:both;';
-		$replace['rows="2"'] = 'rows="1"';
+		//$replace['rows="2"'] = 'rows="1"';
 
 		return template_replace($replace, getTemplate('core', $version, 'fullyKiosK', 'fullyKiosK'));
 	}
