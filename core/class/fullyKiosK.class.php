@@ -201,7 +201,7 @@ class fullyKiosK extends eqLogic {
 			),
 			'TTS_javascript' => array(
 				'name' => __('TTS javascript',__FILE__),
-				'cmd' => "loadURL&url=javascript:fully.textToSpeech('#message#','#title#')",
+				'cmd' => 'loadURL&url=javascript:fully.textToSpeech("#message#","#title#")',
 				'message_placeholder' => "Message à envoyer",
 				'title_placeholder' => "fr_FR pour le français",
 				'subtype' => 'message',
