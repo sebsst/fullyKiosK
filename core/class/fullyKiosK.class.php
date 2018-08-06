@@ -183,20 +183,20 @@ class fullyKiosK extends eqLogic {
 	
 			'loadTab' => array(
 				'name' => __('Charger onglet N°',__FILE__),
-				'cmd' => "focusTabByIndex&index=#message#",
-				'message_placeholder' => '0 = premier onglet',
+				'cmd' => "focusTabByIndex&index=#title#",
+				'title_placeholder' => '0 = premier onglet',
 				'subtype' => 'message',
-				'title_disable' => true,
+				'message_disable' => true,
 
 			),
 		
 			
 			'textToSpeech' => array(
 				'name' => __('Envoyer TTS',__FILE__),
-				'cmd' => "textToSpeech&text='#message#'",
+				'cmd' => "textToSpeech&text='#title#'",
 				'subtype' => 'message',
-				'message_placeholder' => __('Message à envoyer',__FILE__),
-				'title_disable' => true,
+				'title_placeholder' => __('Message à envoyer',__FILE__),
+				'message_disable' => true,
 
 			),
 			'TTS_javascript' => array(
