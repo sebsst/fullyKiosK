@@ -172,7 +172,7 @@ class fullyKiosK extends eqLogic {
 			),	
 			'setAudioVolume' => array(
 				'name' => __('Changer volume tablette',__FILE__),
-				'cmd' => "setAudioVolume&level=#title#&stream=#message#",
+				'cmd' => "setAudioVolume&level=#message#&stream=#title#",
 				'subtype' => 'message',
 				'message_placeholder' => __('Volume 0-100',__FILE__),
 				'title_placeholder' => __('stream 0-10',__FILE__),
