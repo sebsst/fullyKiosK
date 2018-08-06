@@ -1182,17 +1182,17 @@ class fullyKiosKCmd extends cmd {
 						$cmdval = str_replace('[[[VALUE]]]',$_options['slider'],$cmdval);
 					
 					if($this->getName() == 'setAudioVolume'){
-						   $cmdval = str_replace('#title#',intval(substr($_options['title'],0,2)),$cmdval);
+						   $cmdval = str_replace('#title#',intval(substr($_options['title'],0,1)),$cmdval);
 					}
 					
 					if($this->getName() == 'TTS_javascript'){
-						   $cmdval = str_replace('#title#',htmlspecialchars($_options['title']),$cmdval);
-						   $cmdval = str_replace('#message#',htmlspecialchars($_options['message']),$cmdval);
+						   $cmdval = str_replace('#title#',str_replace("'","''",$_options['title']),$cmdval);
+						   $cmdval = str_replace('#message#',str_replace("'","''",$_options['message']),$cmdval);
 					}
 					
 					if($this->getName() == 'javascript'){
-						   $cmdval = str_replace('#title#',htmlspecialchars($_options['title']),$cmdval);
-						   $cmdval = str_replace('#message#',htmlspecialchars($_options['message']),$cmdval);
+						   $cmdval = str_replace('#title#',str_replace("'","''",$_options['title']),$cmdval);
+						   $cmdval = str_replace('#message#',str_replace("'","''",$_options['message']),$cmdval);
 					}
 					
 					
