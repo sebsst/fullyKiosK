@@ -113,23 +113,9 @@ class fullyKiosK extends eqLogic {
 			'javascript' => array(
 				'name' => __('Commande javascript',__FILE__),
 				'cmd' => 'loadURL&url=javascript:#message#',
-				'message_placeholder' => "exemple: fully.textToSpeech('blab bla bla')",
+				'message_placeholder' => "exemple: fully.setStartUrl('url')",
 				'subtype' => 'message',
 				'title_disable' => true,
-			),	
-			'TTS_javascript' => array(
-				'name' => __('TTS javascript',__FILE__),
-				'cmd' => "loadURL&url=javascript:fully.textToSpeech('#message#','#title#')",
-				'message_placeholder' => "Message à envoyer",
-				'title_placeholder' => "fr_FR",
-				'subtype' => 'message',
-				'title_possibility_list' => array(
-                                 'fr_FR',
-                                 'en_EN',
-                                 'es_ES',
-			         'de_DE',)
-					
-				//'title_disable' => true,
 			),	
 			
 			
@@ -170,7 +156,89 @@ class fullyKiosK extends eqLogic {
 				'title_disable' => true,
 
 			),
-	
+			'TTS_javascript' => array(
+				'name' => __('TTS javascript',__FILE__),
+				'cmd' => "loadURL&url=javascript:fully.textToSpeech('#message#','#title#')",
+				'message_placeholder' => "Message à envoyer",
+				'title_placeholder' => "fr_FR pour le français",
+				'subtype' => 'message',
+				'title_possibility_list' => array(
+                                 'fr_FR',
+                                 'en_EN',
+                                 'es_ES',
+			         'de_DE',)
+					
+				//'title_disable' => true,
+			),	
+			'setAudioVolume' => array(
+				'name' => __('Changer volume tablette',__FILE__),
+				'cmd' => "setAudioVolume&level=#title#&stream=#message#",
+				'subtype' => 'message',
+				'message_placeholder' => __('Volume 0-100',__FILE__),
+				'title_placeholder' => __('stream 0-10',__FILE__),
+/*
+
+STREAM_ACCESSIBILITY
+added in API level 26
+public static final int STREAM_ACCESSIBILITY
+Used to identify the volume of audio streams for accessibility prompts
+
+Constant Value: 10 (0x0000000a)
+
+STREAM_ALARM
+added in API level 1
+public static final int STREAM_ALARM
+Used to identify the volume of audio streams for alarms
+
+Constant Value: 4 (0x00000004)
+
+STREAM_DTMF
+added in API level 5
+public static final int STREAM_DTMF
+Used to identify the volume of audio streams for DTMF Tones
+
+Constant Value: 8 (0x00000008)
+
+STREAM_MUSIC
+added in API level 1
+public static final int STREAM_MUSIC
+Used to identify the volume of audio streams for music playback
+
+Constant Value: 3 (0x00000003)
+
+STREAM_NOTIFICATION
+added in API level 3
+public static final int STREAM_NOTIFICATION
+Used to identify the volume of audio streams for notifications
+
+Constant Value: 5 (0x00000005)
+
+STREAM_RING
+added in API level 1
+public static final int STREAM_RING
+Used to identify the volume of audio streams for the phone ring
+
+Constant Value: 2 (0x00000002)
+
+STREAM_SYSTEM
+added in API level 1
+public static final int STREAM_SYSTEM
+Used to identify the volume of audio streams for system sounds
+
+Constant Value: 1 (0x00000001)
+
+STREAM_VOICE_CALL
+added in API level 1
+public static final int STREAM_VOICE_CALL
+Used to identify the volume of audio streams for phone calls
+
+Constant Value: 0 (0x00000000)
+
+*/
+				'title_disable' => false,
+
+			),
+
 			'setBooleanSetting' => array(
 				'name' => __('Paramètre true/false',__FILE__),
 				'title_placeholder' => __('Choisir paramètre',__FILE__),
