@@ -944,8 +944,8 @@ Constant Value: 0 (0x00000000)
 		}
 	}
         public function preSave() {
-  		$this->setDisplay("width","520px");
-      		$this->setDisplay("height","510px");	
+  		$this->setDisplay("width","536px");
+      		$this->setDisplay("height","800px");	
 	}
 	public function postSave() {
 		self::initInfosMap();
