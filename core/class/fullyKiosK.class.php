@@ -219,6 +219,17 @@ class fullyKiosK extends eqLogic {
 				'subtype' => 'message',
 				'message_placeholder' => __('Volume 0-100',__FILE__),
 				'title_placeholder' => __('stream 0-10',__FILE__),
+				'title_possibility_list' => array(
+				 '0 Volume voix appel', 
+			         '1 Système',
+			         '2 Sonnerie',
+				 '3 Média',
+				 '4 Alarme',
+				 '5 Notification',
+				 '8 DMTF',
+				 '10 Accessibilité',	
+					
+				),
 /*
 
 STREAM_ACCESSIBILITY
