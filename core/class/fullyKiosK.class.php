@@ -120,7 +120,7 @@ class fullyKiosK extends eqLogic {
 			),
 			'javascript' => array(
 				'name' => __('Commande javascript',__FILE__),
-				'cmd' => 'loadURL&url=javascript:#message#',
+				'cmd' => 'loadURL&url=javascript:#title#',
 				'message_placeholder' => "exemple: fully.setStartUrl('url')",
 				'subtype' => 'message',
 				'title_possibility_list' => array(
