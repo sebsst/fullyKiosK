@@ -1182,7 +1182,7 @@ class fullyKiosKCmd extends cmd {
 					if($this->getSubType() == 'slider')
 						$cmdval = str_replace('[[[VALUE]]]',$_options['slider'],$cmdval);
 					
-					if($this->getName() == 'setAudioVolume'){
+					if($this->getLogicalId()  == 'setAudioVolume'){
 						if ($_options['title'] === ""){ $_options['title'] = 3 ; }
 						$stream[0] = '3';
 						$stream = explode(" ", $_options['title']);
@@ -1190,22 +1190,22 @@ class fullyKiosKCmd extends cmd {
 					}
 					
 
-					if($this->getName() == 'TTS javascript'){
+					if($this->getLogicalId()  == 'TTS_javascript'){
                                                    if($_options['title'] === "" ){ $_options['title'] = 'fr_FR' ;} 
 						   $cmdval = str_replace('#title#', urlencode($_options['title']),$cmdval);
 						   $cmdval = str_replace('#message#', urlencode(str_replace("'","\'", $_options['message'])),$cmdval);
                                         }
 					
-					if($this->getName() == 'javascript'){
+					if($this->getLogicalId()  == 'javascript'){
 						   $cmdval = str_replace('#title#',url_encode($_options['title']),$cmdval);
 						   $cmdval = str_replace('#message#',url_encode(str_replace("'","\'",$_options['message'])),$cmdval);
 					}
 					
 					
-					if($this->getSubType() == 'message') {
+					if($this->getLogicalId()  == 'message') {
 						$cmdval = str_replace('#message#',urlencode($_options['message']),$cmdval);
                                                 $cmdval = str_replace('#title#',urlencode($_options['title']),$cmdval);
-                                                if($this->getName() == 'setBooleanSetting')
+                                                if($this->getLogicalId()  == 'setBooleanSetting')
 						   $cmdval = str_replace('#message#',$_options['message'] === 'true',$cmdval);
 
 					}
