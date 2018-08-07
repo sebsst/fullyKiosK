@@ -33,7 +33,7 @@ function fullyKiosK_update() {
             $fullyKiosKCmd = $eqpt->getCmd('action', $cmdLogicalId);
             $fullyKiosKCmd->remove();
             $fullyKiosKCmd->save();
-		if (!is_object($fullyKiosKCmd)) {
+		if (!is_object($fullyKiosKCmd) && 1 == 2) {
 		    
 				$fullyKiosKCmd = new fullyKiosKCmd();
 
