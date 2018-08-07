@@ -963,6 +963,10 @@ Constant Value: 0 (0x00000000)
 		foreach(self::$_infosMap as $cmdLogicalId=>$params)
 		{
 			$fullyKiosKCmd = $this->getCmd('info', $cmdLogicalId);
+			if(is_object($fullyKiosKCmd) && $fullyKiosKCmd->getConfiguration('cmd','') != $params['cmd']) {
+			              $fullyKiosKCmd->remove(); 
+		        }
+			
 			if (!is_object($fullyKiosKCmd))
 			{
 				log::add('fullyKiosK', 'debug', __METHOD__.' '.__LINE__.' cmdInfo create '.$cmdLogicalId.'('.__($params['name'], __FILE__).') '.($params['subtype'] ?: 'subtypedefault'));
