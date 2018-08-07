@@ -1183,7 +1183,8 @@ class fullyKiosKCmd extends cmd {
 						$cmdval = str_replace('[[[VALUE]]]',$_options['slider'],$cmdval);
 					
 					if($this->getName() == 'setAudioVolume'){
-						if ($_options['title'] === ""){ $_options['title'] = '3' ; }
+						if ($_options['title'] === ""){ $_options['title'] = 3 ; }
+						$stream[0] = '3';
 						$stream = explode(" ", $_options['title']);
 						   $cmdval = str_replace('#title#',intval($stream[0]),$cmdval);
 					}
