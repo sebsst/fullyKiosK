@@ -29,7 +29,7 @@ function fullyKiosK_update() {
         
         foreach(fullyKiosK::$_actionMap as $cmdLogicalId => $params)
 		    {
-          log::add('fullyKiosK','debug','Suppression cmd:'.  $fullyKiosKCmd->getName());
+          log::add('fullyKiosK','info','Suppression cmd:'.  $fullyKiosKCmd->getName());
             $fullyKiosKCmd = $eqpt->getCmd('action', $cmdLogicalId);
             $fullyKiosKCmd->remove();
             $fullyKiosKCmd->save();
