@@ -9,6 +9,7 @@ En cas d'absence de note dans ce chapitre, les mises à jour ne concernent que l
 - utilisation des titres sur 1 ligne en remplacement des message sur 2 lignes si uniquement 1 paramètre nécessaire
 - gestion des onglets
 - possibilité d'envoyer des messages dans différentes langues
+- correction bug pour la fonction envoi de "settings" fullykiosk
 
 ## 27/06/2018
 - possibilité de choisir le délai de rafraîchissement des données 
