@@ -1108,7 +1108,8 @@ Constant Value: 0 (0x00000000)
 				$cmd_html .= '<br/>';
 			}
 			$cmd_html .= $cmd->toHtml($_version, '', $replace['#cmd-background-color#']);
-			log::add('fullyKiosK', 'debug', ' cmdAction to html '. $cmd->toHtml($_version, '', $replace['#cmd-background-color#']));
+			
+			//log::add('fullyKiosK', 'debug', ' cmdAction to html '. $cmd->toHtml($_version, '', $replace['#cmd-background-color#']));
 			$br_before = 0;
 			if ($cmd->getDisplay('forceReturnLineAfter', 0) == 1) {
 				$cmd_html .= '<br/>';
@@ -1182,17 +1183,21 @@ class fullyKiosKCmd extends cmd {
 						$cmdval = str_replace('[[[VALUE]]]',$_options['slider'],$cmdval);
 					
 					if($this->getName() == 'setAudioVolume'){
-						   $cmdval = str_replace('#title#',intval(substr($_options['title'],0,1)),$cmdval);
+						if ($_options['title'] === ""){ $_options['title'] = '3' ; }
+						$stream = explode(" ", $_options['title']);
+						   $cmdval = str_replace('#title#',intval($stream[0]),$cmdval);
 					}
 					
-					if($this->getName() == 'TTS_javascript'){
-						   $cmdval = str_replace('#title#', str_replace("'", "\'", $_options['title']),$cmdval);
-						   $cmdval = str_replace('#message#', str_replace("'","\'",$_options['message']),$cmdval);
-					}
+
+					if($this->getName() == 'TTS javascript'){
+                                                   if($_options['title'] === "" ){ $_options['title'] = 'fr_FR' ;} 
+						   $cmdval = str_replace('#title#', urlencode($_options['title']),$cmdval);
+						   $cmdval = str_replace('#message#', urlencode(str_replace("'","\'", $_options['message'])),$cmdval);
+                                        }
 					
 					if($this->getName() == 'javascript'){
 						   $cmdval = str_replace('#title#',url_encode($_options['title']),$cmdval);
-						   $cmdval = str_replace('#message#',url_encode($_options['message']),$cmdval);
+						   $cmdval = str_replace('#message#',url_encode(str_replace("'","\'",$_options['message'])),$cmdval);
 					}
 					
 					
