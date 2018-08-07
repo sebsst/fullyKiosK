@@ -50,6 +50,11 @@ class fullyKiosK extends eqLogic {
 				'name' => __('Eteindre écran',__FILE__),
 				'cmd' => 'screenOff',
 			),
+			//'screenOff3' => array(
+			//	'name' => __('Eteindre écran3',__FILE__),
+			//	'cmd' => 'screenOff3',
+			//	'icon' => '<i class="icon animal-spotted1">meuuh</i>',
+			//),
 			'clearCache' => array(
 				'name' => __('Vider cache',__FILE__),
 				'cmd' => 'clearCache',
@@ -104,33 +109,194 @@ class fullyKiosK extends eqLogic {
 				'name' => __("Basculer vers fully",__FILE__),
 				'isvisible' => false,				
 				'cmd' => 'toForeground',
-			),			
+			),
 			'loadURL' => array(
 				'name' => __('Charger URL',__FILE__),
-				'cmd' => 'loadURL&url=#message#',
+				'cmd' => 'loadURL&url=#title#',
 				'subtype' => 'message',
-				'title_disable' => true,
+				'message_disable' => true,
 				'forceReturnLineBefore' => true,
 
 			),
+			'javascript' => array(
+				'name' => __('Commande javascript',__FILE__),
+				'cmd' => 'loadURL&url=javascript:#title#',
+				'message_placeholder' => "exemple: fully.setStartUrl('url')",
+				'subtype' => 'message',
+				'title_possibility_list' => array(
+					'fully.turnScreenOn()',
+					'fully.turnScreenOff() ',
+					'fully.turnScreenOff(boolean keepAlive) ',
+					'fully.forceSleep()',
+					'fully.showToast(String text) ',
+					'fully.setScreenBrightness(float level)',
+					'fully.enableWifi()',
+					'fully.disableWifi()',
+					'fully.showKeyboard()',
+					'fully.hideKeyboard()',
+					'fully.openWifiSettings()',
+					'fully.openBluetoothSettings()',
+					'fully.vibrate()',
+					'fully.textToSpeech(String text)',
+					'fully.textToSpeech(String text, String locale)',
+					'fully.playVideo(String url, boolean loop, boolean showControls, boolean exitOnTouch, boolean exitOnCompletion)',
+					'fully.setAudioVolume(int level, int streamType)',
+					'fully.playSound(String url, boolean loop)',
+					'fully.stopSound()',
+					'fully.showPdf(String url) ',
+					'fully.loadStartUrl()',
+					'fully.setActionBarTitle(String text)',
+					'fully.startScreensaver()',
+					'fully.stopScreensaver()',
+					'fully.startDaydream()',
+					'fully.stopDaydream()',
+					'fully.addToHomeScreen()',
+					'fully.print()',
+					'fully.exit()',
+					'fully.restartApp()',
+					'fully.clearCache()',
+					'fully.clearFormData()',
+					'fully.clearHistory()',
+					'fully.clearCookies()',
+					'fully.clearWebstorage()',
+					'fully.focusNextTab()  ',
+					'fully.focusPrevTab()',
+					'fully.focusTabByIndex(int index)',
+					'fully.startApplication(String packageName)',
+					'fully.startApplication(String packageName, String action, String url)',
+					'fully.startIntent(String url)',
+					'fully.bringToForeground()',
+					'fully.bringToForeground(long millis)',
+					'fully.setStartUrl(String url)',
+				),
+					
+				'title_disable' => false,
+				'message_disable' => true,
+			),	
 			'startApplication' => array(
 				'name' => __('Démarrer application',__FILE__),
-				'cmd' => 'startApplication&package=#message#',
+				'cmd' => 'startApplication&package=#title#',
 				'subtype' => 'message',
-				'title_disable' => true,
+				'message_disable' => true,
 
 			),
 	
+			'loadTab' => array(
+				'name' => __('Charger onglet N°',__FILE__),
+				'cmd' => "focusTabByIndex&index=#title#",
+				'title_placeholder' => '0 = premier onglet',
+				'subtype' => 'message',
+				'message_disable' => true,
+
+			),
+		
+			
 			'textToSpeech' => array(
 				'name' => __('Envoyer TTS',__FILE__),
-				'cmd' => "textToSpeech&text='#message#'",
+				'cmd' => "textToSpeech&text='#title#'",
 				'subtype' => 'message',
-				'title_disable' => true,
+				'title_placeholder' => __('Message à envoyer',__FILE__),
+				'message_disable' => true,
 
 			),
-	
+			'TTS_javascript' => array(
+				'name' => __('TTS javascript',__FILE__),
+				'cmd' => 'loadURL&url=javascript:fully.textToSpeech("#message#","#title#")',
+				'message_placeholder' => "Message à envoyer",
+				'title_placeholder' => "fr_FR pour le français",
+				'subtype' => 'message',
+				'title_possibility_list' => array(
+                                 'fr_FR',
+                                 'en_EN',
+                                 'es_ES',
+			         'de_DE',)
+					
+				//'title_disable' => true,
+			),	
+			'setAudioVolume' => array(
+				'name' => __('Changer volume tablette',__FILE__),
+				'cmd' => "setAudioVolume&level=#message#&stream=#title#",
+				'subtype' => 'message',
+				'message_placeholder' => __('Volume 0-100',__FILE__),
+				'title_placeholder' => __('stream 0-10',__FILE__),
+				'title_possibility_list' => array(
+				 '0 Volume voix appel', 
+			         '1 Système',
+			         '2 Sonnerie',
+				 '3 Média',
+				 '4 Alarme',
+				 '5 Notification',
+				 '8 DMTF',
+				 '10 Accessibilité',	
+					
+				),
+/*
+
+STREAM_ACCESSIBILITY
+added in API level 26
+public static final int STREAM_ACCESSIBILITY
+Used to identify the volume of audio streams for accessibility prompts
+
+Constant Value: 10 (0x0000000a)
+
+STREAM_ALARM
+added in API level 1
+public static final int STREAM_ALARM
+Used to identify the volume of audio streams for alarms
+
+Constant Value: 4 (0x00000004)
+
+STREAM_DTMF
+added in API level 5
+public static final int STREAM_DTMF
+Used to identify the volume of audio streams for DTMF Tones
+
+Constant Value: 8 (0x00000008)
+
+STREAM_MUSIC
+added in API level 1
+public static final int STREAM_MUSIC
+Used to identify the volume of audio streams for music playback
+
+Constant Value: 3 (0x00000003)
+
+STREAM_NOTIFICATION
+added in API level 3
+public static final int STREAM_NOTIFICATION
+Used to identify the volume of audio streams for notifications
+
+Constant Value: 5 (0x00000005)
+
+STREAM_RING
+added in API level 1
+public static final int STREAM_RING
+Used to identify the volume of audio streams for the phone ring
+
+Constant Value: 2 (0x00000002)
+
+STREAM_SYSTEM
+added in API level 1
+public static final int STREAM_SYSTEM
+Used to identify the volume of audio streams for system sounds
+
+Constant Value: 1 (0x00000001)
+
+STREAM_VOICE_CALL
+added in API level 1
+public static final int STREAM_VOICE_CALL
+Used to identify the volume of audio streams for phone calls
+
+Constant Value: 0 (0x00000000)
+
+*/
+				'title_disable' => false,
+
+			),
+
 			'setBooleanSetting' => array(
 				'name' => __('Paramètre true/false',__FILE__),
+				'title_placeholder' => __('Choisir paramètre',__FILE__),
+				'message_placeholder' => __('true ou false',__FILE__),	
 				'cmd' => "setBooleanSetting&key=#title#&value=#message#",
 				'title_possibility_list' => array(
                                  'setRemoveSystemUI',
@@ -255,7 +421,9 @@ class fullyKiosK extends eqLogic {
 	
 			'setStringSetting' => array(
 				'name' => __('Paramètre valeur',__FILE__),
-				'cmd' => "setStringSetting&key='#message#'&value=#message#",
+				'title_placeholder' => __('Choisir paramètre',__FILE__),
+				'message_placeholder' => __('valeur',__FILE__),					
+				'cmd' => "setStringSetting&key='#title#'&value=#message#",
 				'subtype' => 'message',
 				'title_possibility_list' => array(
 				        'wifiKey',
@@ -327,7 +495,7 @@ class fullyKiosK extends eqLogic {
 	
 			'Refresh' => array(
 				'name' => 'Refresh',
-				'cmd' => 'deviceInfo&type=json',
+				'cmd' => 'deviceInfo&type=json&password=#password#',
 
 			),			
 		);
@@ -413,7 +581,15 @@ class fullyKiosK extends eqLogic {
 				'isvisible' => false,
 				'restkey' => 'totalUsedMemory',
 
-			),	 				
+			),
+			'currentTabIndex' => array(
+				'name' => __('onglet Actuel',__FILE__),
+				'type' => 'info',
+				'subtype' => 'numeric',
+				'isvisible' => false,
+				'restkey' => 'currentTabIndex',
+
+			),			
 			'plugged' => array(
 				'name' => __('Branché',__FILE__),
 				'type' => 'info',
@@ -720,7 +896,7 @@ class fullyKiosK extends eqLogic {
 				$ip = $this->getConfiguration('addressip');
 				$password = $this->getConfiguration('password');
 
-				$url = "http://{$ip}:2323/?type=json&cmd=deviceInfo";
+				$url = "http://{$ip}:2323/?type=json&cmd=deviceInfo&password=".$password;
 				log::add('fullyKiosK', 'debug', __METHOD__.' '.__LINE__.' requesting '.$url);
 
 				//$jsondata = file_get_contents($url);
@@ -754,6 +930,7 @@ class fullyKiosK extends eqLogic {
 				{
 					//log::add('fullyKiosK', 'debug',  __METHOD__.' '.__LINE__.' '.$cmdLogicalId.' => '.json_encode($json[$params['restkey']]));
 					$value = $json[$params['restkey']];
+					str_replace("\\n", " ", $value);
 					if(isset($params['cbTransform']) && is_callable($params['cbTransform']))
 					{
 						$value = call_user_func($params['cbTransform'], $value);
@@ -767,8 +944,8 @@ class fullyKiosK extends eqLogic {
 		}
 	}
         public function preSave() {
-  		$this->setDisplay("width","520px");
-      		$this->setDisplay("height","510px");	
+  		$this->setDisplay("width","536px");
+      		$this->setDisplay("height","800px");	
 	}
 	public function postSave() {
 		self::initInfosMap();
@@ -786,6 +963,7 @@ class fullyKiosK extends eqLogic {
 		foreach(self::$_infosMap as $cmdLogicalId=>$params)
 		{
 			$fullyKiosKCmd = $this->getCmd('info', $cmdLogicalId);
+			
 			if (!is_object($fullyKiosKCmd))
 			{
 				log::add('fullyKiosK', 'debug', __METHOD__.' '.__LINE__.' cmdInfo create '.$cmdLogicalId.'('.__($params['name'], __FILE__).') '.($params['subtype'] ?: 'subtypedefault'));
@@ -821,6 +999,10 @@ class fullyKiosK extends eqLogic {
 		foreach(self::$_actionMap as $cmdLogicalId => $params)
 		{
 			$fullyKiosKCmd = $this->getCmd('action', $cmdLogicalId);
+		        if(is_object($fullyKiosKCmd) && $fullyKiosKCmd->getConfiguration('cmd','') != $params['cmd']) {
+			              $fullyKiosKCmd->remove(); 
+		        }
+			
 			if (!is_object($fullyKiosKCmd))
 			{
 				log::add('fullyKiosK', 'debug', __METHOD__.' '.__LINE__.' cmdAction create '.$cmdLogicalId.'('.__($params['name'], __FILE__).') '.($params['subtype'] ?: 'subtypedefault'));
@@ -835,8 +1017,15 @@ class fullyKiosK extends eqLogic {
 
 				$fullyKiosKCmd->setConfiguration('cmd', $params['cmd'] ?: null);
 
+				$fullyKiosKCmd->setConfiguration('listValue', json_encode($params['listValue']) ?: null);
+
 				$fullyKiosKCmd->setDisplay('forceReturnLineBefore', $params['forceReturnLineBefore'] ?: false);
+	                        $fullyKiosKCmd->setDisplay('message_disable', $params['message_disable'] ?: false);
 	                        $fullyKiosKCmd->setDisplay('title_disable', $params['title_disable'] ?: false);
+				$fullyKiosKCmd->setDisplay('title_placeholder', $params['title_placeholder'] ?: false);
+				$fullyKiosKCmd->setDisplay('icon', $params['icon'] ?: false);				
+			        $fullyKiosKCmd->setDisplay('message_placeholder', $params['message_placeholder'] ?: false);
+
 				$fullyKiosKCmd->setDisplay('title_possibility_list', json_encode($params['title_possibility_list'] ?: null));//json_encode(array("1","2"));
 				$fullyKiosKCmd->setDisplay('icon', $params['icon'] ?: null);
 
@@ -852,6 +1041,26 @@ class fullyKiosK extends eqLogic {
 				$fullyKiosKCmd->save();
 			} elseif($fullyKiosKCmd->getConfiguration('cmd','') != '') {
 			  	$fullyKiosKCmd->setConfiguration('cmd', $params['cmd'] ?: null);
+				$fullyKiosKCmd->setLogicalId($cmdLogicalId);
+				$fullyKiosKCmd->setEqLogic_id($this->getId());
+				$fullyKiosKCmd->setName(__($params['name'], __FILE__));
+				$fullyKiosKCmd->setType($params['type'] ?: 'action');
+				$fullyKiosKCmd->setSubType($params['subtype'] ?: 'other');
+				$fullyKiosKCmd->setIsVisible($params['isvisible'] ?: true);
+
+				$fullyKiosKCmd->setConfiguration('cmd', $params['cmd'] ?: null);
+
+				$fullyKiosKCmd->setConfiguration('listValue', json_encode($params['listValue']) ?: null);
+
+				$fullyKiosKCmd->setDisplay('forceReturnLineBefore', $params['forceReturnLineBefore'] ?: false);
+	                        $fullyKiosKCmd->setDisplay('message_disable', $params['message_disable'] ?: false);
+	                        $fullyKiosKCmd->setDisplay('title_disable', $params['title_disable'] ?: false);
+				$fullyKiosKCmd->setDisplay('title_placeholder', $params['title_placeholder'] ?: false);
+				$fullyKiosKCmd->setDisplay('icon', $params['icon'] ?: false);				
+			        $fullyKiosKCmd->setDisplay('message_placeholder', $params['message_placeholder'] ?: false);
+
+				$fullyKiosKCmd->setDisplay('title_possibility_list', json_encode($params['title_possibility_list'] ?: null));//json_encode(array("1","2"));
+				$fullyKiosKCmd->setDisplay('icon', $params['icon'] ?: null);				
 				$fullyKiosKCmd->save();
 
 			}
@@ -862,6 +1071,7 @@ class fullyKiosK extends eqLogic {
 		$this->getInformations();
 		
 	}
+	
 
 	public function toHtml($_version = 'dashboard') {
 		$replace = $this->preToHtml($_version);
@@ -871,7 +1081,7 @@ class fullyKiosK extends eqLogic {
 		$version = jeedom::versionAlias($_version);
 		$cmd_html = '';
 		$br_before = 1;
-		foreach ($this->getCmd(null, null, true) as $cmd) {
+		foreach ($this->getCmd('info', null, true) as $cmd) {
 			if (isset($replace['#refresh_id#']) && $cmd->getId() == $replace['#refresh_id#']) {
 				continue;
 			}
@@ -887,27 +1097,53 @@ class fullyKiosK extends eqLogic {
 			    if($cmd->execCmd()){ 	
 		            $replace['#' . $cmd->getLogicalId() . '_icon#'] = 'techno-charging'; }
 		            else { $replace['#' . $cmd->getLogicalId() . '_icon#'] = 'notechno-low2'; }
-
-				    
-
 			}
-			//	continue;
-			//}
-			
-			
-			
 			
 			if ($br_before == 0 && $cmd->getDisplay('forceReturnLineBefore', 0) == 1) {
 				$cmd_html .= '<br/>';
 			}
 			$cmd_html .= $cmd->toHtml($_version, '', $replace['#cmd-background-color#']);
-			log::add('fullyKiosK', 'debug', ' cmdAction to html '. $cmd->toHtml($_version, '', $replace['#cmd-background-color#']));
+			//log::add('fullyKiosK', 'debug', ' cmdAction to html '. $cmd->toHtml($_version, '', $replace['#cmd-background-color#']));
 			$br_before = 0;
 			if ($cmd->getDisplay('forceReturnLineAfter', 0) == 1) {
 				$cmd_html .= '<br/>';
 				$br_before = 1;
 			}
+	
 		}
+		foreach ($this->getCmd('action', null, true) as $cmd) {
+			if (isset($replace['#refresh_id#']) && $cmd->getId() == $replace['#refresh_id#']) {
+				continue;
+			}
+			//if (isset($replace['#batteryLevel_id#']) && $cmd->getId() == $replace['#batteryLevel_id#']) {
+			//	            $replace['#' . $cmd->getLogicalId() . '_history#'] = '';
+			if($cmd->getLogicalId() == 'batteryLevel'){
+		            $replace['#' . $cmd->getLogicalId() . '_id#'] = $cmd->getId();
+            	            $replace['#' . $cmd->getLogicalId() . '#'] = $cmd->execCmd();
+                            $replace['#' . $cmd->getLogicalId() . '_collect#'] = $cmd->getCollectDate();
+				continue;
+			}
+			if($cmd->getLogicalId() == 'plugged'){
+			    if($cmd->execCmd()){ 	
+		            $replace['#' . $cmd->getLogicalId() . '_icon#'] = 'techno-charging'; }
+		            else { $replace['#' . $cmd->getLogicalId() . '_icon#'] = 'notechno-low2'; }
+			}
+			
+			if ($br_before == 0 && $cmd->getDisplay('forceReturnLineBefore', 0) == 1) {
+				$cmd_html .= '<br/>';
+			}
+			$cmd_html .= $cmd->toHtml($_version, '', $replace['#cmd-background-color#']);
+			
+			//log::add('fullyKiosK', 'debug', ' cmdAction to html '. $cmd->toHtml($_version, '', $replace['#cmd-background-color#']));
+			$br_before = 0;
+			if ($cmd->getDisplay('forceReturnLineAfter', 0) == 1) {
+				$cmd_html .= '<br/>';
+				$br_before = 1;
+			}
+	
+		}
+
+		
 		//$eqlogic = $cmd->getEqLogic();
 		$ip = $this->getConfiguration('addressip');
 		$password = $this->getConfiguration('password');
@@ -915,6 +1151,10 @@ class fullyKiosK extends eqLogic {
 		$replace['#cmd#'] = $cmd_html;
 		$replace['#ipaddress#'] = $ip;
 		$replace['#password#'] = $password;
+		$replace['width: 146px'] = 'width: 256px';
+		//$replace['resize:vertical;'] = 'resize:both;';
+		//$replace['rows="2"'] = 'rows="1"';
+
 		return template_replace($replace, getTemplate('core', $version, 'fullyKiosK', 'fullyKiosK'));
 	}
 
@@ -966,10 +1206,32 @@ class fullyKiosKCmd extends cmd {
 					$cmdval = $this->getConfiguration('cmd');
 					if($this->getSubType() == 'slider')
 						$cmdval = str_replace('[[[VALUE]]]',$_options['slider'],$cmdval);
-					if($this->getSubType() == 'message') {
+					
+					if($this->getLogicalId()  == 'setAudioVolume'){
+						$cmdval = str_replace('#message#',intval($_options['message']),$cmdval);
+						if ($_options['title'] === ""){ $_options['title'] = 3 ; }
+						$stream[0] = '3';
+						$stream = explode(" ", $_options['title']);
+						   $cmdval = str_replace('#title#',intval($stream[0]),$cmdval);
+					}
+					
+
+					if($this->getLogicalId()  == 'TTS_javascript'){
+                                                   if($_options['title'] === "" ){ $_options['title'] = 'fr_FR' ;} 
+						   $cmdval = str_replace('#title#', urlencode($_options['title']),$cmdval);
+						   $cmdval = str_replace('#message#', urlencode(str_replace("'","\'", $_options['message'])),$cmdval);
+                                        }
+					
+					if($this->getLogicalId()  == 'javascript'){
+						   $cmdval = str_replace('#title#',url_encode($_options['title']),$cmdval);
+						   $cmdval = str_replace('#message#',url_encode(str_replace("'","\'",$_options['message'])),$cmdval);
+					}
+					
+					
+					if($this->getSubType()  == 'message') {
 						$cmdval = str_replace('#message#',urlencode($_options['message']),$cmdval);
                                                 $cmdval = str_replace('#title#',urlencode($_options['title']),$cmdval);
-                                                if($this->getName() == 'setBooleanSetting')
+                                                if($this->getLogicalId()  == 'setBooleanSetting')
 						   $cmdval = str_replace('#message#',$_options['message'] === 'true',$cmdval);
 
 					}
