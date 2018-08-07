@@ -27,55 +27,7 @@ function fullyKiosK_update() {
 
       foreach (eqLogic::byType('fullyKiosK', false) as $eqpt) {
         
-        foreach(fullyKiosK::$_actionMap as $cmdLogicalId => $params)
-		    {
-
-            $fullyKiosKCmd = $eqpt->getCmd('action', $cmdLogicalId);
-            log::add('fullyKiosK','info','Suppression cmd:'.  $fullyKiosKCmd->getName());
-            $fullyKiosKCmd->remove();
-            $fullyKiosKCmd->save();
-		if (!is_object($fullyKiosKCmd) && 1 == 2) {
-		    
-				$fullyKiosKCmd = new fullyKiosKCmd();
-
-				$fullyKiosKCmd->setLogicalId($cmdLogicalId);
-				$fullyKiosKCmd->setEqLogic_id($this->getId());
-				$fullyKiosKCmd->setName(__($params['name'], __FILE__));
-				$fullyKiosKCmd->setType($params['type'] ?: 'action');
-				$fullyKiosKCmd->setSubType($params['subtype'] ?: 'other');
-				$fullyKiosKCmd->setIsVisible($params['isvisible'] ?: true);
-
-				$fullyKiosKCmd->setConfiguration('cmd', $params['cmd'] ?: null);
-
-				$fullyKiosKCmd->setConfiguration('listValue', json_encode($params['listValue']) ?: null);
-
-				$fullyKiosKCmd->setDisplay('forceReturnLineBefore', $params['forceReturnLineBefore'] ?: false);
-	                        $fullyKiosKCmd->setDisplay('message_disable', $params['message_disable'] ?: false);
-	                        $fullyKiosKCmd->setDisplay('title_disable', $params['title_disable'] ?: false);
-				$fullyKiosKCmd->setDisplay('title_placeholder', $params['title_placeholder'] ?: false);
-				$fullyKiosKCmd->setDisplay('icon', $params['icon'] ?: false);				
-			        $fullyKiosKCmd->setDisplay('message_placeholder', $params['message_placeholder'] ?: false);
-
-				$fullyKiosKCmd->setDisplay('title_possibility_list', json_encode($params['title_possibility_list'] ?: null));//json_encode(array("1","2"));
-				$fullyKiosKCmd->setDisplay('icon', $params['icon'] ?: null);
-
-				if(isset($params['tpldesktop']))
-					$fullyKiosKCmd->setTemplate('dashboard',$params['tpldesktop']);
-				if(isset($params['tplmobile']))
-					$fullyKiosKCmd->setTemplate('mobile',$params['tplmobile']);
-				$fullyKiosKCmd->setOrder($order++);
-
-				if(isset($params['linkedInfo']))
-					$fullyKiosKCmd->setValue($this->getCmd('info', $params['linkedInfo']));
-
-				$fullyKiosKCmd->save();
-
-            
-          }
-          
-        
-          
-        }
+ 
         
         if( $eqpt->getConfiguration('refreshDelay', '') == '')
         { $eqpt->setConfiguration('refreshDelay', '15');
