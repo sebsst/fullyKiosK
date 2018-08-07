@@ -26,9 +26,40 @@ function fullyKiosK_install() {
 function fullyKiosK_update() {
 
       foreach (eqLogic::byType('fullyKiosK', false) as $eqpt) {
+        
+        foreach(fullyKiosK::$_actionMap as $cmdLogicalId => $params)
+		    {
+          
+          $fullyKiosKCmd = $eqpt->getCmd('action', $cmdLogicalId);
+			    if (is_object($fullyKiosKCmd)) {
+            $fullyKiosKCmd->setEqLogic_id($eqpt->getId());
+            $fullyKiosKCmd->setName(__($params['name'], __FILE__));
+            $fullyKiosKCmd->setConfiguration('cmd', $params['cmd']);
+            $fullyKiosKCmd->setConfiguration('listValue', json_encode($params['listValue']) ?: null);
+            $fullyKiosKCmd->setName(__($params['name'], __FILE__));
+            $fullyKiosKCmd->setDisplay('forceReturnLineBefore', $params['forceReturnLineBefore'] ?: false);
+            $fullyKiosKCmd->setDisplay('message_disable', $params['message_disable'] ?: false);
+            $fullyKiosKCmd->setDisplay('title_disable', $params['title_disable'] ?: false);
+            $fullyKiosKCmd->setDisplay('title_placeholder', $params['title_placeholder'] ?: false);
+            $fullyKiosKCmd->setDisplay('icon', $params['icon'] ?: false);				
+            $fullyKiosKCmd->setDisplay('message_placeholder', $params['message_placeholder'] ?: false);
+
+            $fullyKiosKCmd->setDisplay('title_possibility_list', json_encode($params['title_possibility_list'] ?: null));//json_encode(array("1","2"));
+            $fullyKiosKCmd->setDisplay('icon', $params['icon'] ?: null);
+
+            $fullyKiosKCmd->save();
+
+            
+          }
+          
+        
+          
+        }
+        
         if( $eqpt->getConfiguration('refreshDelay', '') == '')
         { $eqpt->setConfiguration('refreshDelay', '15');
           $eqpt->save();
+        
         }
 
  
