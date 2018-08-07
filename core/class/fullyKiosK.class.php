@@ -1223,8 +1223,8 @@ class fullyKiosKCmd extends cmd {
                                         }
 					
 					if($this->getLogicalId()  == 'javascript'){
-						   $cmdval = str_replace('#title#',url_encode($_options['title']),$cmdval);
-						   $cmdval = str_replace('#message#',url_encode(str_replace("'","\'",$_options['message'])),$cmdval);
+						   $cmdval = str_replace('#title#',urlencode($_options['title']),$cmdval);
+						   $cmdval = str_replace('#message#',urlencode(str_replace("'","\'",$_options['message'])),$cmdval);
 					}
 					
 					
