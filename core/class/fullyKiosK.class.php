@@ -1078,7 +1078,7 @@ Constant Value: 0 (0x00000000)
 				$cmd_html .= '<br/>';
 			}
 			$cmd_html .= $cmd->toHtml($_version, '', $replace['#cmd-background-color#']);
-			log::add('fullyKiosK', 'debug', ' cmdAction to html '. $cmd->toHtml($_version, '', $replace['#cmd-background-color#']));
+			//log::add('fullyKiosK', 'debug', ' cmdAction to html '. $cmd->toHtml($_version, '', $replace['#cmd-background-color#']));
 			$br_before = 0;
 			if ($cmd->getDisplay('forceReturnLineAfter', 0) == 1) {
 				$cmd_html .= '<br/>';
