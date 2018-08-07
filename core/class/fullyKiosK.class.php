@@ -1228,7 +1228,7 @@ class fullyKiosKCmd extends cmd {
 					}
 					
 					
-					if($this->getLogicalId()  == 'message') {
+					if($this->getSubType()  == 'message') {
 						$cmdval = str_replace('#message#',urlencode($_options['message']),$cmdval);
                                                 $cmdval = str_replace('#title#',urlencode($_options['title']),$cmdval);
                                                 if($this->getLogicalId()  == 'setBooleanSetting')
