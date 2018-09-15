@@ -59,6 +59,11 @@ class fullyKiosK extends eqLogic {
 				'name' => __('Vider cache',__FILE__),
 				'cmd' => 'clearCache',
 			),	
+			'getCamshot' => array(
+				'name' => __('Enregister image cam',__FILE__),
+				'cmd' => 'getCamshot',
+			),	
+
 			'forceSleep' => array(
 				'name' => 'forceSleep',
 				'cmd' => 'forceSleep',
@@ -1247,6 +1252,13 @@ class fullyKiosKCmd extends cmd {
 					curl_setopt($ch, CURLOPT_POST, true);
 					curl_setopt($ch, CURLOPT_POSTFIELDS,$cmdval);
 					$jsondata = curl_exec($ch);
+					$resource_path = realpath(dirname(__FILE__) . '/../../resources/');
+  					$camshot = $resource_path.'/camshot.jpg';
+					
+					if($this->getLogicalId()  == 'getCamshot'){
+						file_put_contents($camshot, $jsondata);
+					}
+					
 					curl_close($ch);
 					log::add('fullyKiosK', 'debug', __METHOD__.'('.$url.' with '.$cmdval.') '.$jsondata);
 
