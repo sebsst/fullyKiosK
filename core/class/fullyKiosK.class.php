@@ -1253,7 +1253,7 @@ class fullyKiosKCmd extends cmd {
 					curl_setopt($ch, CURLOPT_POSTFIELDS,$cmdval);
 					$jsondata = curl_exec($ch);
 					$resource_path = realpath(dirname(__FILE__) . '/../../resources/');
-  					$camshot = $resource_path.'/camshot.jpg';
+  					$camshot = $resource_path.'/camshot'.date('H:i:s', time()).'jpg';
 					
 					if($this->getLogicalId()  == 'getCamshot'){
 						file_put_contents($camshot, $jsondata);
