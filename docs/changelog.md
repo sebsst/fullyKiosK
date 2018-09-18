@@ -1,6 +1,10 @@
 # Changelog
 
 En cas d'absence de note dans ce chapitre, les mises à jour ne concernent que la doc et des corrections mineures
+## 18/09/2018
+- ajout de la fonctionalité capture caméra - enregistre une photo camshot.jpg dans le dossier resources du plugin 
+- il est possible de préciser l'endroit de la sauvegarde et le nom du fichier
+
 ## 07/08/2018
 - ajout des fonctionnalités fullykiosk 1.26
 - ajout injection de code javascript (liste des possibilités affichée non exhaustive)
