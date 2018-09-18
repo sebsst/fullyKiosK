@@ -180,6 +180,14 @@ class fullyKiosK extends eqLogic {
 				'message_disable' => true,
 
 			),
+			'getCamshot' => array(
+				'name' => __('Enregister image cam',__FILE__),
+				'cmd' => 'getCamshot',
+				'subtype' => 'message',
+				'message_placeholder' => __('camshot.jpg par défaut',__FILE__),	
+				'title_placeholder' => __('/var/www/html/plugins/fullyKiosK/resources/ par défaut',__FILE__),	
+			
+			),	
 	
 			'loadTab' => array(
 				'name' => __('Charger onglet N°',__FILE__),
@@ -1247,6 +1255,29 @@ class fullyKiosKCmd extends cmd {
 					curl_setopt($ch, CURLOPT_POST, true);
 					curl_setopt($ch, CURLOPT_POSTFIELDS,$cmdval);
 					$jsondata = curl_exec($ch);
+
+					
+					if($this->getLogicalId()  == 'getCamshot'){
+						
+						$resource_path = realpath(dirname(__FILE__) . '/../../resources/');
+						
+						if($_options['title'] == ''){
+							$path = $resource_path;
+						} else
+						{
+							$path = $_options['title'];
+						}						
+						
+						
+						if($_options['message'] == ''){
+							$camshot = $path.'/camshot.jpg';
+						} else
+						{
+							$camshot = $path.'/'.$_options['message'];
+						}
+						file_put_contents($camshot, $jsondata);
+					}
+					
 					curl_close($ch);
 					log::add('fullyKiosK', 'debug', __METHOD__.'('.$url.' with '.$cmdval.') '.$jsondata);
 

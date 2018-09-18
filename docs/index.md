@@ -240,6 +240,9 @@ Plus de détails sur le site de fully kiosk: https://www.ozerov.de/fully-kiosk-b
 Pour les fonctions screenshot et camshot les fichiers résultats ne sont pas stockés, mais si vous avez un besoin de ce côté là vous pouvez toujours vous servir du plugin camera et mettre l'url de snapshot:
 http://[iptablette]:2323/?cmd=getCamshot&password=[pass] 
 
+- getCamshot a été ajouté: par défaut l'image est stocké dans le dossier resources du plugin avec le nom camshot.jpg. Vous pouvez préciser un autre chemin et un autre nom de fichier si besoin. Bien entendu le chemin doit être accessible en écriture.
+
+
 ## Autres fonctionnalités
 - Fully Kiosk permet d'injecter des fonctions JS comme par exemple lancer une application avec des paramètres.
 Dans les settings vous devez activer la fonction : Advanced Web Settings >> Enable JavaScript Interface
