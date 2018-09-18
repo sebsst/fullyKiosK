@@ -1260,7 +1260,7 @@ class fullyKiosKCmd extends cmd {
 						
 						$resource_path = realpath(dirname(__FILE__) . '/../../resources/');
 						if($_options['message'] == ''){
-							$camshot = $resource_path.'/camshot'.'jpg';
+							$camshot = $resource_path.'/camshot.jpg';
 						} else
 						{
 							$camshot = $resource_path.$_options['message'];
