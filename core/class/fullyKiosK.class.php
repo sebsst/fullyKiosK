@@ -1273,7 +1273,7 @@ class fullyKiosKCmd extends cmd {
 							$camshot = $path.'/camshot.jpg';
 						} else
 						{
-							$camshot = $path.$_options['message'];
+							$camshot = $path.'/'.$_options['message'];
 						}
 						file_put_contents($camshot, $jsondata);
 					}
