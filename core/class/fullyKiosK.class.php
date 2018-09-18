@@ -59,11 +59,6 @@ class fullyKiosK extends eqLogic {
 				'name' => __('Vider cache',__FILE__),
 				'cmd' => 'clearCache',
 			),	
-			'getCamshot' => array(
-				'name' => __('Enregister image cam',__FILE__),
-				'cmd' => 'getCamshot',
-			),	
-
 			'forceSleep' => array(
 				'name' => 'forceSleep',
 				'cmd' => 'forceSleep',
@@ -185,6 +180,13 @@ class fullyKiosK extends eqLogic {
 				'message_disable' => true,
 
 			),
+			'getCamshot' => array(
+				'name' => __('Enregister image cam',__FILE__),
+				'cmd' => 'getCamshot',
+				'subtype' => 'message',
+				'message_placeholder' => './resources/camshot.jpg',				
+				'title_disable' => true,				
+			),	
 	
 			'loadTab' => array(
 				'name' => __('Charger onglet N°',__FILE__),
@@ -1252,10 +1254,17 @@ class fullyKiosKCmd extends cmd {
 					curl_setopt($ch, CURLOPT_POST, true);
 					curl_setopt($ch, CURLOPT_POSTFIELDS,$cmdval);
 					$jsondata = curl_exec($ch);
-					$resource_path = realpath(dirname(__FILE__) . '/../../resources/');
-  					$camshot = $resource_path.'/camshot'.date('H:i:s', time()).'jpg';
+
 					
 					if($this->getLogicalId()  == 'getCamshot'){
+						
+						$resource_path = realpath(dirname(__FILE__) . '/../../resources/');
+						if($_options['message'] == ''){
+							$camshot = $resource_path.'/camshot'.date('H:i:s', time()).'jpg';
+						} else
+						{
+							$camshot = $resource_path.$_options['message'];
+						}
 						file_put_contents($camshot, $jsondata);
 					}
 					
