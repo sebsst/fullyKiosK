@@ -184,8 +184,9 @@ class fullyKiosK extends eqLogic {
 				'name' => __('Enregister image cam',__FILE__),
 				'cmd' => 'getCamshot',
 				'subtype' => 'message',
-				'message_placeholder' => __('camshot.jpg par défaut - dossier resources',__FILE__),				
-				'title_disable' => true,				
+				'message_placeholder' => __('camshot.jpg par défaut',__FILE__),	
+				'title_placeholder' => __('/var/www/html/plugins/fullyKiosK/resources/ par défaut',__FILE__),	
+			
 			),	
 	
 			'loadTab' => array(
@@ -1259,11 +1260,20 @@ class fullyKiosKCmd extends cmd {
 					if($this->getLogicalId()  == 'getCamshot'){
 						
 						$resource_path = realpath(dirname(__FILE__) . '/../../resources/');
-						if($_options['message'] == ''){
-							$camshot = $resource_path.'/camshot.jpg';
+						
+						if($_options['title'] == ''){
+							$path = $resource_path;
 						} else
 						{
-							$camshot = $resource_path.$_options['message'];
+							$path = $_options['title'];
+						}						
+						
+						
+						if($_options['message'] == ''){
+							$camshot = $path.'/camshot.jpg';
+						} else
+						{
+							$camshot = $path.$_options['message'];
 						}
 						file_put_contents($camshot, $jsondata);
 					}
