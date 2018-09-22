@@ -110,6 +110,16 @@ class fullyKiosK extends eqLogic {
 				'isvisible' => false,				
 				'cmd' => 'toForeground',
 			),
+			'JavascriptOn' => array(
+				'name' => __("Activer Javascript",__FILE__),
+				'isvisible' => false,				
+				'cmd' =>  "setBooleanSetting&key=websiteIntegration&value=true",
+			),
+			'JavascriptOff' => array(
+				'name' => __("Désactiver Javascript",__FILE__),
+				'isvisible' => false,			
+				'cmd' =>  "setBooleanSetting&key=websiteIntegration&value=false",
+			),			
 			'loadURL' => array(
 				'name' => __('Charger URL',__FILE__),
 				'cmd' => 'loadURL&url=#title#',
