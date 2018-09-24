@@ -80,7 +80,20 @@ class fullyKiosK extends eqLogic {
 				'name' => 'stopDaydream',
 				'isvisible' => false,
 				'cmd' => 'stopDaydream',
-			),		
+			),	
+
+			'enableLockedMode' => array(
+				'name' => __('Activer mode maintenance',__FILE__),
+				'isvisible' => false,				
+				'cmd' => 'enableLockedMode',
+			),
+	
+			'disableLockedMode' => array(
+				'name' => __('Désactiver mode maintenance',__FILE__),
+				'isvisible' => false,				
+				'cmd' => 'disableLockedMode',
+			),
+				
 			'popFragment' => array(
 				'name' => __('Retourner vue web',__FILE__),
 				'isvisible' => false,
@@ -110,6 +123,16 @@ class fullyKiosK extends eqLogic {
 				'isvisible' => false,				
 				'cmd' => 'toForeground',
 			),
+			'JavascriptOn' => array(
+				'name' => __("Activer Javascript",__FILE__),
+				'isvisible' => false,				
+				'cmd' =>  "setBooleanSetting&key=websiteIntegration&value=true",
+			),
+			'JavascriptOff' => array(
+				'name' => __("Désactiver Javascript",__FILE__),
+				'isvisible' => false,			
+				'cmd' =>  "setBooleanSetting&key=websiteIntegration&value=false",
+			),			
 			'loadURL' => array(
 				'name' => __('Charger URL',__FILE__),
 				'cmd' => 'loadURL&url=#title#',
@@ -168,6 +191,7 @@ class fullyKiosK extends eqLogic {
 					'fully.bringToForeground()',
 					'fully.bringToForeground(long millis)',
 					'fully.setStartUrl(String url)',
+					'fully.getAudioVolume(int streamType)',
 				),
 					
 				'title_disable' => false,
@@ -197,7 +221,19 @@ class fullyKiosK extends eqLogic {
 				'message_disable' => true,
 
 			),
-		
+		// /?cmd=playSound&url=[url]&loop=[true|false]&password=[pass]
+			'playSound' => array(
+				'name' => __('Jouer musique/son',__FILE__),
+				'cmd' => "playSound&url='#title#'",
+				'subtype' => 'message',
+				'title_placeholder' => __('URL musique/son',__FILE__),
+				'message_disable' => true,
+			),
+	
+			'stopSound' => array(
+				'name' => __('Arrêter musique',__FILE__),
+				'cmd' => "stopSound",
+			),
 			
 			'textToSpeech' => array(
 				'name' => __('Envoyer TTS',__FILE__),
@@ -953,7 +989,7 @@ Constant Value: 0 (0x00000000)
 	}
         public function preSave() {
   		$this->setDisplay("width","536px");
-      		$this->setDisplay("height","800px");	
+      		$this->setDisplay("height","820px");	
 	}
 	public function postSave() {
 		self::initInfosMap();
