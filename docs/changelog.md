@@ -4,8 +4,8 @@ En cas d'absence de note dans ce chapitre, les mises à jour ne concernent que l
 
 ## 24/09/2018
 - ajout play/stop sound (fully 1.27)
-- ajout activation/désactivation fonction javascript (javascriptOn/javascriptOff - par défaut, non affiché sur widget)
-- ajout activation/désactivation mode maintenance (enableMaintenanceMode/disableMaintenanceMode - par défaut non affiché sur widget)
+- ajout activation/désactivation fonction javascript (javascriptOn/javascriptOff)
+- ajout activation/désactivation mode maintenance (enableLockedMode/disableLockedMode)
 
 ## 18/09/2018
 - ajout de la fonctionalité capture caméra - enregistre une photo camshot.jpg dans le dossier resources du plugin 
