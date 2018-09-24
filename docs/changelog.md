@@ -1,6 +1,12 @@
 # Changelog
 
 En cas d'absence de note dans ce chapitre, les mises à jour ne concernent que la doc et des corrections mineures
+
+## 24/09/2018
+- ajout activation/désactivation fonction javascript (par défaut, non affiché sur widget)
+- ajout activation/désactivation mode maintenance (par défaut non affiché sur widget)
+
+
 ## 18/09/2018
 - ajout de la fonctionalité capture caméra - enregistre une photo camshot.jpg dans le dossier resources du plugin 
 - il est possible de préciser le chemin de la sauvegarde et le nom du fichier
