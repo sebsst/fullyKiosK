@@ -191,6 +191,7 @@ class fullyKiosK extends eqLogic {
 					'fully.bringToForeground()',
 					'fully.bringToForeground(long millis)',
 					'fully.setStartUrl(String url)',
+					'fully.getAudioVolume(int streamType)',
 				),
 					
 				'title_disable' => false,
@@ -220,7 +221,19 @@ class fullyKiosK extends eqLogic {
 				'message_disable' => true,
 
 			),
-		
+		// /?cmd=playSound&url=[url]&loop=[true|false]&password=[pass]
+			'playSound' => array(
+				'name' => __('Jouer musique/son',__FILE__),
+				'cmd' => "playSound&url='#title#'",
+				'subtype' => 'message',
+				'title_placeholder' => __('URL musique/son',__FILE__),
+				'message_disable' => true,
+			),
+	
+			'stopSound' => array(
+				'name' => __('Arrêter musique',__FILE__),
+				'cmd' => "stopSound",
+			),
 			
 			'textToSpeech' => array(
 				'name' => __('Envoyer TTS',__FILE__),
