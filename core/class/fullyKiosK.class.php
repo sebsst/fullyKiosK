@@ -82,16 +82,16 @@ class fullyKiosK extends eqLogic {
 				'cmd' => 'stopDaydream',
 			),	
 
-			'enableMaintenanceMode' => array(
+			'enableLockedMode' => array(
 				'name' => __('Activer mode maintenance',__FILE__),
 				'isvisible' => false,				
-				'cmd' => 'enableMaintenanceMode',
+				'cmd' => 'enableLockedMode',
 			),
 	
-			'disableMaintenanceMode' => array(
+			'disableLockedMode' => array(
 				'name' => __('Désactiver mode maintenance',__FILE__),
 				'isvisible' => false,				
-				'cmd' => 'disableMaintenanceMode',
+				'cmd' => 'disableLockedMode',
 			),
 				
 			'popFragment' => array(
