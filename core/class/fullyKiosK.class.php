@@ -80,7 +80,20 @@ class fullyKiosK extends eqLogic {
 				'name' => 'stopDaydream',
 				'isvisible' => false,
 				'cmd' => 'stopDaydream',
-			),		
+			),	
+
+			'enableMaintenanceMode' => array(
+				'name' => __('Activer mode maintenance',__FILE__),
+				'isvisible' => false,				
+				'cmd' => 'enableMaintenanceMode',
+			),
+	
+			'disableMaintenanceMode' => array(
+				'name' => __('Désactiver mode maintenance',__FILE__),
+				'isvisible' => false,				
+				'cmd' => 'disableMaintenanceMode',
+			),
+				
 			'popFragment' => array(
 				'name' => __('Retourner vue web',__FILE__),
 				'isvisible' => false,
