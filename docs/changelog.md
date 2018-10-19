@@ -3,7 +3,7 @@
 En cas d'absence de note dans ce chapitre, les mises à jour ne concernent que la doc et des corrections mineures
 
 ## 19/10/2018
-- ajout clear cookies + share Url dans la liste des possibilités javascript
+- ajout clear cookies + shareUrl dans la liste des possibilités javascript fully
 
 ## 24/09/2018
 - ajout play/stop sound (fully 1.27)
