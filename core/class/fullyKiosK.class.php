@@ -197,6 +197,7 @@ class fullyKiosK extends eqLogic {
 					'fully.bringToForeground(long millis)',
 					'fully.setStartUrl(String url)',
 					'fully.getAudioVolume(int streamType)',
+					'fully.shareUrl()',
 				),
 					
 				'title_disable' => false,
