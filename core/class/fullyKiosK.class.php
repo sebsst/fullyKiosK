@@ -59,6 +59,11 @@ class fullyKiosK extends eqLogic {
 				'name' => __('Vider cache',__FILE__),
 				'cmd' => 'clearCache',
 			),	
+			'clearCookies' => array(
+				'name' => __('Supprimer cookies',__FILE__),
+				'isvisible' => false,				
+				'cmd' => 'clearCookies',
+			),			
 			'forceSleep' => array(
 				'name' => 'forceSleep',
 				'cmd' => 'forceSleep',
