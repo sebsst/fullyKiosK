@@ -59,6 +59,11 @@ class fullyKiosK extends eqLogic {
 				'name' => __('Vider cache',__FILE__),
 				'cmd' => 'clearCache',
 			),	
+			'clearCookies' => array(
+				'name' => __('Supprimer cookies',__FILE__),
+				'isvisible' => false,				
+				'cmd' => 'clearCookies',
+			),			
 			'forceSleep' => array(
 				'name' => 'forceSleep',
 				'cmd' => 'forceSleep',
@@ -192,6 +197,7 @@ class fullyKiosK extends eqLogic {
 					'fully.bringToForeground(long millis)',
 					'fully.setStartUrl(String url)',
 					'fully.getAudioVolume(int streamType)',
+					'fully.shareUrl()',
 				),
 					
 				'title_disable' => false,
