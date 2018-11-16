@@ -1002,7 +1002,7 @@ Constant Value: 0 (0x00000000)
 		$order = 0;
                 
 		switch ($this->getConfiguration('refreshDelay','')){
-			case '1' : config::save('functionality::cron1::enable', 1 ,'fullyKiosK'); break;
+			case '1' : config::save('functionality::cron::enable', 1 ,'fullyKiosK'); break;
  			case '5' : config::save('functionality::cron5::enable', 1 ,'fullyKiosK'); break;
  			case '15' : config::save('functionality::cron15::enable', 1 ,'fullyKiosK'); break;
  			case '30' : config::save('functionality::cron30::enable', 1 ,'fullyKiosK'); break;
