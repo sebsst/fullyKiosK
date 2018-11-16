@@ -2,6 +2,9 @@
 
 En cas d'absence de note dans ce chapitre, les mises à jour ne concernent que la doc et des corrections mineures
 
+## 16/11/2018
+- Correction cron 1 minute
+
 ## 19/10/2018
 - ajout clear cookies + shareUrl dans la liste des possibilités javascript fully
 
