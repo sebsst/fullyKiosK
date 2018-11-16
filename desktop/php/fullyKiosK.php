@@ -99,6 +99,13 @@ $eqLogics = eqLogic::byType($plugin->getId());
 							<input class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="addressip" type="text" placeholder="{{saisir l'adresse IP}}">
 						</div>
 					</div>
+
+					<div class="form-group">
+						<label class="col-sm-3 control-label">{{Port}}</label>
+						<div class="col-sm-3">
+							<input class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="port" type="number" placeholder="{{saisir le port (par défaut 2323)}}">
+						</div>
+					</div>					
 					<div class="form-group">
 						<label class="col-sm-3 control-label">{{Mot de passe}}</label>
 						<div class="col-sm-3">

@@ -4,6 +4,7 @@ En cas d'absence de note dans ce chapitre, les mises à jour ne concernent que l
 
 ## 16/11/2018
 - Correction cron 1 minute
+- Ajout du port dans le cas où le port 2323 par défaut est déjà utilisé ( un message apparait avec le nouveau port au démarrage de l'appli fullykiosk)
 
 ## 19/10/2018
 - ajout clear cookies + shareUrl dans la liste des possibilités javascript fully
