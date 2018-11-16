@@ -945,8 +945,9 @@ Constant Value: 0 (0x00000000)
 			//{
 				$ip = $this->getConfiguration('addressip');
 				$password = $this->getConfiguration('password');
+			        $port = $this->getConfiguration('port', intval('2323'));
 
-				$url = "http://{$ip}:2323/?type=json&cmd=deviceInfo&password=".$password;
+				$url = "http://{$ip}:".$port."/?type=json&cmd=deviceInfo&password=".$password;
 				log::add('fullyKiosK', 'debug', __METHOD__.' '.__LINE__.' requesting '.$url);
 
 				//$jsondata = file_get_contents($url);
@@ -1288,7 +1289,8 @@ class fullyKiosKCmd extends cmd {
 					$eqLogic = $this->getEqLogic();
 					$ip = $eqLogic->getConfiguration('addressip');
 					$password = $eqLogic->getConfiguration('password');
-					$url = 'http://'.$ip.':2323/?cmd='.$cmdval.'&password='.$password;
+					$port = $eqLogic->getConfiguration('port', intval('2323'));
+					$url = 'http://'.$ip.':'.$port.'/?cmd='.$cmdval.'&password='.$password;
 
 					$ch = curl_init();
 					curl_setopt($ch, CURLOPT_URL, $url);
