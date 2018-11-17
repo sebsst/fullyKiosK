@@ -645,7 +645,7 @@ Constant Value: 0 (0x00000000)
 				'type' => 'info',
 				'subtype' => 'binary',
 				'isvisible' => false,
-				'icon' => '<i class="a-exclamation-triangle"></i>',
+				//'icon' => '<i class="a-exclamation-triangle"></i>',
 				'restkey' => 'communicationStatus',
 
 			),
