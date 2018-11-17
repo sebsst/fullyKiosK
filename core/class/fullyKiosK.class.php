@@ -555,7 +555,7 @@ Constant Value: 0 (0x00000000)
 	 		//	'type' => 'info',
 	 		//	'subtype' => 'numeric',
 	 		//	'isvisible' => true,
-	 		//	'restkey' =>'',
+	 		//	'restkey' =>'',a-exclamation-triangle
 	 		//),
 	
 			'batteryLevel' => array(
@@ -640,6 +640,15 @@ Constant Value: 0 (0x00000000)
 				'restkey' => 'currentTabIndex',
 
 			),			
+			'communicationStatus' => array(
+				'name' => __('Joignable',__FILE__),
+				'type' => 'info',
+				'subtype' => 'binary',
+				'isvisible' => true,
+				//'icon' => '<i class="a-exclamation-triangle"></i>',
+				'restkey' => 'communicationStatus',
+
+			),
 			'plugged' => array(
 				'name' => __('Branché',__FILE__),
 				'type' => 'info',
@@ -967,6 +976,7 @@ Constant Value: 0 (0x00000000)
  			{
 				log::add('fullyKiosK', 'info', 'Connexion KO for '.$equipement.' ('.$ip.')');
 				$this->checkAndUpdateCmd('communicationStatus',false);
+				
 				return false;
 			}
 
