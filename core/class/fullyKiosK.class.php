@@ -644,7 +644,7 @@ Constant Value: 0 (0x00000000)
 				'name' => __('Joignable',__FILE__),
 				'type' => 'info',
 				'subtype' => 'binary',
-				'isvisible' => false,
+				'isvisible' => true,
 				//'icon' => '<i class="a-exclamation-triangle"></i>',
 				'restkey' => 'communicationStatus',
 
