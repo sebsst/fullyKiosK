@@ -473,7 +473,7 @@ Constant Value: 0 (0x00000000)
 				'name' => __('Paramètre valeur',__FILE__),
 				'title_placeholder' => __('Choisir paramètre',__FILE__),
 				'message_placeholder' => __('valeur',__FILE__),					
-				'cmd' => "setStringSetting&key='#title#'&value=#message#",
+				'cmd' => "setStringSetting&key=#title#&value=#message#",
 				'subtype' => 'message',
 				'title_possibility_list' => array(
 				        'wifiKey',
