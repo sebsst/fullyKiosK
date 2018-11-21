@@ -825,12 +825,12 @@ Constant Value: 0 (0x00000000)
 			if($fullyKiosK->getConfiguration('refreshDelay')=='1'){ 
 		                $notfound = false;
 				$fullyKiosK->getInformations();
-				$mc = cache::byKey('fullyKiosKWidgetmobile' . $fullyKiosK->getId());
+				/*$mc = cache::byKey('fullyKiosKWidgetmobile' . $fullyKiosK->getId());
 				$mc->remove();
 				$mc = cache::byKey('fullyKiosKWidgetdashboard' . $fullyKiosK->getId());
 				$mc->remove();
 				$fullyKiosK->toHtml('mobile');
-				$fullyKiosK->toHtml('dashboard');
+				$fullyKiosK->toHtml('dashboard');*/
 				$fullyKiosK->refreshWidget(); 
 		        } 
 		}
@@ -852,13 +852,13 @@ Constant Value: 0 (0x00000000)
 		{
 			if($fullyKiosK->getConfiguration('refreshDelay')=='5'){ 
 				$found = false;
-				$fullyKiosK->getInformations();
+				/*$fullyKiosK->getInformations();
 				$mc = cache::byKey('fullyKiosKWidgetmobile' . $fullyKiosK->getId());
 				$mc->remove();
 				$mc = cache::byKey('fullyKiosKWidgetdashboard' . $fullyKiosK->getId());
 				$mc->remove();
 				$fullyKiosK->toHtml('mobile');
-				$fullyKiosK->toHtml('dashboard');
+				$fullyKiosK->toHtml('dashboard');*/
 				$fullyKiosK->refreshWidget(); 
 		        } 
 		}
@@ -873,12 +873,12 @@ Constant Value: 0 (0x00000000)
 			if($fullyKiosK->getConfiguration('refreshDelay')=='30'){ 
 		                $notfound = false;
 				$fullyKiosK->getInformations();
-				$mc = cache::byKey('fullyKiosKWidgetmobile' . $fullyKiosK->getId());
+				/*$mc = cache::byKey('fullyKiosKWidgetmobile' . $fullyKiosK->getId());
 				$mc->remove();
 				$mc = cache::byKey('fullyKiosKWidgetdashboard' . $fullyKiosK->getId());
 				$mc->remove();
 				$fullyKiosK->toHtml('mobile');
-				$fullyKiosK->toHtml('dashboard');
+				$fullyKiosK->toHtml('dashboard');*/
 				$fullyKiosK->refreshWidget(); 
 		        } 
 		}
@@ -893,12 +893,12 @@ Constant Value: 0 (0x00000000)
 			if($fullyKiosK->getConfiguration('refreshDelay')=='60'){ 
 		                $notfound = false;
 				$fullyKiosK->getInformations();
-				$mc = cache::byKey('fullyKiosKWidgetmobile' . $fullyKiosK->getId());
+			/*	$mc = cache::byKey('fullyKiosKWidgetmobile' . $fullyKiosK->getId());
 				$mc->remove();
 				$mc = cache::byKey('fullyKiosKWidgetdashboard' . $fullyKiosK->getId());
 				$mc->remove();
 				$fullyKiosK->toHtml('mobile');
-				$fullyKiosK->toHtml('dashboard');
+				$fullyKiosK->toHtml('dashboard');*/
 				$fullyKiosK->refreshWidget(); 
 		        } 
 		}
@@ -914,12 +914,12 @@ Constant Value: 0 (0x00000000)
 			if($fullyKiosK->getConfiguration('refreshDelay')=='15'){ 
 		                $notfound = false;
 				$fullyKiosK->getInformations();
-				$mc = cache::byKey('fullyKiosKWidgetmobile' . $fullyKiosK->getId());
+			/*	$mc = cache::byKey('fullyKiosKWidgetmobile' . $fullyKiosK->getId());
 				$mc->remove();
 				$mc = cache::byKey('fullyKiosKWidgetdashboard' . $fullyKiosK->getId());
 				$mc->remove();
 				$fullyKiosK->toHtml('mobile');
-				$fullyKiosK->toHtml('dashboard');
+				$fullyKiosK->toHtml('dashboard');*/
 				$fullyKiosK->refreshWidget(); 
 		        } 
 		}
@@ -932,12 +932,12 @@ Constant Value: 0 (0x00000000)
 	public function refresh() {
 		try {
 			$this->getInformations();
-			$mc = cache::byKey('fullyKiosKWidgetmobile' . $fullyKiosK->getId());
+		/*	$mc = cache::byKey('fullyKiosKWidgetmobile' . $fullyKiosK->getId());
 			$mc->remove();
 			$mc = cache::byKey('fullyKiosKWidgetdashboard' . $fullyKiosK->getId());
 			$mc->remove();
 			$fullyKiosK->toHtml('mobile');
-			$fullyKiosK->toHtml('dashboard');
+			$fullyKiosK->toHtml('dashboard');*/
 			$fullyKiosK->refreshWidget();
 		} catch (Exception $exc) {
 			log::add('fullyKiosK', 'error', __('Erreur pour ', __FILE__) . $eqLogic->getHumanName() . ' : ' . $exc->getMessage());
