@@ -7,5 +7,5 @@
 	"require" : "2.3",
 	"category" : "monitoring",
 	"changelog" : "https://sebsst.github.io/fullyKiosK/#language#/changelog",
-        "documentation" : "https://sebsst.github.io/fullyKiosK/#language#/"
+  "documentation" : "https://sebsst.github.io/fullyKiosK/#language#/"
 }
