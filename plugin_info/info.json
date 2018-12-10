@@ -6,6 +6,6 @@
 	"author" : "Ssc",
 	"require" : "2.3",
 	"category" : "monitoring",
-	"changelog" : "https://sebsst.github.io/plugin-script/#language#/changelog",
+	"changelog" : "https://sebsst.github.io/plugin-script/changelog.html",
 	"documentation" : "https://sebsst.github.io/plugin-script/#language#/",
 }
