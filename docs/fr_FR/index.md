@@ -246,11 +246,13 @@ http://[iptablette]:2323/?cmd=getCamshot&password=[pass]
 ## Autres fonctionnalités
 - Fully Kiosk permet d'injecter des fonctions JS comme par exemple lancer une application avec des paramètres.
 Dans les settings vous devez activer la fonction : Advanced Web Settings >> Enable JavaScript Interface
-Dans ce cas là vous pouvez lancer du javascript avec fonctions propres à fullykiosk. 
+Dans ce cas là vous pouvez lancer du javascript avec quelques fonctions propres à fullykiosk. 
 
 -Exemple qui permet de lancer VLC avec un flux d'une caméra:
-
 fully.startApplication('org.videolan.vlc',"android.intent.action.VIEW", 'rtsp://userid:password@192.168.0.xx:88/videoSub')
+
+-Lancer une playlist spotify:
+fully.startApplication('com.spotify.music','android.media.action.MEDIA_PLAY_FROM_SEARCH', 'spotify:user:<USER ID>:playlist:<PLAYLIST ID>:play')
 
 Vous pouvez vous référer au site officiel pour mettre en place ce type de fonctionnalités.
 
