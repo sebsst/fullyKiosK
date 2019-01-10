@@ -964,6 +964,7 @@ Constant Value: 0 (0x00000000)
 				curl_setopt($ch, CURLOPT_URL, $url);
 				curl_setopt($ch, CURLOPT_BINARYTRANSFER, true);
 				curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                                curl_setopt($ch, CURLOPT_TIMEOUT, 20);			
 				$jsondata = curl_exec($ch);
 				curl_close($ch);
 			//}
