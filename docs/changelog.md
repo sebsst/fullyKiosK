@@ -2,6 +2,9 @@
 
 En cas d'absence de note dans ce chapitre, les mises à jour ne concernent que la doc et des corrections mineures
 
+## 10/01/2019
+- Ajout timeout sur refresh des données pour éviter le message "tâche cron n'a pas pu finir"
+
 ## 18/11/2018
 - correction bug lors de la mise à jour des paramètres "valeur"
 
