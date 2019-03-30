@@ -61,7 +61,7 @@ class fullyKiosK extends eqLogic {
 			),	
 			'clearCookies' => array(
 				'name' => __('Supprimer cookies',__FILE__),
-				'isvisible' => false,				
+				'isvisible' => 0,				
 				'cmd' => 'clearCookies',
 			),			
 			'forceSleep' => array(
@@ -78,30 +78,30 @@ class fullyKiosK extends eqLogic {
 			),	
 			'startDaydream' => array(
 				'name' => 'startDaydream',
-				'isvisible' => false,
+				'isvisible' => 0,
 				'cmd' => 'startDaydream',
 			),	
 			'stopDaydream' => array(
 				'name' => 'stopDaydream',
-				'isvisible' => false,
+				'isvisible' => 0,
 				'cmd' => 'stopDaydream',
 			),	
 
 			'enableLockedMode' => array(
 				'name' => __('Activer mode maintenance',__FILE__),
-				'isvisible' => false,				
+				'isvisible' => 0,				
 				'cmd' => 'enableLockedMode',
 			),
 	
 			'disableLockedMode' => array(
 				'name' => __('Désactiver mode maintenance',__FILE__),
-				'isvisible' => false,				
+				'isvisible' => 0,				
 				'cmd' => 'disableLockedMode',
 			),
 				
 			'popFragment' => array(
 				'name' => __('Retourner vue web',__FILE__),
-				'isvisible' => false,
+				'isvisible' => 0,
 				'cmd' => 'popFragment',
 			),	
 
@@ -120,22 +120,22 @@ class fullyKiosK extends eqLogic {
 	
 			'triggerMotion' => array(
 				'name' => __('Simuler mouvement',__FILE__),
-				'isvisible' => false,
+				'isvisible' => 0,
 				'cmd' => 'triggerMotion',
 			),
 			'toForeground' => array(
 				'name' => __("Basculer vers fully",__FILE__),
-				'isvisible' => false,				
+				'isvisible' => 0,				
 				'cmd' => 'toForeground',
 			),
 			'JavascriptOn' => array(
 				'name' => __("Activer Javascript",__FILE__),
-				'isvisible' => false,				
+				'isvisible' => 0,				
 				'cmd' =>  "setBooleanSetting&key=websiteIntegration&value=true",
 			),
 			'JavascriptOff' => array(
 				'name' => __("Désactiver Javascript",__FILE__),
-				'isvisible' => false,			
+				'isvisible' => 0,			
 				'cmd' =>  "setBooleanSetting&key=websiteIntegration&value=false",
 			),			
 			'loadURL' => array(
@@ -563,7 +563,7 @@ Constant Value: 0 (0x00000000)
 				'type' => 'info',
 				'icon' => '<i class="fa jeedom-batterie2"></i>',
 				'subtype' => 'numeric',
-				'isvisible' => true,
+				'isvisible' => 1,
 				'unite' => '%',
 				'restkey' => 'batteryLevel',
 
@@ -572,7 +572,7 @@ Constant Value: 0 (0x00000000)
 				'name' => __('Niveau Wifi',__FILE__),
 				'type' => 'info',
 				'subtype' => 'numeric',
-				'isvisible' => true,
+				'isvisible' => 1,
 				'restkey' => 'wifiSignalLevel',
 
 			),	
@@ -580,7 +580,7 @@ Constant Value: 0 (0x00000000)
 				'name' => __('Détection mouvement',__FILE__),
 				'type' => 'info',
 				'subtype' => 'numeric',
-				'isvisible' => false,
+				'isvisible' => 0,
 				'restkey' => 'motionDetectorState',
 
 			),				
@@ -588,7 +588,7 @@ Constant Value: 0 (0x00000000)
 				'name' => __('Résolution écran, hauteur',__FILE__),
 				'type' => 'info',
 				'subtype' => 'numeric',
-				'isvisible' => false,
+				'isvisible' => 0,
 				'restkey' => 'displayHeightPixels',
 
 			),		 		
@@ -596,7 +596,7 @@ Constant Value: 0 (0x00000000)
 				'name' => __('Résolution écran, largeur',__FILE__),
 				'type' => 'info',
 				'subtype' => 'numeric',
-				'isvisible' => false,
+				'isvisible' => 0,
 				'restkey' => 'displayWidthPixels',
 
 			),	 	 		
@@ -604,7 +604,7 @@ Constant Value: 0 (0x00000000)
 				'name' => __('Mémoire disponible',__FILE__),
 				'type' => 'info',
 				'subtype' => 'numeric',
-				'isvisible' => false,
+				'isvisible' => 0,
 				'restkey' => 'appFreeMemory',
 
 			),	 			 		
@@ -612,7 +612,7 @@ Constant Value: 0 (0x00000000)
 				'name' => __('Mémoire utilisée par application',__FILE__),
 				'type' => 'info',
 				'subtype' => 'numeric',
-				'isvisible' => false,
+				'isvisible' => 0,
 				'restkey' => 'appUsedMemory',
 
 			),	 			 		
@@ -620,7 +620,7 @@ Constant Value: 0 (0x00000000)
 				'name' => __('Mémoire disponible totale',__FILE__),
 				'type' => 'info',
 				'subtype' => 'numeric',
-				'isvisible' => false,
+				'isvisible' => 0,
 				'restkey' => 'totalFreeMemory',
 
 			),	 			 		
@@ -628,7 +628,7 @@ Constant Value: 0 (0x00000000)
 				'name' => __('Utilisation mémoire totale',__FILE__),
 				'type' => 'info',
 				'subtype' => 'numeric',
-				'isvisible' => false,
+				'isvisible' => 0,
 				'restkey' => 'totalUsedMemory',
 
 			),
@@ -636,7 +636,7 @@ Constant Value: 0 (0x00000000)
 				'name' => __('onglet Actuel',__FILE__),
 				'type' => 'info',
 				'subtype' => 'numeric',
-				'isvisible' => false,
+				'isvisible' => 0,
 				'restkey' => 'currentTabIndex',
 
 			),			
@@ -644,7 +644,7 @@ Constant Value: 0 (0x00000000)
 				'name' => __('Joignable',__FILE__),
 				'type' => 'info',
 				'subtype' => 'binary',
-				'isvisible' => true,
+				'isvisible' => 1,
 				//'icon' => '<i class="a-exclamation-triangle"></i>',
 				'restkey' => 'communicationStatus',
 
@@ -653,7 +653,7 @@ Constant Value: 0 (0x00000000)
 				'name' => __('Branché',__FILE__),
 				'type' => 'info',
 				'subtype' => 'binary',
-				'isvisible' => true,
+				'isvisible' => 1,
 				//'icon' => '<i class="fa techno-charging"></i>',
 				'restkey' => 'plugged',
 
@@ -663,7 +663,7 @@ Constant Value: 0 (0x00000000)
 				'name' => __('Mode kiosque',__FILE__),
 				'type' => 'info',
 				'subtype' => 'binary',
-				'isvisible' => true,
+				'isvisible' => 1,
 				'restkey' => 'kioskMode',
 
 			),
@@ -671,7 +671,7 @@ Constant Value: 0 (0x00000000)
 				'name' => __('Ecran allumé',__FILE__),
 				'type' => 'info',
 				'subtype' => 'binary',
-				'isvisible' => true,
+				'isvisible' => 1,
 				'restkey' => 'isScreenOn',
 
 			),
@@ -679,7 +679,7 @@ Constant Value: 0 (0x00000000)
 				'name' => __('Verrouillage keyguard',__FILE__),
 				'type' => 'info',
 				'subtype' => 'binary',
-				'isvisible' => false,
+				'isvisible' => 1,
 				'restkey' => 'keyguardLocked',
 
 			),
@@ -687,7 +687,7 @@ Constant Value: 0 (0x00000000)
 				'name' => __('Administrateur tablette',__FILE__),
 				'type' => 'info',
 				'subtype' => 'binary',
-				'isvisible' => false,
+				'isvisible' => 1,
 				'restkey' => 'isDeviceAdmin',
 
 			),
@@ -695,7 +695,7 @@ Constant Value: 0 (0x00000000)
 				'name' => __('Modèle équipement',__FILE__),
 				'type' => 'info',
 				'subtype' => 'string',
-				'isvisible' => true,
+				'isvisible' => 1,
 				'restkey' => 'deviceModel',
 
 			),
@@ -704,7 +704,7 @@ Constant Value: 0 (0x00000000)
 				'name' => __('Application en cours',__FILE__),
 				'type' => 'info',
 				'subtype' => 'string',
-				'isvisible' => true,
+				'isvisible' => 1,
 				'restkey' => 'foregroundApp',
 
 			),
@@ -714,7 +714,7 @@ Constant Value: 0 (0x00000000)
 				'name' => __('Version',__FILE__),
 				'type' => 'info',
 				'subtype' => 'string',
-				'isvisible' => false,
+				'isvisible' => 0,
 				'restkey' => 'appVersionName',
 
 			),
@@ -723,7 +723,7 @@ Constant Value: 0 (0x00000000)
 				'name' => "ssid",
 				'type' => 'info',
 				'subtype' => 'string',
-				'isvisible' => false,
+				'isvisible' => 0,
 				'restkey' => 'ssid',
 
 			),
@@ -731,7 +731,7 @@ Constant Value: 0 (0x00000000)
 				'name' => __('Fabricant',__FILE__),
 				'type' => 'info',
 				'subtype' => 'string',
-				'isvisible' => false,
+				'isvisible' => 0,
 				'restkey' => 'deviceManufacturer',
 
 			),
@@ -740,7 +740,7 @@ Constant Value: 0 (0x00000000)
 				'name' => "ip",
 				'type' => 'info',
 				'subtype' => 'string',
-				'isvisible' => true,
+				'isvisible' => 1,
 				'restkey' => 'ip4',
 
 			),
@@ -749,7 +749,7 @@ Constant Value: 0 (0x00000000)
 				'name' => __('Position',__FILE__),
 				'type' => 'info',
 				'subtype' => 'string',
-				'isvisible' => false,
+				'isvisible' => 0,
 				'restkey' => 'locationProvider',
 
 			),
@@ -757,7 +757,7 @@ Constant Value: 0 (0x00000000)
 				'name' => __('Position, Longitude',__FILE__),
 				'type' => 'info',
 				'subtype' => 'string',
-				'isvisible' => false,
+				'isvisible' => 0,
 				'restkey' => 'locationLongitude',
 
 			),
@@ -766,7 +766,7 @@ Constant Value: 0 (0x00000000)
 				'name' => __('Postion, Latitude',__FILE__),
 				'type' => 'info',
 				'subtype' => 'string',
-				'isvisible' => false,
+				'isvisible' => 0,
 				'restkey' => 'locationLatitude',
 
 			),		
@@ -774,7 +774,7 @@ Constant Value: 0 (0x00000000)
 				'name' => __('Position, altitude',__FILE__),
 				'type' => 'info',
 				'subtype' => 'string',
-				'isvisible' => false,
+				'isvisible' => 0,
 				'restkey' => 'locationAltitude',
 
 			),
@@ -782,7 +782,7 @@ Constant Value: 0 (0x00000000)
 				'name' => __('Luminosité écran',__FILE__),
 				'type' => 'info',
 				'subtype' => 'string',
-				'isvisible' => false,
+				'isvisible' => 0,
 				'restkey' => 'screenBrightness',
 
 			),
@@ -790,7 +790,7 @@ Constant Value: 0 (0x00000000)
 				'name' => __('Page de démarrage',__FILE__),
 				'type' => 'info',
 				'subtype' => 'string',
-				'isvisible' => true,
+				'isvisible' => 1,
 				'restkey' => 'startUrl',
 
 			),
@@ -799,7 +799,7 @@ Constant Value: 0 (0x00000000)
 				'name' => __('Page courante',__FILE__),
 				'type' => 'info',
 				'subtype' => 'string',
-				'isvisible' => true,
+				'isvisible' => 1,
 				'restkey' => 'currentPage',
 
 			),
@@ -808,7 +808,7 @@ Constant Value: 0 (0x00000000)
 				'name' => __('Application démarrée le',__FILE__),
 				'type' => 'info',
 				'subtype' => 'string',
-				'isvisible' => false,
+				'isvisible' => 0,
 				'restkey' => 'lastAppStart',
 
 			),
@@ -1036,7 +1036,7 @@ Constant Value: 0 (0x00000000)
 				$fullyKiosKCmd->setName(__($params['name'], __FILE__));
 				$fullyKiosKCmd->setType($params['type'] ?: 'info');
 				$fullyKiosKCmd->setSubType($params['subtype'] ?: 'numeric');
-				$fullyKiosKCmd->setIsVisible($params['isvisible'] ?: false);
+				$fullyKiosKCmd->setIsVisible($params['isvisible'] ?: 0);
 				$fullyKiosKCmd->setDisplay('icon', $params['icon'] ?: null);
 
 				$fullyKiosKCmd->setConfiguration('cmd', $params['cmd'] ?: null);
@@ -1075,7 +1075,7 @@ Constant Value: 0 (0x00000000)
 				$fullyKiosKCmd->setName(__($params['name'], __FILE__));
 				$fullyKiosKCmd->setType($params['type'] ?: 'action');
 				$fullyKiosKCmd->setSubType($params['subtype'] ?: 'other');
-				$fullyKiosKCmd->setIsVisible($params['isvisible'] ?: true);
+				$fullyKiosKCmd->setIsVisible($params['isvisible'] ?: 1);
 
 				$fullyKiosKCmd->setConfiguration('cmd', $params['cmd'] ?: null);
 
@@ -1108,7 +1108,7 @@ Constant Value: 0 (0x00000000)
 				$fullyKiosKCmd->setName(__($params['name'], __FILE__));
 				$fullyKiosKCmd->setType($params['type'] ?: 'action');
 				$fullyKiosKCmd->setSubType($params['subtype'] ?: 'other');
-				$fullyKiosKCmd->setIsVisible($params['isvisible'] ?: true);
+				$fullyKiosKCmd->setIsVisible($params['isvisible'] ?: 1);
 
 				$fullyKiosKCmd->setConfiguration('cmd', $params['cmd'] ?: null);
 
