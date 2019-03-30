@@ -3,8 +3,8 @@
 En cas d'absence de note dans ce chapitre, les mises à jour ne concernent que la doc et des corrections mineures
 
 ## 30/03/2019
-- Correction sur les actions/infos visibles par défaut
-- Ajout délai de rafraîchissement = 0 (pas de refresh)
+- Correction sur les actions/infos visibles par défaut lors de la création de l'équipement
+- Ajout délai de rafraîchissement à 0 (pas de refresh)
 
 ## 10/01/2019
 - Ajout timeout sur refresh des données pour éviter le message "tâche cron n'a pas pu finir"
