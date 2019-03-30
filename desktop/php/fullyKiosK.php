@@ -118,6 +118,7 @@ $eqLogics = eqLogic::byType($plugin->getId());
 						<div class="col-sm-3">
 						<select id="sel_object" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="refreshDelay">
 
+							<option value="0">{{0}}</option>
 							<option value="1">{{1}}</option>
 							<option value="5">{{5}}</option>
 							<option value="15">{{15}}</option>						
