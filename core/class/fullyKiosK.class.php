@@ -679,7 +679,7 @@ Constant Value: 0 (0x00000000)
 				'name' => __('Verrouillage keyguard',__FILE__),
 				'type' => 'info',
 				'subtype' => 'binary',
-				'isvisible' => 1,
+				'isvisible' => 0,
 				'restkey' => 'keyguardLocked',
 
 			),
@@ -687,7 +687,7 @@ Constant Value: 0 (0x00000000)
 				'name' => __('Administrateur tablette',__FILE__),
 				'type' => 'info',
 				'subtype' => 'binary',
-				'isvisible' => 1,
+				'isvisible' => 0,
 				'restkey' => 'isDeviceAdmin',
 
 			),
