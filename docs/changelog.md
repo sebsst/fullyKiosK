@@ -2,6 +2,9 @@
 
 En cas d'absence de note dans ce chapitre, les mises à jour ne concernent que la doc et des corrections mineures
 
+## 05/05/2019
+- Ajout des fonctions fullykiosk 1.30 et 1.31 dans la liste des fonctions javascript disponible (getfile list, empty folder, bluetooth, qr code..). 
+
 ## 30/03/2019
 - Correction sur les actions/infos visibles par défaut lors de la création de l'équipement
 - Ajout délai de rafraîchissement à 0 (pas de refresh)
