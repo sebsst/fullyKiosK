@@ -33,10 +33,7 @@ if ($fullyKiosK->getEqType_name() != 'fullyKiosK') {
 $ip = $fullyKiosK->getConfiguration('addressip');
 $password = $fullyKiosK->getConfiguration('password');
 
-if($_SERVER['SERVER_NAME'] == config::byKey('externalAddr'))
-	$url ='/plugins/fullyKiosK/proxy/'.init('id').'/'; // external -> proxy -> tablette
-else
-	$url = "http://{$ip}:2323/?cmd=deviceInfo&password={$password}"; //local -> direct to tablet
+$url = "http://{$ip}:2323/?cmd=deviceInfo&password={$password}"; //local -> direct to tablet
 
 ?>
 <iframe src="<?php echo $url?>" style="width:100%; margin:auto;display: block;height: 100%;"></iframe>
