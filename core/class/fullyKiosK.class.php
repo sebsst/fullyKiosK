@@ -1305,7 +1305,10 @@ class fullyKiosKCmd extends cmd {
 						   $cmdval = str_replace('#title#',urlencode($_options['title']),$cmdval);
 						   $cmdval = str_replace('#message#',urlencode(str_replace("'","\'",$_options['message'])),$cmdval);
 					}
-					
+					if($this->getLogicalId()  == 'playSound'){
+						   $cmdval = str_replace('#title#',urlencode($_options['title']),$cmdval);
+						   $cmdval = str_replace('#message#',urlencode(str_replace("'","\'",$_options['message'])),$cmdval);
+					}					
 					
 					if($this->getSubType()  == 'message') {
 						$cmdval = str_replace('#message#',urlencode($_options['message']),$cmdval);
