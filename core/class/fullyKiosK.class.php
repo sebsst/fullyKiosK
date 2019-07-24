@@ -247,7 +247,7 @@ class fullyKiosK extends eqLogic {
 		// /?cmd=playSound&url=[url]&loop=[true|false]&password=[pass]
 			'playSound' => array(
 				'name' => __('Jouer musique/son',__FILE__),
-				'cmd' => "playSound&url='#title#'",
+				'cmd' => "playSound&url=#title#",
 				'subtype' => 'message',
 				'title_placeholder' => __('URL musique/son',__FILE__),
 				'message_disable' => true,
@@ -1305,7 +1305,10 @@ class fullyKiosKCmd extends cmd {
 						   $cmdval = str_replace('#title#',urlencode($_options['title']),$cmdval);
 						   $cmdval = str_replace('#message#',urlencode(str_replace("'","\'",$_options['message'])),$cmdval);
 					}
-					
+					if($this->getLogicalId()  == 'playSound'){
+						   $cmdval = str_replace('#title#',urlencode($_options['title']),$cmdval);
+						   $cmdval = str_replace('#message#',urlencode(str_replace("'","\'",$_options['message'])),$cmdval);
+					}					
 					
 					if($this->getSubType()  == 'message') {
 						$cmdval = str_replace('#message#',urlencode($_options['message']),$cmdval);
