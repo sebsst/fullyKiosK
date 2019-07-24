@@ -247,7 +247,7 @@ class fullyKiosK extends eqLogic {
 		// /?cmd=playSound&url=[url]&loop=[true|false]&password=[pass]
 			'playSound' => array(
 				'name' => __('Jouer musique/son',__FILE__),
-				'cmd' => "playSound&url=#title#",
+				'cmd' => "playSound&url='#title#'",
 				'subtype' => 'message',
 				'title_placeholder' => __('URL musique/son',__FILE__),
 				'message_disable' => true,
