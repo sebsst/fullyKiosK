@@ -1124,7 +1124,7 @@ Constant Value: 0 (0x00000000)
 				$fullyKiosKCmd->setName(__($params['name'], __FILE__));
 				$fullyKiosKCmd->setType($params['type'] ?: 'action');
 				$fullyKiosKCmd->setSubType($params['subtype'] ?: 'other');
-				$fullyKiosKCmd->setIsVisible($params['isvisible'] ?: 1);
+				//$fullyKiosKCmd->setIsVisible($params['isvisible'] ?: 1);
 
 				$fullyKiosKCmd->setConfiguration('cmd', $params['cmd'] ?: null);
 
@@ -1138,7 +1138,7 @@ Constant Value: 0 (0x00000000)
 			        $fullyKiosKCmd->setDisplay('message_placeholder', $params['message_placeholder'] ?: false);
 
 				$fullyKiosKCmd->setDisplay('title_possibility_list', json_encode($params['title_possibility_list'] ?: null));//json_encode(array("1","2"));
-				$fullyKiosKCmd->setDisplay('icon', $params['icon'] ?: null);				
+				//$fullyKiosKCmd->setDisplay('icon', $params['icon'] ?: null);				
 				$fullyKiosKCmd->save();
 
 			}
