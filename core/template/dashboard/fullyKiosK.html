@@ -1,34 +1,18 @@
 <div class="eqLogic eqLogic-widget fullyKiosK allowResize allowReorderCmd" data-eqLogic_id="#id#" data-eqLogic_uid="#uid#" data-version="#version#" style="border:#border#;border-radius:#border-radius#;background-color: #background-color#;color: #color#;width: #width#;height: #height#;#style#" data-category="#category#">
-	<span class="cmd modelconfig pull-left cursor" data-cmd_id="#refresh_id#" style="margin-top: 3px;margin-left: 3px;">
-		<i class='fa fa-cogs'></i>
-	</span>
-	<span class="cmd getCamshot pull-left cursor" data-cmd_id="#refresh_id#" style="margin-top: 3px;margin-left: 7px;">
-		<i class='fa fa-camera'></i>
-	</span>
-	<span class="cmd getScreenshot pull-left cursor" data-cmd_id="#refresh_id#" style="margin-top: 3px;margin-left: 11px;">
-		<i class='fa fa-tablet'></i>
-	</span>
-	<span class="cmd refresh pull-right cursor" data-cmd_id="#refresh_id#" style="margin-top: 3px;margin-right: 3px;">
-		<i class='fa fa-refresh'></i>
-	</span>
-	
-	<span class="cmd refresh pull-right cursor" style="font-weight:bold" data-cmd_id="#batteryLevel_id#" style="margin-top: 3px;margin-right: 7px;">
-		#batteryLevel#% </i>
-	</span>
-        <span class="cmd refresh pull-right cursor" data-cmd_id="#plugged_id#" style="margin-top: 3px;margin-right: 11px;">
-		<i class='fa fa #plugged_icon#'></i>
-	</span>
+	<a class="btn cmd modelconfig" title="Configuration tablette" id="bt_wl_modal" >  <i class='fas fa-cogs'></i></a>
+	<a class="btn cmd getCamshot" title="Camshot" id="getCamshot" style= "cursor: pointer;position : absolute;left : 31px;">
+		<i class='fas fa-camera'></i></a>
+	<a class="btn cmd getScreenshot" title="screenshot" id="getScreenshot" style= "cursor: pointer;position : absolute;left : 62px;">
+		<i class='fas fa-tablet'></i></a>
+
+	<a class="btn-sm cmd refresh pull-right cursor" id="#refresh_id#" style= "cursor: pointer;position : absolute;right : 2px;">
+		#batteryLevel#% <i class='fas fa-sync'></i></a>
+     <a class="cmd refresh pull-right cursor" data-cmd_id="#plugged_id#" style= "cursor: pointer;position : absolute;right : 32px;">
+		<i class='fas fa-#plugged_icon#'></i>	</a>
 	<center class="widget-name">
 		<a href="#eqLink#" style="font-size : 1.5em;#hideEqLogicName#">#name_display# <span style="font-size: 0.85em;">#object_name#</span></a>
-	</center>
-
-	
-	<div class="verticalAlign pull-left" >
-
-		#cmd# 
-
-
-	</div>
+	#cmd# 
+       </center>
 
 	<span class="statusCmd" style="position : absolute;left : 5px;bottom : 0px; width : 40px;z-index: 1030;"></span>
 	<script>
