@@ -1021,10 +1021,7 @@ Constant Value: 0 (0x00000000)
 			return true;
 		}
 	}
-        public function preSave() {
-  		$this->setDisplay("width","536px");
-      		$this->setDisplay("height","860px");	
-	}
+
 	public function postSave() {
 		self::initInfosMap();
 		$order = 0;
