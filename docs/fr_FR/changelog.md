@@ -13,7 +13,7 @@ ajout des dernières fonctions javascript fullykiosk dans la liste des fonctions
 - int fully.getThisTabIndex()
 - void fully.focusThisTab()
 
-Remplacement de la classe Object par jeedObject pour la compatibilité buster
+Remplacement de la classe Object par jeeObject pour la compatibilité buster
 
 ## 29/07/2019
 - correction pour commande playSound
