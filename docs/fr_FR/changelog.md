@@ -12,6 +12,7 @@ ajout des dernières fonctions javascript fullykiosk dans la liste des fonctions
 - void fully.loadUrlInNewTab(String url, boolean focus)
 - int fully.getThisTabIndex()
 - void fully.focusThisTab()
+
 Remplacement de la classe Object par jeedObject pour la compatibilité buster
 
 ## 29/07/2019
