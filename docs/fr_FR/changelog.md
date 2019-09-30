@@ -2,6 +2,18 @@
 
 En cas d'absence de note dans ce chapitre, les mises à jour ne concernent que la doc et des corrections mineures
 
+## 30/09/2019
+ajout des dernières fonctions javascript fullykiosk dans la liste des fonctions disponible 
+- fully.showNotification(String title, String text, String url, boolean highPriority)
+- void fully.closeTabByIndex(int index)
+- void fully.closeThisTab()
+- String fully.getTabList() // returns a JSON array
+- void fully.loadUrlInTabByIndex(int index, String url)
+- void fully.loadUrlInNewTab(String url, boolean focus)
+- int fully.getThisTabIndex()
+- void fully.focusThisTab()
+Remplacement de la classe Object par jeedObject pour la compatibilité buster
+
 ## 29/07/2019
 - correction pour commande playSound
 - correction de la préférence utilisateur sur l'affichage des actions après mise à jour
