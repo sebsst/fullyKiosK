@@ -213,6 +213,15 @@ class fullyKiosK extends eqLogic {
 					'fully.btSendStringData(String stringData)',
 					'fully.btSendHexData(String hexData)',
 					'fully.btSendByteData(byte[] data)',
+					'fully.closeTabByIndex(int index)',
+					'fully.closeThisTab()',
+					'fully.getTabList()', // returns a JSON array
+					'fully.loadUrlInTabByIndex(int index, String url)',
+					'fully.loadUrlInNewTab(String url, boolean focus)',
+					'fully.getThisTabIndex()',
+					'fully.focusThisTab()',
+					'fully.showNotification(String title, String text, String url, boolean highPriority)',
+					
 
 				),
 					
