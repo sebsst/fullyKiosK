@@ -220,6 +220,8 @@ class fullyKiosK extends eqLogic {
 					'fully.loadUrlInNewTab(String url, boolean focus)',
 					'fully.getThisTabIndex()',
 					'fully.focusThisTab()',
+					'fully.showNotification(String title, String text, String url, boolean highPriority)',
+					
 
 				),
 					
