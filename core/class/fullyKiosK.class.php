@@ -922,7 +922,7 @@ Constant Value: 0 (0x00000000)
         $client->setCredentials(config::byKey('fullyKiosKUser', 'fullyKiosK'), config::byKey('fullyKiosKPass', 'fullyKiosK'));
       }
       $client->connect(config::byKey('fullyKiosKAdress', 'fullyKiosK', '127.0.0.1'), config::byKey('fullyKiosKPort', 'fullyKiosK', '1883'), 60);
-        $client->subscribe(config::byKey('fullyKiosKTopic', 'fullyKiosK', 'fully/event/#'), config::byKey('fullyKiosKQos', 'fullyKiosK', 1)); // !auto: Subscribe to root topic
+      $client->subscribe(config::byKey('fullyKiosKTopic', 'fullyKiosK', 'fully/event/'.config::byKey('deviceID', 'fullyKiosK', '').'/#', config::byKey('fullyKiosKQos', 'fullyKiosK', 1)); // !auto: Subscribe to root topic
         log::add('fullyKiosK', 'debug', 'Subscribe to topic ' . config::byKey('fullyKiosKTopic', 'fullyKiosK', '#'));
       //$client->loopForever();
       while (true) { $client->loop(); }
