@@ -5,7 +5,7 @@ En cas d'absence de note dans ce chapitre, les mises à jour ne concernent que l
 ## 11/10/2019
 - Intégration des fonctionnalités MQTT pour la détection d'évènement:
 screenOn, screenOff, pluggedAC, pluggedUSB, pluggedWireless, unplugged, networkReconnect, networkDisconnect, internetReconnect, internetDisconnect, powerOn, powerOff, showKeyboard, hideKeyboard, onMotion, onDarkness, onMovement, volumeUp, volumeDown, onQrScanCancelled, onBatteryLevelChanged, onScreensaverStart, onScreensaverStop.
-- La valeur de l'évenèment prend la date + heure de la publication
+- La valeur de l'évenèment prend comme valeur la date + heure de la publication
 
 ## 30/09/2019
 ajout des dernières fonctions javascript fullykiosk dans la liste des fonctions disponible 
