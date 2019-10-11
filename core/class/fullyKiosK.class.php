@@ -963,7 +963,7 @@ Constant Value: 0 (0x00000000)
 
   public static function message( $message ) {
     $json = json_decode($message->payload,true);
-    if(!is_null($json)){
+    if(!is_null($json) && !is_null($json['event']) && !is_null($json['deviceId']) ){
     log::add('fullyKiosK', 'debug', 'MeMessage ' . $json['deviceId'] . $json['event'] );
     log::add('fullyKiosK', 'debug', 'Message ' . $message->payload . ' sur ' . $message->topic . $json->deviceId . $json->event );
 	//$fullyKiosKCmd = $this->getCmd('info', $cmdLogicalId);
