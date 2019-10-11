@@ -64,6 +64,14 @@ function fullyKiosK_update() {
 
 function fullyKiosK_remove() {
 
+function MQTT_remove() {
+    $cron = cron::byClassAndFunction('fullyKiosK', 'daemon');
+    if (is_object($cron)) {
+        $cron->stop();
+        $cron->remove();
+    }
+
+}
 }
 
 ?>
