@@ -983,15 +983,15 @@ Constant Value: 0 (0x00000000)
 		$fullyKiosKCmd->setName($json['event']);
 		$fullyKiosKCmd->setType('info');
 		$fullyKiosKCmd->setSubType('string');
-		$fullyKiosKCmd->setValue(date('h:i:s'));              
+		$fullyKiosKCmd->setValue(date('y/m/d h:i:s'));              
 		$fullyKiosKCmd->setIsVisible(0);
 
-		$eqlogic->checkAndUpdateCmd($json['event'],date('h:i:s'));
+		$eqlogic->checkAndUpdateCmd($json['event'],date('y/m/d h:i:s'));
 		$fullyKiosKCmd->save();
 	}else{
-      		log::add('fullyKiosK', 'debug', 'Event received:' .  $json['event'] . ' ' . date('h:i:s'));
+      		log::add('fullyKiosK', 'debug', 'Event received:' .  $json['event'] . ' ' . date('y/m/d h:i:s'));
         	$fullyKiosKCmd->setValue(date('h:i:s'));
-		$eqlogic->checkAndUpdateCmd($json['event'],date('h:i:s'));
+		$eqlogic->checkAndUpdateCmd($json['event'],date('y/m/d h:i:s'));
 
 		$fullyKiosKCmd->save();
 
