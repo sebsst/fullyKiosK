@@ -20,11 +20,32 @@ require_once dirname(__FILE__) . '/../../../core/php/core.inc.php';
 
 function fullyKiosK_install() {
   
+    $cron = cron::byClassAndFunction('fullyKiosK', 'daemon');
+    if (!is_object($cron)) {
+        $cron = new cron();
+        $cron->setClass('fullyKiosK');
+        $cron->setFunction('daemon');
+        $cron->setEnable(1);
+        $cron->setDeamon(1);
+        $cron->setSchedule('* * * * *');
+        $cron->setTimeout('1440');
+        $cron->save();
+    }
 
 }
 
 function fullyKiosK_update() {
-
+    $cron = cron::byClassAndFunction('fullyKiosK', 'daemon');
+    if (!is_object($cron)) {
+        $cron = new cron();
+        $cron->setClass('fullyKiosK');
+        $cron->setFunction('daemon');
+        $cron->setEnable(1);
+        $cron->setDeamon(1);
+        $cron->setSchedule('* * * * *');
+        $cron->setTimeout('1440');
+        $cron->save();
+    }
       foreach (eqLogic::byType('fullyKiosK', false) as $eqpt) {
         
         $eqpt->save();
