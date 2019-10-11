@@ -923,6 +923,7 @@ Constant Value: 0 (0x00000000)
       }
       $client->connect(config::byKey('fullyKiosKAdress', 'fullyKiosK', '127.0.0.1'), config::byKey('fullyKiosKPort', 'fullyKiosK', '1883'), 60);
       $topic = 'fully/event/#'; //.config::byKey('deviceID', 'fullyKiosK', '').'/#'; self::byLogicalId('deviceID', 'fullyKiosK');
+      $topic = 'fully/event/'.$this->getCmd('info', 'deviceID').'/#';
       $client->subscribe(config::byKey('fullyKiosKTopic', 'fullyKiosK', $topic , config::byKey('fullyKiosKQos', 'fullyKiosK', 1)); // !auto: Subscribe to root topic
 
 	    //$client->subscribe(config::byKey('fullyKiosKTopic', 'fullyKiosK', 'fully/event/'.config::byKey('deviceID', 'fullyKiosK', '').'/#', config::byKey('fullyKiosKQos', 'fullyKiosK', 1)); // !auto: Subscribe to root topic
@@ -957,7 +958,7 @@ Constant Value: 0 (0x00000000)
 
   public static function message( $message ) {
     log::add('fullyKiosK', 'debug', 'Message ' . $message->payload . ' sur ' . $message->topic);
-	
+	//$fullyKiosKCmd = $this->getCmd('info', $cmdLogicalId);
   }	
 	
 	
