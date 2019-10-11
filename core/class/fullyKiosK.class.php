@@ -582,6 +582,14 @@ Constant Value: 0 (0x00000000)
 	 		//	'isvisible' => true,
 	 		//	'restkey' =>'',a-exclamation-triangle
 	 		//),
+			'deviceID' => array(
+				'name' => __('deviceID',__FILE__),
+				'type' => 'info',
+				'subtype' => 'string',
+				'isvisible' => 1,
+				'restkey' => 'deviceID',
+
+			),				
 	
 			'batteryLevel' => array(
 				'name' => __('Batterie',__FILE__),
