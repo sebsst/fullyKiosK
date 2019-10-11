@@ -922,10 +922,15 @@ Constant Value: 0 (0x00000000)
         $client->setCredentials(config::byKey('fullyKiosKUser', 'fullyKiosK'), config::byKey('fullyKiosKPass', 'fullyKiosK'));
       }
       $client->connect(config::byKey('fullyKiosKAdress', 'fullyKiosK', '127.0.0.1'), config::byKey('fullyKiosKPort', 'fullyKiosK', '1883'), 60);
-      $topic = 'fully/event/#'; //.config::byKey('deviceID', 'fullyKiosK', '').'/#'; self::byLogicalId('deviceID', 'fullyKiosK');
-      $topic = 'fully/event/'.$this->getCmd('info', 'deviceID').'/#';
-      $client->subscribe(config::byKey('fullyKiosKTopic', 'fullyKiosK', $topic , config::byKey('fullyKiosKQos', 'fullyKiosK', 1)); // !auto: Subscribe to root topic
+      
 
+        
+      
+      $topic = 'fully/event/#'; //.config::byKey('deviceID', 'fullyKiosK', '').'/#'; self::byLogicalId('deviceID', 'fullyKiosK');
+      //$topic = 'fully/event/' . $fullyKiosK->getCmd('info', 'deviceID') . '/#';
+        log::add('fullyKiosK', 'debug', 'Subscribe to topic ' . $topic);        
+      //$client->subscribe(config::byKey('fullyKiosKTopic', 'fullyKiosK', $topic , config::byKey('fullyKiosKQos', 'fullyKiosK', 1)); // !auto: Subscribe to root topic
+      $client->subscribe(config::byKey('fullyKiosKTopic', 'fullyKiosK', $topic), config::byKey('fullyKiosKQos', 'fullyKiosK', 1)); // !auto: Subscribe to root topic
 	    //$client->subscribe(config::byKey('fullyKiosKTopic', 'fullyKiosK', 'fully/event/'.config::byKey('deviceID', 'fullyKiosK', '').'/#', config::byKey('fullyKiosKQos', 'fullyKiosK', 1)); // !auto: Subscribe to root topic
         log::add('fullyKiosK', 'debug', 'Subscribe to topic ' . config::byKey('fullyKiosKTopic', 'fullyKiosK', '#'));
       //$client->loopForever();
@@ -957,8 +962,38 @@ Constant Value: 0 (0x00000000)
   }
 
   public static function message( $message ) {
-    log::add('fullyKiosK', 'debug', 'Message ' . $message->payload . ' sur ' . $message->topic);
+    $json = json_decode($message->payload,true);
+    log::add('fullyKiosK', 'debug', 'MeMessage ' . $json['deviceId'] . $json['event'] );
+    log::add('fullyKiosK', 'debug', 'Message ' . $message->payload . ' sur ' . $message->topic . $json->deviceId . $json->event );
 	//$fullyKiosKCmd = $this->getCmd('info', $cmdLogicalId);
+    
+    $eqlogic = self::byLogicalId($json['deviceId'], 'fullyKiosK');
+
+    
+	$fullyKiosKCmd = $eqlogic->getCmd('info', $json['event']);
+
+	if (!is_object($fullyKiosKCmd))
+	{
+		log::add('fullyKiosK', 'debug', __METHOD__.' '.__LINE__.' cmdInfo create '.$cmdLogicalId.'('.__($params['name'], __FILE__).') '.($params['subtype'] ?: 'subtypedefault'));
+		$fullyKiosKCmd = new fullyKiosKCmd();
+
+		$fullyKiosKCmd->setLogicalId($json['event']);
+		$fullyKiosKCmd->setEqLogic_id($eqlogic->getId());
+		$fullyKiosKCmd->setName($json['event']);
+		$fullyKiosKCmd->setType('info');
+		$fullyKiosKCmd->setSubType('string');
+		//$fullyKiosKCmd->setValue(time());              
+		$fullyKiosKCmd->setIsVisible(0);
+
+		$eqlogic->checkAndUpdateCmd($json['event'],date('h:i:s'));
+		$fullyKiosKCmd->save();
+	}elseif($fullyKiosKCmd->getConfiguration('restKey','') != '') {
+		$eqlogic->checkAndUpdateCmd($json['event'],date('h:i:s'));
+		//$fullyKiosKCmd->setValue(time());
+		$fullyKiosKCmd->save();
+
+	}
+    
   }	
 	
 	
@@ -1126,11 +1161,12 @@ Constant Value: 0 (0x00000000)
 				
 				return false;
 			}
-
+          
 			$this->checkAndUpdateCmd('communicationStatus',true);
 
 			self::initInfosMap();
-
+        
+         
 			//update cmdinfo value
 			foreach(self::$_infosMap as $cmdLogicalId=>$params)
 			{
@@ -1145,9 +1181,17 @@ Constant Value: 0 (0x00000000)
 						//log::add('fullyKiosK', 'debug', __METHOD__.' '.__LINE__.' Transform to => '.json_encode($value));
 					}
 
+
+                  
 					$this->checkAndUpdateCmd($cmdLogicalId,$value);
 				}
 			}
+          	
+          	if($this->getLogicalId() == ''){ 
+              $this->setLogicalId($json['deviceID']);
+              $this->save();
+            }
+          
 			return true;
 		}
 	}
@@ -1183,9 +1227,7 @@ Constant Value: 0 (0x00000000)
 				$fullyKiosKCmd->setDisplay('icon', $params['icon'] ?: null);
 
 				$fullyKiosKCmd->setConfiguration('cmd', $params['cmd'] ?: null);
-
-
-				$fullyKiosKCmd->setDisplay('forceReturnLineBefore', $params['forceReturnLineBefore'] ?: false);
+  				$fullyKiosKCmd->setDisplay('forceReturnLineBefore', $params['forceReturnLineBefore'] ?: false);
 
 				if(isset($params['unite']))
 					$fullyKiosKCmd->setUnite($params['unite']);
@@ -1195,10 +1237,13 @@ Constant Value: 0 (0x00000000)
 
 				$fullyKiosKCmd->save();
 			}elseif($fullyKiosKCmd->getConfiguration('restKey','') != '') {
+              
 			  	$fullyKiosKCmd->setConfiguration('restKey', $params['restKey'] ?: null);
 				$fullyKiosKCmd->save();
 
 			}
+
+          
 		}
 		//Cmd Actions
 		foreach(self::$_actionMap as $cmdLogicalId => $params)
