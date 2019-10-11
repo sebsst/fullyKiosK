@@ -843,6 +843,10 @@ Constant Value: 0 (0x00000000)
 		);
 	}
 
+	// add daemon for MQTT management
+	
+	
+	
 	public static function cron() {
 		$notfound = true;
 		foreach (eqLogic::byType('fullyKiosK') as $fullyKiosK)
