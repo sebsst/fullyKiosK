@@ -921,7 +921,7 @@ Constant Value: 0 (0x00000000)
       if (config::byKey('fullyKiosKUser', 'fullyKiosK', 'none') != 'none') {
         $client->setCredentials(config::byKey('fullyKiosKUser', 'fullyKiosK'), config::byKey('fullyKiosKPass', 'fullyKiosK'));
       }
-      $client->connect(config::byKey('fullyKiosKAdress', 'fullyKiosK', '127.0.0.1'), config::byKey('fullyKiosKPort', 'fullyKiosK', '1883'), 60);
+      $client->connect(config::byKey('fullyKiosKAdress', 'fullyKiosK', '127.0.0.1'), config::byKey('MQTTPort', 'fullyKiosK', '1883'), 60);
       
 
         
