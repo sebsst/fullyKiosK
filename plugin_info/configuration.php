@@ -34,8 +34,24 @@ if (!isConnect()) {
 	<div class="form-group">
 		<br>
 		<label class="col-sm-4 control-label">{{Configuration}} :</label>
+
+		<div class="form-group">
+		        <label class="col-sm-4 control-label">{{L'activation de la fonction MQTT se trouve dans Settings->Other Settings->MQTT integration}}</label>
+			<label class="col-sm-4 control-label">{{Utiliser la fonction MQTT : }}</label>
+			<div class="col-sm-2">
+			    <input id="MQTT" type="checkbox" class="configKey autoCheck" data-l1key="MQTT"  />
+			</div>
+		</div>		
+		<div class="form-group">
+			<label class="col-sm-3 control-label">{{Port MQTT}}</label>
+			<div class="col-sm-3">
+				<input class="configKey form-control" data-l1key="MQTTPort" type="text" placeholder="{{Port MQTT}}">
+			</div>
+		</div>		
+		
+		
 		<div class="col-lg-4">
-			<a class="btn btn-info" href=/index.php?v=d&m=fullyKiosK&p=fullyKiosK> {{Accès à la configuration}}</a>
+			<a class="btn btn-info" href=/index.php?v=d&m=fullyKiosK&p=fullyKiosK> {{Accès à la configuration des tablettes}}</a>
 		</div>
 	</div>	
 </form>
