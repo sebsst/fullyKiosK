@@ -34,8 +34,20 @@ if (!isConnect()) {
 	<div class="form-group">
 		<br>
 		<label class="col-sm-4 control-label">{{Configuration}} :</label>
+
+
+		
 		<div class="col-lg-4">
-			<a class="btn btn-info" href=/index.php?v=d&m=fullyKiosK&p=fullyKiosK> {{Accès à la configuration}}</a>
+			<a class="btn btn-info" href=/index.php?v=d&m=fullyKiosK&p=fullyKiosK> {{Accès à la configuration des tablettes}}</a>
 		</div>
 	</div>	
+
+	<legend>
+	     {{Pour activer la fonction MQTT aller dans Settings-Other Settings-MQTT integration-enable MQTT}}
+	     <br>
+	     {{Renseigner adresse IP de jeedom et le port 1883}}
+	     <br>               
+	    {{Il est préférable d arrêter le démon en cas de non utilisation de MQTT }}
+	</legend>  
+
 </form>

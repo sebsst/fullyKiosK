@@ -582,6 +582,14 @@ Constant Value: 0 (0x00000000)
 	 		//	'isvisible' => true,
 	 		//	'restkey' =>'',a-exclamation-triangle
 	 		//),
+			'deviceID' => array(
+				'name' => __('deviceID',__FILE__),
+				'type' => 'info',
+				'subtype' => 'string',
+				'isvisible' => 1,
+				'restkey' => 'deviceID',
+
+			),				
 	
 			'batteryLevel' => array(
 				'name' => __('Batterie',__FILE__),
@@ -843,6 +851,157 @@ Constant Value: 0 (0x00000000)
 		);
 	}
 
+	// add daemon for MQTT management
+  public static function deamon_info() {
+    $return = array();
+    $return['log'] = '';
+    $return['state'] = 'nok';
+    $cron = cron::byClassAndFunction('fullyKiosK', 'daemon');
+    if (is_object($cron) && $cron->running()) {
+      $return['state'] = 'ok';
+    }
+    $dependancy_info = self::dependancy_info();
+    if ($dependancy_info['state'] == 'ok') {
+      $return['launchable'] = 'ok';
+    }
+    return $return;
+  }
+
+  public static function deamon_start($_debug = false) {
+    self::deamon_stop();
+    $deamon_info = self::deamon_info();
+    if ($deamon_info['launchable'] != 'ok') {
+      throw new Exception(__('Veuillez vérifier la configuration', __FILE__));
+    }
+    $cron = cron::byClassAndFunction('fullyKiosK', 'daemon');
+    if (!is_object($cron)) {
+      throw new Exception(__('Tache cron introuvable', __FILE__));
+    }
+    $cron->run();
+  }
+
+  public static function deamon_stop() {
+    $cron = cron::byClassAndFunction('fullyKiosK', 'daemon');
+    if (!is_object($cron)) {
+      throw new Exception(__('Tache cron introuvable', __FILE__));
+    }
+    $cron->halt();
+  }
+
+  public static function dependancy_info() {
+    $return = array();
+    $return['log'] = 'fullyKiosK_dep';
+    $return['state'] = 'nok';
+    $cmd = "dpkg -l | grep mosquitto";
+    exec($cmd, $output, $return_var);
+    //lib PHP exist
+    $libphp = extension_loaded('mosquitto');
+    if ($output[0] != "" && $libphp) {
+      $return['state'] = 'ok';
+    }
+    return $return;
+  }
+
+      public static function dependancy_install() {
+        log::remove(__CLASS__ . '_dep');
+        return array('script' => dirname(__FILE__) . '/../../resources/install.sh ' . jeedom::getTmpFolder('fullyKiosK') . '/dependance', 'log' => log::getPathToLog(__CLASS__ . '_dep'));
+    }
+
+  public static function daemon() {
+    log::add('fullyKiosK', 'info', 'Paramètres utilisés, Host : ' . config::byKey('fullyKiosKAdress', 'fullyKiosK', '127.0.0.1') . ', Port : ' . config::byKey('fullyKiosKPort', 'fullyKiosK', '1883') . ', ID : ' . config::byKey('fullyKiosKId', 'fullyKiosK', 'Jeedom'));
+    $client = new Mosquitto\Client(config::byKey('fullyKiosKId', 'fullyKiosK', 'Jeedom'));
+    $client->onConnect('fullyKiosK::connect');
+    $client->onDisconnect('fullyKiosK::disconnect');
+    $client->onSubscribe('fullyKiosK::subscribe');
+    $client->onMessage('fullyKiosK::message');
+    $client->onLog('fullyKiosK::logmq');
+    $client->setWill('/jeedom', "Client died :-(", 1, 0);
+
+    try {
+      if (config::byKey('fullyKiosKUser', 'fullyKiosK', 'none') != 'none') {
+        $client->setCredentials(config::byKey('fullyKiosKUser', 'fullyKiosK'), config::byKey('fullyKiosKPass', 'fullyKiosK'));
+      }
+      $client->connect(config::byKey('fullyKiosKAdress', 'fullyKiosK', '127.0.0.1'), config::byKey('MQTTPort', 'fullyKiosK', '1883'), 60);
+      
+
+        
+      
+      $topic = 'fully/event/#'; //.config::byKey('deviceID', 'fullyKiosK', '').'/#'; self::byLogicalId('deviceID', 'fullyKiosK');
+      //$topic = 'fully/event/' . $fullyKiosK->getCmd('info', 'deviceID') . '/#';
+        log::add('fullyKiosK', 'debug', 'Subscribe to topic ' . $topic);        
+      //$client->subscribe(config::byKey('fullyKiosKTopic', 'fullyKiosK', $topic , config::byKey('fullyKiosKQos', 'fullyKiosK', 1)); // !auto: Subscribe to root topic
+      $client->subscribe(config::byKey('fullyKiosKTopic', 'fullyKiosK', $topic), config::byKey('fullyKiosKQos', 'fullyKiosK', 1)); // !auto: Subscribe to root topic
+	    //$client->subscribe(config::byKey('fullyKiosKTopic', 'fullyKiosK', 'fully/event/'.config::byKey('deviceID', 'fullyKiosK', '').'/#', config::byKey('fullyKiosKQos', 'fullyKiosK', 1)); // !auto: Subscribe to root topic
+        log::add('fullyKiosK', 'debug', 'Subscribe to topic ' . config::byKey('fullyKiosKTopic', 'fullyKiosK', '#'));
+      //$client->loopForever();
+      while (true) { $client->loop(); }
+    }
+    catch (Exception $e){
+      log::add('fullyKiosK', 'error', $e->getMessage());
+    }
+  }
+
+  public static function connect( $r, $message ) {
+    log::add('fullyKiosK', 'info', 'Connexion à Mosquitto avec code ' . $r . ' ' . $message);
+    config::save('status', '1',  'fullyKiosK');
+  }
+
+  public static function disconnect( $r ) {
+    log::add('fullyKiosK', 'debug', 'Déconnexion de Mosquitto avec code ' . $r);
+    config::save('status', '0',  'fullyKiosK');
+  }
+
+  public static function subscribe( ) {
+    log::add('fullyKiosK', 'debug', 'Subscribe to topics');
+  }
+
+  public static function logmq( $code, $str ) {
+    if (strpos($str,'PINGREQ') === false && strpos($str,'PINGRESP') === false) {
+      log::add('fullyKiosK', 'debug', $code . ' : ' . $str);
+    }
+  }
+
+  public static function message( $message ) {
+    $json = json_decode($message->payload,true);
+    if(!is_null($json) && !is_null($json['event']) && !is_null($json['deviceId']) ){
+    log::add('fullyKiosK', 'debug', 'MeMessage ' . $json['deviceId'] . $json['event'] );
+    log::add('fullyKiosK', 'debug', 'Message ' . $message->payload . ' sur ' . $message->topic . $json->deviceId . $json->event );
+	//$fullyKiosKCmd = $this->getCmd('info', $cmdLogicalId);
+    
+    $eqlogic = self::byLogicalId($json['deviceId'], 'fullyKiosK');
+
+    
+	$fullyKiosKCmd = $eqlogic->getCmd('info', $json['event']);
+
+	if (!is_object($fullyKiosKCmd))
+	{
+		log::add('fullyKiosK', 'debug', __METHOD__.' '.__LINE__.' cmdInfo create '.$cmdLogicalId.'('.__($params['name'], __FILE__).') '.($params['subtype'] ?: 'subtypedefault'));
+		$fullyKiosKCmd = new fullyKiosKCmd();
+
+		$fullyKiosKCmd->setLogicalId($json['event']);
+		$fullyKiosKCmd->setEqLogic_id($eqlogic->getId());
+		$fullyKiosKCmd->setName($json['event']);
+		$fullyKiosKCmd->setType('info');
+		$fullyKiosKCmd->setSubType('string');
+		$fullyKiosKCmd->setValue(date('y/m/d h:i:s'));              
+		$fullyKiosKCmd->setIsVisible(0);
+
+		$eqlogic->checkAndUpdateCmd($json['event'],date('y/m/d h:i:s'));
+		$fullyKiosKCmd->save();
+	}else{
+      		log::add('fullyKiosK', 'debug', 'Event received:' .  $json['event'] . ' ' . date('y/m/d h:i:s'));
+        	$fullyKiosKCmd->setValue(date('h:i:s'));
+		$eqlogic->checkAndUpdateCmd($json['event'],date('y/m/d h:i:s'));
+
+		$fullyKiosKCmd->save();
+
+	}
+    }
+  }	
+	
+	
+	// end add daemon for mqtt
+	
 	public static function cron() {
 		$notfound = true;
 		foreach (eqLogic::byType('fullyKiosK') as $fullyKiosK)
@@ -1005,11 +1164,12 @@ Constant Value: 0 (0x00000000)
 				
 				return false;
 			}
-
+          
 			$this->checkAndUpdateCmd('communicationStatus',true);
 
 			self::initInfosMap();
-
+        
+         
 			//update cmdinfo value
 			foreach(self::$_infosMap as $cmdLogicalId=>$params)
 			{
@@ -1024,9 +1184,17 @@ Constant Value: 0 (0x00000000)
 						//log::add('fullyKiosK', 'debug', __METHOD__.' '.__LINE__.' Transform to => '.json_encode($value));
 					}
 
+
+                  
 					$this->checkAndUpdateCmd($cmdLogicalId,$value);
 				}
 			}
+          	
+          	if($this->getLogicalId() == ''){ 
+              $this->setLogicalId($json['deviceID']);
+              $this->save();
+            }
+          
 			return true;
 		}
 	}
@@ -1062,9 +1230,7 @@ Constant Value: 0 (0x00000000)
 				$fullyKiosKCmd->setDisplay('icon', $params['icon'] ?: null);
 
 				$fullyKiosKCmd->setConfiguration('cmd', $params['cmd'] ?: null);
-
-
-				$fullyKiosKCmd->setDisplay('forceReturnLineBefore', $params['forceReturnLineBefore'] ?: false);
+  				$fullyKiosKCmd->setDisplay('forceReturnLineBefore', $params['forceReturnLineBefore'] ?: false);
 
 				if(isset($params['unite']))
 					$fullyKiosKCmd->setUnite($params['unite']);
@@ -1074,10 +1240,13 @@ Constant Value: 0 (0x00000000)
 
 				$fullyKiosKCmd->save();
 			}elseif($fullyKiosKCmd->getConfiguration('restKey','') != '') {
+              
 			  	$fullyKiosKCmd->setConfiguration('restKey', $params['restKey'] ?: null);
 				$fullyKiosKCmd->save();
 
 			}
+
+          
 		}
 		//Cmd Actions
 		foreach(self::$_actionMap as $cmdLogicalId => $params)
