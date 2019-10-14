@@ -113,6 +113,12 @@ $eqLogics = eqLogic::byType($plugin->getId());
 						</div>
 					</div>
 					<div class="form-group">
+						<label class="col-sm-3 control-label">{{Activer MQTT}}</label>
+						<div class="col-sm-3">
+							<input class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="fullyKiosKMQTT" type="checkbox" placeholder="{{}}">
+						</div>
+					</div>
+					<div class="form-group">
 
 						<label class="col-sm-3 control-label">{{Délai de rafraîchissement en minutes}}</label>
 						<div class="col-sm-3">
