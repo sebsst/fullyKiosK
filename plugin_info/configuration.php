@@ -39,7 +39,14 @@ if (!isConnect()) {
 		</div>
 	</div>	
 
-	
+	<div class="form-group">
+		<label class="col-sm-3 control-label">{{Activer MQTT}}</label>
+		<div class="col-sm-3">
+			<input class="configKey form-control" data-l1key="fullyKiosKMQTT" type="checkbox" placeholder="{{}}">
+		</div>
+	</div>
+
+  
 	<div class="form-group">
 		<label class="col-sm-3 control-label">{{utilisateur MQTT}}</label>
 		<div class="col-sm-3">
