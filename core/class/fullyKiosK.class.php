@@ -909,25 +909,7 @@ Constant Value: 0 (0x00000000)
 
   public static function daemon() {
 
-        $daemon_started = false;
-		foreach (eqLogic::byType('fullyKiosK', false) as $eqpt) {      
-          if($eqpt->getConfiguration('fullyKiosKMQTT', false) == true ){
-            //$cron = cron::byClassAndFunction('fullyKiosK', 'daemon');
-            //$cron->start;
-			$daemon_started = true;
-          
-          }  
-  
-        }
-      	if($daemon_started == false){
-         //$cron = cron::byClassAndFunction('fullyKiosK', 'daemon');
-	      log::add('fullyKiosK', 'debug', ' No active MQTT, Daemon stopped  ' );            
-          self::deamon_stop();
-         // $cron->halt;
-		  return false;
-        }
-    
-        if($daemon_started == true){
+        if(config::byKey('fullyKiosKMQTT', 'fullyKiosK', false) == true){
 
 
                 log::add('fullyKiosK', 'info', 'Paramètres utilisés, Host : ' . config::byKey('fullyKiosKAdress', 'fullyKiosK', '127.0.0.1') . ', Port : ' . config::byKey('fullyKiosKPort', 'fullyKiosK', '1883') . ', ID : ' . config::byKey('fullyKiosKId', 'fullyKiosK', 'Jeedom'));
@@ -966,7 +948,12 @@ Constant Value: 0 (0x00000000)
                 }
 
     
-        }
+        } else {
+	  log::add('fullyKiosK', 'debug', ' No active MQTT, Daemon stopped  ' );            
+          self::deamon_stop();
+	}
+	 
+	  
     }
 
   public static function connect( $r, $message ) {
@@ -1230,7 +1217,12 @@ Constant Value: 0 (0x00000000)
 	public function postSave() {
 		self::initInfosMap();
 		$order = 0;
-                
+                if(config::byKey('fullyKiosKMQTT', 'fullyKiosK', false) == false){
+	        	log::add('fullyKiosK', 'debug', ' No active MQTT, Daemon stopped  ' );            
+          		self::deamon_stop();
+		}
+		
+		
 		switch ($this->getConfiguration('refreshDelay','')){
 			case '1' : config::save('functionality::cron::enable', 1 ,'fullyKiosK'); break;
  			case '5' : config::save('functionality::cron5::enable', 1 ,'fullyKiosK'); break;
