@@ -2,6 +2,10 @@
 
 En cas d'absence de note dans ce chapitre, les mises à jour ne concernent que la doc et des corrections mineures
 
+## 18/10/2019
+- ajout du user + mot de passe (optionnel) dans la configuration du plugin
+- ajout d'un bouton pour l'activation de MQTT
+
 ## 11/10/2019
 - Intégration des fonctionnalités MQTT pour la détection d'évènement:
 screenOn, screenOff, pluggedAC, pluggedUSB, pluggedWireless, unplugged, networkReconnect, networkDisconnect, internetReconnect, internetDisconnect, powerOn, powerOff, showKeyboard, hideKeyboard, onMotion, onDarkness, onMovement, volumeUp, volumeDown, onQrScanCancelled, onBatteryLevelChanged, onScreensaverStart, onScreensaverStop.
