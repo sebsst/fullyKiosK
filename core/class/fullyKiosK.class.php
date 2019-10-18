@@ -913,7 +913,7 @@ Constant Value: 0 (0x00000000)
 
 
                 log::add('fullyKiosK', 'info', 'Paramètres utilisés, Host : ' . config::byKey('fullyKiosKAdress', 'fullyKiosK', '127.0.0.1') . ', Port : ' . config::byKey('fullyKiosKPort', 'fullyKiosK', '1883') . ', ID : ' . config::byKey('fullyKiosKId', 'fullyKiosK', 'Jeedom'));
-                $client = new Mosquitto\Client($eqpt->getConfiguration('deviceID', 'fullyKiosK'));
+                $client = new Mosquitto\Client('fullyKiosK');
                 $client->onConnect('fullyKiosK::connect');
                 $client->onDisconnect('fullyKiosK::disconnect');
                 $client->onSubscribe('fullyKiosK::subscribe');
