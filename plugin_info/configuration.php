@@ -50,19 +50,19 @@ if (!isConnect()) {
 	<div class="form-group">
 		<label class="col-sm-3 control-label">{{utilisateur MQTT}}</label>
 		<div class="col-sm-3">
-			<input class="configKey form-control" data-l1key="configuration" data-l1key="fullyKiosKUser" type="text" placeholder="{{Optionnel}}">
+			<input class="configKey form-control" data-l1key="fullyKiosKUser" type="text" placeholder="{{Optionnel}}">
 		</div>
 	</div>  
 	<div class="form-group">
 		<label class="col-sm-3 control-label">{{Mot de passe MQTT}}</label>
 		<div class="col-sm-3">
-			<input class="configKey form-control" data-l1key="configuration" data-l1key="fullyKiosKPass" type="password" placeholder="{{Optionnel}}">
+			<input class="configKey form-control" data-l1key="fullyKiosKPass" type="password" placeholder="{{Optionnel}}">
 		</div>
 	</div>                      
 	<div class="form-group">
 		<label class="col-sm-3 control-label">{{Port MQTT}}</label>
 		<div class="col-sm-3">
-			<input class="configKey form-control" data-l1key="configuration" data-l1key="fullyKiosKPort" type="number" placeholder="{{1883}}">
+			<input class="configKey form-control" data-l1key="fullyKiosKPort" type="number" placeholder="{{1883}}">
 		</div>
 	</div>
   
