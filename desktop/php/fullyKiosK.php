@@ -128,6 +128,7 @@ $eqLogics = eqLogic::byType($plugin->getId());
 						</select>
 						</div>													
 					</div>					
+
 				</fieldset>
 			</form>
 		</div>

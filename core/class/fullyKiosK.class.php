@@ -908,38 +908,53 @@ Constant Value: 0 (0x00000000)
     }
 
   public static function daemon() {
-    log::add('fullyKiosK', 'info', 'Paramètres utilisés, Host : ' . config::byKey('fullyKiosKAdress', 'fullyKiosK', '127.0.0.1') . ', Port : ' . config::byKey('fullyKiosKPort', 'fullyKiosK', '1883') . ', ID : ' . config::byKey('fullyKiosKId', 'fullyKiosK', 'Jeedom'));
-    $client = new Mosquitto\Client(config::byKey('fullyKiosKId', 'fullyKiosK', 'Jeedom'));
-    $client->onConnect('fullyKiosK::connect');
-    $client->onDisconnect('fullyKiosK::disconnect');
-    $client->onSubscribe('fullyKiosK::subscribe');
-    $client->onMessage('fullyKiosK::message');
-    $client->onLog('fullyKiosK::logmq');
-    $client->setWill('/jeedom', "Client died :-(", 1, 0);
 
-    try {
-      if (config::byKey('fullyKiosKUser', 'fullyKiosK', 'none') != 'none') {
-        $client->setCredentials(config::byKey('fullyKiosKUser', 'fullyKiosK'), config::byKey('fullyKiosKPass', 'fullyKiosK'));
-      }
-      $client->connect(config::byKey('fullyKiosKAdress', 'fullyKiosK', '127.0.0.1'), config::byKey('MQTTPort', 'fullyKiosK', '1883'), 60);
-      
+        if(config::byKey('fullyKiosKMQTT', 'fullyKiosK', false) == true){
 
-        
-      
-      $topic = 'fully/event/#'; //.config::byKey('deviceID', 'fullyKiosK', '').'/#'; self::byLogicalId('deviceID', 'fullyKiosK');
-      //$topic = 'fully/event/' . $fullyKiosK->getCmd('info', 'deviceID') . '/#';
-        log::add('fullyKiosK', 'debug', 'Subscribe to topic ' . $topic);        
-      //$client->subscribe(config::byKey('fullyKiosKTopic', 'fullyKiosK', $topic , config::byKey('fullyKiosKQos', 'fullyKiosK', 1)); // !auto: Subscribe to root topic
-      $client->subscribe(config::byKey('fullyKiosKTopic', 'fullyKiosK', $topic), config::byKey('fullyKiosKQos', 'fullyKiosK', 1)); // !auto: Subscribe to root topic
-	    //$client->subscribe(config::byKey('fullyKiosKTopic', 'fullyKiosK', 'fully/event/'.config::byKey('deviceID', 'fullyKiosK', '').'/#', config::byKey('fullyKiosKQos', 'fullyKiosK', 1)); // !auto: Subscribe to root topic
-        log::add('fullyKiosK', 'debug', 'Subscribe to topic ' . config::byKey('fullyKiosKTopic', 'fullyKiosK', '#'));
-      //$client->loopForever();
-      while (true) { $client->loop(); }
+
+                log::add('fullyKiosK', 'info', 'Paramètres utilisés, Host : ' . config::byKey('fullyKiosKAdress', 'fullyKiosK', '127.0.0.1') . ', Port : ' . config::byKey('fullyKiosKPort', 'fullyKiosK', '1883') . ', ID : ' . config::byKey('fullyKiosKId', 'fullyKiosK', 'Jeedom'));
+                $client = new Mosquitto\Client('fullyKiosK');
+                $client->onConnect('fullyKiosK::connect');
+                $client->onDisconnect('fullyKiosK::disconnect');
+                $client->onSubscribe('fullyKiosK::subscribe');
+                $client->onMessage('fullyKiosK::message');
+                $client->onLog('fullyKiosK::logmq');
+                $client->setWill('/fullyKiosK', "Client died :-(", 1, 0);
+
+
+                try {
+                  if (config::byKey('fullyKiosKUser', 'fullyKiosK', 'none') != 'none') {
+                    $client->setCredentials(config::byKey('fullyKiosKUser', 'fullyKiosK'), config::byKey('fullyKiosKPass', 'fullyKiosK'));
+                  }
+          
+
+                  $client->connect(config::byKey('fullyKiosKAdress', 'fullyKiosK', '127.0.0.1'), config::byKey('fullyKiosKPort', 'fullyKiosK', '1883'), 60);
+
+
+
+
+                  $topic = 'fully/event/#'; //.config::byKey('deviceID', 'fullyKiosK', '').'/#'; self::byLogicalId('deviceID', 'fullyKiosK');
+                  //$topic = 'fully/event/' . $fullyKiosK->getCmd('info', 'deviceID') . '/#';
+                    log::add('fullyKiosK', 'debug', 'Subscribe to topic ' . $topic);        
+                  //$client->subscribe(config::byKey('fullyKiosKTopic', 'fullyKiosK', $topic , config::byKey('fullyKiosKQos', 'fullyKiosK', 1)); // !auto: Subscribe to root topic
+                  $client->subscribe(config::byKey('fullyKiosKTopic', 'fullyKiosK', $topic), config::byKey('fullyKiosKQos', 'fullyKiosK', 1)); // !auto: Subscribe to root topic
+                    //$client->subscribe(config::byKey('fullyKiosKTopic', 'fullyKiosK', 'fully/event/'.config::byKey('deviceID', 'fullyKiosK', '').'/#', config::byKey('fullyKiosKQos', 'fullyKiosK', 1)); // !auto: Subscribe to root topic
+                    log::add('fullyKiosK', 'debug', 'Subscribe to topic ' . config::byKey('fullyKiosKTopic', 'fullyKiosK', '#'));
+                  //$client->loopForever();
+                  while (true) { $client->loop(); }
+                }
+                catch (Exception $e){
+                  log::add('fullyKiosK', 'error', $e->getMessage());
+                }
+
+    
+        } else {
+	  log::add('fullyKiosK', 'debug', ' No active MQTT, Daemon stopped  ' );            
+          self::deamon_stop();
+	}
+	 
+	  
     }
-    catch (Exception $e){
-      log::add('fullyKiosK', 'error', $e->getMessage());
-    }
-  }
 
   public static function connect( $r, $message ) {
     log::add('fullyKiosK', 'info', 'Connexion à Mosquitto avec code ' . $r . ' ' . $message);
@@ -1202,7 +1217,12 @@ Constant Value: 0 (0x00000000)
 	public function postSave() {
 		self::initInfosMap();
 		$order = 0;
-                
+                if(config::byKey('fullyKiosKMQTT', 'fullyKiosK', false) == false){
+	        	log::add('fullyKiosK', 'debug', ' No active MQTT, Daemon stopped  ' );            
+          		self::deamon_stop();
+		}
+		
+		
 		switch ($this->getConfiguration('refreshDelay','')){
 			case '1' : config::save('functionality::cron::enable', 1 ,'fullyKiosK'); break;
  			case '5' : config::save('functionality::cron5::enable', 1 ,'fullyKiosK'); break;

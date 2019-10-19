@@ -22,30 +22,54 @@ if (!isConnect()) {
     die();
 }
 ?>
-<form class="form-horizontal">
-<div class="panel panel-info" style="height: 100%;">
-	<div class="panel-heading" role="tab">
-		<h4 class="panel-title">
-			Plugin fullyKiosK
+	<form class="form-horizontal">
+	<div class="panel panel-info" style="height: 100%;">
+		<div class="panel-heading" role="tab">
+			<h4 class="panel-title">
+				Plugin fullyKiosK
 
-		</h4>
+			</h4>
+		</div>
 	</div>
-</div>
 	<div class="form-group">
 		<br>
 		<label class="col-sm-4 control-label">{{Configuration}} :</label>
-
-
-		
 		<div class="col-lg-4">
 			<a class="btn btn-info" href=/index.php?v=d&m=fullyKiosK&p=fullyKiosK> {{Accès à la configuration des tablettes}}</a>
 		</div>
 	</div>	
 
-	<legend>
+	<div class="form-group">
+		<label class="col-sm-3 control-label">{{Activer MQTT}}</label>
+		<div class="col-sm-3">
+			<input class="configKey form-control" data-l1key="fullyKiosKMQTT" type="checkbox" placeholder="{{}}">
+		</div>
+	</div>
+
+  
+	<div class="form-group">
+		<label class="col-sm-3 control-label">{{utilisateur MQTT}}</label>
+		<div class="col-sm-3">
+			<input class="configKey form-control" data-l1key="fullyKiosKUser" type="text" placeholder="{{Optionnel}}">
+		</div>
+	</div>  
+	<div class="form-group">
+		<label class="col-sm-3 control-label">{{Mot de passe MQTT}}</label>
+		<div class="col-sm-3">
+			<input class="configKey form-control" data-l1key="fullyKiosKPass" type="password" placeholder="{{Optionnel}}">
+		</div>
+	</div>                      
+	<div class="form-group">
+		<label class="col-sm-3 control-label">{{Port MQTT}}</label>
+		<div class="col-sm-3">
+			<input class="configKey form-control" data-l1key="fullyKiosKPort" type="number" placeholder="{{1883}}">
+		</div>
+	</div>
+  
+  	<legend>
 	     {{Pour activer la fonction MQTT aller dans Settings-Other Settings-MQTT integration-enable MQTT}}
 	     <br>
-	     {{Renseigner adresse IP de jeedom et le port 1883}}
+	     {{Renseigner adresse IP de jeedom et le port 1883 par défaut}}
 	     <br>               
 	    {{Il est préférable d arrêter le démon en cas de non utilisation de MQTT }}
 	</legend>  
