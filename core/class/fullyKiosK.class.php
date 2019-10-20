@@ -577,12 +577,12 @@ Constant Value: 0 (0x00000000)
 		);
 		
 		self::$_settings = array(
-			'mqttIsEnabled' => array(
-				'name' => __('mqttIsEnabled',__FILE__),
+			'mqttEnabled' => array(
+				'name' => __('mqttEnabled',__FILE__),
 				'type' => 'info',
 				'subtype' => 'binary',
 				'isvisible' => 1,
-				'restkey' => 'mqttIsEnabled',
+				'restkey' => 'mqttEnabled',
 
 			),
 		);
@@ -885,6 +885,7 @@ Constant Value: 0 (0x00000000)
     if ($deamon_info['launchable'] != 'ok') {
       throw new Exception(__('Veuillez vérifier la configuration', __FILE__));
     }
+  
     $cron = cron::byClassAndFunction('fullyKiosK', 'daemon');
     if (!is_object($cron)) {
       throw new Exception(__('Tache cron introuvable', __FILE__));
@@ -1317,6 +1318,43 @@ Constant Value: 0 (0x00000000)
 
           
 		}
+		//Cmd settings
+		foreach(self::$_settings as $cmdLogicalId=>$params)
+		{
+			$fullyKiosKCmd = $this->getCmd('info', $cmdLogicalId);
+			
+			if (!is_object($fullyKiosKCmd))
+			{
+				log::add('fullyKiosK', 'debug', __METHOD__.' '.__LINE__.' cmdInfo create '.$cmdLogicalId.'('.__($params['name'], __FILE__).') '.($params['subtype'] ?: 'subtypedefault'));
+				$fullyKiosKCmd = new fullyKiosKCmd();
+
+				$fullyKiosKCmd->setLogicalId($cmdLogicalId);
+				$fullyKiosKCmd->setEqLogic_id($this->getId());
+				$fullyKiosKCmd->setName(__($params['name'], __FILE__));
+				$fullyKiosKCmd->setType($params['type'] ?: 'info');
+				$fullyKiosKCmd->setSubType($params['subtype'] ?: 'numeric');
+				$fullyKiosKCmd->setIsVisible($params['isvisible'] ?: 0);
+				$fullyKiosKCmd->setDisplay('icon', $params['icon'] ?: null);
+
+				$fullyKiosKCmd->setConfiguration('cmd', $params['cmd'] ?: null);
+  				$fullyKiosKCmd->setDisplay('forceReturnLineBefore', $params['forceReturnLineBefore'] ?: false);
+
+				if(isset($params['unite']))
+					$fullyKiosKCmd->setUnite($params['unite']);
+				$fullyKiosKCmd->setTemplate('dashboard',$params['tpldesktop']?: 'badge');
+				$fullyKiosKCmd->setTemplate('mobile',$params['tplmobile']?: 'badge');
+				$fullyKiosKCmd->setOrder($order++);
+
+				$fullyKiosKCmd->save();
+			}elseif($fullyKiosKCmd->getConfiguration('restKey','') != '') {
+              
+			  	$fullyKiosKCmd->setConfiguration('restKey', $params['restKey'] ?: null);
+				$fullyKiosKCmd->save();
+
+			}
+
+          
+		}		
 		//Cmd Actions
 		foreach(self::$_actionMap as $cmdLogicalId => $params)
 		{
