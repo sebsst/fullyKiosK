@@ -26,6 +26,7 @@ class fullyKiosK extends eqLogic {
 
 	public static $_infosMap = array();
 	public static $_actionMap = array();
+	public static $_settings = array();	
 	/*     * ***********************Methode static*************************** */
 
 	/*
@@ -1221,7 +1222,7 @@ Constant Value: 0 (0x00000000)
 			$password = $this->getConfiguration('password');
 			$port = $this->getConfiguration('port', intval('2323'));
 
-			$url = "http://{$ip}:".$port."/?type=json&cmd=listSetting&password=".$password;
+			$url = "http://{$ip}:".$port."/?type=json&cmd=listSettings&password=".$password;
 			log::add('fullyKiosK', 'debug', __METHOD__.' '.__LINE__.' requesting '.$url);
 
 			//$jsondata = file_get_contents($url);
