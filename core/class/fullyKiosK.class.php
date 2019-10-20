@@ -574,6 +574,17 @@ Constant Value: 0 (0x00000000)
 
 			),			
 		);
+		
+		self::$_settings = array(
+			'mqttIsEnabled' => array(
+				'name' => __('mqttIsEnabled',__FILE__),
+				'type' => 'info',
+				'subtype' => 'binary',
+				'isvisible' => 1,
+				'restkey' => 'mqttIsEnabled',
+
+			),
+		);
 
 		self::$_infosMap = array(
 	 		//'default' => array(
@@ -1204,7 +1215,44 @@ Constant Value: 0 (0x00000000)
 					$this->checkAndUpdateCmd($cmdLogicalId,$value);
 				}
 			}
-          	
+
+			//update settings value
+			$ip = $this->getConfiguration('addressip');
+			$password = $this->getConfiguration('password');
+			$port = $this->getConfiguration('port', intval('2323'));
+
+			$url = "http://{$ip}:".$port."/?type=json&cmd=listSetting&password=".$password;
+			log::add('fullyKiosK', 'debug', __METHOD__.' '.__LINE__.' requesting '.$url);
+
+			//$jsondata = file_get_contents($url);
+			$ch = curl_init();
+			curl_setopt($ch, CURLOPT_URL, $url);
+			curl_setopt($ch, CURLOPT_BINARYTRANSFER, true);
+			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+			curl_setopt($ch, CURLOPT_TIMEOUT, 15);		
+			$jsondata = curl_exec($ch);
+			curl_close($ch);
+			//}
+
+ 			log::add('fullyKiosK', 'debug', __METHOD__.' '.__LINE__.' $jsondata '.$jsondata);
+
+ 			$json = json_decode($jsondata,true);			
+			
+			
+			foreach(self::$_settings as $cmdLogicalId=>$params)
+			{
+				if(isset($params['restkey'], $json[$params['restkey']]))
+				{
+					$value = $json[$params['restkey']];
+					str_replace("\\n", " ", $value);
+					if(isset($params['cbTransform']) && is_callable($params['cbTransform']))
+					{
+						$value = call_user_func($params['cbTransform'], $value);
+					}
+					$this->checkAndUpdateCmd($cmdLogicalId,$value);
+				}
+			}			
+			
           	if($this->getLogicalId() == ''){ 
               $this->setLogicalId($json['deviceID']);
               $this->save();
