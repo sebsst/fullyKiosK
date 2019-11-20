@@ -242,6 +242,17 @@ http://[iptablette]:2323/?cmd=getCamshot&password=[pass]
 
 - getCamshot a été ajouté: par défaut l'image est stocké dans le dossier resources du plugin avec le nom camshot.jpg. Vous pouvez préciser un autre chemin et un autre nom de fichier si besoin. Bien entendu le chemin doit être accessible en écriture.
 
+## MQTT
+- l'activation de MQTT dans other settings - MQTT integration permet de remonter des évènements de la tablette en temps réel pour déclencher des actions par scénario.
+- les évènements disponibles sont les suivants:
+screenOn, screenOff, pluggedAC, pluggedUSB, pluggedWireless, unplugged, networkReconnect, networkDisconnect, internetReconnect, internetDisconnect, powerOn, powerOff, showKeyboard, hideKeyboard, onMotion, onDarkness, onMovement, volumeUp, volumeDown, onQrScanCancelled, onBatteryLevelChanged, onScreensaverStart, onScreensaverStop.
+- une fois activé sur la tablette et sur la configuration du plugin, la valeur de l'évènement (screenOn par exemple) prend l'heure du dernier évènement reçu. Cela permet de les utiliser en tant que déclencheur dans un scénario par exemple.
+- Le démon peut être arrêté pour éviter de gérer un broker MQTT actif sur jeedom.
+- Sur la tablette vous devez renseigner l'adresse IP de jeedom et le port 1883. 
+- Eventuellement vous pouvez ajouter un nom d'utilisateur et un mot de passe mais ce n'est pas obligatoire.
+- Le sujet souscrit est /fully/event/deviceid où device ID est un identifiant unique pour la tablette vous ne pouvez donc pas multiplier les équipements tablette fullykiosk avec la même adresse IP.
+
+- si vous ne voulez pas utiliser cette fonctionnalité, il suffit de décocher MQTT sur la page de configuration du plugin
 
 ## Autres fonctionnalités
 - Fully Kiosk permet d'injecter des fonctions JS comme par exemple lancer une application avec des paramètres.

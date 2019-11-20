@@ -26,6 +26,7 @@ class fullyKiosK extends eqLogic {
 
 	public static $_infosMap = array();
 	public static $_actionMap = array();
+	public static $_settings = array();	
 	/*     * ***********************Methode static*************************** */
 
 	/*
@@ -574,6 +575,17 @@ Constant Value: 0 (0x00000000)
 
 			),			
 		);
+		
+		self::$_settings = array(
+			'mqttEnabled' => array(
+				'name' => __('mqttEnabled',__FILE__),
+				'type' => 'info',
+				'subtype' => 'binary',
+				'isvisible' => 1,
+				'restkey' => 'mqttEnabled',
+
+			),
+		);
 
 		self::$_infosMap = array(
 	 		//'default' => array(
@@ -856,6 +868,7 @@ Constant Value: 0 (0x00000000)
     $return = array();
     $return['log'] = '';
     $return['state'] = 'nok';
+    $return['mqttEnabled'] = 'nok';    	  
     $cron = cron::byClassAndFunction('fullyKiosK', 'daemon');
     if (is_object($cron) && $cron->running()) {
       $return['state'] = 'ok';
@@ -864,6 +877,13 @@ Constant Value: 0 (0x00000000)
     if ($dependancy_info['state'] == 'ok') {
       $return['launchable'] = 'ok';
     }
+    foreach (eqLogic::byType('fullyKiosK') as $fullyKiosK)
+	{  
+      $mqttEnabled = $fullyKiosK->getConfiguration('mqttEnabled', false);
+      if($mqttEnabled){
+       	$return['mqttEnabled'] = 'ok'; 
+      }
+    }	  
     return $return;
   }
 
@@ -872,6 +892,9 @@ Constant Value: 0 (0x00000000)
     $deamon_info = self::deamon_info();
     if ($deamon_info['launchable'] != 'ok') {
       throw new Exception(__('Veuillez vérifier la configuration', __FILE__));
+    }
+    if ($deamon_info['mqttEnabled'] != 'ok'){
+      throw new Exception(__('Mqtt non actif sur la tablette', __FILE__));      
     }
     $cron = cron::byClassAndFunction('fullyKiosK', 'daemon');
     if (!is_object($cron)) {
@@ -1204,7 +1227,35 @@ Constant Value: 0 (0x00000000)
 					$this->checkAndUpdateCmd($cmdLogicalId,$value);
 				}
 			}
-          	
+			//update settings value
+			$ip = $this->getConfiguration('addressip');
+			$password = $this->getConfiguration('password');
+			$port = $this->getConfiguration('port', intval('2323'));
+
+			$url = "http://{$ip}:".$port."/?type=json&cmd=listSettings&password=".$password;
+			log::add('fullyKiosK', 'debug', __METHOD__.' '.__LINE__.' requesting '.$url);
+
+			//$jsondata = file_get_contents($url);
+			$ch = curl_init();
+			curl_setopt($ch, CURLOPT_URL, $url);
+			curl_setopt($ch, CURLOPT_BINARYTRANSFER, true);
+			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+			curl_setopt($ch, CURLOPT_TIMEOUT, 15);		
+			$jsondata = curl_exec($ch);
+			curl_close($ch);
+			//}
+
+
+
+ 			$json = json_decode($jsondata,true);			
+ 			log::add('fullyKiosK', 'debug', __METHOD__.' '.__LINE__.' $mqtt new'.$json['mqttEnabled'] . ' old' . $this->getConfiguration('mqttEnabled'));      
+          
+          if($this->getConfiguration('mqttEnabled') != $json['mqttEnabled'])
+            {
+     			$this->setConfiguration('mqttEnabled',$json['mqttEnabled']);
+            	$this->save();          
+            }			
+			
           	if($this->getLogicalId() == ''){ 
               $this->setLogicalId($json['deviceID']);
               $this->save();
@@ -1268,6 +1319,7 @@ Constant Value: 0 (0x00000000)
 
           
 		}
+	
 		//Cmd Actions
 		foreach(self::$_actionMap as $cmdLogicalId => $params)
 		{
@@ -1341,7 +1393,7 @@ Constant Value: 0 (0x00000000)
 		}
 		//refreshcmdinfo
   	   		
-		$this->getInformations();
+		//$this->getInformations();
 		
 	}
 	

@@ -4,7 +4,7 @@ En cas d'absence de note dans ce chapitre, les mises à jour ne concernent que l
 
 ## 18/10/2019
 - ajout du user + mot de passe (optionnel) dans la configuration du plugin
-- ajout d'un bouton pour l'activation de MQTT au niveau de l'équipement
+- ajout d'un bouton pour l'activation de MQTT (arrêt du daemon)
 
 ## 11/10/2019
 - Intégration des fonctionnalités MQTT pour la détection d'évènement:
