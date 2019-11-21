@@ -243,6 +243,7 @@ http://[iptablette]:2323/?cmd=getCamshot&password=[pass]
 - getCamshot a été ajouté: par défaut l'image est stocké dans le dossier resources du plugin avec le nom camshot.jpg. Vous pouvez préciser un autre chemin et un autre nom de fichier si besoin. Bien entendu le chemin doit être accessible en écriture.
 
 ## MQTT
+- si vous ne voulez pas utiliser cette fonctionnalité ou si vous ne savez pas à quoi ça correspond il est conseillé de désactiver le démarrage automatique du deamon.
 - l'activation de MQTT dans other settings - MQTT integration permet de remonter des évènements de la tablette en temps réel pour déclencher des actions par scénario.
 - les évènements disponibles sont les suivants:
 screenOn, screenOff, pluggedAC, pluggedUSB, pluggedWireless, unplugged, networkReconnect, networkDisconnect, internetReconnect, internetDisconnect, powerOn, powerOff, showKeyboard, hideKeyboard, onMotion, onDarkness, onMovement, volumeUp, volumeDown, onQrScanCancelled, onBatteryLevelChanged, onScreensaverStart, onScreensaverStop.
