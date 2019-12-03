@@ -1,56 +1,142 @@
 #! /bin/bash
 
-echo "Début d'installation des dépendances"
+PROGRESS_FILE=/tmp/fullyKiosK_dep;
+if [ ! -z $1 ]; then
+    PROGRESS_FILE=$1
+fi
 
-touch /tmp/fullyKiosK_dep
-echo 0 > /tmp/fullyKiosK_dep
+INSTALL_MOSQUITTO=1
+if [ ! -z $2 ] && [ $2 -eq 1 -o $2 -eq 0 ]; then
+    INSTALL_MOSQUITTO=$2
+fi
+
+echo 0 > ${PROGRESS_FILE}
+
+echo "********************************************************"
+echo "* Install dependancies                                 *"
+echo "********************************************************"
+echo "> Progress file: " ${PROGRESS_FILE}
+echo "> Install Mosquitto: " ${INSTALL_MOSQUITTO}
+echo "*"
+echo "* Update package source repository"
+echo "*"
 apt-get -y install lsb-release php-pear
 archi=`lscpu | grep Architecture | awk '{ print $2 }'`
+echo 10 > ${PROGRESS_FILE}
 
 if [ "$archi" == "x86_64" ]; then
-if [ `lsb_release -i -s` == "Debian" ]; then
-  wget http://repo.mosquitto.org/debian/mosquitto-repo.gpg.key
-  apt-key add mosquitto-repo.gpg.key
-  cd /etc/apt/sources.list.d/
-  if [ `lsb_release -c -s` == "jessie" ]; then
-    wget http://repo.mosquitto.org/debian/mosquitto-jessie.list -O mosquitto-jessie.list
-    rm /etc/apt/sources.list.d/mosquitto-jessie.list
-    cp -r mosquitto-jessie.list /etc/apt/sources.list.d/mosquitto-jessie.list
-  fi
-  if [ `lsb_release -c -s` == "stretch" ]; then
-    wget http://repo.mosquitto.org/debian/mosquitto-stretch.list -O mosquitto-stretch.list
-    rm /etc/apt/sources.list.d/mosquitto-stretch.list
-    cp -r mosquitto-stretch.list /etc/apt/sources.list.d/mosquitto-stretch.list
-  fi
+    cd /tmp
+    if [ `lsb_release -i -s` == "Debian" ]; then
+	wget http://repo.mosquitto.org/debian/mosquitto-repo.gpg.key
+	apt-key add mosquitto-repo.gpg.key
+	rm mosquitto-repo.gpg.key
+	if [ `lsb_release -c -s` == "jessie" ]; then
+	    wget http://repo.mosquitto.org/debian/mosquitto-jessie.list
+	    mv -f mosquitto-jessie.list /etc/apt/sources.list.d/mosquitto-jessie.list
+	fi
+	if [ `lsb_release -c -s` == "stretch" ]; then
+	    wget http://repo.mosquitto.org/debian/mosquitto-stretch.list
+	    mv -f mosquitto-stretch.list /etc/apt/sources.list.d/mosquitto-stretch.list
+	fi
+    fi
 fi
-fi
-echo 10 > /tmp/fullyKiosK_dep
+echo 20 > ${PROGRESS_FILE}
 
+echo "*"
+echo "* Synchronize the package index"
+echo "*"
 apt-get update
-echo 30 > /tmp/fullyKiosK_dep
-apt-get -y install mosquitto mosquitto-clients libmosquitto-dev
-echo 60 > /tmp/fullyKiosK_dep
+echo 40 > ${PROGRESS_FILE}
 
-
-phpv=`php --version | head -n 1 | cut -d " " -f 2 | cut -c 1-3`
-
-apt-get -y install php$phpv-dev
-if [[ -d "/etc/php/$phpv/cli/" && ! `cat /etc/php/$phpv/cli/php.ini | grep "mosquitto"` ]]; then
-  echo "" | pecl install Mosquitto-alpha
-  echo 80 > /tmp/fullyKiosK_dep
-  echo "extension=mosquitto.so" | tee -a /etc/php/$phpv/cli/php.ini
+echo "*"
+echo "* Install Mosquitto"
+echo "*"
+if [ ${INSTALL_MOSQUITTO} -eq 1 ]; then
+    apt-get -y install mosquitto mosquitto-clients libmosquitto-dev
+else
+    apt-get -y install mosquitto-clients libmosquitto-dev
 fi
-if [[ -d "/etc/php/$phpv/fpm/" && ! `cat /etc/php/$phpv/fpm/php.ini | grep "mosquitto"` ]]; then
-  echo "extension=mosquitto.so" | tee -a /etc/php/$phpv/fpm/php.ini
-  service php$phpv-fpm restart
-fi
-if [[ -d "/etc/php/$phpv/apache2/" && ! `cat /etc/php/$phpv/apache2/php.ini | grep "mosquitto"` ]]; then
-  echo "extension=mosquitto.so" | tee -a /etc/php/$phpv/apache2/php.ini
-  rm /tmp/fullyKiosK_dep
-  echo "Fin installation des dépendances"
-  service apache2 restart
+echo 60 > ${PROGRESS_FILE}
+
+echo "*"
+echo "* Install php mosquitto wrapper"
+echo "*"
+php_ver=`php -version`
+php_ver=${php_ver:4:3}
+php_ver_maj=${php_ver:0:1}
+
+if [ ${php_ver_maj} = 5 ]; then
+	echo "> Version 5 of PHP detected"
+	PHP_DEV_LIB="php5-dev"
+	PHP_CLI_DIR="/etc/php5/cli/"
+	PHP_FPM_DIR="/etc/php5/fpm/"
+	PHP_APACHE_DIR="/etc/php5/apache2/"
+	FPM_SERVER="php5-fpm"
+	APACHE_SERVER="apache2"
+elif [ ${php_ver_maj} = 7 ]; then
+	echo "> Version 7 of PHP detected"
+	PHP_DEV_LIB="php${php_ver}-dev"
+	PHP_CLI_DIR="/etc/php/${php_ver}/cli/"
+	PHP_FPM_DIR="/etc/php/${php_ver}/fpm/"
+	PHP_APACHE_DIR="/etc/php/${php_ver}/apache2/"
+	FPM_SERVER="php7-fpm"
+	APACHE_SERVER="apache2"
+else
+	PHP_DEV_LIB=""
+	echo "> ERROR: no version of PHP detected"
 fi
 
-rm /tmp/fullyKiosK_dep
+if [ -n PHP_DEV_LIB ]; then	
+	echo "> Install ${PHP_DEV_LIB}"
+	apt-get -y install ${PHP_DEV_LIB}
+    echo 80 > ${PROGRESS_FILE}
+    
+    echo "> Install pecl/Mosquitto"
+    echo "" | pecl install Mosquitto-alpha
+    if [ $? -eq 0 ]; then
+    	RELOAD="tbd"
+    else
+    	RELOAD=""
+    fi
+    echo 90 > ${PROGRESS_FILE}
+    
+    if [ -d ${PHP_CLI_DIR} ] && [ -e ${PHP_CLI_DIR}php.ini ] && [ ! `cat ${PHP_CLI_DIR}php.ini | grep "mosquitto"` ]; then
+        echo "> Adding mosquitto.so to ${PHP_CLI_DIR}php.ini"
+  		echo "extension=mosquitto.so" | tee -a ${PHP_CLI_DIR}php.ini
+    fi
+    
+	if [ -d ${PHP_FPM_DIR} ]; then
+    	if [ -n "$RELOAD" ]; then
+    		RELOAD=${FPM_SERVER}
+    	fi
+    	if [ ! `cat ${PHP_FPM_DIR}php.ini | grep "mosquitto"` ]; then
+    		echo "> Adding mosquitto.so to ${PHP_FPM_DIR}php.ini"
+		  	echo "extension=mosquitto.so" | tee -a ${PHP_FPM_DIR}php.ini
+		  	RELOAD=${FPM_SERVER}
+		fi
+    fi
+    
+    if [ -d ${PHP_APACHE_DIR} ]; then
+    	if [ -n "$RELOAD" ]; then
+    		RELOAD=${APACHE_SERVER}
+    	fi
+    	if [ ! `cat ${PHP_APACHE_DIR}php.ini | grep "mosquitto"` ]; then
+    		echo "> Adding mosquitto.so to ${PHP_APACHE_DIR}php.ini"
+			echo "extension=mosquitto.so" | tee -a ${PHP_APACHE_DIR}php.ini
+			RELOAD=${APACHE_SERVER}
+		fi
+    fi
+      
+    if [ -n "${RELOAD}" ]; then
+    	echo "> Reload the web server" $RELOAD
+		service $RELOAD reload
+	else
+		echo "> No need to reload the web server"
+	fi
+fi
 
-echo "Fin installation des dépendances"
+rm ${PROGRESS_FILE}
+
+echo "********************************************************"
+echo "*             End dependancy installation              *"
+echo "********************************************************"
