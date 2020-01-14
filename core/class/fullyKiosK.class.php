@@ -1018,7 +1018,7 @@ Constant Value: 0 (0x00000000)
 
 		$fullyKiosKCmd->setLogicalId($json['event']);
 		$fullyKiosKCmd->setEqLogic_id($eqlogic->getId());
-		$fullyKiosKCmd->setName($json['event']);
+		$fullyKiosKCmd->setName('mqtt'.$json['event']);
 		$fullyKiosKCmd->setType('info');
 		$fullyKiosKCmd->setSubType('string');
 		$fullyKiosKCmd->setValue(date('y/m/d h:i:s'));              
@@ -1029,6 +1029,7 @@ Constant Value: 0 (0x00000000)
 	}else{
       		log::add('fullyKiosK', 'debug', 'Event received:' .  $json['event'] . ' ' . date('y/m/d h:i:s'));
         	$fullyKiosKCmd->setValue(date('h:i:s'));
+		$fullyKiosKCmd->setName('mqtt'.$json['event']);		
 		$eqlogic->checkAndUpdateCmd(json['event'],date('y/m/d h:i:s'));
 
 		$fullyKiosKCmd->save();
