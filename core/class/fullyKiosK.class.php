@@ -1001,12 +1001,12 @@ Constant Value: 0 (0x00000000)
 
   public static function message( $message ) {
     $json = json_decode($message->payload,true);
-    if(!is_null($json) && !is_null($json['event']) && !is_null($json['deviceId']) ){
-    log::add('fullyKiosK', 'debug', 'MeMessage ' . $json['deviceId'] . $json['event'] );
-    log::add('fullyKiosK', 'debug', 'Message ' . $message->payload . ' sur ' . $message->topic . $json->deviceId . $json->event );
+    if(!is_null($json) && !is_null($json['event']) && !is_null($json['deviceID']) ){
+    log::add('fullyKiosK', 'debug', 'MeMessage ' . $json['deviceID'] . $json['event'] );
+    log::add('fullyKiosK', 'debug', 'Message ' . $message->payload . ' sur ' . $message->topic . $json->deviceID . $json->event );
 	//$fullyKiosKCmd = $this->getCmd('info', $cmdLogicalId);
     
-    $eqlogic = self::byLogicalId($json['deviceId'], 'fullyKiosK');
+    $eqlogic = self::byLogicalId($json['deviceID'], 'fullyKiosK');
 
     
 	$fullyKiosKCmd = $eqlogic->getCmd('info', $json['event']);
@@ -1227,6 +1227,11 @@ Constant Value: 0 (0x00000000)
 					$this->checkAndUpdateCmd($cmdLogicalId,$value);
 				}
 			}
+		      	if($this->getLogicalId() == '')
+			{ 
+              	           $this->setLogicalId($json['deviceID']);
+		           $this->save();
+                        }
 			//update settings value
 			$ip = $this->getConfiguration('addressip');
 			$password = $this->getConfiguration('password');
@@ -1255,12 +1260,6 @@ Constant Value: 0 (0x00000000)
      			$this->setConfiguration('mqttEnabled',$json['mqttEnabled']);
             	$this->save();          
             }			
-			
-          	if($this->getLogicalId() == ''){ 
-              $this->setLogicalId($json['deviceID']);
-              $this->save();
-            }
-          
 			return true;
 		}
 	}
