@@ -1001,35 +1001,35 @@ Constant Value: 0 (0x00000000)
 
   public static function message( $message ) {
     $json = json_decode($message->payload,true);
-    if(!is_null($json) && !is_null($json['event']) && !is_null($json['deviceID']) ){
-    log::add('fullyKiosK', 'debug', 'MeMessage ' . $json['deviceID'] . $json['event'] );
+    if(!is_null($json) && !is_null($json['event']) && !is_null($json['deviceId']) ){
+    log::add('fullyKiosK', 'debug', 'MeMessage ' . $json['deviceId'] . $json['event'] );
     log::add('fullyKiosK', 'debug', 'Message ' . $message->payload . ' sur ' . $message->topic . $json->deviceID . $json->event );
 	//$fullyKiosKCmd = $this->getCmd('info', $cmdLogicalId);
     
-    $eqlogic = self::byLogicalId($json['deviceID'], 'fullyKiosK');
+    $eqlogic = self::byLogicalId($json['deviceId'], 'fullyKiosK');
 
     
-	$fullyKiosKCmd = $eqlogic->getCmd('info', 'mqtt'.$json['event']);
+	$fullyKiosKCmd = $eqlogic->getCmd('info', $json['event']);
 
 	if (!is_object($fullyKiosKCmd))
 	{
 		log::add('fullyKiosK', 'debug', __METHOD__.' '.__LINE__.' cmdInfo create '.$cmdLogicalId.'('.__($params['name'], __FILE__).') '.($params['subtype'] ?: 'subtypedefault'));
 		$fullyKiosKCmd = new fullyKiosKCmd();
 
-		$fullyKiosKCmd->setLogicalId('mqtt'.$json['event']);
+		$fullyKiosKCmd->setLogicalId($json['event']);
 		$fullyKiosKCmd->setEqLogic_id($eqlogic->getId());
-		$fullyKiosKCmd->setName('mqtt'.$json['event']);
+		$fullyKiosKCmd->setName($json['event']);
 		$fullyKiosKCmd->setType('info');
 		$fullyKiosKCmd->setSubType('string');
 		$fullyKiosKCmd->setValue(date('y/m/d h:i:s'));              
 		$fullyKiosKCmd->setIsVisible(0);
 
-		$eqlogic->checkAndUpdateCmd('mqtt'$json['event'],date('y/m/d h:i:s'));
+		$eqlogic->checkAndUpdateCmd($json['event'],date('y/m/d h:i:s'));
 		$fullyKiosKCmd->save();
 	}else{
       		log::add('fullyKiosK', 'debug', 'Event received:' .  $json['event'] . ' ' . date('y/m/d h:i:s'));
         	$fullyKiosKCmd->setValue(date('h:i:s'));
-		$eqlogic->checkAndUpdateCmd('mqtt'.json['event'],date('y/m/d h:i:s'));
+		$eqlogic->checkAndUpdateCmd(json['event'],date('y/m/d h:i:s'));
 
 		$fullyKiosKCmd->save();
 
