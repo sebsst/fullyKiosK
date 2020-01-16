@@ -1003,7 +1003,7 @@ Constant Value: 0 (0x00000000)
     $json = json_decode($message->payload,true);
     if(!is_null($json) && !is_null($json['event']) && !is_null($json['deviceId']) ){
     log::add('fullyKiosK', 'debug', 'MeMessage ' . $json['deviceId'] . $json['event'] );
-    log::add('fullyKiosK', 'debug', 'Message ' . $message->payload . ' sur ' . $message->topic . $json->deviceId . $json->event );
+    log::add('fullyKiosK', 'debug', 'Message ' . $message->payload . ' sur ' . $message->topic . $json->deviceID . $json->event );
 	//$fullyKiosKCmd = $this->getCmd('info', $cmdLogicalId);
     
     $eqlogic = self::byLogicalId($json['deviceId'], 'fullyKiosK');
@@ -1018,7 +1018,7 @@ Constant Value: 0 (0x00000000)
 
 		$fullyKiosKCmd->setLogicalId($json['event']);
 		$fullyKiosKCmd->setEqLogic_id($eqlogic->getId());
-		$fullyKiosKCmd->setName($json['event']);
+		$fullyKiosKCmd->setName('mqtt'.$json['event']);
 		$fullyKiosKCmd->setType('info');
 		$fullyKiosKCmd->setSubType('string');
 		$fullyKiosKCmd->setValue(date('y/m/d h:i:s'));              
@@ -1029,7 +1029,8 @@ Constant Value: 0 (0x00000000)
 	}else{
       		log::add('fullyKiosK', 'debug', 'Event received:' .  $json['event'] . ' ' . date('y/m/d h:i:s'));
         	$fullyKiosKCmd->setValue(date('h:i:s'));
-		$eqlogic->checkAndUpdateCmd($json['event'],date('y/m/d h:i:s'));
+		$fullyKiosKCmd->setName('mqtt'.$json['event']);		
+		$eqlogic->checkAndUpdateCmd(json['event'],date('y/m/d h:i:s'));
 
 		$fullyKiosKCmd->save();
 
@@ -1227,6 +1228,11 @@ Constant Value: 0 (0x00000000)
 					$this->checkAndUpdateCmd($cmdLogicalId,$value);
 				}
 			}
+		      	if($this->getLogicalId() == '')
+			{ 
+              	           $this->setLogicalId($json['deviceID']);
+		           $this->save();
+                        }
 			//update settings value
 			$ip = $this->getConfiguration('addressip');
 			$password = $this->getConfiguration('password');
@@ -1255,12 +1261,6 @@ Constant Value: 0 (0x00000000)
      			$this->setConfiguration('mqttEnabled',$json['mqttEnabled']);
             	$this->save();          
             }			
-			
-          	if($this->getLogicalId() == ''){ 
-              $this->setLogicalId($json['deviceID']);
-              $this->save();
-            }
-          
 			return true;
 		}
 	}
@@ -1342,7 +1342,7 @@ Constant Value: 0 (0x00000000)
 
 				$fullyKiosKCmd->setConfiguration('cmd', $params['cmd'] ?: null);
 
-				$fullyKiosKCmd->setConfiguration('listValue', json_encode($params['listValue']) ?: null);
+				$fullyKiosKCmd->setConfiguration('listValue', json_encode($params['listValue']) ?: '');
 
 				$fullyKiosKCmd->setDisplay('forceReturnLineBefore', $params['forceReturnLineBefore'] ?: false);
 	                        $fullyKiosKCmd->setDisplay('message_disable', $params['message_disable'] ?: false);
@@ -1375,7 +1375,7 @@ Constant Value: 0 (0x00000000)
 
 				$fullyKiosKCmd->setConfiguration('cmd', $params['cmd'] ?: null);
 
-				$fullyKiosKCmd->setConfiguration('listValue', json_encode($params['listValue']) ?: null);
+				$fullyKiosKCmd->setConfiguration('listValue', json_encode($params['listValue']) ?: '');
 
 				$fullyKiosKCmd->setDisplay('forceReturnLineBefore', $params['forceReturnLineBefore'] ?: false);
 	                        $fullyKiosKCmd->setDisplay('message_disable', $params['message_disable'] ?: false);
