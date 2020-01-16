@@ -1342,7 +1342,7 @@ Constant Value: 0 (0x00000000)
 
 				$fullyKiosKCmd->setConfiguration('cmd', $params['cmd'] ?: null);
 
-				$fullyKiosKCmd->setConfiguration('listValue', json_encode($params['listValue']) ?: null);
+				$fullyKiosKCmd->setConfiguration('listValue', json_encode($params['listValue']) ?: '');
 
 				$fullyKiosKCmd->setDisplay('forceReturnLineBefore', $params['forceReturnLineBefore'] ?: false);
 	                        $fullyKiosKCmd->setDisplay('message_disable', $params['message_disable'] ?: false);
@@ -1375,7 +1375,7 @@ Constant Value: 0 (0x00000000)
 
 				$fullyKiosKCmd->setConfiguration('cmd', $params['cmd'] ?: null);
 
-				$fullyKiosKCmd->setConfiguration('listValue', json_encode($params['listValue']) ?: null);
+				$fullyKiosKCmd->setConfiguration('listValue', json_encode($params['listValue']) ?: '');
 
 				$fullyKiosKCmd->setDisplay('forceReturnLineBefore', $params['forceReturnLineBefore'] ?: false);
 	                        $fullyKiosKCmd->setDisplay('message_disable', $params['message_disable'] ?: false);
