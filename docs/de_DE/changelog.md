@@ -4,7 +4,7 @@ En cas d'absence de note dans ce chapitre, les mises à jour ne concernent que l
 
 ## 14/01/2020
 - ajout de 'mqtt' dans le nom de la commande lié à un évènement MQTT.
-- correction bug (tuxedo78)
+- correction bug (merci tuxedo78 dokime7) 
 
 ## 18/10/2019
 - ajout du user + mot de passe (optionnel) dans la configuration du plugin

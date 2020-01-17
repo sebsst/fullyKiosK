@@ -1030,7 +1030,7 @@ Constant Value: 0 (0x00000000)
       		log::add('fullyKiosK', 'debug', 'Event received:' .  $json['event'] . ' ' . date('y/m/d h:i:s'));
         	$fullyKiosKCmd->setValue(date('h:i:s'));
 		$fullyKiosKCmd->setName('mqtt'.$json['event']);		
-		$eqlogic->checkAndUpdateCmd(json['event'],date('y/m/d h:i:s'));
+		$eqlogic->checkAndUpdateCmd($json['event'],date('y/m/d h:i:s'));
 
 		$fullyKiosKCmd->save();
 
