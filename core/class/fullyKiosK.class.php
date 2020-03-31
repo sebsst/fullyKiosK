@@ -272,7 +272,7 @@ class fullyKiosK extends eqLogic {
 				'cmd' => "textToSpeech&text='#title#'",
 				'subtype' => 'message',
 				'title_placeholder' => __('Message à envoyer',__FILE__),
-				'message_disable' => true,
+				'message_disable' => true ,
 
 			),
 			'TTS_javascript' => array(
@@ -573,7 +573,18 @@ Constant Value: 0 (0x00000000)
 				'name' => 'Refresh',
 				'cmd' => 'deviceInfo&type=json&password=#password#',
 
-			),			
+			),		
+			
+			'shutdownDevice' => array(
+				'name' => __('Arrêter équipement (root)',__FILE__),
+				'cmd' => 'shutdownDevice',
+				'isvisible' => 0,
+                        ),
+			'rebootDevice' => array(
+				'name' => __('Redémarrer équipement (root)',__FILE__),
+				'cmd' => 'rebootDevice',
+				'isvisible' => 0,
+			),				
 		);
 		
 		self::$_settings = array(
