@@ -908,7 +908,7 @@ Constant Value: 0 (0x00000000)
       }
     }
     if($return['mqttEnabled'] = 'nok'){
-    	$return['state'] = 'ok';
+    	//$return['state'] = 'ok';
     }	  
 	  
     return $return;
@@ -1001,6 +1001,8 @@ Constant Value: 0 (0x00000000)
 
     
         } else {
+	  log::add('fullyKiosK', 'debug', ' No active MQTT, deamon automatic start disabled  ' );   
+          config::save('deamonAutoMode', 0, 'fullyKiosK');
 	  log::add('fullyKiosK', 'debug', ' No active MQTT, Daemon stopped  ' );            
           self::deamon_stop();
 	}
