@@ -927,7 +927,7 @@ Constant Value: 0 (0x00000000)
     if (!is_object($cron)) {
       throw new Exception(__('Tache cron introuvable', __FILE__));
     }
-    if ($deamon_info['mqttEnabled'] == 'ok'){
+    if ($deamon_info['mqttEnabled'] = 'ok'){
       $cron->run();
     }	  
   }
