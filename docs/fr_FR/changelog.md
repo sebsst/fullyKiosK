@@ -4,7 +4,9 @@ En cas d'absence de note dans ce chapitre, les mises à jour ne concernent que l
 
 ## 22/04/2020
 - suppression statut démon ko si mqtt n'a pas été activé pour les tablettes
-- ajout des fonctions fully kiosk 1.38+ : text to speech avec locale & tts engine & queue + fonction arrête TTS
+- ajout des fonctions fully kiosk 1.38+ : text to speech avec locale & tts engine & queue. Ce qui permet de changer le moteur de voix, la langue et de mettre dans la queue ou non. 
+
+- et fonction arrêt du TTS en cours
 
 ## 14/01/2020
 - ajout de 'mqtt' dans le nom de la commande lié à un évènement MQTT.
