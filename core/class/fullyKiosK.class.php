@@ -222,7 +222,8 @@ class fullyKiosK extends eqLogic {
 					'fully.getThisTabIndex()',
 					'fully.focusThisTab()',
 					'fully.showNotification(String title, String text, String url, boolean highPriority)',
-					
+                                        'fully.textToSpeech(String text, String locale, String engine, boolean queue)',
+					'fully.stopTextToSpeech()',
 
 				),
 					
@@ -273,8 +274,19 @@ class fullyKiosK extends eqLogic {
 				'subtype' => 'message',
 				'title_placeholder' => __('Message à envoyer',__FILE__),
 				'message_disable' => true ,
-
 			),
+			'textToSpeech2' => array(
+				'name' => __('Envoyer TTS +',__FILE__),
+				'cmd' => "textToSpeech&text='#message#'&#title#",
+				'subtype' => 'message',
+				'title_placeholder' => __('locale=fr_FR&engine=engine_name&queue=1',__FILE__),
+				'message_placeholder' => __('Message à envoyer',__FILE__),				
+				'message_disable' => false ,
+			),			
+			'stopTextToSpeech' => array(
+				'name' => __('Arrêter TTS',__FILE__),
+				'cmd' => "stopTextToSpeech",
+			),			
 			'TTS_javascript' => array(
 				'name' => __('TTS javascript',__FILE__),
 				'cmd' => 'loadURL&url=javascript:fully.textToSpeech("#message#","#title#")',
@@ -1575,7 +1587,13 @@ class fullyKiosKCmd extends cmd {
 					
 					if($this->getSubType()  == 'message') {
 						$cmdval = str_replace('#message#',urlencode($_options['message']),$cmdval);
-                                                $cmdval = str_replace('#title#',urlencode($_options['title']),$cmdval);
+						if($this->getLogicalId()  == 'textToSpeech2'){
+                                                  $cmdval = str_replace('#title#',$_options['title'],$cmdval);
+						}
+						else
+						{
+                                                  $cmdval = str_replace('#title#',urlencode($_options['title']),$cmdval);
+						}
                                                 if($this->getLogicalId()  == 'setBooleanSetting')
 						   $cmdval = str_replace('#message#',$_options['message'] === 'true',$cmdval);
 
