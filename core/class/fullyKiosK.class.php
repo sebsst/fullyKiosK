@@ -894,7 +894,11 @@ Constant Value: 0 (0x00000000)
       if($mqttEnabled){
        	$return['mqttEnabled'] = 'ok'; 
       }
+    }
+    if($return['mqttEnabled'] = 'nok'){
+    	$return['state'] = 'ok';
     }	  
+	  
     return $return;
   }
 
@@ -905,13 +909,15 @@ Constant Value: 0 (0x00000000)
       throw new Exception(__('Veuillez vérifier la configuration', __FILE__));
     }
     if ($deamon_info['mqttEnabled'] != 'ok'){
-      throw new Exception(__('Mqtt non actif sur la tablette', __FILE__));      
+      //throw new Exception(__('Mqtt non actif sur la tablette', __FILE__));      
     }
     $cron = cron::byClassAndFunction('fullyKiosK', 'daemon');
     if (!is_object($cron)) {
       throw new Exception(__('Tache cron introuvable', __FILE__));
     }
-    $cron->run();
+    if ($deamon_info['mqttEnabled'] == 'ok'){
+      $cron->run();
+    }	  
   }
 
   public static function deamon_stop() {
