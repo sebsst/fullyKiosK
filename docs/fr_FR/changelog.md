@@ -2,6 +2,9 @@
 
 En cas d'absence de note dans ce chapitre, les mises à jour ne concernent que la doc et des corrections mineures
 
+## 22/04/2020
+- suppression statut démon ko si mqtt n'a pas été activé pour les tablettes
+
 ## 14/01/2020
 - ajout de 'mqtt' dans le nom de la commande lié à un évènement MQTT.
 - correction bug (merci tuxedo78 dokime7) 
