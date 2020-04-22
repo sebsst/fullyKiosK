@@ -50,6 +50,8 @@ Simulate motion
 
 Text to speech
 - /?cmd=textToSpeech&text=[text]&password=[pass] 
+- /?cmd=textToSpeech&text=[text]&password=[pass]&locale=[locale]&engine=[engine]&password=[pass]&queue=[0|1]
+- /?cmd=stopTextToSpeech
 
 Change fully kiosk parameters
 /?cmd=setBooleanSetting&key=[key]&value=[true|false]&password=[pass] 

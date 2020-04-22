@@ -222,7 +222,8 @@ class fullyKiosK extends eqLogic {
 					'fully.getThisTabIndex()',
 					'fully.focusThisTab()',
 					'fully.showNotification(String title, String text, String url, boolean highPriority)',
-					
+                                        'fully.textToSpeech(String text, String locale, String engine, boolean queue)',
+					'fully.stopTextToSpeech()',
 
 				),
 					
@@ -272,9 +273,20 @@ class fullyKiosK extends eqLogic {
 				'cmd' => "textToSpeech&text='#title#'",
 				'subtype' => 'message',
 				'title_placeholder' => __('Message à envoyer',__FILE__),
-				'message_disable' => true,
-
+				'message_disable' => true ,
 			),
+			'textToSpeech2' => array(
+				'name' => __('Envoyer TTS +',__FILE__),
+				'cmd' => "textToSpeech&text='#message#'&#title#",
+				'subtype' => 'message',
+				'title_placeholder' => __('locale=fr_FR&engine=engine_name&queue=1',__FILE__),
+				'message_placeholder' => __('Message à envoyer',__FILE__),				
+				'message_disable' => false ,
+			),			
+			'stopTextToSpeech' => array(
+				'name' => __('Arrêter TTS',__FILE__),
+				'cmd' => "stopTextToSpeech",
+			),			
 			'TTS_javascript' => array(
 				'name' => __('TTS javascript',__FILE__),
 				'cmd' => 'loadURL&url=javascript:fully.textToSpeech("#message#","#title#")',
@@ -573,7 +585,18 @@ Constant Value: 0 (0x00000000)
 				'name' => 'Refresh',
 				'cmd' => 'deviceInfo&type=json&password=#password#',
 
-			),			
+			),		
+			
+			'shutdownDevice' => array(
+				'name' => __('Arrêter équipement (root)',__FILE__),
+				'cmd' => 'shutdownDevice',
+				'isvisible' => 0,
+                        ),
+			'rebootDevice' => array(
+				'name' => __('Redémarrer équipement (root)',__FILE__),
+				'cmd' => 'rebootDevice',
+				'isvisible' => 0,
+			),				
 		);
 		
 		self::$_settings = array(
@@ -883,7 +906,11 @@ Constant Value: 0 (0x00000000)
       if($mqttEnabled){
        	$return['mqttEnabled'] = 'ok'; 
       }
+    }
+    if($return['mqttEnabled'] = 'nok'){
+    	$return['state'] = 'ok';
     }	  
+	  
     return $return;
   }
 
@@ -894,13 +921,15 @@ Constant Value: 0 (0x00000000)
       throw new Exception(__('Veuillez vérifier la configuration', __FILE__));
     }
     if ($deamon_info['mqttEnabled'] != 'ok'){
-      throw new Exception(__('Mqtt non actif sur la tablette', __FILE__));      
+      //throw new Exception(__('Mqtt non actif sur la tablette', __FILE__));      
     }
     $cron = cron::byClassAndFunction('fullyKiosK', 'daemon');
     if (!is_object($cron)) {
       throw new Exception(__('Tache cron introuvable', __FILE__));
     }
-    $cron->run();
+    if ($deamon_info['mqttEnabled'] == 'ok'){
+      $cron->run();
+    }	  
   }
 
   public static function deamon_stop() {
@@ -1558,7 +1587,13 @@ class fullyKiosKCmd extends cmd {
 					
 					if($this->getSubType()  == 'message') {
 						$cmdval = str_replace('#message#',urlencode($_options['message']),$cmdval);
-                                                $cmdval = str_replace('#title#',urlencode($_options['title']),$cmdval);
+						if($this->getLogicalId()  == 'textToSpeech2'){
+                                                  $cmdval = str_replace('#title#',$_options['title'],$cmdval);
+						}
+						else
+						{
+                                                  $cmdval = str_replace('#title#',urlencode($_options['title']),$cmdval);
+						}
                                                 if($this->getLogicalId()  == 'setBooleanSetting')
 						   $cmdval = str_replace('#message#',$_options['message'] === 'true',$cmdval);
 
