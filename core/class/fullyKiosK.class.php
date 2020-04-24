@@ -1495,17 +1495,17 @@ Constant Value: 0 (0x00000000)
 			}
 			//if (isset($replace['#batteryLevel_id#']) && $cmd->getId() == $replace['#batteryLevel_id#']) {
 			//	            $replace['#' . $cmd->getLogicalId() . '_history#'] = '';
-			if($cmd->getLogicalId() == 'batteryLevel'){
-		            $replace['#' . $cmd->getLogicalId() . '_id#'] = $cmd->getId();
-            	            $replace['#' . $cmd->getLogicalId() . '#'] = $cmd->execCmd();
-                            $replace['#' . $cmd->getLogicalId() . '_collect#'] = $cmd->getCollectDate();
-				continue;
-			}
-			if($cmd->getLogicalId() == 'plugged'){
-			    if($cmd->execCmd()){ 	
-		            $replace['#' . $cmd->getLogicalId() . '_icon#'] = 'techno-charging'; }
-		            else { $replace['#' . $cmd->getLogicalId() . '_icon#'] = 'notechno-low2'; }
-			}
+			//if($cmd->getLogicalId() == 'batteryLevel'){
+		        //    $replace['#' . $cmd->getLogicalId() . '_id#'] = $cmd->getId();
+            	        //    $replace['#' . $cmd->getLogicalId() . '#'] = $cmd->execCmd();
+                        //    $replace['#' . $cmd->getLogicalId() . '_collect#'] = $cmd->getCollectDate();
+			//	continue;
+			//}
+			//if($cmd->getLogicalId() == 'plugged'){
+			//    if($cmd->execCmd()){ 	
+		        //    $replace['#' . $cmd->getLogicalId() . '_icon#'] = 'techno-charging'; }
+		        //   else { $replace['#' . $cmd->getLogicalId() . '_icon#'] = 'notechno-low2'; }
+			//}
 			
 			if ($br_before == 0 && $cmd->getDisplay('forceReturnLineBefore', 0) == 1) {
 				$cmd_html .= '<br/>';
