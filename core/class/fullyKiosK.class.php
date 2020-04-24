@@ -1469,11 +1469,11 @@ Constant Value: 0 (0x00000000)
                         //    $replace['#' . $cmd->getLogicalId() . '_collect#'] = $cmd->getCollectDate();
 			//	continue;
 			//}
-			if($cmd->getLogicalId() == 'plugged'){
-			    if($cmd->execCmd()){ 	
-		            $replace['#' . $cmd->getLogicalId() . '_icon#'] = 'techno-charging'; }
-		            else { $replace['#' . $cmd->getLogicalId() . '_icon#'] = 'notechno-low2'; }
-			}
+			//if($cmd->getLogicalId() == 'plugged'){
+			//    if($cmd->execCmd()){ 	
+		        //    $replace['#' . $cmd->getLogicalId() . '_icon#'] = 'techno-charging'; }
+		        //    else { $replace['#' . $cmd->getLogicalId() . '_icon#'] = 'notechno-low2'; }
+			//}
 			
 			if ($br_before == 0 && $cmd->getDisplay('forceReturnLineBefore', 0) == 1) {
 				$cmd_html .= '<br/>';
