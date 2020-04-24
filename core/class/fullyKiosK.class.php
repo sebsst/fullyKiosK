@@ -1059,13 +1059,35 @@ Constant Value: 0 (0x00000000)
 		$fullyKiosKCmd->save();
 	}else{
       		log::add('fullyKiosK', 'debug', 'Event received:' .  $json['event'] . ' ' . date('y/m/d h:i:s'));
-        	$fullyKiosKCmd->setValue(date('h:i:s'));
-		$fullyKiosKCmd->setName('mqtt'.$json['event']);		
+        	//$fullyKiosKCmd->setValue(date('h:i:s'));
+		//$fullyKiosKCmd->setName('mqtt'.$json['event']);		
 		$eqlogic->checkAndUpdateCmd($json['event'],date('y/m/d h:i:s'));
-
-		$fullyKiosKCmd->save();
-
+		//$fullyKiosKCmd->save();
 	}
+	       // update info from mqtt event value if found
+   
+	if($json['event'] == 'onBatteryLevelChanged'){
+		$eqlogic->checkAndUpdateCmd('batteryLevel',intval($json['level']));      
+	}
+
+	if($json['event'] == 'screenOn'){
+		$eqlogic->checkAndUpdateCmd('isScreenOn',1);      
+	}      
+
+	if($json['event'] == 'screenOff'){
+		$eqlogic->checkAndUpdateCmd('isScreenOn',0);      
+	}      
+        if($json['event'] == 'pluggedUSB' or $json['event'] == 'pluggedAC' or $json['event'] == 'pluggedWireless' ){
+		$eqlogic->checkAndUpdateCmd('plugged',1);      
+        }         
+
+        if($json['event'] == 'unplugged'){
+		$eqlogic->checkAndUpdateCmd('plugged',0);      
+	}         
+
+	$eqlogic->refreshWidget();
+
+	    }
     }
   }	
 	
