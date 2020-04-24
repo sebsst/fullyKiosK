@@ -2,6 +2,10 @@
 
 En cas d'absence de note dans ce chapitre, les mises à jour ne concernent que la doc et des corrections mineures
 
+## 24/04/2020
+- Mise à jour des infos isScreenOn batteryLevel plugged sur les évènements mqtt correspondants
+- suppression de l'incône "plugged" dans l'entête surchargée du widget
+
 ## 22/04/2020
 - suppression démarrage auto du démon si mqtt n'a pas été activé pour les tablettes
 - ajout des fonctions fully kiosk 1.38+ : text to speech avec locale & tts engine & queue. Ce qui permet de changer le moteur de voix, la langue et de mettre dans la queue ou non. 
