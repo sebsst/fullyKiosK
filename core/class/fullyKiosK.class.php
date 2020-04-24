@@ -1086,8 +1086,6 @@ Constant Value: 0 (0x00000000)
 	}         
 
 	$eqlogic->refreshWidget();
-
-	    }
     }
   }	
 	
