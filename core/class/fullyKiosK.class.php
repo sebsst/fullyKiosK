@@ -254,6 +254,14 @@ class fullyKiosK extends eqLogic {
 				'message_disable' => true,
 
 			),
+			'setOverlayMessage' => array(
+				'name' => __('setOverlayMessage',__FILE__),
+				'cmd' => "setOverlayMessage&text=#title#",
+				'title_placeholder' => 'Envoyer message',
+				'subtype' => 'message',
+				'message_disable' => true,
+
+			),			
 		// /?cmd=playSound&url=[url]&loop=[true|false]&password=[pass]
 			'playSound' => array(
 				'name' => __('Jouer musique/son',__FILE__),
