@@ -1287,7 +1287,7 @@ Constant Value: 0 (0x00000000)
 					$this->checkAndUpdateCmd($cmdLogicalId,$value);
 				}
 			}
-		      	if($this->getLogicalId() == '')
+		      	if($this->getLogicalId() == '' or $this->getLogicalId() !=  $json['deviceID'] )
 			{ 
               	           $this->setLogicalId($json['deviceID']);
 		           $this->save();
