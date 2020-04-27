@@ -2,6 +2,9 @@
 
 En cas d'absence de note dans ce chapitre, les mises à jour ne concernent que la doc et des corrections mineures
 
+## 27/04/2020
+- correction du logicalId si nécessaire en cas de remplacement de tablette par exemple
+
 ## 24/04/2020
 - Mise à jour des infos isScreenOn batteryLevel plugged sur les évènements mqtt correspondants
 - suppression de l'incône "plugged" dans l'entête surchargée du widget
