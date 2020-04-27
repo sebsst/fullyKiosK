@@ -254,6 +254,14 @@ class fullyKiosK extends eqLogic {
 				'message_disable' => true,
 
 			),
+			'setOverlayMessage' => array(
+				'name' => __('setOverlayMessage',__FILE__),
+				'cmd' => "setOverlayMessage&text=#title#",
+				'title_placeholder' => 'Envoyer message',
+				'subtype' => 'message',
+				'message_disable' => true,
+
+			),			
 		// /?cmd=playSound&url=[url]&loop=[true|false]&password=[pass]
 			'playSound' => array(
 				'name' => __('Jouer musique/son',__FILE__),
@@ -1033,7 +1041,7 @@ Constant Value: 0 (0x00000000)
   public static function message( $message ) {
     $json = json_decode($message->payload,true);
     if(!is_null($json) && !is_null($json['event']) && !is_null($json['deviceId']) ){
-    log::add('fullyKiosK', 'debug', 'MeMessage ' . $json['deviceId'] . $json['event'] );
+
     log::add('fullyKiosK', 'debug', 'Message ' . $message->payload . ' sur ' . $message->topic . $json->deviceID . $json->event );
 	//$fullyKiosKCmd = $this->getCmd('info', $cmdLogicalId);
     
@@ -1279,7 +1287,7 @@ Constant Value: 0 (0x00000000)
 					$this->checkAndUpdateCmd($cmdLogicalId,$value);
 				}
 			}
-		      	if($this->getLogicalId() == '')
+		      	if($this->getLogicalId() == '' or $this->getLogicalId() !=  $json['deviceID'] )
 			{ 
               	           $this->setLogicalId($json['deviceID']);
 		           $this->save();
