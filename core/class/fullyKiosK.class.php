@@ -1032,11 +1032,10 @@ Constant Value: 0 (0x00000000)
     
     $eqlogic = self::byLogicalId($json['deviceId'], 'fullyKiosK');
 
-    if(!is_object($eqlogic)){
-	$fullyKiosKCmd = $eqlogic->getCmd('info', $json['event']);
+     $fullyKiosKCmd = $eqlogic->getCmd('info', $json['event']);
 
-	if (!is_object($fullyKiosKCmd))
-	{
+     if (!is_object($fullyKiosKCmd))
+     {
 		log::add('fullyKiosK', 'debug', __METHOD__.' '.__LINE__.' cmdInfo create '.$cmdLogicalId.'('.__($params['name'], __FILE__).') '.($params['subtype'] ?: 'subtypedefault'));
 		$fullyKiosKCmd = new fullyKiosKCmd();
 
@@ -1050,7 +1049,7 @@ Constant Value: 0 (0x00000000)
 
 		$eqlogic->checkAndUpdateCmd($json['event'],date('y/m/d h:i:s'));
 		$fullyKiosKCmd->save();
-	}else{
+	 }else{
       		log::add('fullyKiosK', 'debug', 'Event received:' .  $json['event'] . ' ' . date('y/m/d h:i:s'));
         	//$fullyKiosKCmd->setValue(date('h:i:s'));
 		//$fullyKiosKCmd->setName('mqtt'.$json['event']);		
@@ -1080,7 +1079,7 @@ Constant Value: 0 (0x00000000)
 
 	$eqlogic->refreshWidget();
      }
-    }
+
   }	
 	
 	
