@@ -257,9 +257,9 @@ screenOn, screenOff, pluggedAC, pluggedUSB, pluggedWireless, unplugged, networkR
 - Le sujet souscrit est /fully/event/deviceid où device ID est un identifiant unique pour la tablette vous ne pouvez donc pas multiplier les équipements tablette fullykiosk avec la même adresse IP.
 
 - si vous ne voulez pas utiliser cette fonctionnalité, il suffit de décocher MQTT sur la page de configuration du plugin
-- __Attention__
+__Attention__
 - le démarrage automatique du démon est désactivé par défaut donc si vous activez MQTT pour la première vous pouvez éventuellement remettre le démarrage automatique. (une mise à jour du plugin pourrait arrêté le démon)
-- Une première intialisation des données est nécessaire pour la mise à jour des infos MQTT. (Bouton ou commande refresh)
+- __Une première intialisation des données est nécessaire pour la mise à jour des infos MQTT.__ (Bouton ou commande refresh)
 
 ## Autres fonctionnalités
 - Fully Kiosk permet d'injecter des fonctions JS comme par exemple lancer une application avec des paramètres.
