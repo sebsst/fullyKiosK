@@ -3,6 +3,10 @@
 En cas d'absence de note dans ce chapitre, les mises à jour ne concernent que la doc et des corrections mineures
 
 ## 27/04/2020
+- correction problème d'affichage de certaines infos
+- nettoyage du code
+
+## 27/04/2020
 - correction du logicalId si nécessaire en cas de remplacement de tablette par exemple
 - ajout fonction setOverlayMessage
 

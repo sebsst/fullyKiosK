@@ -249,13 +249,17 @@ http://[iptablette]:2323/?cmd=getCamshot&password=[pass]
 - l'activation de MQTT dans other settings - MQTT integration permet de remonter des évènements de la tablette en temps réel pour déclencher des actions par scénario.
 - les évènements disponibles sont les suivants:
 screenOn, screenOff, pluggedAC, pluggedUSB, pluggedWireless, unplugged, networkReconnect, networkDisconnect, internetReconnect, internetDisconnect, powerOn, powerOff, showKeyboard, hideKeyboard, onMotion, onDarkness, onMovement, volumeUp, volumeDown, onQrScanCancelled, onBatteryLevelChanged, onScreensaverStart, onScreensaverStop.
+- Les évènement screenOn, screenOff, batteryLevelChanged et pluggedxxx mettent également à jour les infos "non mqtt" correspondantes. Par exemple cela signifie que le niveau de batterie est mis à jour sans avoir à réactualiser les données.
 - une fois activé sur la tablette et sur la configuration du plugin, la valeur de l'évènement (screenOn par exemple) prend l'heure du dernier évènement reçu. Cela permet de les utiliser en tant que déclencheur dans un scénario par exemple.
 - Le démon peut être arrêté pour éviter de gérer un broker MQTT actif sur jeedom.
-- Sur la tablette vous devez renseigner l'adresse IP de jeedom et le port 1883. 
+- Sur la tablette vous devez renseigner l'adresse IP de jeedom et le port 1883. tcp://ip_jeedom:1883
 - Eventuellement vous pouvez ajouter un nom d'utilisateur et un mot de passe mais ce n'est pas obligatoire.
 - Le sujet souscrit est /fully/event/deviceid où device ID est un identifiant unique pour la tablette vous ne pouvez donc pas multiplier les équipements tablette fullykiosk avec la même adresse IP.
 
 - si vous ne voulez pas utiliser cette fonctionnalité, il suffit de décocher MQTT sur la page de configuration du plugin
+__Attention__
+>> - le démarrage automatique du démon est désactivé par défaut donc si vous activez MQTT pour la première fois il faudra éventuellement remettre le démarrage automatique. (une mise à jour du plugin pourrait arrêter le démon)
+>> - __Une première intialisation des données est nécessaire pour la mise à jour des infos MQTT.__ (Bouton ou commande refresh)
 
 ## Autres fonctionnalités
 - Fully Kiosk permet d'injecter des fonctions JS comme par exemple lancer une application avec des paramètres.
