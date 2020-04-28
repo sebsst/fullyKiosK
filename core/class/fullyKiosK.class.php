@@ -1060,24 +1060,29 @@ Constant Value: 0 (0x00000000)
    
 	if($json['event'] == 'onBatteryLevelChanged'){
 		$eqlogic->checkAndUpdateCmd('batteryLevel',intval($json['level']));      
+		$eqlogic->refreshWidget();
 	}
 
 	if($json['event'] == 'screenOn'){
 		$eqlogic->checkAndUpdateCmd('isScreenOn',1);      
+		$eqlogic->refreshWidget();
 	}      
 
 	if($json['event'] == 'screenOff'){
 		$eqlogic->checkAndUpdateCmd('isScreenOn',0);      
+		$eqlogic->refreshWidget();
 	}      
         if($json['event'] == 'pluggedUSB' or $json['event'] == 'pluggedAC' or $json['event'] == 'pluggedWireless' ){
 		$eqlogic->checkAndUpdateCmd('plugged',1);      
+		$eqlogic->refreshWidget();
         }         
 
         if($json['event'] == 'unplugged'){
-		$eqlogic->checkAndUpdateCmd('plugged',0);      
+		$eqlogic->checkAndUpdateCmd('plugged',0);
+		$eqlogic->refreshWidget();
 	}         
 
-	$eqlogic->refreshWidget();
+	
      }
 
   }	
