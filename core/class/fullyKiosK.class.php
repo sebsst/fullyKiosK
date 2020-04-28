@@ -37,8 +37,6 @@ class fullyKiosK extends eqLogic {
 
 	*/
 
-	
-	
 	public static function initInfosMap(){
 
 		self::$_actionMap = array(
@@ -50,11 +48,6 @@ class fullyKiosK extends eqLogic {
 				'name' => __('Eteindre écran',__FILE__),
 				'cmd' => 'screenOff',
 			),
-			//'screenOff3' => array(
-			//	'name' => __('Eteindre écran3',__FILE__),
-			//	'cmd' => 'screenOff3',
-			//	'icon' => '<i class="icon animal-spotted1">meuuh</i>',
-			//),
 			'clearCache' => array(
 				'name' => __('Vider cache',__FILE__),
 				'cmd' => 'clearCache',
@@ -587,7 +580,6 @@ Constant Value: 0 (0x00000000)
 
 
 			),
-
 	
 			'Refresh' => array(
 				'name' => 'Refresh',
@@ -619,12 +611,6 @@ Constant Value: 0 (0x00000000)
 		);
 
 		self::$_infosMap = array(
-	 		//'default' => array(
-	 		//	'type' => 'info',
-	 		//	'subtype' => 'numeric',
-	 		//	'isvisible' => true,
-	 		//	'restkey' =>'',a-exclamation-triangle
-	 		//),
 			'deviceID' => array(
 				'name' => __('deviceID',__FILE__),
 				'type' => 'info',
@@ -637,7 +623,6 @@ Constant Value: 0 (0x00000000)
 			'batteryLevel' => array(
 				'name' => __('Batterie',__FILE__),
 				'type' => 'info',
-				'icon' => '<i class="fa jeedom-batterie2"></i>',
 				'subtype' => 'numeric',
 				'isvisible' => 1,
 				'unite' => '%',
@@ -1107,12 +1092,6 @@ Constant Value: 0 (0x00000000)
 			if($fullyKiosK->getConfiguration('refreshDelay')=='1'){ 
 		                $notfound = false;
 				$fullyKiosK->getInformations();
-				/*$mc = cache::byKey('fullyKiosKWidgetmobile' . $fullyKiosK->getId());
-				$mc->remove();
-				$mc = cache::byKey('fullyKiosKWidgetdashboard' . $fullyKiosK->getId());
-				$mc->remove();
-				$fullyKiosK->toHtml('mobile');
-				$fullyKiosK->toHtml('dashboard');*/
 				$fullyKiosK->refreshWidget(); 
 		        } 
 		}
@@ -1134,13 +1113,6 @@ Constant Value: 0 (0x00000000)
 		{
 			if($fullyKiosK->getConfiguration('refreshDelay')=='5'){ 
 				$found = false;
-				/*$fullyKiosK->getInformations();
-				$mc = cache::byKey('fullyKiosKWidgetmobile' . $fullyKiosK->getId());
-				$mc->remove();
-				$mc = cache::byKey('fullyKiosKWidgetdashboard' . $fullyKiosK->getId());
-				$mc->remove();
-				$fullyKiosK->toHtml('mobile');
-				$fullyKiosK->toHtml('dashboard');*/
 				$fullyKiosK->refreshWidget(); 
 		        } 
 		}
@@ -1155,12 +1127,6 @@ Constant Value: 0 (0x00000000)
 			if($fullyKiosK->getConfiguration('refreshDelay')=='30'){ 
 		                $notfound = false;
 				$fullyKiosK->getInformations();
-				/*$mc = cache::byKey('fullyKiosKWidgetmobile' . $fullyKiosK->getId());
-				$mc->remove();
-				$mc = cache::byKey('fullyKiosKWidgetdashboard' . $fullyKiosK->getId());
-				$mc->remove();
-				$fullyKiosK->toHtml('mobile');
-				$fullyKiosK->toHtml('dashboard');*/
 				$fullyKiosK->refreshWidget(); 
 		        } 
 		}
@@ -1175,12 +1141,6 @@ Constant Value: 0 (0x00000000)
 			if($fullyKiosK->getConfiguration('refreshDelay')=='60'){ 
 		                $notfound = false;
 				$fullyKiosK->getInformations();
-			/*	$mc = cache::byKey('fullyKiosKWidgetmobile' . $fullyKiosK->getId());
-				$mc->remove();
-				$mc = cache::byKey('fullyKiosKWidgetdashboard' . $fullyKiosK->getId());
-				$mc->remove();
-				$fullyKiosK->toHtml('mobile');
-				$fullyKiosK->toHtml('dashboard');*/
 				$fullyKiosK->refreshWidget(); 
 		        } 
 		}
@@ -1196,12 +1156,6 @@ Constant Value: 0 (0x00000000)
 			if($fullyKiosK->getConfiguration('refreshDelay')=='15'){ 
 		                $notfound = false;
 				$fullyKiosK->getInformations();
-			/*	$mc = cache::byKey('fullyKiosKWidgetmobile' . $fullyKiosK->getId());
-				$mc->remove();
-				$mc = cache::byKey('fullyKiosKWidgetdashboard' . $fullyKiosK->getId());
-				$mc->remove();
-				$fullyKiosK->toHtml('mobile');
-				$fullyKiosK->toHtml('dashboard');*/
 				$fullyKiosK->refreshWidget(); 
 		        } 
 		}
@@ -1214,12 +1168,6 @@ Constant Value: 0 (0x00000000)
 	public function refresh() {
 		try {
 			$this->getInformations();
-		/*	$mc = cache::byKey('fullyKiosKWidgetmobile' . $fullyKiosK->getId());
-			$mc->remove();
-			$mc = cache::byKey('fullyKiosKWidgetdashboard' . $fullyKiosK->getId());
-			$mc->remove();
-			$fullyKiosK->toHtml('mobile');
-			$fullyKiosK->toHtml('dashboard');*/
 			$fullyKiosK->refreshWidget();
 		} catch (Exception $exc) {
 			log::add('fullyKiosK', 'error', __('Erreur pour ', __FILE__) . $eqLogic->getHumanName() . ' : ' . $exc->getMessage());
@@ -1364,8 +1312,8 @@ Constant Value: 0 (0x00000000)
 
 				if(isset($params['unite']))
 					$fullyKiosKCmd->setUnite($params['unite']);
-				$fullyKiosKCmd->setTemplate('dashboard',$params['tpldesktop']?: 'badge');
-				$fullyKiosKCmd->setTemplate('mobile',$params['tplmobile']?: 'badge');
+				$fullyKiosKCmd->setTemplate('dashboard',$params['tpldesktop']?: 'default');
+				$fullyKiosKCmd->setTemplate('mobile',$params['tplmobile']?: 'default');
 				$fullyKiosKCmd->setOrder($order++);
 
 				$fullyKiosKCmd->save();
@@ -1430,30 +1378,18 @@ Constant Value: 0 (0x00000000)
 				$fullyKiosKCmd->setName(__($params['name'], __FILE__));
 				$fullyKiosKCmd->setType($params['type'] ?: 'action');
 				$fullyKiosKCmd->setSubType($params['subtype'] ?: 'other');
-				//$fullyKiosKCmd->setIsVisible($params['isvisible'] ?: 1);
-
 				$fullyKiosKCmd->setConfiguration('cmd', $params['cmd'] ?: null);
-
 				$fullyKiosKCmd->setConfiguration('listValue', json_encode($params['listValue']) ?: '');
-
 				$fullyKiosKCmd->setDisplay('forceReturnLineBefore', $params['forceReturnLineBefore'] ?: false);
 	                        $fullyKiosKCmd->setDisplay('message_disable', $params['message_disable'] ?: false);
 	                        $fullyKiosKCmd->setDisplay('title_disable', $params['title_disable'] ?: false);
 				$fullyKiosKCmd->setDisplay('title_placeholder', $params['title_placeholder'] ?: false);
 				$fullyKiosKCmd->setDisplay('icon', $params['icon'] ?: false);				
 			        $fullyKiosKCmd->setDisplay('message_placeholder', $params['message_placeholder'] ?: false);
-
 				$fullyKiosKCmd->setDisplay('title_possibility_list', json_encode($params['title_possibility_list'] ?: null));//json_encode(array("1","2"));
-				//$fullyKiosKCmd->setDisplay('icon', $params['icon'] ?: null);				
 				$fullyKiosKCmd->save();
-
 			}
-				
 		}
-		//refreshcmdinfo
-  	   		
-		//$this->getInformations();
-		
 	}
 	
 
@@ -1469,19 +1405,6 @@ Constant Value: 0 (0x00000000)
 			if (isset($replace['#refresh_id#']) && $cmd->getId() == $replace['#refresh_id#']) {
 				continue;
 			}
-			//if (isset($replace['#batteryLevel_id#']) && $cmd->getId() == $replace['#batteryLevel_id#']) {
-			//	            $replace['#' . $cmd->getLogicalId() . '_history#'] = '';
-			//if($cmd->getLogicalId() == 'batteryLevel'){
-		        //    $replace['#' . $cmd->getLogicalId() . '_id#'] = $cmd->getId();
-            	        //    $replace['#' . $cmd->getLogicalId() . '#'] = $cmd->execCmd();
-                        //    $replace['#' . $cmd->getLogicalId() . '_collect#'] = $cmd->getCollectDate();
-			//	continue;
-			//}
-			//if($cmd->getLogicalId() == 'plugged'){
-			//    if($cmd->execCmd()){ 	
-		        //    $replace['#' . $cmd->getLogicalId() . '_icon#'] = 'techno-charging'; }
-		        //    else { $replace['#' . $cmd->getLogicalId() . '_icon#'] = 'notechno-low2'; }
-			//}
 			
 			if ($br_before == 0 && $cmd->getDisplay('forceReturnLineBefore', 0) == 1) {
 				$cmd_html .= '<br/>';
@@ -1499,15 +1422,6 @@ Constant Value: 0 (0x00000000)
 			if (isset($replace['#refresh_id#']) && $cmd->getId() == $replace['#refresh_id#']) {
 				continue;
 			}
-			//if (isset($replace['#batteryLevel_id#']) && $cmd->getId() == $replace['#batteryLevel_id#']) {
-			//	            $replace['#' . $cmd->getLogicalId() . '_history#'] = '';
-
-			//if($cmd->getLogicalId() == 'plugged'){
-			//    if($cmd->execCmd()){ 	
-		        //    $replace['#' . $cmd->getLogicalId() . '_icon#'] = 'techno-charging'; }
-		        //   else { $replace['#' . $cmd->getLogicalId() . '_icon#'] = 'notechno-low2'; }
-			//}
-			
 			if ($br_before == 0 && $cmd->getDisplay('forceReturnLineBefore', 0) == 1) {
 				$cmd_html .= '<br/>';
 			}
@@ -1530,9 +1444,6 @@ Constant Value: 0 (0x00000000)
 		$replace['#cmd#'] = $cmd_html;
 		$replace['#ipaddress#'] = $ip;
 		$replace['#password#'] = $password;
-		$replace['width: 146px'] = 'width: 256px';
-		//$replace['resize:vertical;'] = 'resize:both;';
-		//$replace['rows="2"'] = 'rows="1"';
 
 		return template_replace($replace, getTemplate('core', $version, 'fullyKiosK', 'fullyKiosK'));
 	}
