@@ -258,8 +258,8 @@ screenOn, screenOff, pluggedAC, pluggedUSB, pluggedWireless, unplugged, networkR
 
 - si vous ne voulez pas utiliser cette fonctionnalité, il suffit de décocher MQTT sur la page de configuration du plugin
 __Attention__
->> le démarrage automatique du démon est désactivé par défaut donc si vous activez MQTT pour la première vous pouvez éventuellement remettre le démarrage automatique. (une mise à jour du plugin pourrait arrêté le démon)
->> __Une première intialisation des données est nécessaire pour la mise à jour des infos MQTT.__ (Bouton ou commande refresh)
+>> - le démarrage automatique du démon est désactivé par défaut donc si vous activez MQTT pour la première vous pouvez éventuellement remettre le démarrage automatique. (une mise à jour du plugin pourrait arrêté le démon)
+>> - __Une première intialisation des données est nécessaire pour la mise à jour des infos MQTT.__ (Bouton ou commande refresh)
 
 ## Autres fonctionnalités
 - Fully Kiosk permet d'injecter des fonctions JS comme par exemple lancer une application avec des paramètres.
