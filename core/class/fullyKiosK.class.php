@@ -1032,7 +1032,7 @@ Constant Value: 0 (0x00000000)
     
     $eqlogic = self::byLogicalId($json['deviceId'], 'fullyKiosK');
 
-    
+    if(!is_object($eqlogic)){
 	$fullyKiosKCmd = $eqlogic->getCmd('info', $json['event']);
 
 	if (!is_object($fullyKiosKCmd))
@@ -1079,6 +1079,7 @@ Constant Value: 0 (0x00000000)
 	}         
 
 	$eqlogic->refreshWidget();
+     }
     }
   }	
 	
