@@ -1424,23 +1424,65 @@ Constant Value: 0 (0x00000000)
 	
 		}
 		foreach ($this->getCmd('action', null, true) as $cmd) {
-			if (isset($replace['#refresh_id#']) && $cmd->getId() == $replace['#refresh_id#']) {
-				continue;
-			}
-			if ($br_before == 0 && $cmd->getDisplay('forceReturnLineBefore', 0) == 1) {
-				$cmd_html .= '<br/>';
-			}
-			$cmd_html .= $cmd->toHtml($_version, '', $replace['#cmd-background-color#']);
-			
-			//log::add('fullyKiosK', 'debug', ' cmdAction to html '. $cmd->toHtml($_version, '', $replace['#cmd-background-color#']));
-			$br_before = 0;
-			if ($cmd->getDisplay('forceReturnLineAfter', 0) == 1) {
-				$cmd_html .= '<br/>';
-				$br_before = 1;
-			}
-	
-		}
+			 if($cmd->getSubType() != 'message' ){
+			  if (isset($replace['#refresh_id#']) && $cmd->getId() == $replace['#refresh_id#'] ) {
+						continue;
+					}
+					if ($br_before == 0 && $cmd->getDisplay('forceReturnLineBefore', 0) == 1) {
+						$cmd_html .= '<br/>';
+					}
+					$cmd_html .= $cmd->toHtml($_version, '', $replace['#cmd-background-color#']);
 
+					//log::add('fullyKiosK', 'debug', ' cmdAction to html '. $cmd->toHtml($_version, '', $replace['#cmd-background-color#']));
+					$br_before = 0;
+					if ($cmd->getDisplay('forceReturnLineAfter', 0) == 1) {
+						$cmd_html .= '<br/>';
+						$br_before = 1;
+					}
+			  }
+				}
+
+		      // uniquement avec titre
+		      $cmd_html .= '<br/>';
+				foreach ($this->getCmd('action', null, true) as $cmd) {
+			  if($cmd->getSubType() == 'message'  && $cmd->getDisplay('message_disable', 0) == 1){
+					if (isset($replace['#refresh_id#']) && $cmd->getId() == $replace['#refresh_id#'] ) {
+						continue;
+					}
+					if ($br_before == 0 && $cmd->getDisplay('forceReturnLineBefore', 0) == 1) {
+						$cmd_html .= '<br/>';
+					}
+					$cmd_html .= $cmd->toHtml($_version, '', $replace['#cmd-background-color#']);
+
+					//log::add('fullyKiosK', 'debug', ' cmdAction to html '. $cmd->toHtml($_version, '', $replace['#cmd-background-color#']));
+					$br_before = 0;
+					if ($cmd->getDisplay('forceReturnLineAfter', 0) == 1) {
+						$cmd_html .= '<br/>';
+						$br_before = 1;
+					}
+			  }
+				}     
+		      // action message complet
+		      $cmd_html .= '<br/>';
+				foreach ($this->getCmd('action', null, true) as $cmd) {
+			  if($cmd->getSubType() == 'message'  && $cmd->getDisplay('message_disable', 0) != 1){
+					if (isset($replace['#refresh_id#']) && $cmd->getId() == $replace['#refresh_id#'] ) {
+						continue;
+					}
+					if ($br_before == 0 && $cmd->getDisplay('forceReturnLineBefore', 0) == 1) {
+						$cmd_html .= '<br/>';
+					}
+					$cmd_html .= $cmd->toHtml($_version, '', $replace['#cmd-background-color#']);
+
+					//log::add('fullyKiosK', 'debug', ' cmdAction to html '. $cmd->toHtml($_version, '', $replace['#cmd-background-color#']));
+					$br_before = 0;
+					if ($cmd->getDisplay('forceReturnLineAfter', 0) == 1) {
+						$cmd_html .= '<br/>';
+						$br_before = 1;
+					}
+			  }
+				}      
+      
 		
 		//$eqlogic = $cmd->getEqLogic();
 		$ip = $this->getConfiguration('addressip');
