@@ -2,6 +2,9 @@
 
 En cas d'absence de note dans ce chapitre, les mises à jour ne concernent que la doc et des corrections mineures
 
+## 17/05/2020
+- regroupement des commandes par type sur le widget
+
 ## 27/04/2020
 - correction problème d'affichage de certaines infos
 - nettoyage du code
