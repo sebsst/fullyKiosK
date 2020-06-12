@@ -2,6 +2,9 @@
 
 En cas d'absence de note dans ce chapitre, les mises à jour ne concernent que la doc et des corrections mineures
 
+## 12/06/2020
+- correction erreur dans log http
+
 ## 17/05/2020
 - regroupement des commandes par type sur le widget
 
@@ -19,13 +22,13 @@ En cas d'absence de note dans ce chapitre, les mises à jour ne concernent que l
 
 ## 22/04/2020
 - suppression démarrage auto du démon si mqtt n'a pas été activé pour les tablettes
-- ajout des fonctions fully kiosk 1.38+ : text to speech avec locale & tts engine & queue. Ce qui permet de changer le moteur de voix, la langue et de mettre dans la queue ou non. 
+- ajout des fonctions fully kiosk 1.38+ : text to speech avec locale & tts engine & queue. Ce qui permet de changer le moteur de voix, la langue et de mettre dans la queue ou non.
 
 - et fonction arrêt du TTS en cours
 
 ## 14/01/2020
 - ajout de 'mqtt' dans le nom de la commande lié à un évènement MQTT.
-- correction bug (merci tuxedo78 dokime7) 
+- correction bug (merci tuxedo78 dokime7)
 
 ## 18/10/2019
 - ajout du user + mot de passe (optionnel) dans la configuration du plugin
@@ -37,7 +40,7 @@ screenOn, screenOff, pluggedAC, pluggedUSB, pluggedWireless, unplugged, networkR
 - La valeur de l'évenèment prend comme valeur la date + heure de la publication
 
 ## 30/09/2019
-ajout des dernières fonctions javascript fullykiosk dans la liste des fonctions disponible 
+ajout des dernières fonctions javascript fullykiosk dans la liste des fonctions disponible
 - fully.showNotification(String title, String text, String url, boolean highPriority)
 - void fully.closeTabByIndex(int index)
 - void fully.closeThisTab()
@@ -54,7 +57,7 @@ Remplacement de la classe Object par jeeObject pour la compatibilité buster
 - correction de la préférence utilisateur sur l'affichage des actions après mise à jour
 
 ## 05/05/2019
-- Ajout des fonctions fullykiosk 1.30 et 1.31 dans la liste des fonctions javascript disponible (getfile list, empty folder, bluetooth, qr code..). 
+- Ajout des fonctions fullykiosk 1.30 et 1.31 dans la liste des fonctions javascript disponible (getfile list, empty folder, bluetooth, qr code..).
 
 ## 30/03/2019
 - Correction sur les actions/infos visibles par défaut lors de la création de l'équipement
@@ -80,7 +83,7 @@ Remplacement de la classe Object par jeeObject pour la compatibilité buster
 - ajout activation/désactivation mode maintenance (enableLockedMode/disableLockedMode)
 
 ## 18/09/2018
-- ajout de la fonctionalité capture caméra - enregistre une photo camshot.jpg dans le dossier resources du plugin 
+- ajout de la fonctionalité capture caméra - enregistre une photo camshot.jpg dans le dossier resources du plugin
 - il est possible de préciser le chemin de la sauvegarde et le nom du fichier
 
 ## 07/08/2018
@@ -94,16 +97,16 @@ Remplacement de la classe Object par jeeObject pour la compatibilité buster
 - correction bug pour la fonction envoi de "settings" fullykiosk
 
 ## 27/06/2018
-- possibilité de choisir le délai de rafraîchissement des données 
+- possibilité de choisir le délai de rafraîchissement des données
 - correction bug affichage batterie
 
 ## 25/06/2018
-- possibilité d'ajouter de nouvelles commandes 
+- possibilité d'ajouter de nouvelles commandes
 - widget légèrement revu (affichage de la batterie en entête)
 
 ## 22/06/2018
 - description des commandes en français
-- autocomplete des paramètres possible 
+- autocomplete des paramètres possible
 - cacher les titres si inutile
 - attention la recréation de l'équipement pourrait être nécessaire
 
