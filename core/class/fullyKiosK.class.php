@@ -639,7 +639,7 @@ public static function initInfosMap(){
 
 					),
 					'batteryTemperature' => array(
-						'name' => __('Batterie T°',__FILE__),
+						'name' => __('T° Batterie',__FILE__),
 						'type' => 'info',
 						'subtype' => 'numeric',
 						'isvisible' => 1,
