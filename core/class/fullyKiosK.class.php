@@ -1448,7 +1448,7 @@ public static function initInfosMap(){
 				if ($br_before == 0 && $cmd->getDisplay('forceReturnLineBefore', 0) == 1) {
 					$cmd_html .= '<br/>';
 				}
-				$cmd_html .= $cmd->toHtml($_version, '', $replace['#cmd-background-color#']);
+				$cmd_html .= $cmd->toHtml($_version, '', null);
 				//log::add('fullyKiosK', 'debug', ' cmdAction to html '. $cmd->toHtml($_version, '', $replace['#cmd-background-color#']));
 				$br_before = 0;
 				if ($cmd->getDisplay('forceReturnLineAfter', 0) == 1) {
@@ -1465,7 +1465,7 @@ public static function initInfosMap(){
 					if ($br_before == 0 && $cmd->getDisplay('forceReturnLineBefore', 0) == 1) {
 						$cmd_html .= '<br/>';
 					}
-					$cmd_html .= $cmd->toHtml($_version, '', $replace['#cmd-background-color#']);
+					$cmd_html .= $cmd->toHtml($_version, '', null);
 
 					//log::add('fullyKiosK', 'debug', ' cmdAction to html '. $cmd->toHtml($_version, '', $replace['#cmd-background-color#']));
 					$br_before = 0;
@@ -1486,7 +1486,7 @@ public static function initInfosMap(){
 					if ($br_before == 0 && $cmd->getDisplay('forceReturnLineBefore', 0) == 1) {
 						$cmd_html .= '<br/>';
 					}
-					$cmd_html .= $cmd->toHtml($_version, '', $replace['#cmd-background-color#']);
+					$cmd_html .= $cmd->toHtml($_version, '', null) ;
 
 					//log::add('fullyKiosK', 'debug', ' cmdAction to html '. $cmd->toHtml($_version, '', $replace['#cmd-background-color#']));
 					$br_before = 0;
@@ -1506,7 +1506,7 @@ public static function initInfosMap(){
 					if ($br_before == 0 && $cmd->getDisplay('forceReturnLineBefore', 0) == 1) {
 						$cmd_html .= '<br/>';
 					}
-					$cmd_html .= $cmd->toHtml($_version, '', $replace['#cmd-background-color#']);
+					$cmd_html .= $cmd->toHtml($_version, '', null);
 
 					//log::add('fullyKiosK', 'debug', ' cmdAction to html '. $cmd->toHtml($_version, '', $replace['#cmd-background-color#']));
 					$br_before = 0;
