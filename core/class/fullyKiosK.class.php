@@ -619,6 +619,15 @@ public static function initInfosMap(){
 						'restkey' => 'deviceID',
 
 					),
+					'screenOrientation' => array(
+						'name' => __('Orientation écran',__FILE__),
+						'type' => 'info',
+						'subtype' => 'numeric',
+						'isvisible' => 1,
+						'unite' => '°',
+						'restkey' => 'screenOrientation',
+
+					),
 
 					'batteryLevel' => array(
 						'name' => __('Batterie',__FILE__),
@@ -627,6 +636,15 @@ public static function initInfosMap(){
 						'isvisible' => 1,
 						'unite' => '%',
 						'restkey' => 'batteryLevel',
+
+					),
+					'batteryTemperature' => array(
+						'name' => __('T° Batterie',__FILE__),
+						'type' => 'info',
+						'subtype' => 'numeric',
+						'isvisible' => 1,
+						'unite' => '°',
+						'restkey' => 'batteryTemperature',
 
 					),
 					'wifiSignalLevel' => array(
@@ -720,12 +738,28 @@ public static function initInfosMap(){
 
 					),
 
+					'isInScreensaver' => array(
+						'name' => __('Screen saver actif',__FILE__),
+						'type' => 'info',
+						'subtype' => 'binary',
+						'isvisible' => 1,
+						'restkey' => 'isInScreensaver',
+
+					),
 					'kioskMode' => array(
 						'name' => __('Mode kiosque',__FILE__),
 						'type' => 'info',
 						'subtype' => 'binary',
 						'isvisible' => 1,
 						'restkey' => 'kioskMode',
+
+					),
+					'kioskLocked' => array(
+						'name' => __('kiosk Locked',__FILE__),
+						'type' => 'info',
+						'subtype' => 'binary',
+						'isvisible' => 1,
+						'restkey' => 'kioskLocked',
 
 					),
 					'isScreenOn' => array(
@@ -1414,7 +1448,7 @@ public static function initInfosMap(){
 				if ($br_before == 0 && $cmd->getDisplay('forceReturnLineBefore', 0) == 1) {
 					$cmd_html .= '<br/>';
 				}
-				$cmd_html .= $cmd->toHtml($_version, '', $replace['#cmd-background-color#']);
+				$cmd_html .= $cmd->toHtml($_version, '', null);
 				//log::add('fullyKiosK', 'debug', ' cmdAction to html '. $cmd->toHtml($_version, '', $replace['#cmd-background-color#']));
 				$br_before = 0;
 				if ($cmd->getDisplay('forceReturnLineAfter', 0) == 1) {
@@ -1431,7 +1465,7 @@ public static function initInfosMap(){
 					if ($br_before == 0 && $cmd->getDisplay('forceReturnLineBefore', 0) == 1) {
 						$cmd_html .= '<br/>';
 					}
-					$cmd_html .= $cmd->toHtml($_version, '', $replace['#cmd-background-color#']);
+					$cmd_html .= $cmd->toHtml($_version, '', null);
 
 					//log::add('fullyKiosK', 'debug', ' cmdAction to html '. $cmd->toHtml($_version, '', $replace['#cmd-background-color#']));
 					$br_before = 0;
@@ -1452,7 +1486,7 @@ public static function initInfosMap(){
 					if ($br_before == 0 && $cmd->getDisplay('forceReturnLineBefore', 0) == 1) {
 						$cmd_html .= '<br/>';
 					}
-					$cmd_html .= $cmd->toHtml($_version, '', $replace['#cmd-background-color#']);
+					$cmd_html .= $cmd->toHtml($_version, '', null) ;
 
 					//log::add('fullyKiosK', 'debug', ' cmdAction to html '. $cmd->toHtml($_version, '', $replace['#cmd-background-color#']));
 					$br_before = 0;
@@ -1472,7 +1506,7 @@ public static function initInfosMap(){
 					if ($br_before == 0 && $cmd->getDisplay('forceReturnLineBefore', 0) == 1) {
 						$cmd_html .= '<br/>';
 					}
-					$cmd_html .= $cmd->toHtml($_version, '', $replace['#cmd-background-color#']);
+					$cmd_html .= $cmd->toHtml($_version, '', null);
 
 					//log::add('fullyKiosK', 'debug', ' cmdAction to html '. $cmd->toHtml($_version, '', $replace['#cmd-background-color#']));
 					$br_before = 0;
