@@ -767,7 +767,7 @@ public static function initInfosMap(){
 						'type' => 'info',
 						'subtype' => 'binary',
 						'isvisible' => 1,
-						'restkey' => array('screenOn', 'isScreenOn'),
+						'restkey' => array('screenOn', 'isScreenOn'),// pour les différentes version, à partir de 1.42.2 => isScreenOn est passé à screenOn
 
 					),
 					'keyguardLocked' => array(
