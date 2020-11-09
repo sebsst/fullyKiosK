@@ -767,7 +767,7 @@ public static function initInfosMap(){
 						'type' => 'info',
 						'subtype' => 'binary',
 						'isvisible' => 1,
-						'restkey' => 'screenOn',
+						'restkey' => array('screenOn', 'isScreenOn'),
 
 					),
 					'keyguardLocked' => array(
@@ -1257,20 +1257,31 @@ public static function initInfosMap(){
 
 				//update cmdinfo value
 				foreach(self::$_infosMap as $cmdLogicalId=>$params)
-				{
-					if(isset($params['restkey'], $json[$params['restkey']]))
+				{	
+					if(!isset($params['restkey']))continue;
+
+					if(!is_array($params['restkey'])){
+						if(!isset($json[$params['restkey']]))continue;// si string et que pas défini ds le json on continue
+
+						$value = $json[$params['restkey']];
+					}else{// c'est un array
+						foreach($subParam as $restKey){// on cherche parmi toutes les valeurs si une existe 
+							if(isset($json[$restKey])){// siexiste ds le jsopn
+								$value = $json[$restKey];// on valorise la valeur
+								continue;//on sort de la boucle
+							}
+						}
+					}
+
+					if(isset($value))// si on a trouvé une valeur au dessus correspondant à un eentrée du json
 					{
 						//log::add('fullyKiosK', 'debug',  __METHOD__.' '.__LINE__.' '.$cmdLogicalId.' => '.json_encode($json[$params['restkey']]));
-						$value = $json[$params['restkey']];
 						str_replace("\\n", " ", $value);
 						if(isset($params['cbTransform']) && is_callable($params['cbTransform']))
 						{
 							$value = call_user_func($params['cbTransform'], $value);
 							//log::add('fullyKiosK', 'debug', __METHOD__.' '.__LINE__.' Transform to => '.json_encode($value));
 						}
-
-
-
 						$this->checkAndUpdateCmd($cmdLogicalId,$value);
 					}
 				}
