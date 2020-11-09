@@ -767,7 +767,7 @@ public static function initInfosMap(){
 						'type' => 'info',
 						'subtype' => 'binary',
 						'isvisible' => 1,
-						'restkey' => array('screenOn', 'isScreenOn'),// pour les différentes version, à partir de 1.42.2 => isScreenOn est passé à screenOn
+						'restkey' => array('isScreenOn', 'screenOn'),// pour les différentes version, à partir de 1.42.2 => isScreenOn est passé à screenOn
 
 					),
 					'keyguardLocked' => array(
@@ -1262,10 +1262,11 @@ public static function initInfosMap(){
 
 					if(!is_array($params['restkey'])){
 						if(!isset($json[$params['restkey']]))continue;// si string et que pas défini ds le json on continue
-
+						
 						$value = $json[$params['restkey']];
 					}else{// c'est un array
-						foreach($subParam as $restKey){// on cherche parmi toutes les valeurs si une existe 
+						log::add('fullyKiosK', 'debug', $cmdLogicalId.' is an array '.implode(',',$params['restkey']));
+						foreach($params['restkey'] as $restKey){// on cherche parmi toutes les valeurs si une existe 
 							if(isset($json[$restKey])){// siexiste ds le jsopn
 								$value = $json[$restKey];// on valorise la valeur
 								continue;//on sort de la boucle
