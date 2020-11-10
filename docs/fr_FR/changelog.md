@@ -2,6 +2,9 @@
 
 En cas d'absence de note dans ce chapitre, les mises à jour ne concernent que la doc et des corrections mineures
 
+## 10/11/2020
+- Correction indicateur écran allumé
+
 ## 03/07/2020
 - ajout infos supplémentaires version 1.40
 
