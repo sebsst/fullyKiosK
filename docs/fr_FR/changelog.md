@@ -2,6 +2,9 @@
 
 En cas d'absence de note dans ce chapitre, les mises à jour ne concernent que la doc et des corrections mineures
 
+## 31/05/2021
+- Ouverture de la configuration de la tablette dans nouvel onglet du navigateur (ne fonctionnait plus directement dans jeedom)
+
 ## 10/11/2020
 - Correction indicateur écran allumé
 

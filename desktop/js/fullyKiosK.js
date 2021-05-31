@@ -16,12 +16,7 @@
  */
 
 $('#bt_wl_modal').on('click', function() {
-	$('#md_modal').dialog({
-		title: "Connexion à fullyKiosk",
-		width: "90%",
-		maxWidth: "400px"
-	});
-	$('#md_modal').load('index.php?v=d&plugin=fullyKiosK&modal=modal.fullyKiosK&id='+$('.eqLogicAttr[data-l1key=id]').value()).dialog('open');
+  	window.open('http://'+$('.eqLogicAttr[data-l2key=addressip]').value()+':2323/');
 });
 $("#table_cmd").sortable({axis: "y", cursor: "move", items: ".cmd", placeholder: "ui-state-highlight", tolerance: "intersect", forcePlaceholderSize: true});
 /*

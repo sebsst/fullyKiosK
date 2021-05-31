@@ -35,12 +35,7 @@
 			$('.eqLogic[data-eqLogic_uid=#uid#] .refresh').remove();	
 		}
 		$('.fullyKiosK[data-eqLogic_id=#id#] .modelconfig').off().on('click', function () {
-			$('#md_modal').dialog({
-				title: "Connexion à #name#",
-				width: "90%",
-				maxWidth: "400px"
-			});
-			$('#md_modal').load('index.php?v=d&plugin=fullyKiosK&modal=modal.fullyKiosK&id=#id#').dialog('open');
+  			window.open('http://#ipaddress#:2323/');
 		});
 		$('.fullyKiosK[data-eqLogic_id=#id#] .getCamshot').off().on('click', function () {
 		 var uri =  "http://#ipaddress#:2323/?cmd=getCamshot&pwd=#password#";
